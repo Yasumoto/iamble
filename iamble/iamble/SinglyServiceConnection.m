@@ -1,79 +1,28 @@
 //
-//  LoginViewController.m
+//  SinglyServiceConnection.m
 //  iamble
 //
-//  Created by Joe Smith on 6/1/12.
+//  Created by Joe Smith on 6/2/12.
 //  Copyright (c) 2012 iamble. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "SinglyServiceConnection.h"
 #import "GTMHTTPFetcher.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import <SSKeychain.h>
 
 static NSString *const kSinglyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
 static NSString *const kSinglyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
-
-static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
-static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
-
-static NSString *const kAmble = @"Amble";
 static NSString *const kSingly = @"Singly";
 
-@interface LoginViewController ()
+@interface SinglyServiceConnection ()
 - (GTMOAuth2Authentication *)singlyAuth;
 - (void)authorize:(NSString *)service;
 - (IBAction)loadProfiles;
 @end
 
-@implementation LoginViewController
+@implementation SinglyServiceConnection
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (IBAction)signInToSingly:(UIButton *)sender {
-    //return [self authorize:@"twitter"];
-    return [self authorizeAmble];
-}
-#pragma mark Amble Auth
-
-- (void) authorizeAmble {
-    GTMOAuth2ViewControllerTouch *viewController;
-    viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithScope:@"https://www.googleapis.com/auth/userinfo.email"
-                                                                clientID:kAmbleClientID
-                                                            clientSecret:kAmbleClientSecret
-                                                        keychainItemName:nil
-                                                                delegate:self
-                                                        finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
-    
-    [[self navigationController] pushViewController:viewController animated:YES];
-}
-
-#pragma mark OAuth + Singly authentication.
 
 - (GTMOAuth2Authentication *)singlyAuth
 {
@@ -119,6 +68,7 @@ static NSString *const kSingly = @"Singly";
     // Push the authentication view to our navigation controller instance
     [ [self navigationController] pushViewController:viewController animated:YES];
 }
+
 
 - (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
       finishedWithAuth:(GTMOAuth2Authentication *)auth

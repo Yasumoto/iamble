@@ -10,4 +10,6 @@
 
 @interface iambleServiceConnection : NSObject
 
+- (void) authorizeAmble;
+
 @end
