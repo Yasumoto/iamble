@@ -38,7 +38,7 @@
             </objects>
             <point key="canvasLocation" x="1671" y="-434"/>
         </scene>
-        <!--Choose Amble View Controller-->
+        <!--Choose Amble View Controller - iamble-->
         <scene sceneID="kkV-YG-mD0">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYD-S7-omS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -48,11 +48,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="H00-T8-oyO">
-                                <rect key="frame" x="0.0" y="57" width="320" height="359"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="YCH-2C-1G0" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="113" width="320" height="70"/>
+                                        <rect key="frame" x="-68" y="130" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -60,7 +60,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" id="tDA-0W-7nU" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="206" width="320" height="70"/>
+                                        <rect key="frame" x="-68" y="230" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -68,7 +68,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" id="jyj-y0-7aG" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="302" width="320" height="70"/>
+                                        <rect key="frame" x="-68" y="326" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -76,7 +76,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" id="bP2-2K-ZAV" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="20" width="320" height="70"/>
+                                        <rect key="frame" x="-68" y="28" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -85,17 +85,10 @@
                                     </view>
                                 </subviews>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="iamble" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DIZ-X8-nG6">
-                                <rect key="frame" x="135" y="20" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eLW-bp-eXI"/>
+                    <navigationItem key="navigationItem" title="iamble" id="eLW-bp-eXI"/>
                     <connections>
                         <outlet property="facebookSlider" destination="bP2-2K-ZAV" id="xek-39-GsJ"/>
                         <outlet property="foursquareSlider" destination="tDA-0W-7nU" id="bpx-rF-aas"/>
