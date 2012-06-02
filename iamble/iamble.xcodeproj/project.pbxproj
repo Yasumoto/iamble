@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8B87D991579E76600310696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D981579E76600310696 /* UIKit.framework */; };
+		D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
+		D8B87D9D1579E76600310696 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9C1579E76600310696 /* CoreGraphics.framework */; };
+		D8B87DA31579E76600310696 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DA11579E76600310696 /* InfoPlist.strings */; };
+		D8B87DA51579E76600310696 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DA41579E76600310696 /* main.m */; };
+		D8B87DA91579E76600310696 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DA81579E76600310696 /* AppDelegate.m */; };
+		D8B87DAB1579E76600310696 /* iamble.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DAA1579E76600310696 /* iamble.entitlements */; };
+		D8B87DAE1579E76600310696 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */; };
+		D8B87DB11579E76600310696 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DB01579E76600310696 /* ViewController.m */; };
+		D8B87DB91579E76600310696 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87DB81579E76600310696 /* SenTestingKit.framework */; };
+		D8B87DBA1579E76600310696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D981579E76600310696 /* UIKit.framework */; };
+		D8B87DBB1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
+		D8B87DC31579E76600310696 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DC11579E76600310696 /* InfoPlist.strings */; };
+		D8B87DC61579E76600310696 /* iambleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DC51579E76600310696 /* iambleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D8B87DBC1579E76600310696 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B87D8B1579E76600310696 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8B87D931579E76600310696;
+			remoteInfo = iamble;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D8B87D941579E76600310696 /* iamble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iamble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B87D981579E76600310696 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D8B87D9A1579E76600310696 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8B87D9C1579E76600310696 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D8B87DA01579E76600310696 /* iamble-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iamble-Info.plist"; sourceTree = "<group>"; };
+		D8B87DA21579E76600310696 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D8B87DA41579E76600310696 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D8B87DA61579E76600310696 /* iamble-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iamble-Prefix.pch"; sourceTree = "<group>"; };
+		D8B87DA71579E76600310696 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D8B87DA81579E76600310696 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D8B87DAA1579E76600310696 /* iamble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iamble.entitlements; sourceTree = "<group>"; };
+		D8B87DAD1579E76600310696 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		D8B87DAF1579E76600310696 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D8B87DB01579E76600310696 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D8B87DB71579E76600310696 /* iambleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iambleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B87DB81579E76600310696 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D8B87DC01579E76600310696 /* iambleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iambleTests-Info.plist"; sourceTree = "<group>"; };
+		D8B87DC21579E76600310696 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D8B87DC41579E76600310696 /* iambleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iambleTests.h; sourceTree = "<group>"; };
+		D8B87DC51579E76600310696 /* iambleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iambleTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8B87D911579E76600310696 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B87D991579E76600310696 /* UIKit.framework in Frameworks */,
+				D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */,
+				D8B87D9D1579E76600310696 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B87DB31579E76600310696 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B87DB91579E76600310696 /* SenTestingKit.framework in Frameworks */,
+				D8B87DBA1579E76600310696 /* UIKit.framework in Frameworks */,
+				D8B87DBB1579E76600310696 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D8B87D891579E76600310696 = {
+			isa = PBXGroup;
+			children = (
+				D8B87D9E1579E76600310696 /* iamble */,
+				D8B87DBE1579E76600310696 /* iambleTests */,
+				D8B87D971579E76600310696 /* Frameworks */,
+				D8B87D951579E76600310696 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D8B87D951579E76600310696 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8B87D941579E76600310696 /* iamble.app */,
+				D8B87DB71579E76600310696 /* iambleTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D8B87D971579E76600310696 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8B87D981579E76600310696 /* UIKit.framework */,
+				D8B87D9A1579E76600310696 /* Foundation.framework */,
+				D8B87D9C1579E76600310696 /* CoreGraphics.framework */,
+				D8B87DB81579E76600310696 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8B87D9E1579E76600310696 /* iamble */ = {
+			isa = PBXGroup;
+			children = (
+				D8B87DA71579E76600310696 /* AppDelegate.h */,
+				D8B87DA81579E76600310696 /* AppDelegate.m */,
+				D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */,
+				D8B87DAF1579E76600310696 /* ViewController.h */,
+				D8B87DB01579E76600310696 /* ViewController.m */,
+				D8B87D9F1579E76600310696 /* Supporting Files */,
+			);
+			path = iamble;
+			sourceTree = "<group>";
+		};
+		D8B87D9F1579E76600310696 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8B87DA01579E76600310696 /* iamble-Info.plist */,
+				D8B87DA11579E76600310696 /* InfoPlist.strings */,
+				D8B87DA41579E76600310696 /* main.m */,
+				D8B87DA61579E76600310696 /* iamble-Prefix.pch */,
+				D8B87DAA1579E76600310696 /* iamble.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8B87DBE1579E76600310696 /* iambleTests */ = {
+			isa = PBXGroup;
+			children = (
+				D8B87DC41579E76600310696 /* iambleTests.h */,
+				D8B87DC51579E76600310696 /* iambleTests.m */,
+				D8B87DBF1579E76600310696 /* Supporting Files */,
+			);
+			path = iambleTests;
+			sourceTree = "<group>";
+		};
+		D8B87DBF1579E76600310696 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8B87DC01579E76600310696 /* iambleTests-Info.plist */,
+				D8B87DC11579E76600310696 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8B87D931579E76600310696 /* iamble */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8B87DC91579E76600310696 /* Build configuration list for PBXNativeTarget "iamble" */;
+			buildPhases = (
+				D8B87D901579E76600310696 /* Sources */,
+				D8B87D911579E76600310696 /* Frameworks */,
+				D8B87D921579E76600310696 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iamble;
+			productName = iamble;
+			productReference = D8B87D941579E76600310696 /* iamble.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D8B87DB61579E76600310696 /* iambleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8B87DCC1579E76600310696 /* Build configuration list for PBXNativeTarget "iambleTests" */;
+			buildPhases = (
+				D8B87DB21579E76600310696 /* Sources */,
+				D8B87DB31579E76600310696 /* Frameworks */,
+				D8B87DB41579E76600310696 /* Resources */,
+				D8B87DB51579E76600310696 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8B87DBD1579E76600310696 /* PBXTargetDependency */,
+			);
+			name = iambleTests;
+			productName = iambleTests;
+			productReference = D8B87DB71579E76600310696 /* iambleTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8B87D8B1579E76600310696 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = iamble;
+			};
+			buildConfigurationList = D8B87D8E1579E76600310696 /* Build configuration list for PBXProject "iamble" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D8B87D891579E76600310696;
+			productRefGroup = D8B87D951579E76600310696 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8B87D931579E76600310696 /* iamble */,
+				D8B87DB61579E76600310696 /* iambleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D8B87D921579E76600310696 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B87DA31579E76600310696 /* InfoPlist.strings in Resources */,
+				D8B87DAB1579E76600310696 /* iamble.entitlements in Resources */,
+				D8B87DAE1579E76600310696 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B87DB41579E76600310696 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B87DC31579E76600310696 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D8B87DB51579E76600310696 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8B87D901579E76600310696 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B87DA51579E76600310696 /* main.m in Sources */,
+				D8B87DA91579E76600310696 /* AppDelegate.m in Sources */,
+				D8B87DB11579E76600310696 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B87DB21579E76600310696 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B87DC61579E76600310696 /* iambleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D8B87DBD1579E76600310696 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8B87D931579E76600310696 /* iamble */;
+			targetProxy = D8B87DBC1579E76600310696 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D8B87DA11579E76600310696 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8B87DA21579E76600310696 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8B87DAD1579E76600310696 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		D8B87DC11579E76600310696 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8B87DC21579E76600310696 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D8B87DC71579E76600310696 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D8B87DC81579E76600310696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8B87DCA1579E76600310696 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iamble/iamble.entitlements;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				INFOPLIST_FILE = "iamble/iamble-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D8B87DCB1579E76600310696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iamble/iamble.entitlements;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				INFOPLIST_FILE = "iamble/iamble-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D8B87DCD1579E76600310696 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iamble.app/iamble";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				INFOPLIST_FILE = "iambleTests/iambleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D8B87DCE1579E76600310696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iamble.app/iamble";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				INFOPLIST_FILE = "iambleTests/iambleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8B87D8E1579E76600310696 /* Build configuration list for PBXProject "iamble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B87DC71579E76600310696 /* Debug */,
+				D8B87DC81579E76600310696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8B87DC91579E76600310696 /* Build configuration list for PBXNativeTarget "iamble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B87DCA1579E76600310696 /* Debug */,
+				D8B87DCB1579E76600310696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D8B87DCC1579E76600310696 /* Build configuration list for PBXNativeTarget "iambleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B87DCD1579E76600310696 /* Debug */,
+				D8B87DCE1579E76600310696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8B87D8B1579E76600310696 /* Project object */;
+}
