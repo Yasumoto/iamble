@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
 		D8AE54461579EF4A004E2E10 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54451579EF4A004E2E10 /* LoginViewController.m */; };
+		D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */; };
 		D8B87D991579E76600310696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D981579E76600310696 /* UIKit.framework */; };
 		D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
 		D8B87D9D1579E76600310696 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9C1579E76600310696 /* CoreGraphics.framework */; };
@@ -40,6 +41,8 @@
 		495DDB46F94C451585862A06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AE54441579EF4A004E2E10 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D8AE54451579EF4A004E2E10 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAmbleViewController.h; sourceTree = "<group>"; };
+		D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAmbleViewController.m; sourceTree = "<group>"; };
 		D8B87D941579E76600310696 /* iamble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iamble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B87D981579E76600310696 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B87D9A1579E76600310696 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,8 @@
 			children = (
 				D8AE54441579EF4A004E2E10 /* LoginViewController.h */,
 				D8AE54451579EF4A004E2E10 /* LoginViewController.m */,
+				D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */,
+				D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */,
 				D8B87DA71579E76600310696 /* AppDelegate.h */,
 				D8B87DA81579E76600310696 /* AppDelegate.m */,
 				D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */,
@@ -289,6 +294,7 @@
 				D8B87DA51579E76600310696 /* main.m in Sources */,
 				D8B87DA91579E76600310696 /* AppDelegate.m in Sources */,
 				D8AE54461579EF4A004E2E10 /* LoginViewController.m in Sources */,
+				D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
