@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface iambleServiceConnection : NSObject
-
+@property BOOL authenticated;
 - (UIViewController *) authorizeAmble;
 @end

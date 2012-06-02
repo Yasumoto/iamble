@@ -17,6 +17,15 @@ static NSString *const kAmble = @"Amble";
 
 @implementation iambleServiceConnection
 
+- (id) init {
+    self = [super init];
+    if (self) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        self.authenticated = ([SSKeychain passwordForService:kAmble account:[defaults valueForKey:kAmble]] != nil);
+    }
+    return self;
+}
+
 - (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
       finishedWithAuth:(GTMOAuth2Authentication *)auth
                  error:(NSError *)error
@@ -34,6 +43,7 @@ static NSString *const kAmble = @"Amble";
     else
     {
         // Authentication succeeded
+        self.authenticated = YES;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:auth.userEmail forKey:kAmble];
         

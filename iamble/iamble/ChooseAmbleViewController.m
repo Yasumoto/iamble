@@ -13,7 +13,6 @@
 @interface ChooseAmbleViewController ()
 @property (nonatomic, strong) SinglyServiceConnection *singly;
 @property (nonatomic, strong) iambleServiceConnection *iamble;
-- (void) setupAuth;
 @end
 
 @implementation ChooseAmbleViewController
@@ -34,6 +33,20 @@
     return self;
 }
 
+- (SinglyServiceConnection *)singly {
+    if (!_singly) {
+        _singly = [[SinglyServiceConnection alloc] init];
+    }
+    return _singly;
+}
+
+- (iambleServiceConnection *)iamble {
+    if (!_iamble) {
+        _iamble = [[iambleServiceConnection alloc] init];
+    }
+    return _iamble;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,8 +54,6 @@
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
-    
-    [self setupAuth];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -77,14 +88,17 @@
 
 # pragma mark ServiceConnection setup
 
-- (void) setupAuth {
-    
-}
 
 # pragma mark SliderActivatedDelegate
 
 - (void) sliderWasActivated:(SliderView *)slider {
-    NSLog(@"Slider's Service: %@", slider.service);
+    if (self.iamble.authenticated == NO) {
+        [self.navigationController pushViewController:[self.iamble authorizeAmble] animated:YES];
+    }
+    else {
+        [self.navigationController pushViewController:[self.singly authorize:slider.service] animated:YES];
+    }
+    
 }
 
 @end
