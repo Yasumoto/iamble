@@ -7,6 +7,11 @@
 //
 
 #import "LoginViewController.h"
+#import "GTMHTTPFetcher.h"
+#import "GTMOAuth2ViewControllerTouch.h"
+
+static NSString *const kMyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
+static NSString *const kMyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
 
 @interface LoginViewController ()
 
