@@ -2,37 +2,37 @@
 
 import logging
 import models
+import handler
+from utils.template import render_template
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
 
 class CreateAccountHandler(webapp.RequestHandler):
-  """Handler for areating accounts."""
+  """Handler for creating accounts."""
   URL_PATH = '/create_account'
   TEMPLATE = 'templates/create_account.html'
 
+  @handler.RequiresLogin
   def get(self):
-   """Handles get request for Create Account functions."""
-   # Render a blank create account template
-   form_data = self._ParseFormInput()
-   template_params = dict()
-   user = users.get_current_user()
-   if user:
-     ambler = models.Ambler.get_or_insert(user.email())
-     ambler.name_first = form_data['name_first']
-     ambler.name_last = form_data['name_last']
-     ambler.preferences.append(models.Preference(name='distance', value=form_data['distance']))
-     ambler.preferences.append(models.Preference(name='walk', value=form_data['walk']))
-     ambler.preferences.append(models.Preference(name='bike', value=form_data['bike']))
-     ambler.preferences.append(models.Preference(name='drive', value=form_data['drive']))
-     ambler.put()
-     template_params['message'] = 'Welcome to the party! You are a user!'
-     template_params['user'] = ambler
-   else:
-     # Redirect to google login
-     template_params['message'] = 'Looks like there was not Google user. Fix that!'
-   self._RenderTemplate(template_params)
+    """Handles get request for Create Account functions."""
+    # Render a blank create account template
+    template_params = dict()
+    user = users.get_current_user()
+    if user:
+      ambler = models.Ambler.get_by_id(user.email())
+      if ambler:
+        template_params['message'] = 'Welcome to the party! You are a user! Continue on to creating preferences'
+        template_params['user'] = ambler.key.id()
+      else:
+        template_params['message'] = 'Hey! You should fill in all the profile info that will eventually be here!'
+        ambler = models.Ambler.get_or_insert(user.email())
+        template_params['user'] = ambler.key.id()
+    else:
+      self.redirect('/login')
+    render_template(self, self.TEMPLATE, template_params)
   
+  @handler.RequiresLogin
   def post(self):
     """Handles posts for Account Creation functions."""
     form_data = self._ParseFormInput()
@@ -48,15 +48,8 @@ class CreateAccountHandler(webapp.RequestHandler):
       ambler.preferences.append(models.Preference(name='drive', value=form_data['drive']))
       ambler.put()
       template_params['message'] = 'Welcome to the party! You are a user!'
-      template_params['user'] = ambler
-    else:
-      # Redirect to google login
-      template_params['message'] = 'Looks like there was not Google user. Fix that!'
-    self._RenderTemplate(template_params)
-  
-  def _RenderTemplate(self, template_params):
-    rendered_page = template.render(self.TEMPLATE, template_params)
-    self.response.out.write(str(rendered_page))
+      template_params['user'] = ambler.key.id()
+    render_template(self, self.TEMPLATE, template_params)
   
   def _ParseFormInput(self):
     """Parses the form input, catches any funky data."""

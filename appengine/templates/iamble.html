@@ -15,7 +15,8 @@
       $(document).ready(function() {
         var iamble = $(document).iamble({
           'version': '{{ app_version }}',
-          'content': $('#bodycontent')
+          'content': $('#bodycontent'),
+          'messages': $('#messages')
         });
 
         {% block javascript %}
@@ -30,6 +31,20 @@
         &lt;iamble logo&gt;
       </div>
       <div id="bodycontent">
+        <div id="messages">
+          {% for message in info_messages %}
+            <div class="status_message info">{{message}}</div>
+          {% endfor %}
+          {% for message in success_messages %}
+            <div class="status_message success">{{message}}</div>
+          {% endfor %}
+          {% for message in warning_messages %}
+            <div class="status_message warning">{{message}}</div>
+          {% endfor %}
+          {% for message in error_messages %}
+            <div class="status_message error">{{message}}</div>
+          {% endfor %}
+        </div>
         {% block body %}
           Welcome
         {% endblock %}

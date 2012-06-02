@@ -1,15 +1,17 @@
 # python imports
 import logging
-import simplejson
+import json
 import urllib
 
 # app engine imports
 from google.appengine.api import urlfetch
-from google.appengine.ext.webapp import template
+from google.appengine.api import users
 from google.appengine.ext import webapp
+from google.appengine.ext.webapp import template
 
 # iamble imports
 import config
+import handler
 import models
 
 UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
@@ -17,38 +19,50 @@ UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
 HOME_TEMPLATE = 'templates/oauth.html'
 
 class Service(object):
-  pass
+
+  @property
+  def url(self):
+    service_url = urllib.quote_plus(config.SINGLY_OAUTH_URL_TEMPLATE + self.service_name)
+    message = 'Redirecting you to the %s authorization page.' % self.service_name
+    return '/redirect?url=%s&message=%s' % (service_url, message)
 
 class FacebookService(Service):
   name = "Facebook"
-  url = config.SINGLY_OAUTH_URL_TEMPLATE + 'facebook'
+  service_name = 'facebook'
 
 class TwitterService(Service):
   name = "Twitter"
-  url = config.SINGLY_OAUTH_URL_TEMPLATE + 'twitter'
+  service_name = 'twitter'
 
 class FoursquareService(Service):
   name = "Foursquare"
-  url = config.SINGLY_OAUTH_URL_TEMPLATE + 'foursquare'
+  service_name = 'foursquare'
 
 class GoogleContactsService(Service):
   name = "Google Contacts"
-  url = config.SINGLY_OAUTH_URL_TEMPLATE + 'gcontacts'
+  service_name = 'gcontacts'
 
 
 class OAuth2Handler(webapp.RequestHandler):
   """"""
   URL_PATH = '/oauth'
 
+  @handler.RequiresLogin
   def get(self):
     """"""
     template_params = dict()
-    template_params['services'] = list()
-    template_params['services'].append(FacebookService)
-    template_params['services'].append(TwitterService)
-    template_params['services'].append(FoursquareService)
-    template_params['services'].append(GoogleContactsService)
-    
+    services = [FacebookService(),
+                TwitterService(),
+                FoursquareService(),
+                GoogleContactsService()]
+    this_user = models.Ambler.get_by_id(users.get_current_user().email())
+    logging.info('THIS USER: %s', this_user)
+    existing_services = this_user.GetActiveServices()
+    for service in services:
+      if service.service_name in existing_services:
+        services.remove(service)
+    template_params['new_services'] = services
+    template_params['existing_services'] = existing_services
     rendered_page = template.render(HOME_TEMPLATE, template_params)
     self.response.out.write(str(rendered_page))
 
@@ -56,6 +70,7 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
 
   URL_PATH = '/oauth_callback'
 
+  @handler.RequiresLogin
   def get(self):
     code = self.request.get('code')
     post_params = {
@@ -69,4 +84,4 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
                             method=urlfetch.POST,
                             headers=config.DEFAULT_POST_HEADERS)
     logging.info(result.content)
-    access_token = simplejson.loads(result.content)['access_token']
+    access_token = json.loads(result.content)['access_token']

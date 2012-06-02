@@ -6,12 +6,11 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleHome(iamble).render();
+  $(document).iambleHome(iamble, {
+    'content': $('#buttons')
+  }).render();
 {% endblock %}
 
 {% block body %}
-  <h2>Homepage</h2>
-  {% for message in messages %}
-    <div>{{message}}</div>
-  {% endfor %}
+  <div id="buttons"></div>
 {% endblock %}
