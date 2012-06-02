@@ -1,5 +1,5 @@
 (function($){
-  $.fn.iambleCreateLogic = function(base, options) {
+  $.fn.iambleCreateAccount = function(base, options) {
     return new $.iambleCreateAccount(this, base, options);
   };
 
@@ -11,12 +11,12 @@
   };
 
   $.iambleCreateAccount.fn = $.iambleCreateAccount.prototype = {
-    iambleLogin: '0.1'
+    iambleCreateAccount: '0.1'
   };
 
   $.iambleCreateAccount.fn.extend = $.iambleCreateAccount.extend = $.extend;
 
-  $.iambleLogin.fn.extend({
+  $.iambleCreateAccount.fn.extend({
     'init': function() {
       this.base.options.content.append(
         $(document.createElement('DIV')).html('CREATE ACCOUNT INIT')
