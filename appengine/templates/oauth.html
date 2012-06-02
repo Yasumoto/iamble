@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "iamble.html" %}
 
 {% block head %}
@@ -13,5 +14,13 @@
   <h2>oAuth</h2>
   {% for message in messages %}
     <div>{{message}}</div>
+=======
+{% extends "base.html" %}
+
+{% block body %}
+  <h2>Authorize</h2>
+  {% for service in services %}
+    <div>Give us access to:&nbsp;<a href="{{ service.url }}">{{ service.name }}</a></div>
+>>>>>>> e06775fc55faab3bfa0e8b8a45dbb44bafe49f63
   {% endfor %}
 {% endblock %}
