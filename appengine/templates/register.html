@@ -1,4 +1,13 @@
-{% extends "base.html" %}
+{% extends "iamble.html" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/style/register.css">
+  <script type="text/javascript" src="/static/scripts/register.js"></script>
+{% endblock %}
+
+{% block javascript %}
+  $(document).iambleRegister(iamble).render();
+{% endblock %}
 
 {% block body %}
   <h2>Register</h2>

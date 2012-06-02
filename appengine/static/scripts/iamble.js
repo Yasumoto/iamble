@@ -1,11 +1,11 @@
 (function($){
-  $.fn.iamble = function(o) {
-    return new $.iamble(this, o);
+  $.fn.iamble = function(options) {
+    return new $.iamble(this, options);
   };
 
-  $.iamble = function(e, o) {
-    this.options = o || {};
-    this.target = $(e);
+  $.iamble = function(element, options) {
+    this.options = options || {};
+    this.target = $(element);
     return this.init();
   };
 
@@ -18,13 +18,13 @@
   $.iamble.fn.extend({
     'init': function() {
       this.options.content.append(
-        $(document.createElement('DIV')).html('INIT')
+        $(document.createElement('DIV')).html('IAMBLE INIT')
       );
       return this;
     },
     'render': function() {
       this.options.content.append(
-        $(document.createElement('DIV')).html('RENDER')
+        $(document.createElement('DIV')).html('IAMBLE RENDER')
       );
       return this;
     }

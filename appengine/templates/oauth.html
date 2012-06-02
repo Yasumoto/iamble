@@ -1,0 +1,17 @@
+{% extends "iamble.html" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/style/oauth.css">
+  <script type="text/javascript" src="/static/scripts/oauth.js"></script>
+{% endblock %}
+
+{% block javascript %}
+  $(document).iambleOAuth(iamble).render();
+{% endblock %}
+
+{% block body %}
+  <h2>oAuth</h2>
+  {% for message in messages %}
+    <div>{{message}}</div>
+  {% endfor %}
+{% endblock %}
