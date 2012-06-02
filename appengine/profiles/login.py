@@ -8,29 +8,29 @@ from google.appengine.ext.webapp import template
 class LoginHandler(webapp.RequestHandler):
   """Handler for Login page."""
   URL_PATH = '/login'
-  UNDER_CONSTRUCTION = """This is the login page."""
+  UNDER_CONSTRUCTION_LOGGED_IN = """This is the login page - great success logged in."""
   LOGIN_TEMPLATE = 'templates/login.html'
 
   def get(self):
     """Handles get request for logins."""
+    template_params = dict()
     user = users.get_current_user()
     if user:
-      # Check datastore for active account
-      ambler = True
+      ambler = models.Ambler.get_by_id(user.email())
       if ambler:
         # Redirect to core site
-        template_params = dict()
         template_params['messages'] = list()
-        template_params['messages'].append(self.UNDER_CONSTRUCTION)
-        rendered_page = template.render(self.LOGIN_TEMPLATE, template_params)
-        self.response.out.write(str(rendered_page))
+        template_params['messages'].append(self.UNDER_CONSTRUCTION_LOGGED_IN)
       else:
-        # Redirect to account creation page
+        self.redirect('/create_account?user=%s' % user.email()) #needs an escape
         # Account creation includes all Oauth generation
-        pass
     else:
       # Redirect to google sign in page
+      template_params['messages'] = list()
+      template_params['messages'].append('google sign in page redirect here')
       pass
+    rendered_page = template.render(self.LOGIN_TEMPLATE, template_params)
+    self.response.out.write(str(rendered_page))
   
   def post(self):
     """Handles post for login page."""

@@ -1,0 +1,17 @@
+{% extends "iamble.html" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/style/create_account.css">
+  <script type="text/javascript" src="/static/scripts/create_account.js"></script>
+{% endblock %}
+
+{% block javascript %}
+  $(document).iambleCreateAccount(iamble).render();
+{% endblock %}
+
+{% block body %}
+  <h2>Create Account</h2>
+  {% for message in messages %}
+    <div>{{message}}</div>
+  {% endfor %}
+{% endblock %}

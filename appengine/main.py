@@ -3,14 +3,15 @@
 import handler
 import oauth
 import wsgiref.handlers
-from profiles import login
+from profiles import login, create_account
 from google.appengine.ext import webapp
 
 URL_MAPPINGS = [
     ('/', handler.BaseHandler),
     (oauth.OAuth2Handler.URL_PATH, oauth.OAuth2Handler),
     (oauth.OAuth2CallbackHandler.URL_PATH, oauth.OAuth2CallbackHandler),
-    (login.LoginHandler.URL_PATH, login.LoginHandler)]
+    (login.LoginHandler.URL_PATH, login.LoginHandler),
+    (create_account.CreateAccountHandler.URL_PATH, create_account.CreateAccountHandler)]
 
 def main():
   application = webapp.WSGIApplication(URL_MAPPINGS, debug=True)

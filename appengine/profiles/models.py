@@ -10,7 +10,9 @@ class Preference(ndb.Model):
 
 
 class Ambler(ndb.Model):
-  """An iAmble user."""
+  """An iAmble user.
+    id: user.User.email()
+  """
   user = ndb.UserProperty()
   facebook_key = ndb.StringProperty()
   twitter_key = ndb.StringProperty()
