@@ -6,7 +6,7 @@ from google.appengine.ext import ndb
 class Preference(ndb.Model):
   """An iAmble preference."""
   type = ndb.StringProperty()
-  values = ndb.StringProperty(repeated=True)
+  value = ndb.StringProperty()
 
 
 class Ambler(ndb.Model):

@@ -2,8 +2,8 @@
 
 import handler
 import oauth
-import profiles.login
 import wsgiref.handlers
+from profiles import login
 from google.appengine.ext import webapp
 
 URL_MAPPINGS = [

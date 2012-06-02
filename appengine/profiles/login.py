@@ -1,6 +1,7 @@
 # __author__ = russ@iamble
 
 import models
+from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
@@ -8,7 +9,7 @@ class LoginHandler(webapp.RequestHandler):
   """Handler for Login page."""
   URL_PATH = '/login'
   UNDER_CONSTRUCTION = """This is the login page."""
-  HOME_TEMPLATE = 'templates/login.html'
+  LOGIN_TEMPLATE = 'templates/login.html'
 
   def get(self):
     """Handles get request for logins."""
@@ -20,8 +21,8 @@ class LoginHandler(webapp.RequestHandler):
         # Redirect to core site
         template_params = dict()
         template_params['messages'] = list()
-        template_params['messages'].append(UNDER_CONSTRUCTION)
-        rendered_page = template.render(LOGIN_TEMPLATE, template_params)
+        template_params['messages'].append(self.UNDER_CONSTRUCTION)
+        rendered_page = template.render(self.LOGIN_TEMPLATE, template_params)
         self.response.out.write(str(rendered_page))
       else:
         # Redirect to account creation page
