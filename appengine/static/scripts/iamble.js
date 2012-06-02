@@ -6,7 +6,7 @@
   $.iamble = function(e, o) {
     this.options = o || {};
     this.target = $(e);
-    return this;
+    return this.init();
   };
 
   $.iamble.fn = $.iamble.prototype = {
@@ -17,10 +17,16 @@
 
   $.iamble.fn.extend({
     'init': function() {
-      this.target.append(
-        $('<DIV>').text('HELLO WORLD!')
+      this.options.content.append(
+        $(document.createElement('DIV')).html('INIT')
+      );
+      return this;
+    },
+    'render': function() {
+      this.options.content.append(
+        $(document.createElement('DIV')).html('RENDER')
       );
       return this;
     }
   });
-});
+})(jQuery);
