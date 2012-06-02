@@ -16,6 +16,7 @@ static NSString *const kMyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
 @interface LoginViewController ()
 - (GTMOAuth2Authentication *)singlyAuth;
 - (void)authorize:(NSString *)service;
+- (IBAction)loadProfiles;
 @end
 
 @implementation LoginViewController
@@ -128,6 +129,28 @@ static NSString *const kMyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
                                                    otherButtonTitles:nil];
         [alertView show];
     }
+}
+
+- (IBAction)loadProfiles
+{
+    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:self.accessToken]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:profilesURL];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               
+                               NSString *responseBody = [ [NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                               NSLog(@"Received Response: %@", responseBody);
+                               
+                               UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Profiles Response"
+                                                                                    message:responseBody
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"Dismiss"
+                                                                          otherButtonTitles:nil];
+                               [alertView show];
+                               
+                           }];
 }
 
 @end
