@@ -9,9 +9,16 @@
 #import "LoginViewController.h"
 #import "GTMHTTPFetcher.h"
 #import "GTMOAuth2ViewControllerTouch.h"
+#import <SSKeychain.h>
 
-static NSString *const kMyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
-static NSString *const kMyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
+static NSString *const kSinglyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
+static NSString *const kSinglyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
+
+static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
+static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
+
+static NSString *const kAmble = @"Amble";
+static NSString *const kSingly = @"Singly";
 
 @interface LoginViewController ()
 - (GTMOAuth2Authentication *)singlyAuth;
@@ -50,7 +57,22 @@ static NSString *const kMyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
 }
 
 - (IBAction)signInToSingly:(UIButton *)sender {
-    return [self authorize:@"twitter"];
+    //return [self authorize:@"twitter"];
+    return [self authorizeAmble];
+}
+#pragma mark Amble Auth
+
+- (void) authorizeAmble {
+    GTMOAuth2ViewControllerTouch *viewController;
+    viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithScope:@"https://www.googleapis.com/auth/userinfo.email"
+                                                                clientID:kAmbleClientID
+                                                            clientSecret:kAmbleClientSecret
+                                                        keychainItemName:nil
+                                                                delegate:self
+                                                        finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
+    
+    [[self navigationController] pushViewController:viewController animated:YES];
 }
 
 #pragma mark OAuth + Singly authentication.
@@ -69,8 +91,8 @@ static NSString *const kMyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
     auth = [GTMOAuth2Authentication authenticationWithServiceProvider:@"Singly API"
                                                              tokenURL:tokenURL
                                                           redirectURI:redirectURI
-                                                             clientID:kMyClientID
-                                                         clientSecret:kMyClientSecret];
+                                                             clientID:kSinglyClientID
+                                                         clientSecret:kSinglyClientSecret];
     
     // The Singly API does not return a token type, therefore we set one here to
     // avoid a warning being thrown.
@@ -117,23 +139,17 @@ static NSString *const kMyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
     else
     {
         // Authentication succeeded
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:auth.userEmail forKey:kAmble];
         
-        // Assign the access token to the instance property for later use
-        self.accessToken = auth.accessToken;
-        
-        // Display the access token to the user
-        UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Authorization Succeeded"
-                                                             message:[NSString stringWithFormat:@"Access Token: %@", auth.accessToken]
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Dismiss"
-                                                   otherButtonTitles:nil];
-        [alertView show];
+        [SSKeychain setPassword:auth.accessToken forService:kAmble account:auth.userEmail];
     }
 }
 
 - (IBAction)loadProfiles
 {
-    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:self.accessToken]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:[SSKeychain passwordForService:kSingly account:[defaults valueForKey:@"singlyAccount"]]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:profilesURL];
     
     [NSURLConnection sendAsynchronousRequest:request
