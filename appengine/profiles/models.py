@@ -2,7 +2,7 @@
 
 import logging
 import urllib
-import simplejson
+import json
 
 from google.appengine.api import urlfetch
 from google.appengine.api import users
@@ -38,7 +38,7 @@ class Ambler(ndb.Model):
       response = urlfetch.fetch(url=url, method=urlfetch.GET)
       logging.info('RESPONSE: %s', response.status_code)
       if response.status_code == 200:
-        result_object = simplejson.loads(response.content)
+        result_object = json.loads(response.content)
         self.singly_id = self.singly_id or result_object['id']
         del result_object['id']
         return result_object.keys()
