@@ -13,6 +13,8 @@
 		D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */; };
 		D81FB5F5157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5F0157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m */; };
 		D81FB5F6157AA865008B4C2D /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81FB5F1157AA865008B4C2D /* GTMOAuth2ViewTouch.xib */; };
+		D81FB5F9157AAB8D008B4C2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */; };
+		D81FB5FB157AAB94008B4C2D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81FB5FA157AAB94008B4C2D /* Security.framework */; };
 		D89AE121157A7F6600B74554 /* foursquare-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D89AE120157A7F6600B74554 /* foursquare-logo.png */; };
 		D89AE124157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */; };
 		D8AE54461579EF4A004E2E10 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54451579EF4A004E2E10 /* LoginViewController.m */; };
@@ -57,6 +59,8 @@
 		D81FB5EF157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2ViewControllerTouch.h; sourceTree = "<group>"; };
 		D81FB5F0157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2ViewControllerTouch.m; sourceTree = "<group>"; };
 		D81FB5F1157AA865008B4C2D /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D81FB5FA157AAB94008B4C2D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D89AE120157A7F6600B74554 /* foursquare-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foursquare-logo.png"; sourceTree = "<group>"; };
 		D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_twitter_withbird_1000_white_blue.png; sourceTree = "<group>"; };
 		D8AE54441579EF4A004E2E10 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81FB5FB157AAB94008B4C2D /* Security.framework in Frameworks */,
+				D81FB5F9157AAB8D008B4C2D /* SystemConfiguration.framework in Frameworks */,
 				D8B87D991579E76600310696 /* UIKit.framework in Frameworks */,
 				D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */,
 				D8B87D9D1579E76600310696 /* CoreGraphics.framework in Frameworks */,
@@ -132,6 +138,8 @@
 		D8B87D891579E76600310696 = {
 			isa = PBXGroup;
 			children = (
+				D81FB5FA157AAB94008B4C2D /* Security.framework */,
+				D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */,
 				D8B87D9E1579E76600310696 /* iamble */,
 				D8B87DBE1579E76600310696 /* iambleTests */,
 				D8B87D971579E76600310696 /* Frameworks */,
