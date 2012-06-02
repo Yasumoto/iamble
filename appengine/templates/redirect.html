@@ -1,0 +1,9 @@
+{% extends "iamble.html" %}
+
+{% block head %}
+  <meta http-equiv="refresh" content="{{ duration }};URL={{ url }}">
+{% endblock %}
+
+{% block body %}
+  <div>Redirecting to <b>{{ url }}</b>...</div>
+{% endblock %}

@@ -40,7 +40,9 @@ h2 {
 }
 
 #bodyheader {
-  height: 70px;
+  height: 50px;
+  font-size: 48px;
+  padding: 10px;
 }
 
 #bodycontent {

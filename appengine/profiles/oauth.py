@@ -22,7 +22,9 @@ class Service(object):
 
   @property
   def url(self):
-    return config.SINGLY_OAUTH_URL_TEMPLATE + self.service_name
+    service_url = urllib.quote_plus(config.SINGLY_OAUTH_URL_TEMPLATE + self.service_name)
+    message = 'Redirecting you to the %s authorization page.' % self.service_name
+    return '/redirect?url=%s&message=%s' % (service_url, message)
 
 class FacebookService(Service):
   name = "Facebook"

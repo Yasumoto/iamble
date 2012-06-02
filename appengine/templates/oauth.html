@@ -17,6 +17,9 @@
   <hr>
   <h2>Authorize New Services</h2>
   {% for service in new_services %}
-    <div>Give us access to:&nbsp;<a href="{{ service.url }}">{{ service.name }}</a></div>
+    <div>
+      Give us access to:&nbsp;
+      <a href="{{ service.url }}">{{ service.name }}</a>
+    </div>
   {% endfor %}
 {% endblock %}
