@@ -43,6 +43,11 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
+                                    <view contentMode="scaleToFill" id="jyj-y0-7aG" customClass="SliderView">
+                                        <rect key="frame" x="-100" y="307" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" id="bP2-2K-ZAV" customClass="SliderView">
                                         <rect key="frame" x="-100" y="20" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

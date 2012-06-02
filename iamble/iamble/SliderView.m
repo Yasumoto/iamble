@@ -21,7 +21,7 @@
     return self;
 }
 
-- (void) viewDidLoad {
+- (void) awakeFromNib {
     [self setupSlider];
 }
 

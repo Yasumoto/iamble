@@ -33,7 +33,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     //NSURL *url = [NSURL URLWithString:@"https://api.singly.com/oauth/authorize?client_id=4eed71589ff0a822458e50db4b9ebb42&redirect_uri=https://www.iamble.com/auth/singly&service=facebook"];
-    selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 500);
+    selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
     //CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
