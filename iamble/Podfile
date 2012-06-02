@@ -1,3 +1,4 @@
 platform :ios
 dependency 'TestFlightSDK'
 dependency 'AFNetworking'
+dependency 'SSKeychain'
