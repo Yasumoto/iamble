@@ -1,12 +1,7 @@
 # __author__ = russ@iamble
 
 import models
-<<<<<<< HEAD
-import handler
-from utils.template import render_template
-=======
 from utils import template
->>>>>>> added landing page.
 from google.appengine.api import users
 from google.appengine.ext import webapp
 
