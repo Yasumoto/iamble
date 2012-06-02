@@ -1,6 +1,7 @@
 # __author__ = russ@iamble
 
 import models
+import handler
 from utils.template import render_template
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -19,7 +20,7 @@ class LoginHandler(webapp.RequestHandler):
       if ambler:
         self.redirect('/iamble')
       else: 
-        self.redirect('/create_account?user=%s' % user.email())  # needs an escape
+        self.redirect('/create_account?user=%s' % user.email())
     else:  # If not authenticated, redirect to Google login page
       redirect_url = users.create_login_url(dest_url='/login')
       self.redirect(redirect_url)
