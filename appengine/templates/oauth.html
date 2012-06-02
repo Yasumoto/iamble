@@ -2,7 +2,7 @@
 
 {% block body %}
   <h2>Authorize</h2>
-  {% for message in messages %}
-    <div>{{message}}</div>
+  {% for service in services %}
+    <div>Give us access to:&nbsp;<a href="{{ service.url }}">{{ service.name }}</a></div>
   {% endfor %}
 {% endblock %}
