@@ -12,6 +12,7 @@ UNDER_CONSTRUCTION = """This site is currently under construction.
 Amble on back when you have a chance and check us out!"""
 
 HOME_TEMPLATE = 'templates/home.html'
+LANDING_TEMPLATE = 'templates/landing.html'
 REDIRECT_TEMPLATE = 'templates/redirect.html'
 
 
@@ -28,15 +29,28 @@ def RequiresLogin(handler_method):
 class BaseHandler(webapp.RequestHandler):
   """"""
 
-  @RequiresLogin
   def get(self):
     """"""
     template_params = template.get_params()
     template_params['warning_messages'].append(UNDER_CONSTRUCTION)
 
+    if users.get_current_user():
+      self.get_auth(template_params)
+    else:
+      self.get_noauth(template_params)
+
+  def get_auth(self, template_params):
+    """"""
+
     template.render_template(self, HOME_TEMPLATE, template_params)
 
+  def get_noauth(self, template_params):
+    """"""
+    template.render_template(self, LANDING_TEMPLATE, template_params)
+
+  @RequiresLogin
   def post(self):
+    """"""
     ret = dict()
     ret['message'] = 'hello world'
     response = json.dumps(ret)
