@@ -32,12 +32,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //NSURL *url = [NSURL URLWithString:@"https://api.singly.com/oauth/authorize?client_id=4eed71589ff0a822458e50db4b9ebb42&redirect_uri=https://www.iamble.com/auth/singly&service=facebook"];
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
     //CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
-    self.foursquareSlider.imageView.image = [UIImage imageWithContentsOfFile:@"foursquare-logo.png"];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare-logo.png"];
+    self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
+    self.foursquareSlider.imageView.frame = CGRectMake(0, 0, 256, 70);
+    
+    self.twitterSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_twitter_withbird_1000_white_blue.png"]];
+    self.twitterSlider.backgroundColor = [UIColor grayColor];
+    self.twitterSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
+
 }
 
 - (void)viewDidUnload

@@ -29,12 +29,17 @@
     [self setupSlider];
 }
 
+- (void) setImageView:(UIImageView *)imageView {
+    NSLog(@"Adding imageView.");
+    _imageView = imageView;
+    [self addSubview:self.imageView];
+}
+
 - (void) setupSlider {
     NSLog(@"setting up slider");
     self.alpha = 0.7;
     self.left = YES;
-    [self addSubview:self.imageView];
-    [self setBackgroundColor:[UIColor redColor]];
+    //[self setBackgroundColor:[UIColor redColor]];
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slidingGesture:)];
     swipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirectionRight;
     UISwipeGestureRecognizer *leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slidingGesture:)];
@@ -51,7 +56,7 @@
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.5];
             if (self.left) {
-                self.center = CGPointMake(self.center.x + 350,
+                self.center = CGPointMake(self.center.x + 200,
                                           self.center.y);
                 self.alpha = 1.0;
                 self.left = NO;
@@ -70,7 +75,7 @@
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.5];
             if (!self.left) {
-                self.center = CGPointMake(self.center.x - 350,
+                self.center = CGPointMake(self.center.x - 200,
                                           self.center.y);
                 self.alpha = 0.7;
                 self.left = YES;
