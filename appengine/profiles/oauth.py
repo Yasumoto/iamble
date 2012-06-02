@@ -25,14 +25,14 @@ class Service(object):
     self.ambler = None
     if user:
       self.ambler = ambler or models.Ambler.get_by_id(user.email())
-    
+
   @property
   def oauth_url(self):
     url = config.SINGLY_OAUTH_URL_TEMPLATE + self.service_name
     if self.ambler.singly_id:
       url += '&account=%s' % self.ambler.singly_id
     service_url = urllib.quote_plus(url)
-    message = 'Redirecting you to the %s authorization page.' % self.service_name
+    message = 'Redirecting you through Singly to the %s authorization page.' % self.name
     return '/redirect?url=%s&message=%s' % (service_url, message)
 
   @property

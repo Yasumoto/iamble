@@ -1,6 +1,6 @@
 import json
 import logging
-
+from urlparse import urlparse
 from utils import template
 
 from google.appengine.api import users
@@ -66,6 +66,9 @@ class RedirectHandler(webapp.RequestHandler):
     template_params = template.get_params()
     template_params['duration'] = 3
     template_params['warning_messages'].append(self.request.get('message'))
-    template_params['url'] = self.request.get('url')
-
+    
+    url =  self.request.get('url')
+    template_params['url'] = url
+    template_params['host'] = urlparse(url).netloc
+    logging.info('ASDFASDFASDFASDF URL: %s', urlparse(url).netloc)
     template.render_template(self, REDIRECT_TEMPLATE, template_params)
