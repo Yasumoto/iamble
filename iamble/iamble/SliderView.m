@@ -32,13 +32,11 @@
 }
 
 - (void) setImageView:(UIImageView *)imageView {
-    NSLog(@"Adding imageView.");
     _imageView = imageView;
     [self addSubview:self.imageView];
 }
 
 - (void) setupSlider {
-    NSLog(@"setting up slider");
     self.alpha = 0.7;
     self.left = YES;
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slidingGesture:)];
@@ -53,7 +51,6 @@
     if ([gestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]]){
         UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)gestureRecognizer;
         if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
-            NSLog(@"Slider right.");
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.5];
             if (self.left) {
@@ -73,7 +70,6 @@
             [UIView commitAnimations];
         }
         if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
-            NSLog(@"Slider left.");
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.5];
             if (!self.left) {
