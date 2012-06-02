@@ -1,8 +1,9 @@
 
 import config
-
 import logging
+import urllib2
 
+from google.appengine.api import urlfetch
 from google.appengine.ext.webapp import template
 from google.appengine.ext import webapp
 
@@ -20,6 +21,15 @@ class FacebookService(Service):
 class TwitterService(Service):
   name = "Twitter"
   url = config.SINGLY_OAUTH_URL_TEMPLATE + 'twitter'
+
+class FoursquareService(Service):
+  name = "Foursquare"
+  url = config.SINGLY_OAUTH_URL_TEMPLATE + 'foursquare'
+
+class GoogleService(Service):
+  name = "Google Contacts"
+  url = config.SINGLY_OAUTH_URL_TEMPLATE + 'gcontacts'
+
 
 class OAuth2Handler(webapp.RequestHandler):
   """"""
@@ -41,6 +51,8 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
 
   def get(self):
     logging.info('HTTPGET ARGS: %s', self.request.arguments())
-  
+    code = self.request.get('code')
+   
+
   def post(self):
     logging.info('POSTED ARGS: %s', self.request.arguments())
