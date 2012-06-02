@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class SliderView;
+
+@protocol SliderActivatedDelegate <NSObject>
+- (void) sliderWasActivated:(SliderView *)slider;
+@end
+
 @interface SliderView : UIView
 @property (nonatomic, strong) UIImageView *imageView;
-
+@property (nonatomic, weak) id <SliderActivatedDelegate> delegate;
 @end
+
+

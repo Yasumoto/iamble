@@ -15,6 +15,7 @@
 @implementation SliderView
 
 @synthesize imageView = _imageView;
+@synthesize delegate = _delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
