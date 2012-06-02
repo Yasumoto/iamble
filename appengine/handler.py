@@ -1,8 +1,11 @@
 import logging
 import os
 
+from google.appengine.api import users
 from google.appengine.ext.webapp import template
 from google.appengine.ext import webapp
+
+import config
 
 UNDER_CONSTRUCTION = """This site is currently under construction.
 Amble on back when you have a chance and check us out!"""
@@ -11,6 +14,14 @@ HOME_TEMPLATE = 'templates/home.html'
 
 CURRENT_VERSION_ID = 'CURRENT_VERSION_ID'
 
+def RequiresLogin(handler_method):
+
+  def CheckLogin(self, *args):
+    if users.get_current_user():
+      return handler_method(self, *args)
+    self.redirect(config.LOGIN_URL)
+
+  return CheckLogin
 
 class BaseHandler(webapp.RequestHandler):
   """"""

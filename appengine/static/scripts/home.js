@@ -5,6 +5,8 @@
 
   $.iambleHome = function(element, base, options) {
     this.base = base;
+    this.bind = this.base.bind;
+
     this.options = options || {};
     this.target = $(element);
     return this.init();
@@ -18,28 +20,55 @@
 
   $.iambleHome.fn.extend({
     'init': function() {
+      this.buttonKeys = {
+        COFFEE: 'coffee',
+        QUICK: 'quick_bite',
+        FINE: 'fine_dinning'
+      };
       return this;
     },
     'render': function() {
       this.base.render();
 
       var buttons = [
-        $(document.createElement('DIV')).text('Coffee'),
-        $(document.createElement('DIV')).text('Quick bite'),
-        $(document.createElement('DIV')).text('Fine dinning')
+        $(document.createElement('DIV'))
+            .text('Coffee')
+            .attr('id', this.buttonKeys.COFFEE),
+        $(document.createElement('DIV'))
+            .text('Quick bite')
+            .attr('id', this.buttonKeys.QUICK),
+        $(document.createElement('DIV'))
+            .text('Fine dinning')
+            .attr('id', this.buttonKeys.FINE)
       ];
 
       $(buttons).each(this.bind(function(index, button) {
         this.options.content.append(button);
-        button.button();
+        button.button().click(this.bind(this.onClick));
       }));
       return this;
     },
-    'bind': function(funct) {
-      var self = this;
-      return function() {
-        funct.apply(self, arguments);
+    'onClick' : function(event) {
+      var target = $(event.currentTarget);
+      var id = target.attr('id');
+      var data = {
+        'type': id
       };
+
+      var request = $.ajax({
+        'type': 'POST',
+        'url': '?',
+        'data': data,
+        'dataType': 'json'
+      })
+
+      request.done(this.bind(function(msg) {
+        this.base.success(JSON.stringify(msg));
+      }));
+
+      request.fail(this.bind(function(jqXHR, textStatus) {
+        this.base.error('Error ' + jqXHR.status);
+      }));
     }
   });
 })(jQuery);
