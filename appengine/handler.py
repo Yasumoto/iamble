@@ -19,7 +19,11 @@ class BaseHandler(webapp.RequestHandler):
     """"""
     template_params = dict()
     template_params['app_version'] = os.environ[CURRENT_VERSION_ID]
-    template_params['messages'] = list()
-    template_params['messages'].append(UNDER_CONSTRUCTION)
+    template_params['info_messages'] = list()
+    template_params['success_messages'] = list()
+    template_params['warning_messages'] = list()
+    template_params['error_messages'] = list()
+
+    template_params['warning_messages'].append(UNDER_CONSTRUCTION)
     rendered_page = template.render(HOME_TEMPLATE, template_params)
     self.response.out.write(str(rendered_page))

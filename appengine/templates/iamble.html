@@ -30,6 +30,19 @@
         &lt;iamble logo&gt;
       </div>
       <div id="bodycontent">
+        {% for message in info_messages %}
+          <div class="status_message info">{{message}}</div>
+        {% endfor %}
+        {% for message in success_messages %}
+          <div class="status_message success">{{message}}</div>
+        {% endfor %}
+        {% for message in warning_messages %}
+          <div class="status_message warning">{{message}}</div>
+        {% endfor %}
+        {% for message in error_messages %}
+          <div class="status_message error">{{message}}</div>
+        {% endfor %}
+
         {% block body %}
           Welcome
         {% endblock %}
