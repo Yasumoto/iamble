@@ -12,6 +12,7 @@ UNDER_CONSTRUCTION = """This site is currently under construction.
 Amble on back when you have a chance and check us out!"""
 
 HOME_TEMPLATE = 'templates/home.html'
+REDIRECT_TEMPLATE = 'templates/redirect.html'
 
 
 def RequiresLogin(handler_method):
@@ -40,3 +41,17 @@ class BaseHandler(webapp.RequestHandler):
     ret['message'] = 'hello world'
     response = json.dumps(ret)
     self.response.out.write(response)
+
+
+class RedirectHandler(webapp.RequestHandler):
+  """"""
+
+  @RequiresLogin
+  def get(self):
+    """"""
+    template_params = template.get_params()
+    template_params['duration'] = 3
+    template_params['warning_messages'].append(self.request.get('message'))
+    template_params['url'] = self.request.get('url')
+
+    template.render_template(self, REDIRECT_TEMPLATE, template_params)
