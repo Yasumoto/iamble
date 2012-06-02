@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SliderView : UIView
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end

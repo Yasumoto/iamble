@@ -10,14 +10,30 @@
 
 @implementation SliderView
 
+@synthesize imageView = _imageView;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setBackgroundColor:[UIColor redColor]];
     }
     return self;
+}
+
+- (void) viewDidLoad {
+
+}
+
+- (void) setupSlider {
+    [self setBackgroundColor:[UIColor redColor]];
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sliding:)];
+    swipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirectionRight;
+    [self addGestureRecognizer:swipeGestureRecognizer];
+}
+
+- (void)slidingGesture:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"oh yeah buddy.");
 }
 
 /*
