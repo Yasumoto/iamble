@@ -25,10 +25,12 @@ class LoginHandler(webapp.RequestHandler):
         self.redirect('/create_account?user=%s' % user.email()) #needs an escape
         # Account creation includes all Oauth generation
     else:
+      redirect_url = users.create_login_url(dest_url='/login')
+      self.redirect(redirect_url)
       # Redirect to google sign in page
-      template_params['messages'] = list()
-      template_params['messages'].append('google sign in page redirect here')
-      pass
+      #template_params['messages'] = list()
+      #template_params['messages'].append('google sign in page redirect here')
+      #pass
     render_template(self, self.LOGIN_TEMPLATE, template_params)
   
   def post(self):

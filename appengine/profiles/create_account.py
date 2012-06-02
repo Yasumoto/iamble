@@ -19,8 +19,13 @@ class CreateAccountHandler(webapp.RequestHandler):
     user = users.get_current_user()
     if user:
       ambler = models.Ambler.get_by_id(user.email())
-      template_params['message'] = 'Welcome to the party! You are a user! Continue on to creating preferences'
-      template_params['user'] = ambler.key.id()
+      if ambler:
+        template_params['message'] = 'Welcome to the party! You are a user! Continue on to creating preferences'
+        template_params['user'] = ambler.key.id()
+      else:
+        template_params['message'] = 'Hey! You should fill in all the profile info that will eventually be here!'
+        ambler = models.Ambler.get_or_insert(user.email())
+        template_params['user'] = ambler.key.id()
     else:
       # Redirect to google login
       template_params['message'] = 'Looks like there was not Google user. Fix that!'

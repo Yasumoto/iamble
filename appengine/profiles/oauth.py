@@ -1,6 +1,6 @@
 # python imports
 import logging
-import simplejson
+import json
 import urllib
 
 # app engine imports
@@ -69,4 +69,4 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
                             method=urlfetch.POST,
                             headers=config.DEFAULT_POST_HEADERS)
     logging.info(result.content)
-    access_token = simplejson.loads(result.content)['access_token']
+    access_token = json.loads(result.content)['access_token']
