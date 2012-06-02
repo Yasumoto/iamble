@@ -17,16 +17,40 @@ class Preference(ndb.Model):
   value = ndb.StringProperty()
 
 
+class Source(ndb.Model):
+  """Source of signal information."""
+  service = ndb.StringProperty()
+
+
+class Coordinate(ndb.Model):
+  """Lat and Long object."""
+  lat = ndb.FloatProperty()
+  long = ndb.FloatProperty()
+
+
+class CachedPlace(ndb.Model):
+  """A cached place an ambler might like."""
+  coordinate = ndb.StructuredProperty(Coordinate)
+  name = ndb.StringProperty()
+  type = ndb.StringProperty(choices=['coffee', 'quick', 'sit-down'])
+  cost = ndb.IntegerProperty(choices=[1,2,3,4,5])
+  why = ndb.StringProperty()  # Description of why you'll like this spot.
+  cache_date = ndb.DateTimeProperty()
+
+
 class Ambler(ndb.Model):
   """An iAmble user.
     id: user.User.email()
   """
   user = ndb.UserProperty()
+  activated_services = ndb.KeyProperty(kind=Source)
   name_first = ndb.StringProperty()
   name_last = ndb.StringProperty()
   singly_id = ndb.StringProperty()
   singly_access_token = ndb.StringProperty()
   preferences = ndb.StructuredProperty(Preference, repeated=True)
+  default_location = ndb.StructuredProperty(Coordinate)
+  persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace)
 
   def GetActiveServices(self):
     if self.singly_access_token:

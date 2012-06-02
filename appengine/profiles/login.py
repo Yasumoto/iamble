@@ -18,8 +18,7 @@ class LoginHandler(webapp.RequestHandler):
     if user:
       ambler = models.Ambler.get_by_id(user.email())
       if ambler:
-        # Redirect to core site
-        template_params['messages'].append('You are logged in.')
+        self.redirect('/iamble')
       else:
         self.redirect('/create_account?user=%s' % user.email()) #needs an escape
         # Account creation includes all Oauth generation
