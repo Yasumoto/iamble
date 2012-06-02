@@ -7,17 +7,23 @@
 //
 
 #import "ChooseAmbleViewController.h"
+#import "SinglyServiceConnection.h"
+#import "iambleServiceConnection.h"
 
 @interface ChooseAmbleViewController ()
-
+@property (nonatomic, strong) SinglyServiceConnection *singly;
+@property (nonatomic, strong) iambleServiceConnection *iamble;
+- (void) setupAuth;
 @end
 
 @implementation ChooseAmbleViewController
-@synthesize facebookSlider;
-@synthesize twitterSlider;
-@synthesize foursquareSlider;
+@synthesize facebookSlider = _facebookSlider;
+@synthesize twitterSlider = _twitterSlider;
+@synthesize foursquareSlider = _foursquareSlider;
 @synthesize backgroundImage;
 @synthesize selectionScrollView;
+@synthesize singly = _singly;
+@synthesize iamble = _iamble;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,9 +39,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
-    //CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
+    
+    [self setupAuth];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -66,6 +73,12 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+# pragma mark ServiceConnection setup
+
+- (void) setupAuth {
+    
 }
 
 # pragma mark SliderActivatedDelegate
