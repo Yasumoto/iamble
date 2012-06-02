@@ -1,12 +1,16 @@
-
-import config
+# python imports
 import logging
 import simplejson
 import urllib
 
+# app engine imports
 from google.appengine.api import urlfetch
 from google.appengine.ext.webapp import template
 from google.appengine.ext import webapp
+
+# iamble imports
+import config
+import models
 
 UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
 

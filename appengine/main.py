@@ -1,9 +1,8 @@
 # __author__ = russ@iamble
 
 import handler
-import oauth
 import wsgiref.handlers
-from profiles import login, create_account
+from profiles import login, create_account, oauth
 from google.appengine.ext import webapp
 
 URL_MAPPINGS = [
