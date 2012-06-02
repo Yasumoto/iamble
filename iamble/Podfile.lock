@@ -1,7 +1,9 @@
 PODS:
   - AFNetworking (1.0RC1)
+  - SSKeychain (0.1.4)
   - TestFlightSDK (1.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - SSKeychain
   - TestFlightSDK
