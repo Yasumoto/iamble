@@ -1,0 +1,17 @@
+{% extends "iamble.html" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/style/settings.css">
+  <script type="text/javascript" src="/static/scripts/settings.js"></script>
+{% endblock %}
+
+{% block javascript %}
+  $(document).iambleSettings(iamble).render();
+{% endblock %}
+
+{% block body %}
+  <h2>Settings</h2>
+  {% for message in messages %}
+    <div>{{message}}</div>
+  {% endfor %}
+{% endblock %}

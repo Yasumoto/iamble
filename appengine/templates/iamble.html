@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>iamble</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/jquery/Aristo/Aristo.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/iamble.css">
+    <script type="text/javascript" src="/static/scripts/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/jquery/jquery-ui-1.8.20.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/iamble.js"></script>
+    {% block head %}
+
+    {% endblock %}
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var iamble = $(document).iamble({
+          'version': '{{ app_version }}',
+          'content': $('#bodycontent')
+        });
+
+        {% block javascript %}
+          iamble.render();
+        {% endblock %}
+      });
+    </script>
+  </head>
+  <body>
+    {% autoescape on %}
+      <div id="bodyheader">
+        &lt;iamble logo&gt;
+      </div>
+      <div id="bodycontent">
+        {% block body %}
+          Welcome
+        {% endblock %}
+      </div>
+      <div id="bodyfooter">
+        <p>
+          Build info: {{ app_version }}<br>
+        </p>
+      </div>
+    {% endautoescape %}
+  </body>
+</html>
