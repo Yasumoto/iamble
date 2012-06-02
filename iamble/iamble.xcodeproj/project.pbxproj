@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
-		D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */; };
-		D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */; };
-		D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */; };
-		D81FB5F5157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5F0157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m */; };
+		D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D81FB5F5157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5F0157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D81FB5F6157AA865008B4C2D /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81FB5F1157AA865008B4C2D /* GTMOAuth2ViewTouch.xib */; };
 		D81FB5F9157AAB8D008B4C2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */; };
 		D81FB5FB157AAB94008B4C2D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81FB5FA157AAB94008B4C2D /* Security.framework */; };
@@ -138,8 +138,6 @@
 		D8B87D891579E76600310696 = {
 			isa = PBXGroup;
 			children = (
-				D81FB5FA157AAB94008B4C2D /* Security.framework */,
-				D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */,
 				D8B87D9E1579E76600310696 /* iamble */,
 				D8B87DBE1579E76600310696 /* iambleTests */,
 				D8B87D971579E76600310696 /* Frameworks */,
@@ -160,6 +158,8 @@
 		D8B87D971579E76600310696 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D81FB5FA157AAB94008B4C2D /* Security.framework */,
+				D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */,
 				D8B87D981579E76600310696 /* UIKit.framework */,
 				D8B87D9A1579E76600310696 /* Foundation.framework */,
 				D8B87D9C1579E76600310696 /* CoreGraphics.framework */,
