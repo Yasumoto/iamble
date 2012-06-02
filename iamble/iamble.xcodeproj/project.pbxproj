@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
+		D8AE54461579EF4A004E2E10 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54451579EF4A004E2E10 /* LoginViewController.m */; };
+		D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */; };
+		D8AE544C1579F077004E2E10 /* iambleServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */; };
+		D8AE545A1579FC32004E2E10 /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54591579FC32004E2E10 /* SliderView.m */; };
 		D8B87D991579E76600310696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D981579E76600310696 /* UIKit.framework */; };
 		D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
 		D8B87D9D1579E76600310696 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9C1579E76600310696 /* CoreGraphics.framework */; };
@@ -15,12 +20,12 @@
 		D8B87DA91579E76600310696 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DA81579E76600310696 /* AppDelegate.m */; };
 		D8B87DAB1579E76600310696 /* iamble.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DAA1579E76600310696 /* iamble.entitlements */; };
 		D8B87DAE1579E76600310696 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */; };
-		D8B87DB11579E76600310696 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DB01579E76600310696 /* ViewController.m */; };
 		D8B87DB91579E76600310696 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87DB81579E76600310696 /* SenTestingKit.framework */; };
 		D8B87DBA1579E76600310696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D981579E76600310696 /* UIKit.framework */; };
 		D8B87DBB1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
 		D8B87DC31579E76600310696 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DC11579E76600310696 /* InfoPlist.strings */; };
 		D8B87DC61579E76600310696 /* iambleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DC51579E76600310696 /* iambleTests.m */; };
+		E4FD3D12CAC3449FAEF7C04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		478962866C9C4522951EEAF8 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		495DDB46F94C451585862A06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8AE54441579EF4A004E2E10 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D8AE54451579EF4A004E2E10 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAmbleViewController.h; sourceTree = "<group>"; };
+		D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAmbleViewController.m; sourceTree = "<group>"; };
+		D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iambleServiceConnection.h; sourceTree = "<group>"; };
+		D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iambleServiceConnection.m; sourceTree = "<group>"; };
+		D8AE54581579FC32004E2E10 /* SliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderView.h; sourceTree = "<group>"; };
+		D8AE54591579FC32004E2E10 /* SliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderView.m; sourceTree = "<group>"; };
 		D8B87D941579E76600310696 /* iamble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iamble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B87D981579E76600310696 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B87D9A1579E76600310696 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -46,8 +61,6 @@
 		D8B87DA81579E76600310696 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D8B87DAA1579E76600310696 /* iamble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iamble.entitlements; sourceTree = "<group>"; };
 		D8B87DAD1579E76600310696 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D8B87DAF1579E76600310696 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D8B87DB01579E76600310696 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D8B87DB71579E76600310696 /* iambleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iambleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B87DB81579E76600310696 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D8B87DC01579E76600310696 /* iambleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iambleTests-Info.plist"; sourceTree = "<group>"; };
@@ -64,6 +77,7 @@
 				D8B87D991579E76600310696 /* UIKit.framework in Frameworks */,
 				D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */,
 				D8B87D9D1579E76600310696 /* CoreGraphics.framework in Frameworks */,
+				E4FD3D12CAC3449FAEF7C04C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +88,7 @@
 				D8B87DB91579E76600310696 /* SenTestingKit.framework in Frameworks */,
 				D8B87DBA1579E76600310696 /* UIKit.framework in Frameworks */,
 				D8B87DBB1579E76600310696 /* Foundation.framework in Frameworks */,
+				C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +102,7 @@
 				D8B87DBE1579E76600310696 /* iambleTests */,
 				D8B87D971579E76600310696 /* Frameworks */,
 				D8B87D951579E76600310696 /* Products */,
+				478962866C9C4522951EEAF8 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +122,7 @@
 				D8B87D9A1579E76600310696 /* Foundation.framework */,
 				D8B87D9C1579E76600310696 /* CoreGraphics.framework */,
 				D8B87DB81579E76600310696 /* SenTestingKit.framework */,
+				495DDB46F94C451585862A06 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,12 +130,18 @@
 		D8B87D9E1579E76600310696 /* iamble */ = {
 			isa = PBXGroup;
 			children = (
+				D8AE54441579EF4A004E2E10 /* LoginViewController.h */,
+				D8AE54451579EF4A004E2E10 /* LoginViewController.m */,
+				D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */,
+				D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */,
 				D8B87DA71579E76600310696 /* AppDelegate.h */,
 				D8B87DA81579E76600310696 /* AppDelegate.m */,
 				D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */,
-				D8B87DAF1579E76600310696 /* ViewController.h */,
-				D8B87DB01579E76600310696 /* ViewController.m */,
 				D8B87D9F1579E76600310696 /* Supporting Files */,
+				D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */,
+				D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */,
+				D8AE54581579FC32004E2E10 /* SliderView.h */,
+				D8AE54591579FC32004E2E10 /* SliderView.m */,
 			);
 			path = iamble;
 			sourceTree = "<group>";
@@ -164,6 +187,7 @@
 				D8B87D901579E76600310696 /* Sources */,
 				D8B87D911579E76600310696 /* Frameworks */,
 				D8B87D921579E76600310696 /* Resources */,
+				B7B2A58696F149208177B918 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,6 +206,7 @@
 				D8B87DB31579E76600310696 /* Frameworks */,
 				D8B87DB41579E76600310696 /* Resources */,
 				D8B87DB51579E76600310696 /* ShellScript */,
+				B7B2A58696F149208177B918 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,6 +267,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B7B2A58696F149208177B918 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 		D8B87DB51579E76600310696 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -264,7 +303,10 @@
 			files = (
 				D8B87DA51579E76600310696 /* main.m in Sources */,
 				D8B87DA91579E76600310696 /* AppDelegate.m in Sources */,
-				D8B87DB11579E76600310696 /* ViewController.m in Sources */,
+				D8AE54461579EF4A004E2E10 /* LoginViewController.m in Sources */,
+				D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */,
+				D8AE544C1579F077004E2E10 /* iambleServiceConnection.m in Sources */,
+				D8AE545A1579FC32004E2E10 /* SliderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,40 +405,52 @@
 		};
 		D8B87DCA1579E76600310696 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 478962866C9C4522951EEAF8 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = iamble/iamble.entitlements;
+				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iamble/iamble-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		D8B87DCB1579E76600310696 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 478962866C9C4522951EEAF8 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = iamble/iamble.entitlements;
+				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iamble/iamble-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		D8B87DCD1579E76600310696 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 478962866C9C4522951EEAF8 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iamble.app/iamble";
+				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iambleTests/iambleTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -404,16 +458,20 @@
 		};
 		D8B87DCE1579E76600310696 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 478962866C9C4522951EEAF8 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iamble.app/iamble";
+				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iamble/iamble-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iambleTests/iambleTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -438,6 +496,7 @@
 				D8B87DCB1579E76600310696 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8B87DCC1579E76600310696 /* Build configuration list for PBXNativeTarget "iambleTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +505,7 @@
 				D8B87DCE1579E76600310696 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
