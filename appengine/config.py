@@ -3,6 +3,8 @@ CLIENT_SECRET = 'd13bc8daa661cd7ea6bb3917ba687d29'
 
 #CALLBACK_URI = 'https://www.iamble.com/oauth_callback'
 
+LOGIN_URL = '/login'
+
 CALLBACK_URI = 'http://localhost:8080/oauth_callback'
 
 SINGLY_OAUTH_BASE_URL = 'https://api.singly.com/oauth/authorize'
@@ -13,3 +15,5 @@ SINGLY_OAUTH_URL_TEMPLATE = '%s?client_id=%s&redirect_uri=%s&service=' % (
 SINGLY_API_ACCESS_TOKEN_URL = 'https://api.singly.com/oauth/access_token'
 
 DEFAULT_POST_HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
+
+SINGLY_API_PROFILES = 'https://api.singly.com/v0/profiles'
