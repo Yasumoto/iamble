@@ -12,7 +12,6 @@ handlers:
 
 - url: /oauth
   script: main.py
-  login: required
 
 - url: /.*
   script: main.py
