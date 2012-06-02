@@ -19,8 +19,6 @@
   {% for service in new_services %}
     <div>Give us access to:&nbsp;<a href="{{ service.oauth_url }}">{{ service.name }}</a></div>
   {% endfor %}
-  <h2>Existing Profile Data</h2>
-  {% for profile in profile_data %}
-    <div>{{ profile }}</div>
-  {% endfor %}
+  <h2>Checkin Feed</h2>
+  <div>{{ checkin_feed }}</div>
 {% endblock %}

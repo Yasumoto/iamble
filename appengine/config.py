@@ -17,3 +17,7 @@ SINGLY_API_ACCESS_TOKEN_URL = 'https://api.singly.com/oauth/access_token'
 DEFAULT_POST_HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
 
 SINGLY_API_PROFILES = 'https://api.singly.com/v0/profiles'
+
+SINGLY_API_MY_CHECKINS = 'https://api.singly.com/v0/types/checkins'
+
+SINGLY_API_CHECKIN_FEED = 'https://api.singly.com/v0/types/checkins_feed'

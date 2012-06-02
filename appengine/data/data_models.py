@@ -13,6 +13,13 @@ class Coordinate(ndb.Model):
   lat = ndb.FloatProperty()
   long = ndb.FloatProperty()
 
+class Place(ndb.Model):
+  """A spot to go eat."""
+  coordinate = ndb.StructuredProperty(Coordinate)
+  name = ndb.StringProperty()
+  type = ndb.StringProperty(choices=['coffee', 'quick', 'sit-down'])
+  cost = ndb.IntegerProperty(choices=[1,2,3,4,5])
+  mentions = ndb.IntegerProperty()
 
 class Checkin(ndb.Model):
   """Checkin objects used as signals."""
@@ -26,10 +33,3 @@ class Checkin(ndb.Model):
   signal_value = ndb.IntegerProperty()
 
 
-class Place(ndb.Model):
-  """A spot to go eat."""
-  coordinate = ndb.StructuredProperty(Coordinate)
-  name = ndb.StringProperty()
-  type = ndb.StringProperty(choices=['coffee', 'quick', 'sit-down'])
-  cost = ndb.IntegerProperty(choices=[1,2,3,4,5])
-  mentions = ndb.IntegerProperty()

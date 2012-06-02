@@ -9,6 +9,7 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 
 import config
+from utils import singly_utils
 
 class Preference(ndb.Model):
   """An iAmble preference."""
@@ -31,14 +32,8 @@ class Ambler(ndb.Model):
     if self.singly_access_token:
       url = config.SINGLY_API_PROFILES
       params = {'access_token': self.singly_access_token}
-      url_params = urllib.urlencode(params)
-      logging.info(url_params)
-      url = '%s?%s' % (config.SINGLY_API_PROFILES, url_params)
-      logging.info(url)
-      response = urlfetch.fetch(url=url, method=urlfetch.GET)
-      logging.info('RESPONSE: %s', response.content)
-      if response.status_code == 200:
-        result_object = json.loads(response.content)
+      status_code, result_object = singly_utils.SinglyGET(config.SINGLY_API_PROFILES, params)
+      if status_code == 200:
         if not self.singly_id:
           self.singly_id = result_object['id']
           self.put()
@@ -50,11 +45,7 @@ class Ambler(ndb.Model):
     if self.singly_access_token:
       url = config.SINGLY_API_PROFILES + '/%s' % service
       params = {'access_token': self.singly_access_token}
-      url_params = urllib.urlencode(params)
-      url = '%s?%s' % (url, url_params)
-      response = urlfetch.fetch(url=url, method=urlfetch.GET)
-      logging.info('RESPONSE: %s', response.content)
-      if response.status_code == 200:
-        result_object = json.loads(response.content)
+      status_code, result_object = singly_utils.SinglyGET(url, params)
+      if status_code == 200:
         return result_object
     return None
