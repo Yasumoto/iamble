@@ -20,11 +20,24 @@ HOME_TEMPLATE = 'templates/oauth.html'
 
 class Service(object):
 
+  def __init__(self, ambler=None):
+    user = users.get_current_user()
+    self.ambler = None
+    if user:
+      self.ambler = ambler or models.Ambler.get_by_id(user.email())
+    
   @property
-  def url(self):
-    service_url = urllib.quote_plus(config.SINGLY_OAUTH_URL_TEMPLATE + self.service_name)
+  def oauth_url(self):
+    url = config.SINGLY_OAUTH_URL_TEMPLATE + self.service_name
+    if self.ambler.singly_account_id:
+      url += '&account=%s' % self.ambler.singly_account_id
+    service_url = urllib.quote_plus(url)
     message = 'Redirecting you to the %s authorization page.' % self.service_name
     return '/redirect?url=%s&message=%s' % (service_url, message)
+
+  @property
+  def profile_url(self):
+    return config.SINGLY_API_PROFILES + '/' + self.service_name
 
 class FacebookService(Service):
   name = "Facebook"
@@ -51,18 +64,22 @@ class OAuth2Handler(webapp.RequestHandler):
   def get(self):
     """"""
     template_params = dict()
-    services = [FacebookService(),
-                TwitterService(),
-                FoursquareService(),
-                GoogleContactsService()]
     this_user = models.Ambler.get_by_id(users.get_current_user().email())
     logging.info('THIS USER: %s', this_user)
     existing_services = this_user.GetActiveServices()
+    services = [FacebookService(this_user),
+                TwitterService(this_user),
+                FoursquareService(this_user),
+                GoogleContactsService(this_user)]
     for service in services:
       if service.service_name in existing_services:
         services.remove(service)
+    profile_data = []
+    for service in existing_services:
+      profile_data.append(this_user.GetProfileServiceData(service))
     template_params['new_services'] = services
     template_params['existing_services'] = existing_services
+    template_params['profile_data'] = profile_data
     rendered_page = template.render(HOME_TEMPLATE, template_params)
     self.response.out.write(str(rendered_page))
 
@@ -84,4 +101,8 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
                             method=urlfetch.POST,
                             headers=config.DEFAULT_POST_HEADERS)
     logging.info(result.content)
-    access_token = json.loads(result.content)['access_token']
+    this_user = models.Ambler.get_by_id(users.get_current_user().email())
+    
+    this_user.singly_access_token = json.loads(result.content)['access_token']
+    this_user.put()
+    self.redirect('/oauth')

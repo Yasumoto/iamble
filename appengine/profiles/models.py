@@ -36,10 +36,25 @@ class Ambler(ndb.Model):
       url = '%s?%s' % (config.SINGLY_API_PROFILES, url_params)
       logging.info(url)
       response = urlfetch.fetch(url=url, method=urlfetch.GET)
-      logging.info('RESPONSE: %s', response.status_code)
+      logging.info('RESPONSE: %s', response.content)
       if response.status_code == 200:
         result_object = json.loads(response.content)
-        self.singly_id = self.singly_id or result_object['id']
+        if not self.singly_id:
+          self.singly_id = result_object['id']
+          self.put()
         del result_object['id']
         return result_object.keys()
     return []
+
+  def GetProfileServiceData(self, service):
+    if self.singly_access_token:
+      url = config.SINGLY_API_PROFILES + '/%s' % service
+      params = {'access_token': self.singly_access_token}
+      url_params = urllib.urlencode(params)
+      url = '%s?%s' % (url, url_params)
+      response = urlfetch.fetch(url=url, method=urlfetch.GET)
+      logging.info('RESPONSE: %s', response.content)
+      if response.status_code == 200:
+        result_object = json.loads(response.content)
+        return result_object
+    return None
