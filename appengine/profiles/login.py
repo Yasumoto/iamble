@@ -1,6 +1,7 @@
 # __author__ = russ@iamble
 
 import models
+from utils.template import render_template
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
@@ -8,7 +9,6 @@ from google.appengine.ext.webapp import template
 class LoginHandler(webapp.RequestHandler):
   """Handler for Login page."""
   URL_PATH = '/login'
-  UNDER_CONSTRUCTION_LOGGED_IN = """This is the login page - great success logged in."""
   LOGIN_TEMPLATE = 'templates/login.html'
 
   def get(self):
@@ -20,7 +20,7 @@ class LoginHandler(webapp.RequestHandler):
       if ambler:
         # Redirect to core site
         template_params['messages'] = list()
-        template_params['messages'].append(self.UNDER_CONSTRUCTION_LOGGED_IN)
+        template_params['messages'].append('You are logged in.')
       else:
         self.redirect('/create_account?user=%s' % user.email()) #needs an escape
         # Account creation includes all Oauth generation
@@ -29,8 +29,7 @@ class LoginHandler(webapp.RequestHandler):
       template_params['messages'] = list()
       template_params['messages'].append('google sign in page redirect here')
       pass
-    rendered_page = template.render(self.LOGIN_TEMPLATE, template_params)
-    self.response.out.write(str(rendered_page))
+    render_template(self, self.LOGIN_TEMPLATE, template_params)
   
   def post(self):
     """Handles post for login page."""
