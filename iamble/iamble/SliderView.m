@@ -27,28 +27,48 @@
 
 - (void) setupSlider {
     NSLog(@"setting up slider");
+    self.alpha = 0.7;
     [self addSubview:self.imageView];
     [self setBackgroundColor:[UIColor redColor]];
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slidingGesture:)];
     swipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirectionRight;
+    UISwipeGestureRecognizer *leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slidingGesture:)];
+    leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self addGestureRecognizer:swipeGestureRecognizer];
+    [self addGestureRecognizer:leftSwipeGestureRecognizer];
 }
 
 - (void)slidingGesture:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]]){
         UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)gestureRecognizer;
-        //if (swipe.state == UIGestureRecognizerStateChanged) {
-            NSLog(@"oh yeah buddy.");
-            CGPoint translation = [swipe locationInView:self.superview];
+        if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+            NSLog(@"Slider right.");
+            //CGPoint translation = [swipe locationInView:self.superview];
             //CGPoint translation = [swipe translationInView:gestureRecognizer.view];
-            self.center = CGPointMake(self.center.x + translation.x,
-                                 self.center.y);
-            //[UIView beginAnimations:nil context:NULL];
-            //[UIView setAnimationDuration:0.25];
+            
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.5];
+            self.center = CGPointMake(self.center.x + 350,
+                                      self.center.y);
+            self.alpha = 1.0;
             //self.frame = CGRectMake(0,-10,320,400);
-            //[UIView commitAnimations];
+            [UIView commitAnimations];
             //[swipe setTranslation:CGPointZero inView:self.superview];
-        //}
+        }
+        if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+            NSLog(@"Slider left.");
+            //CGPoint translation = [swipe locationInView:self.superview];
+            //CGPoint translation = [swipe translationInView:gestureRecognizer.view];
+            
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.5];
+            self.center = CGPointMake(self.center.x - 350,
+                                      self.center.y);
+            self.alpha = 0.7;
+            //self.frame = CGRectMake(0,-10,320,400);
+            [UIView commitAnimations];
+            //[swipe setTranslation:CGPointZero inView:self.superview];
+        }
     }
 }
 
