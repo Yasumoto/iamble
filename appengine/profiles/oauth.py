@@ -29,8 +29,8 @@ class Service(object):
   @property
   def oauth_url(self):
     url = config.SINGLY_OAUTH_URL_TEMPLATE + self.service_name
-    if self.ambler.singly_account_id:
-      url += '&account=%s' % self.ambler.singly_account_id
+    if self.ambler.singly_id:
+      url += '&account=%s' % self.ambler.singly_id
     service_url = urllib.quote_plus(url)
     message = 'Redirecting you to the %s authorization page.' % self.service_name
     return '/redirect?url=%s&message=%s' % (service_url, message)
@@ -71,13 +71,16 @@ class OAuth2Handler(webapp.RequestHandler):
                 TwitterService(this_user),
                 FoursquareService(this_user),
                 GoogleContactsService(this_user)]
+    new_services = []
     for service in services:
-      if service.service_name in existing_services:
-        services.remove(service)
+      logging.info('%s:%s', service.service_name, existing_services)
+      logging.info('OAUTH_URL: %s', service.oauth_url)
+      if service.service_name not in existing_services:
+        new_services.append(service)
     profile_data = []
     for service in existing_services:
       profile_data.append(this_user.GetProfileServiceData(service))
-    template_params['new_services'] = services
+    template_params['new_services'] = new_services
     template_params['existing_services'] = existing_services
     template_params['profile_data'] = profile_data
     rendered_page = template.render(HOME_TEMPLATE, template_params)
