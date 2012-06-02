@@ -2,16 +2,18 @@
 
 import logging
 import models
+import handler
 from utils.template import render_template
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
 
 class CreateAccountHandler(webapp.RequestHandler):
-  """Handler for areating accounts."""
+  """Handler for creating accounts."""
   URL_PATH = '/create_account'
   TEMPLATE = 'templates/create_account.html'
 
+  @handler.RequiresLogin
   def get(self):
     """Handles get request for Create Account functions."""
     # Render a blank create account template
@@ -27,10 +29,10 @@ class CreateAccountHandler(webapp.RequestHandler):
         ambler = models.Ambler.get_or_insert(user.email())
         template_params['user'] = ambler.key.id()
     else:
-      # Redirect to google login
-      template_params['message'] = 'Looks like there was not Google user. Fix that!'
+      self.redirect('/login')
     render_template(self, self.TEMPLATE, template_params)
   
+  @handler.RequiresLogin
   def post(self):
     """Handles posts for Account Creation functions."""
     form_data = self._ParseFormInput()
@@ -47,9 +49,6 @@ class CreateAccountHandler(webapp.RequestHandler):
       ambler.put()
       template_params['message'] = 'Welcome to the party! You are a user!'
       template_params['user'] = ambler.key.id()
-    else:
-      # Redirect to google login
-      template_params['message'] = 'Looks like there was not Google user. Fix that!'
     render_template(self, self.TEMPLATE, template_params)
   
   def _ParseFormInput(self):

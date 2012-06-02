@@ -13,27 +13,18 @@ class LoginHandler(webapp.RequestHandler):
 
   def get(self):
     """Handles get request for logins."""
-    template_params = dict()
     user = users.get_current_user()
     if user:
       ambler = models.Ambler.get_by_id(user.email())
       if ambler:
-        # Redirect to core site
-        template_params['messages'] = list()
-        template_params['messages'].append('You are logged in.')
-      else:
-        self.redirect('/create_account?user=%s' % user.email()) #needs an escape
-        # Account creation includes all Oauth generation
-    else:
+        self.redirect('/iamble')
+      else: 
+        self.redirect('/create_account?user=%s' % user.email())  # needs an escape
+    else:  # If not authenticated, redirect to Google login page
       redirect_url = users.create_login_url(dest_url='/login')
       self.redirect(redirect_url)
-      # Redirect to google sign in page
-      #template_params['messages'] = list()
-      #template_params['messages'].append('google sign in page redirect here')
-      #pass
-    render_template(self, self.LOGIN_TEMPLATE, template_params)
   
   def post(self):
     """Handles post for login page."""
-    # Handle posted preferences
-    pass
+    # We don't handle posted login info. Get off my lawn.
+    self.error(404)
