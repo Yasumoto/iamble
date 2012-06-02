@@ -3,14 +3,14 @@ import logging
 from google.appengine.ext.webapp import template
 from google.appengine.ext import webapp
 
-UNDER_CONSTRUCTION = """This site is currently under construction.
-Amble on back when you have a chance and check us out!"""
+UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
 
 HOME_TEMPLATE = 'templates/home.html'
 
 
-class BaseHandler(webapp.RequestHandler):
+class OAuth2Handler(webapp.RequestHandler):
   """"""
+  URL_PATH = '/oauth'
 
   def get(self):
     """"""
