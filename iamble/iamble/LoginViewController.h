@@ -10,6 +10,5 @@
 
 @interface LoginViewController : UIViewController
 - (IBAction)signInToSingly:(UIButton *)sender;
-@property (nonatomic) NSString *accessToken;
 
 @end

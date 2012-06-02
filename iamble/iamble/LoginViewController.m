@@ -28,8 +28,6 @@ static NSString *const kSingly = @"Singly";
 
 @implementation LoginViewController
 
-@synthesize accessToken = _accessToken;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

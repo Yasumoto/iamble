@@ -16,6 +16,7 @@
 
 @synthesize imageView = _imageView;
 @synthesize delegate = _delegate;
+@synthesize service = _service;
 
 - (id)initWithFrame:(CGRect)frame
 {

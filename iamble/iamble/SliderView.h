@@ -17,6 +17,7 @@
 @interface SliderView : UIView
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, weak) id <SliderActivatedDelegate> delegate;
+@property (nonatomic, strong) NSString *service;
 @end
 
 
