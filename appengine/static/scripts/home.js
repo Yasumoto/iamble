@@ -18,16 +18,10 @@
 
   $.iambleHome.fn.extend({
     'init': function() {
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('HOME INIT')
-      );
       return this;
     },
     'render': function() {
       this.base.render();
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('HOME RENDER')
-      );
       return this;
     }
   });

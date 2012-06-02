@@ -2,14 +2,22 @@ body, table, td {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
 #bodyheader {
-  border: 1px solid red;
+  border-bottom: 1px solid gray;
+  height: 70px;
 }
 
 #bodycontent {
-  border: 1px solid red;
+  border-bottom: 1px solid gray;
+  padding: 10px;
 }
 
 #bodyfooter {
-  border: 1px solid red;
+  text-align: center;
+  padding: 10px;
 }
