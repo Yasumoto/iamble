@@ -1,0 +1,15 @@
+body, table, td {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#bodyheader {
+  border: 1px solid red;
+}
+
+#bodycontent {
+  border: 1px solid red;
+}
+
+#bodyfooter {
+  border: 1px solid red;
+}

@@ -17,15 +17,11 @@
 
   $.iamble.fn.extend({
     'init': function() {
-      this.options.content.append(
-        $(document.createElement('DIV')).html('IAMBLE INIT')
-      );
+
       return this;
     },
     'render': function() {
-      this.options.content.append(
-        $(document.createElement('DIV')).html('IAMBLE RENDER')
-      );
+
       return this;
     }
   });
