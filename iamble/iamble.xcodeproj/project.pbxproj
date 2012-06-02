@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
+		D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D81FB5F5157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5F0157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D81FB5F6157AA865008B4C2D /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81FB5F1157AA865008B4C2D /* GTMOAuth2ViewTouch.xib */; };
+		D81FB5F9157AAB8D008B4C2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */; };
+		D81FB5FB157AAB94008B4C2D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81FB5FA157AAB94008B4C2D /* Security.framework */; };
 		D89AE121157A7F6600B74554 /* foursquare-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D89AE120157A7F6600B74554 /* foursquare-logo.png */; };
 		D89AE124157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */; };
 		D8AE54461579EF4A004E2E10 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54451579EF4A004E2E10 /* LoginViewController.m */; };
@@ -43,6 +50,17 @@
 /* Begin PBXFileReference section */
 		478962866C9C4522951EEAF8 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		495DDB46F94C451585862A06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D81FB5E9157AA865008B4C2D /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
+		D81FB5EB157AA865008B4C2D /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
+		D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2Authentication.m; sourceTree = "<group>"; };
+		D81FB5ED157AA865008B4C2D /* GTMOAuth2SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2SignIn.h; sourceTree = "<group>"; };
+		D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2SignIn.m; sourceTree = "<group>"; };
+		D81FB5EF157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2ViewControllerTouch.h; sourceTree = "<group>"; };
+		D81FB5F0157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2ViewControllerTouch.m; sourceTree = "<group>"; };
+		D81FB5F1157AA865008B4C2D /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D81FB5FA157AAB94008B4C2D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D89AE120157A7F6600B74554 /* foursquare-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foursquare-logo.png"; sourceTree = "<group>"; };
 		D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_twitter_withbird_1000_white_blue.png; sourceTree = "<group>"; };
 		D8AE54441579EF4A004E2E10 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -78,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81FB5FB157AAB94008B4C2D /* Security.framework in Frameworks */,
+				D81FB5F9157AAB8D008B4C2D /* SystemConfiguration.framework in Frameworks */,
 				D8B87D991579E76600310696 /* UIKit.framework in Frameworks */,
 				D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */,
 				D8B87D9D1579E76600310696 /* CoreGraphics.framework in Frameworks */,
@@ -99,6 +119,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D81FB5E8157AA865008B4C2D /* gtm-oauth2 */ = {
+			isa = PBXGroup;
+			children = (
+				D81FB5E9157AA865008B4C2D /* GTMHTTPFetcher.h */,
+				D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */,
+				D81FB5EB157AA865008B4C2D /* GTMOAuth2Authentication.h */,
+				D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */,
+				D81FB5ED157AA865008B4C2D /* GTMOAuth2SignIn.h */,
+				D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */,
+				D81FB5EF157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.h */,
+				D81FB5F0157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m */,
+				D81FB5F1157AA865008B4C2D /* GTMOAuth2ViewTouch.xib */,
+			);
+			path = "gtm-oauth2";
+			sourceTree = "<group>";
+		};
 		D8B87D891579E76600310696 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +158,8 @@
 		D8B87D971579E76600310696 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D81FB5FA157AAB94008B4C2D /* Security.framework */,
+				D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */,
 				D8B87D981579E76600310696 /* UIKit.framework */,
 				D8B87D9A1579E76600310696 /* Foundation.framework */,
 				D8B87D9C1579E76600310696 /* CoreGraphics.framework */,
@@ -146,6 +184,7 @@
 				D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */,
 				D8AE54581579FC32004E2E10 /* SliderView.h */,
 				D8AE54591579FC32004E2E10 /* SliderView.m */,
+				D81FB5E8157AA865008B4C2D /* gtm-oauth2 */,
 			);
 			path = iamble;
 			sourceTree = "<group>";
@@ -261,6 +300,7 @@
 				D8B87DAE1579E76600310696 /* MainStoryboard.storyboard in Resources */,
 				D89AE121157A7F6600B74554 /* foursquare-logo.png in Resources */,
 				D89AE124157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png in Resources */,
+				D81FB5F6157AA865008B4C2D /* GTMOAuth2ViewTouch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +355,10 @@
 				D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */,
 				D8AE544C1579F077004E2E10 /* iambleServiceConnection.m in Sources */,
 				D8AE545A1579FC32004E2E10 /* SliderView.m in Sources */,
+				D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */,
+				D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */,
+				D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */,
+				D81FB5F5157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +415,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -386,6 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -397,6 +443,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -406,6 +453,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
