@@ -1,0 +1,7 @@
+PODS:
+  - AFNetworking (1.0RC1)
+  - TestFlightSDK (1.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - TestFlightSDK
