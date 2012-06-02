@@ -33,13 +33,18 @@
                                 <rect key="frame" x="0.0" y="101" width="320" height="359"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="iUK-Bj-9gg" customClass="SliderView">
-                                        <rect key="frame" x="-100" y="20" width="320" height="70"/>
+                                    <view contentMode="scaleToFill" id="YCH-2C-1G0" customClass="SliderView">
+                                        <rect key="frame" x="-100" y="114" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="YCH-2C-1G0" customClass="SliderView">
-                                        <rect key="frame" x="-100" y="122" width="320" height="70"/>
+                                    <view contentMode="scaleToFill" id="tDA-0W-7nU" customClass="SliderView">
+                                        <rect key="frame" x="-100" y="210" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="bP2-2K-ZAV" customClass="SliderView">
+                                        <rect key="frame" x="-100" y="20" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -49,7 +54,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="facebookSlider" destination="bP2-2K-ZAV" id="xek-39-GsJ"/>
+                        <outlet property="foursquareSlider" destination="tDA-0W-7nU" id="bpx-rF-aas"/>
                         <outlet property="selectionScrollView" destination="H00-T8-oyO" id="ZV8-yG-1YO"/>
+                        <outlet property="twitterSlider" destination="YCH-2C-1G0" id="gqK-og-I29"/>
                     </connections>
                 </viewController>
             </objects>
@@ -61,7 +69,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooseAmbleViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="facebookSlider" candidateClass="SliderView"/>
+                <relationship kind="outlet" name="foursquareSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="selectionScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="twitterSlider" candidateClass="SliderView"/>
             </relationships>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">

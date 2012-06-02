@@ -22,10 +22,12 @@
 }
 
 - (void) viewDidLoad {
-
+    [self setupSlider];
 }
 
 - (void) setupSlider {
+    NSLog(@"setting up slider");
+    [self addSubview:self.imageView];
     [self setBackgroundColor:[UIColor redColor]];
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sliding:)];
     swipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirectionRight;
