@@ -40,4 +40,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)signInToSingly:(UIButton *)sender {
+}
 @end

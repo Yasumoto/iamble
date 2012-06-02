@@ -40,7 +40,6 @@
     NSLog(@"setting up slider");
     self.alpha = 0.7;
     self.left = YES;
-    //[self setBackgroundColor:[UIColor redColor]];
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slidingGesture:)];
     swipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirectionRight;
     UISwipeGestureRecognizer *leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slidingGesture:)];

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+- (IBAction)signInToSingly:(UIButton *)sender;
 
 @end
