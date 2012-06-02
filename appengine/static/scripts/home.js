@@ -68,6 +68,7 @@
 
       request.fail(this.bind(function(jqXHR, textStatus) {
         this.base.error('Error ' + jqXHR.status);
+        console.error(jqXHR.responseText);
       }));
     }
   });
