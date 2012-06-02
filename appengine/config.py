@@ -11,3 +11,5 @@ SINGLY_OAUTH_URL_TEMPLATE = '%s?client_id=%s&redirect_uri=%s&service=' % (
     SINGLY_OAUTH_BASE_URL, CLIENT_ID, CALLBACK_URI)
 
 SINGLY_API_ACCESS_TOKEN_URL = 'https://api.singly.com/oauth/access_token'
+
+DEFAULT_POST_HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}

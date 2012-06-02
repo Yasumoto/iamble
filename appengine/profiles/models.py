@@ -16,4 +16,4 @@ class Ambler(ndb.Model):
   user = ndb.UserProperty()
   facebook_key = ndb.StringProperty()
   twitter_key = ndb.StringProperty()
-  preferences = ndb.StructuredProperty(Preference, repeated=True)
+#  preferences = ndb.StructuredProperty(Preference, repeated=True)

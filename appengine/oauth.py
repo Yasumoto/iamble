@@ -1,7 +1,8 @@
 
 import config
 import logging
-import urllib2
+import simplejson
+import urllib
 
 from google.appengine.api import urlfetch
 from google.appengine.ext.webapp import template
@@ -26,7 +27,7 @@ class FoursquareService(Service):
   name = "Foursquare"
   url = config.SINGLY_OAUTH_URL_TEMPLATE + 'foursquare'
 
-class GoogleService(Service):
+class GoogleContactsService(Service):
   name = "Google Contacts"
   url = config.SINGLY_OAUTH_URL_TEMPLATE + 'gcontacts'
 
@@ -41,6 +42,8 @@ class OAuth2Handler(webapp.RequestHandler):
     template_params['services'] = list()
     template_params['services'].append(FacebookService)
     template_params['services'].append(TwitterService)
+    template_params['services'].append(FoursquareService)
+    template_params['services'].append(GoogleContactsService)
     
     rendered_page = template.render(HOME_TEMPLATE, template_params)
     self.response.out.write(str(rendered_page))
@@ -50,9 +53,16 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
   URL_PATH = '/oauth_callback'
 
   def get(self):
-    logging.info('HTTPGET ARGS: %s', self.request.arguments())
     code = self.request.get('code')
-   
-
-  def post(self):
-    logging.info('POSTED ARGS: %s', self.request.arguments())
+    post_params = {
+        'client_id': config.CLIENT_ID,
+        'client_secret': config.CLIENT_SECRET,
+        'code': code,
+    }
+    post_data = urllib.urlencode(post_params)
+    result = urlfetch.fetch(url=config.SINGLY_API_ACCESS_TOKEN_URL,
+                            payload=post_data,
+                            method=urlfetch.POST,
+                            headers=config.DEFAULT_POST_HEADERS)
+    logging.info(result.content)
+    access_token = simplejson.loads(result.content)['access_token']
