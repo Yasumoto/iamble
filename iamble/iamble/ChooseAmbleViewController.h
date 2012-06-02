@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ChooseAmbleViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *selectionScrollView;
 
 @end

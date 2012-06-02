@@ -13,6 +13,8 @@
 @end
 
 @implementation ChooseAmbleViewController
+@synthesize backgroundImage;
+@synthesize selectionScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +33,8 @@
 
 - (void)viewDidUnload
 {
+    [self setBackgroundImage:nil];
+    [self setSelectionScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -39,5 +43,6 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 
 @end
