@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface SinglyServiceConnection : NSObject
+- (UIViewController *)authorize:(NSString *)service;
 
 @end

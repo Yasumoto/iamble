@@ -42,10 +42,12 @@
     UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare-logo.png"];
     self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
     self.foursquareSlider.imageView.frame = CGRectMake(0, 0, 256, 70);
+    self.foursquareSlider.delegate = self;
     
     self.twitterSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_twitter_withbird_1000_white_blue.png"]];
     self.twitterSlider.backgroundColor = [UIColor grayColor];
     self.twitterSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
+    self.twitterSlider.delegate = self;
 
 }
 
@@ -66,11 +68,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-# pragma mark UIScrollViewDelegate
+# pragma mark SliderActivatedDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
+- (void) sliderWasActivated:(SliderView *)slider {
+    NSLog(@"Slider's Service: %@", slider.service);
 }
-
 
 @end

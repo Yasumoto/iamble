@@ -17,7 +17,6 @@ static NSString *const kSingly = @"Singly";
 
 @interface SinglyServiceConnection ()
 - (GTMOAuth2Authentication *)singlyAuth;
-- (void)authorize:(NSString *)service;
 - (IBAction)loadProfiles;
 @end
 
@@ -48,7 +47,7 @@ static NSString *const kSingly = @"Singly";
     return auth;
 }
 
-- (void)authorize:(NSString *)service
+- (UIViewController *)authorize:(NSString *)service
 {
     GTMOAuth2Authentication *auth = [self singlyAuth];
     
@@ -66,7 +65,7 @@ static NSString *const kSingly = @"Singly";
     [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://api.singly.com/"]];
     
     // Push the authentication view to our navigation controller instance
-    [ [self navigationController] pushViewController:viewController animated:YES];
+    return viewController;
 }
 
 
@@ -88,16 +87,16 @@ static NSString *const kSingly = @"Singly";
     {
         // Authentication succeeded
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue:auth.userEmail forKey:kAmble];
+        [defaults setValue:auth.userEmail forKey:kSingly];
         
-        [SSKeychain setPassword:auth.accessToken forService:kAmble account:auth.userEmail];
+        [SSKeychain setPassword:auth.accessToken forService:kSingly account:auth.userEmail];
     }
 }
 
 - (IBAction)loadProfiles
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:[SSKeychain passwordForService:kSingly account:[defaults valueForKey:@"singlyAccount"]]]];
+    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:[SSKeychain passwordForService:kSingly account:[defaults valueForKey:kSingly]]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:profilesURL];
     
     [NSURLConnection sendAsynchronousRequest:request

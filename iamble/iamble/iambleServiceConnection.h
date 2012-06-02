@@ -10,6 +10,5 @@
 
 @interface iambleServiceConnection : NSObject
 
-- (void) authorizeAmble;
-
+- (UIViewController *) authorizeAmble;
 @end

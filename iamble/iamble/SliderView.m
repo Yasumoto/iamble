@@ -61,6 +61,7 @@
                                           self.center.y);
                 self.alpha = 1.0;
                 self.left = NO;
+                [self.delegate sliderWasActivated:self];
             }
             else {
                 self.center = CGPointMake(self.center.x + 50,

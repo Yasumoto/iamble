@@ -41,7 +41,7 @@ static NSString *const kAmble = @"Amble";
     }
 }
 
-- (void) authorizeAmble {
+- (UIViewController *) authorizeAmble {
     GTMOAuth2ViewControllerTouch *viewController;
     viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithScope:@"https://www.googleapis.com/auth/userinfo.email"
                                                                 clientID:kAmbleClientID
@@ -51,7 +51,7 @@ static NSString *const kAmble = @"Amble";
                                                         finishedSelector:@selector(viewController:finishedWithAuth:error:)];
     [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
     
-    [[self navigationController] pushViewController:viewController animated:YES];
+    return viewController;
 }
 
 @end
