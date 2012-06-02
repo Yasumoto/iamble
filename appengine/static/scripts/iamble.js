@@ -13,7 +13,7 @@
     iamble: '0.1'
   };
 
-	$.iamble.fn.extend = $.iamble.extend = $.extend;
+  $.iamble.fn.extend = $.iamble.extend = $.extend;
 
   $.iamble.fn.extend({
     'init': function() {

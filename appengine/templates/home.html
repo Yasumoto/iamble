@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
 {% block body %}
-  Homepage
+  <h2>Homepage</h2>
+  {% for message in messages %}
+    <div>{{message}}</div>
+  {% endfor %}
 {% endblock %}
