@@ -10,6 +10,7 @@
 #import "gtm-oauth/GTMOAuthAuthentication.h"
 #import "LocationManager.h"
 #import "SliderView.h"
+#import <MapKit/MapKit.h>
 
 @interface RecomendationViewController : UIViewController <SliderActivatedDelegate>
 @property (nonatomic, strong) GTMOAuthAuthentication *auth;
@@ -20,4 +21,10 @@
 @property (weak, nonatomic) IBOutlet SliderView *sitdownSlider;
 @property (weak, nonatomic) IBOutlet SliderView *settingsSlider;
 @property (nonatomic, strong) LocationManager *locationManager;
+
+#pragma mark Post-Flyout
+
+@property (weak, nonatomic) IBOutlet UILabel *placeNameLabel;
+@property (weak, nonatomic) IBOutlet MKMapView *placeMapView;
+
 @end

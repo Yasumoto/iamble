@@ -115,11 +115,11 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[RecomendationViewController class]]) {
-        RecomendationViewController *controller = (RecomendationViewController *) segue.destinationViewController;
-        controller.auth = self.iamble.auth;
-        controller.locationManager = self.locationManager;
-    }
+    UINavigationController *controller = (UINavigationController *) segue.destinationViewController;
+    NSLog(@"iamble auth is: %@", self.iamble.auth);
+    RecomendationViewController *myController = [controller.viewControllers objectAtIndex:0];
+    myController.auth = self.iamble.auth;
+    myController.locationManager = self.locationManager;
 }
 
 # pragma mark SliderActivatedDelegate

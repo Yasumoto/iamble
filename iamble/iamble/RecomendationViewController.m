@@ -10,6 +10,8 @@
 #import <SSKeychain.h>
 #import <CoreLocation/CoreLocation.h>
 #import <JSONKit.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 static NSString *const ambleURL = @"https://ambleapp.appspot.com/";
 static NSString *const jimmehPath = @"api/mobile";
@@ -25,6 +27,8 @@ static int sliderShiftLeft = 150;
 @end
 
 @implementation RecomendationViewController
+@synthesize placeNameLabel = _placeNameLabel;
+@synthesize placeMapView = _placeMapView;
 @synthesize locationManager = _locationManager;
 @synthesize auth = _auth;
 @synthesize backButton = _backButton;
@@ -71,6 +75,17 @@ static int sliderShiftLeft = 150;
     NSLog(@"%@", backButtonImage);
     self.backButton = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(goBackBetch)];
     NSLog(@"%@", self.backButton);
+    [self mapViewShadow];
+    self.placeMapView.hidden = YES;
+    self.placeNameLabel.hidden = YES;
+}
+
+- (void) mapViewShadow {
+    [[self.placeMapView layer] setMasksToBounds:NO];
+    [[self.placeMapView layer] setCornerRadius:8]; // if you like rounded corners
+    [[self.placeMapView layer] setShadowOffset:CGSizeMake(-2, 5)];
+    [[self.placeMapView layer] setShadowRadius:1];
+    [[self.placeMapView layer] setShadowOpacity:0.5];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -88,7 +103,13 @@ static int sliderShiftLeft = 150;
 }
 
 - (void) sendJimmehChoice:(NSString *) choice{
-    
+    CLLocation *myLocation = self.locationManager.currentLocation;
+    NSURL *url = [NSURL URLWithString:[kAmbleLocationEndPoint stringByAppendingFormat:@"?lat=%f&lng=%f&choice=%@", myLocation.coordinate.latitude, myLocation.coordinate.longitude, choice]];
+    NSLog(@"Sending over a choice: %@", url);
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSLog(@"wtf what's the auth token look like?!: %@", self.auth);
+    [self.auth authorizeRequest:request];
+    [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -119,8 +140,20 @@ static int sliderShiftLeft = 150;
         }
     }
     [UIView commitAnimations];
+    [self performSelector:@selector(showNewStuff) withObject:self afterDelay:0.5];
+
     NSLog(@"%@", self.backButton);
     self.navigationItem.leftBarButtonItem = self.backButton;
+
+}
+
+- (void) showNewStuff {
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    self.placeNameLabel.hidden = FALSE;
+    self.placeMapView.hidden = FALSE;
+    [UIView commitAnimations];
 }
 
 - (void) goBackBetch {
@@ -162,6 +195,8 @@ static int sliderShiftLeft = 150;
     [self setChooseSawtoothBanner:nil];
     [self setBackButton:nil];
     [self setSettingsSlider:nil];
+    [self setPlaceNameLabel:nil];
+    [self setPlaceMapView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

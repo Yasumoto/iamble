@@ -12,6 +12,7 @@
 		D8056D68157BF7D0006A9C6B /* welcome_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D67157BF7D0006A9C6B /* welcome_screen.png */; };
 		D8056D6A157BF7D9006A9C6B /* settings_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D69157BF7D9006A9C6B /* settings_bar@2x.png */; };
 		D8056D6C157BF7E6006A9C6B /* settings_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D6B157BF7E6006A9C6B /* settings_bar.png */; };
+		D8056D6E157BFF43006A9C6B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8056D6D157BFF43006A9C6B /* MapKit.framework */; };
 		D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079AFE157AF86800117088 /* RecomendationViewController.m */; };
 		D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC875157B1A6900A1832E /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -84,6 +85,7 @@
 		D8056D67157BF7D0006A9C6B /* welcome_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_screen.png; sourceTree = "<group>"; };
 		D8056D69157BF7D9006A9C6B /* settings_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bar@2x.png"; sourceTree = "<group>"; };
 		D8056D6B157BF7E6006A9C6B /* settings_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_bar.png; sourceTree = "<group>"; };
+		D8056D6D157BFF43006A9C6B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D8079AFD157AF86800117088 /* RecomendationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecomendationViewController.h; sourceTree = "<group>"; };
 		D8079AFE157AF86800117088 /* RecomendationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecomendationViewController.m; sourceTree = "<group>"; };
 		D80AC872157B1A6900A1832E /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8056D6E157BFF43006A9C6B /* MapKit.framework in Frameworks */,
 				D89ECBD4157B4D200005372F /* CoreLocation.framework in Frameworks */,
 				D81FB5FB157AAB94008B4C2D /* Security.framework in Frameworks */,
 				D81FB5F9157AAB8D008B4C2D /* SystemConfiguration.framework in Frameworks */,
@@ -263,6 +266,7 @@
 		D8B87D891579E76600310696 = {
 			isa = PBXGroup;
 			children = (
+				D8056D6D157BFF43006A9C6B /* MapKit.framework */,
 				D8B87D9E1579E76600310696 /* iamble */,
 				D8B87DBE1579E76600310696 /* iambleTests */,
 				D8B87D971579E76600310696 /* Frameworks */,
