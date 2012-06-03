@@ -6,11 +6,63 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleCreateAccount(iamble).render();
+  $(document).iambleCreateAccount(iamble, {
+    'firstname': $('#firstname'),
+    'lastname': $('#lastname'),
+    'amount': $('#amount'),
+    'distance': $('#distance'),
+    'save': $('#save')
+  }).render();
 {% endblock %}
 
 {% block body %}
-  <h2>Create Account</h2>
-    <div>{{ user }}</div>
-    <div>{{ message }}</div>
+  <div class="form">
+    <form action="?" method="post">
+      <table>
+        <tr>
+          <td colspan="2" class="title">
+            <h2>Create Account</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>First name</td>
+          <td>
+            <input type="text" id="firstname" value="{{ user.first_name }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Last name</td>
+          <td>
+            <input type="text" id="lastname" value="{{ user.last_name }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Budget</td>
+          <td>
+            <input type="text" id="amount" value="{{ preferences.budget }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Distance</td>
+          <td>
+            <div id="distance">
+              <input type="checkbox" id="walk" {% if preferences.walk %}checked{% endif %}/>
+              <label for="walk">Walk</label>
+
+              <input type="checkbox" id="bike" {% if preferences.bike %}checked{% endif %}/>
+              <label for="bike">Bike</label>
+
+              <input type="checkbox" id="car" {% if preferences.car %}checked{% endif %}/>
+              <label for="car">Car</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="buttons">
+            <input type="submit" value="Save" id="save">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
 {% endblock %}
