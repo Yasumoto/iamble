@@ -8,6 +8,7 @@ import datetime
 import logging
 import handler
 import json
+import suggest
 from data import data_utils
 from profiles import models as profile_models
 from google.appengine.api import users
@@ -25,7 +26,7 @@ class SignalEngine(object):
   def SignalMaster(self, call_type, location=None):
     """Master function to govern data collection, parsing, and return."""
     if call_type == 'get_top_default':
-      top_suggestion = None #caches.GetPersistentCache(self.ambler, 1)
+      top_suggestion = caches.GetPersistentCache(self.ambler, 1)
       if not top_suggestion:
         return self.FullDataProcess()
       else:
@@ -48,8 +49,10 @@ class SignalEngine(object):
       json_checkins = None
       pass
     self.ProcessCheckins(json_checkins)
-    caches.SetPersistentCache(self.ambler, 10)
-    top_suggestion = None #caches.GetPersistentCache(self.ambler, 1)
+    suggestions = suggest.GenerateSuggestions(self.ambler, self.ambler.default_location)
+    logging.info(suggestions)
+    caches.SetPersistentCache(self.ambler, suggestions)
+    top_suggestion = caches.GetPersistentCache(self.ambler, 1)
     return top_suggestion
 
   def ProcessCheckins(self, json_checkins):

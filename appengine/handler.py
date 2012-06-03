@@ -83,11 +83,15 @@ class BaseHandler(webapp.RequestHandler):
       if suggestion_vote < 0:
         ambler.recent_dislikes.append(suggestion_id)
       ambler.put()
-
     suggestion_generator = signal.SignalEngine(user)
-    top_suggestion = suggestion_generator.SignalMaster('get_top_default')
-    response = json.dumps(top_suggestion)
-    self.response.out.write(response)
+    top_suggestion = suggestion_generator.SignalMaster('get_top_default')[0]
+    response = {'lat': top_suggestion.lat,
+                'lng': top_suggestion.lng,
+                'name': top_suggestion.name,
+                'why_description1': top_suggestion.why_description1,
+                'why_description2': top_suggestion.why_description2,
+               }
+    self.response.out.write(json.dumps(response))
 
 
 class RedirectHandler(webapp.RequestHandler):
