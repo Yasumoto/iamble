@@ -18,16 +18,12 @@
 
   $.iambleCreateAccount.fn.extend({
     'init': function() {
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('CREATE ACCOUNT INIT')
-      );
       return this;
     },
     'render': function() {
       this.base.render();
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('CREATE ACCOUNT RENDER')
-      );
+      this.options.distance.buttonset();
+      this.options.save.button();
       return this;
     }
   });

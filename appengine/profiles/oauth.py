@@ -13,6 +13,7 @@ from google.appengine.ext.webapp import template
 import config
 import handler
 import models
+from data import data_utils
 
 UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
 
@@ -73,16 +74,14 @@ class OAuth2Handler(webapp.RequestHandler):
                 GoogleContactsService(this_user)]
     new_services = []
     for service in services:
-      logging.info('%s:%s', service.service_name, existing_services)
-      logging.info('OAUTH_URL: %s', service.oauth_url)
       if service.service_name not in existing_services:
         new_services.append(service)
-    profile_data = []
-    for service in existing_services:
-      profile_data.append(this_user.GetProfileServiceData(service))
+    #profile_data = []
+    #for service in existing_services:
+    #  profile_data.append(this_user.GetProfileServiceData(service))
     template_params['new_services'] = new_services
     template_params['existing_services'] = existing_services
-    template_params['profile_data'] = profile_data
+    template_params['checkin_feed'] = data_utils.GetCheckinsForUser(this_user)
     rendered_page = template.render(HOME_TEMPLATE, template_params)
     self.response.out.write(str(rendered_page))
 
@@ -103,7 +102,6 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
                             payload=post_data,
                             method=urlfetch.POST,
                             headers=config.DEFAULT_POST_HEADERS)
-    logging.info(result.content)
     this_user = models.Ambler.get_by_id(users.get_current_user().email())
     
     this_user.singly_access_token = json.loads(result.content)['access_token']

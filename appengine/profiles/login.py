@@ -1,14 +1,16 @@
 # __author__ = russ@iamble
 
 import models
+import urllib
+
 from utils import template
 from google.appengine.api import users
 from google.appengine.ext import webapp
 
 class LoginHandler(webapp.RequestHandler):
   """Handler for Login page."""
+
   URL_PATH = '/login'
-  LOGIN_TEMPLATE = 'templates/login.html'
 
   def get(self):
     """Handles get request for logins."""
@@ -19,16 +21,31 @@ class LoginHandler(webapp.RequestHandler):
       ambler = models.Ambler.get_by_id(user.email())
       if ambler:
         # Redirect to core site
-        template_params['messages'].append('You are logged in.')
+        self.redirect('/')
       else:
-        self.redirect('/create_account?user=%s' % user.email()) #needs an escape
         # Account creation includes all Oauth generation
+        self.redirect('/create_account?user=%s' % urllib.quote_plus(
+            user.email()))
     else:
       redirect_url = users.create_login_url(dest_url='/login')
       self.redirect(redirect_url)
-    template.render_template(self, self.LOGIN_TEMPLATE, template_params)
 
   def post(self):
     """Handles post for login page."""
     # We don't handle posted login info. Get off my lawn.
+    self.error(404)
+
+
+class LogoutHandler(webapp.RequestHandler):
+  """Handler for Logout page."""
+
+  URL_PATH = '/logout'
+
+  def get(self):
+    """Handles get request for logouts."""
+    self.redirect(users.create_logout_url(dest_url='/'))
+
+  def post(self):
+    """Handles post for logout page."""
+    # We don't handle posted logout info. Get off my lawn.
     self.error(404)

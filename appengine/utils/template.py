@@ -1,5 +1,6 @@
 import os
 
+from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
@@ -14,6 +15,11 @@ def render_template(handler, template_path, template_params):
 def get_params():
   template_params = dict()
   template_params['app_version'] = os.environ[CURRENT_VERSION_ID]
+
+  template_params['current_user'] = None
+  if users.get_current_user():
+    template_params['current_user'] = users.get_current_user()
+
   template_params['info_messages'] = list()
   template_params['success_messages'] = list()
   template_params['warning_messages'] = list()

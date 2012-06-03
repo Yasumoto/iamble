@@ -13,6 +13,7 @@ h2 {
   padding:15px 10px 15px 50px;
   background-repeat: no-repeat;
   background-position: 10px center;
+  border-radius: 2px;
 }
 
 .status_message.info {
@@ -41,12 +42,44 @@ h2 {
 
 #bodyheader {
   height: 50px;
-  font-size: 48px;
   padding: 10px;
+}
+
+#bodyheader #logo {
+  font-size: 48px;
+  font-family: 'Lobster', cursive;
+  text-shadow: 2px -2px 3px #CCC;
+  width: 200px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+#bodyheader #logo span.prefix {
+  color: #888;
+}
+
+#bodyheader .right {
+  position: absolute;
+  font-size: 13px;
+  top: 10px;
+  right: 10px;
 }
 
 #bodycontent {
   padding: 10px;
+  text-align: center;
+}
+
+#bodycontent #messages {
+  display: inline-block;
+}
+
+#bodycontent .form {
+  display: inline-block;
+  text-align: left;
 }
 
 #bodyfooter {

@@ -3,6 +3,7 @@
   <head>
     <title>iamble</title>
     <link rel="stylesheet" type="text/css" href="/static/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Marck+Script|Lobster|Amaranth|Berkshire+Swash">
     <link rel="stylesheet" type="text/css" href="/static/style/jquery/Aristo/Aristo.css">
     <link rel="stylesheet" type="text/css" href="/static/style/iamble.css">
     <script type="text/javascript" src="/static/scripts/jquery/jquery-1.7.2.min.js"></script>
@@ -28,7 +29,14 @@
   <body>
     {% autoescape on %}
       <div id="bodyheader">
-        &lt;iamble logo&gt;
+        <div id="logo">
+          <span class='prefix'>i</span>Amble
+        </div>
+        <div class="right">
+          {% if current_user %}
+            {{ current_user.email }} | <a href="/logout">Logout</a>
+          {% endif %}
+        </div>
       </div>
       <div id="bodycontent">
         <div id="messages">
@@ -45,9 +53,11 @@
             <div class="status_message error">{{message}}</div>
           {% endfor %}
         </div>
-        {% block body %}
-          Welcome
-        {% endblock %}
+        <div id="content">
+          {% block body %}
+            Welcome
+          {% endblock %}
+        </div>
       </div>
       <div id="bodyfooter">
         <p>
