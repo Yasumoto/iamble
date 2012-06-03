@@ -21,10 +21,13 @@ class NewServiceHandler(webapp.RequestHandler):
     singly_access_token = self.request.get('singly_access_token')
     user = oauth.get_current_user()
     ambler = models.Ambler.get_or_insert(user.email())
-    ambler.singly_access_token = singly_access_token
-    ambler.put()
-    if ambler.key:
+    if singly_access_token:
+      ambler.singly_access_token = singly_access_token
+      ambler.put()
       self.response.out.write('true')
+    else:
+      self.response.out.write('false')
+
 
 class RecommendationHandler(webapp.RequestHandler):
 
@@ -41,3 +44,4 @@ class RecommendationHandler(webapp.RequestHandler):
              'cost': 1,
              'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
     self.response.out.write(json.dumps(place))
+
