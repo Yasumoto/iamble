@@ -27,7 +27,7 @@
       this.options.save.button();
 
       navigator.geolocation.getCurrentPosition(this.bind(this.onPosition));
-
+      this.base.options.spinner.fadeIn('fast');
       return this;
     },
     'onPosition': function(position) {
@@ -46,6 +46,7 @@
           if (typeof(results[0]) != 'undefined') {
             this.options.address.val(results[0].formatted_address);
           }
+          this.base.options.spinner.fadeOut('fast');
         }
       }));
     }

@@ -92,6 +92,11 @@ h2 {
   text-decoration: none;
 }
 
+#bodyheader .right #spinner {
+  display: none;
+  vertical-align: middle;
+}
+
 #bodycontent {
   padding: 10px;
   text-align: center;

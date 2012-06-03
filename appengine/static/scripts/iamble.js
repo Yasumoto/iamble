@@ -24,6 +24,15 @@
       this.options.messages.live('.status_message').click(function() {
         $(this).fadeOut();
       });
+
+      this.options.spinner
+        .ajaxStart(function() {
+          $(this).fadeIn('fast');
+        })
+        .ajaxStop(function() {
+          $(this).fadeOut('fast');
+        });
+
       return this;
     },
     'message': function(msg, type) {

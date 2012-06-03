@@ -17,7 +17,8 @@
         var iamble = $(document).iamble({
           'version': '{{ app_version }}',
           'content': $('#bodycontent'),
-          'messages': $('#messages')
+          'messages': $('#messages'),
+          'spinner': $('#spinner')
         });
 
         {% block javascript %}
@@ -33,6 +34,7 @@
           <a href="/"><img src="/static/images/logo.png"></a>
         </div>
         <div class="right">
+          <img src="/static/images/ajax.gif" id="spinner">&nbsp;
           {% if current_user %}
             {{ current_user.email }} | <a href="/oauth">Services</a> | <a href='/settings'>Settings</a> | <a href="/logout">Logout</a>
           {% else %}
