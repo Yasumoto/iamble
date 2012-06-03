@@ -25,14 +25,17 @@ class SettingsHandler(webapp.RequestHandler):
     user = users.get_current_user()
     if user:
       ambler = models.Ambler.get_by_id(user.email())
-      preferences_dict = dict((p.name, p.value) for p in ambler.preferences)
 
       if ambler:
+        preferences_dict = dict((p.name, p.value) for p in ambler.preferences)
+
         template_params['user'] = ambler
         template_params['preferences'] = preferences_dict
       else:
-        template_params['warning_messages'].append(self.NO_PROFILE)
         ambler = models.Ambler.get_or_insert(user.email())
+        preferences_dict = dict((p.name, p.value) for p in ambler.preferences)
+
+        template_params['warning_messages'].append(self.NO_PROFILE)
         template_params['user'] = ambler
         template_params['preferences'] = preferences_dict
     else:
@@ -52,6 +55,8 @@ class SettingsHandler(webapp.RequestHandler):
 
       ambler.name_first = form_data['name_first']
       ambler.name_last = form_data['name_last']
+      ambler.default_location = models.Coordinate(
+          lat=form_data['latitude'], lng=form_data['longitude'])
       ambler.first_time = False
 
       ambler = self._SavePreference(ambler, 'budget', form_data['budget'])
@@ -76,6 +81,8 @@ class SettingsHandler(webapp.RequestHandler):
     form_data = {
       'name_first': self.request.get('name_first'),
       'name_last': self.request.get('name_last'),
+      'latitude': float(self.request.get('latitude')),
+      'longitude': float(self.request.get('longitude')),
       'budget': self.request.get('budget'),
       'walk': self.request.get('walk'),
       'bike': self.request.get('bike'),

@@ -11,6 +11,8 @@
     'lastname': $('#lastname'),
     'budget': $('#budget'),
     'distance': $('#distance'),
+    'longitude': $('#longitude'),
+    'latitude': $('#latitude'),
     'save': $('#save')
   }).render();
 {% endblock %}
@@ -40,6 +42,18 @@
           <td>Budget</td>
           <td>
             <input type="text" id="budget" name="budget" value="{{ preferences.budget }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Latitude</td>
+          <td>
+            <input type="text" id="longitude" name="longitude" value="{{ user.default_location.longitude }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Longitude</td>
+          <td>
+            <input type="text" id="latitude" name="latitude" value="{{ user.default_location.latitude }}">
           </td>
         </tr>
         <tr>
