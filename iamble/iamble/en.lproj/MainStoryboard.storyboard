@@ -52,7 +52,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="YCH-2C-1G0" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="214" width="262" height="53"/>
+                                        <rect key="frame" x="-172" y="170" width="262" height="53"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -60,7 +60,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" id="tDA-0W-7nU" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="292" width="262" height="53"/>
+                                        <rect key="frame" x="-172" y="245" width="262" height="53"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -68,7 +68,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" id="jyj-y0-7aG" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="370" width="262" height="53"/>
+                                        <rect key="frame" x="-172" y="321" width="262" height="53"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -76,7 +76,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" id="bP2-2K-ZAV" customClass="SliderView">
-                                        <rect key="frame" x="-68" y="136" width="262" height="53"/>
+                                        <rect key="frame" x="-172" y="98" width="262" height="53"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -84,7 +84,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="sharkteeth.png" id="mz4-my-b8Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -99,7 +99,7 @@
                         <outlet property="selectionScrollView" destination="H00-T8-oyO" id="ZV8-yG-1YO"/>
                         <outlet property="settingsSlider" destination="jyj-y0-7aG" id="5z5-k5-UF3"/>
                         <outlet property="twitterSlider" destination="YCH-2C-1G0" id="gqK-og-I29"/>
-                        <segue destination="DcQ-1V-4Yw" identifier="recommendSegue" kind="push" id="lW1-dZ-cuM"/>
+                        <segue destination="OQJ-QR-iu3" identifier="recommendSegue" kind="modal" id="lW1-dZ-cuM"/>
                     </connections>
                 </viewController>
             </objects>
@@ -118,7 +118,7 @@
                     <navigationItem key="navigationItem" id="H6P-YL-4YR"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2085" y="146"/>
+            <point key="canvasLocation" x="2611" y="146"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rpG-bd-qvE">
@@ -155,6 +155,24 @@
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="1271" y="155"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZmC-4Z-2kY">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0WS-yw-86L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="OQJ-QR-iu3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GFE-7I-ybn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DcQ-1V-4Yw" kind="relationship" relationship="rootViewController" id="NlW-0O-yi7"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2085" y="146"/>
         </scene>
     </scenes>
     <resources>

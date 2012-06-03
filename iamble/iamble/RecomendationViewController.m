@@ -39,6 +39,8 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIImage *img = [UIImage imageNamed:@"logo_header.png"];
+    [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
     [self sendUpdatedLocation];
 }
 

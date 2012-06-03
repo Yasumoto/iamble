@@ -9,7 +9,7 @@
 #import "SliderView.h"
 #import <QuartzCore/QuartzCore.h>
 
-static int shiftLength = 250;
+static int shiftLength = 400;
 
 @interface SliderView ()
 @property BOOL left;
