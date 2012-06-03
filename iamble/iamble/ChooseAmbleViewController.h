@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet SliderView *twitterSlider;
 @property (weak, nonatomic) IBOutlet SliderView *foursquareSlider;
 @property (weak, nonatomic) IBOutlet UIScrollView *selectionScrollView;
+@property (weak, nonatomic) IBOutlet SliderView *settingsSlider;
 
 @end

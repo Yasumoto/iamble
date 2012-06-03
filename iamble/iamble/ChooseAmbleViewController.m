@@ -8,6 +8,9 @@
 
 #import "ChooseAmbleViewController.h"
 #import "SinglyServiceConnection.h"
+#import "RecomendationViewController.h"
+
+static NSString *const kRecommendSegue = @"recommendSegue";
 
 @interface ChooseAmbleViewController ()
 @property (nonatomic, strong) SinglyServiceConnection *singly;
@@ -19,6 +22,7 @@
 @synthesize twitterSlider = _twitterSlider;
 @synthesize foursquareSlider = _foursquareSlider;
 @synthesize selectionScrollView;
+@synthesize settingsSlider = _settingsSlider;
 @synthesize singly = _singly;
 @synthesize iamble = _iamble;
 
@@ -56,6 +60,11 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    self.facebookSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    self.facebookSlider.backgroundColor = [UIColor whiteColor];
+    self.facebookSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
+    self.facebookSlider.delegate = self;
+    
     UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare-logo.png"];
     self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
     self.foursquareSlider.imageView.frame = CGRectMake(0, 0, 256, 70);
@@ -72,6 +81,12 @@
     if ([defaults valueForKey:@"twitter"]) {
         [self.twitterSlider slideRight];
     }
+    
+    self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    self.settingsSlider.backgroundColor = [UIColor whiteColor];
+    self.settingsSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
+    self.settingsSlider.delegate = self;
+
 }
 
 - (void)viewDidUnload
@@ -81,6 +96,7 @@
     [self setFacebookSlider:nil];
     [self setTwitterSlider:nil];
     [self setFoursquareSlider:nil];
+    [self setSettingsSlider:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -90,9 +106,20 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[RecomendationViewController class]]) {
+        RecomendationViewController *controller = (RecomendationViewController *) segue.destinationViewController;
+        controller.auth = self.iamble.auth;
+    }
+}
+
 # pragma mark SliderActivatedDelegate
 
 - (void) sliderWasActivated:(SliderView *)slider {
+    if ([slider.service isEqualToString:@"finished"]) {
+        [self performSegueWithIdentifier:kRecommendSegue sender:self];
+        return;
+    }
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
@@ -100,7 +127,10 @@
         [self.navigationController pushViewController:[self.iamble authorizeAmble:slider.service] animated:YES];
     }
     else {
-        [self.navigationController pushViewController:[self.singly authorize:slider.service] animated:YES];
+        UIViewController *controller = [self.singly authorize:slider.service];
+        if (controller) {
+            [self.navigationController pushViewController:controller animated:YES];
+        }
         self.navigationItem.rightBarButtonItem = nil;
     }
     

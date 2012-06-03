@@ -70,9 +70,18 @@
                                     <view contentMode="scaleToFill" id="jyj-y0-7aG" customClass="SliderView">
                                         <rect key="frame" x="-68" y="326" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Finished" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HoY-fB-AhB">
+                                                <rect key="frame" x="235" y="24" width="65" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="service" value="settings"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="service" value="finished"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" id="bP2-2K-ZAV" customClass="SliderView">
@@ -83,21 +92,6 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="service" value="facebook"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ugI-lK-Z6Y">
-                                        <rect key="frame" x="-12" y="-6" width="97" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="recomend">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="DcQ-1V-4Yw" kind="push" id="AZp-4x-2bO"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -108,7 +102,9 @@
                         <outlet property="facebookSlider" destination="bP2-2K-ZAV" id="xek-39-GsJ"/>
                         <outlet property="foursquareSlider" destination="tDA-0W-7nU" id="bpx-rF-aas"/>
                         <outlet property="selectionScrollView" destination="H00-T8-oyO" id="ZV8-yG-1YO"/>
+                        <outlet property="settingsSlider" destination="jyj-y0-7aG" id="5z5-k5-UF3"/>
                         <outlet property="twitterSlider" destination="YCH-2C-1G0" id="gqK-og-I29"/>
+                        <segue destination="DcQ-1V-4Yw" identifier="recommendSegue" kind="push" id="lW1-dZ-cuM"/>
                     </connections>
                 </viewController>
             </objects>
@@ -173,6 +169,7 @@
                 <relationship kind="outlet" name="facebookSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="foursquareSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="selectionScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="settingsSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="twitterSlider" candidateClass="SliderView"/>
             </relationships>
         </class>
