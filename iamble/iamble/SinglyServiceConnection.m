@@ -7,7 +7,7 @@
 //
 
 #import "SinglyServiceConnection.h"
-#import "GTMHTTPFetcher.h"
+#import "gtm-oauth2/GTMHTTPFetcher.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import <SSKeychain.h>
 #import <JSONKit/JSONKit.h>

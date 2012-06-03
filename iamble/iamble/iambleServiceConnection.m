@@ -8,15 +8,19 @@
 
 #import "iambleServiceConnection.h"
 #import "GTMHTTPFetcher.h"
-#import "GTMOAuth2ViewControllerTouch.h"
+#import "GTMOAuthViewControllerTouch.h"
 #import <SSKeychain.h>
 
 static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
 static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
 static NSString *const kAmble = @"Amble";
 static NSString *const kOAuthScope = @"https://www.googleapis.com/auth/userinfo.email";
+static NSString *const kRequestTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetRequestToken";
+static NSString *const kAuthorizeTokenString = @"https://ambleapp.appspot.com/_ah/OAuthAuthorizeToken";
+static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetAccessToken";
 
-@interface iambleServiceConnection ()
+
+@interface iambleServiceConnection () <NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSString *service;
 @end
 
@@ -33,8 +37,8 @@ static NSString *const kOAuthScope = @"https://www.googleapis.com/auth/userinfo.
     return self;
 }
 
-- (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
-      finishedWithAuth:(GTMOAuth2Authentication *)auth
+- (void)viewController:(GTMOAuthViewControllerTouch *)viewController
+      finishedWithAuth:(GTMOAuthAuthentication *)auth
                  error:(NSError *)error
 {
     if (error != nil)
@@ -56,19 +60,38 @@ static NSString *const kOAuthScope = @"https://www.googleapis.com/auth/userinfo.
         NSLog(@"Access Token: %@", auth.accessToken);
         [SSKeychain setPassword:auth.accessToken forService:kAmble account:auth.userEmail];
         [self.delegate connectedToService:self.service];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://ambleapp.appspot.com/api/mobile"]];
+        [auth authorizeRequest:request];
+        NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+        if(!connection) {
+            NSLog(@"fail connection: %@", connection);
+        }
     }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"%@", response.description);
 }
 
 - (UIViewController *) authorizeAmble:(NSString *)service {
     self.service = service;
-    GTMOAuth2ViewControllerTouch *viewController;
-    viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithScope:kOAuthScope
+    GTMOAuthViewControllerTouch *viewController;
+    viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:kOAuthScope
+                                                               language:nil
+                                                        requestTokenURL:[NSURL URLWithString:kRequestTokenString]
+                                                      authorizeTokenURL:[NSURL URLWithString:kAuthorizeTokenString]
+                                                         accessTokenURL:[NSURL URLWithString:kAccessTokenString]
+                                                         authentication:nil
+                                                         appServiceName:kAmble
+                                                               delegate:self
+                                                       finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+    /*viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:kOAuthScope
                                                                 clientID:kAmbleClientID
                                                             clientSecret:kAmbleClientSecret
                                                         keychainItemName:nil
                                                                 delegate:self
                                                         finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
+    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];*/
     
     return viewController;
 }

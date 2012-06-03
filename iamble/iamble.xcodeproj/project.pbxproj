@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
 		D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079AFE157AF86800117088 /* RecomendationViewController.m */; };
-		D80AC879157B1A6900A1832E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC871157B1A6900A1832E /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC875157B1A6900A1832E /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87C157B1A6900A1832E /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC877157B1A6900A1832E /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87D157B1A6900A1832E /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = D80AC878157B1A6900A1832E /* GTMOAuthViewTouch.xib */; };
+		D80AC880157B1FAC00A1832E /* App_Icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D80AC87F157B1FAC00A1832E /* App_Icon.jpg */; };
 		D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -58,8 +58,6 @@
 		495DDB46F94C451585862A06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8079AFD157AF86800117088 /* RecomendationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecomendationViewController.h; sourceTree = "<group>"; };
 		D8079AFE157AF86800117088 /* RecomendationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecomendationViewController.m; sourceTree = "<group>"; };
-		D80AC870157B1A6900A1832E /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
-		D80AC871157B1A6900A1832E /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
 		D80AC872157B1A6900A1832E /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
 		D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
 		D80AC874157B1A6900A1832E /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
@@ -67,6 +65,7 @@
 		D80AC876157B1A6900A1832E /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
 		D80AC877157B1A6900A1832E /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
 		D80AC878157B1A6900A1832E /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
+		D80AC87F157B1FAC00A1832E /* App_Icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = App_Icon.jpg; sourceTree = "<group>"; };
 		D81FB5E9157AA865008B4C2D /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
 		D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
 		D81FB5EB157AA865008B4C2D /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
@@ -139,8 +138,6 @@
 		D80AC86F157B1A6800A1832E /* gtm-oauth */ = {
 			isa = PBXGroup;
 			children = (
-				D80AC870157B1A6900A1832E /* GTMHTTPFetcher.h */,
-				D80AC871157B1A6900A1832E /* GTMHTTPFetcher.m */,
 				D80AC872157B1A6900A1832E /* GTMOAuthAuthentication.h */,
 				D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */,
 				D80AC874157B1A6900A1832E /* GTMOAuthSignIn.h */,
@@ -228,6 +225,7 @@
 		D8B87D9F1579E76600310696 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D80AC87F157B1FAC00A1832E /* App_Icon.jpg */,
 				D89AE120157A7F6600B74554 /* foursquare-logo.png */,
 				D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */,
 				D8B87DA01579E76600310696 /* iamble-Info.plist */,
@@ -338,6 +336,7 @@
 				D89AE124157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png in Resources */,
 				D81FB5F6157AA865008B4C2D /* GTMOAuth2ViewTouch.xib in Resources */,
 				D80AC87D157B1A6900A1832E /* GTMOAuthViewTouch.xib in Resources */,
+				D80AC880157B1FAC00A1832E /* App_Icon.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +396,6 @@
 				D81FB5F5157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m in Sources */,
 				D81FB616157AD173008B4C2D /* SinglyServiceConnection.m in Sources */,
 				D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */,
-				D80AC879157B1A6900A1832E /* GTMHTTPFetcher.m in Sources */,
 				D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */,
 				D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */,
 				D80AC87C157B1A6900A1832E /* GTMOAuthViewControllerTouch.m in Sources */,
