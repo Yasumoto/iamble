@@ -47,45 +47,53 @@
     [self addGestureRecognizer:leftSwipeGestureRecognizer];
 }
 
+- (void) slideRight {
+    [UIView animateWithDuration:0.5 animations:^{
+        if (self.left) {
+            self.center = CGPointMake(self.center.x + 200,
+                                      self.center.y);
+            self.alpha = 1.0;
+            self.left = NO;
+        }
+        else {
+            self.center = CGPointMake(self.center.x + 50,
+                                      self.center.y);
+            self.center = CGPointMake(self.center.x - 50,
+                                      self.center.y);
+        }
+    } completion:^(BOOL finished){
+        if (finished) {
+            [self.delegate sliderWasActivated:self];
+        }
+    }];
+}
+
+- (void) slideLeft {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    if (!self.left) {
+        self.center = CGPointMake(self.center.x - 200,
+                                  self.center.y);
+        self.alpha = 0.7;
+        self.left = YES;
+    }
+    else {
+        self.center = CGPointMake(self.center.x - 50,
+                                  self.center.y);
+        self.center = CGPointMake(self.center.x + 50,
+                                  self.center.y);
+    }
+    [UIView commitAnimations];
+}
+
 - (void)slidingGesture:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]]){
         UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)gestureRecognizer;
         if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
-            [UIView animateWithDuration:0.5 animations:^{
-            if (self.left) {
-                self.center = CGPointMake(self.center.x + 200,
-                                          self.center.y);
-                self.alpha = 1.0;
-                self.left = NO;
-            }
-            else {
-                self.center = CGPointMake(self.center.x + 50,
-                                          self.center.y);
-                self.center = CGPointMake(self.center.x - 50,
-                                          self.center.y);
-            }
-            } completion:^(BOOL finished){
-                if (finished) {
-                    [self.delegate sliderWasActivated:self];
-                }
-            }];
+            [self slideRight];
         }
         if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDuration:0.5];
-            if (!self.left) {
-                self.center = CGPointMake(self.center.x - 200,
-                                          self.center.y);
-                self.alpha = 0.7;
-                self.left = YES;
-            }
-            else {
-                self.center = CGPointMake(self.center.x - 50,
-                                          self.center.y);
-                self.center = CGPointMake(self.center.x + 50,
-                                          self.center.y);
-            }
-            [UIView commitAnimations];
+            [self slideLeft];
         }
     }
 }
