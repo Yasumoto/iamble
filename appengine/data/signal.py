@@ -11,6 +11,7 @@ import json
 from data import data_utils
 from profiles import models as profile_models
 from google.appengine.api import users
+from utils import decorators
 
 
 class SignalEngine(object):
@@ -42,7 +43,7 @@ class SignalEngine(object):
     """Fires a full data collection and parse process."""
     try:
       json_checkins = data_utils.GetCheckinsForUser(self.ambler)
-    except SinglyAccessTokenNotFoundError:
+    except decorators.SinglyAccessTokenNotFoundError:
       # provide some default crap
       json_checkins = None
       pass
