@@ -54,7 +54,7 @@ static NSString *const kAmble = @"Amble";
         [defaults setValue:auth.userEmail forKey:kAmble];
         
         [SSKeychain setPassword:auth.accessToken forService:kAmble account:auth.userEmail];
-        [self. delegate connectedToService:self.service];
+        [self.delegate connectedToService:self.service];
     }
 }
 

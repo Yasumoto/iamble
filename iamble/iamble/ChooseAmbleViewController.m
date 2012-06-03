@@ -42,6 +42,7 @@
 - (iambleServiceConnection *)iamble {
     if (!_iamble) {
         _iamble = [[iambleServiceConnection alloc] init];
+        _iamble.delegate = self;
     }
     return _iamble;
 }
@@ -91,19 +92,23 @@
 # pragma mark SliderActivatedDelegate
 
 - (void) sliderWasActivated:(SliderView *)slider {
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     if (self.iamble.authenticated == NO) {
         [self.navigationController pushViewController:[self.iamble authorizeAmble:slider.service] animated:YES];
     }
     else {
         [self.navigationController pushViewController:[self.singly authorize:slider.service] animated:YES];
+        self.navigationItem.rightBarButtonItem = nil;
     }
     
 }
 
 #pragma mark iambleServiceConnection
 - (void) connectedToService:(NSString *)service {
-    sleep(1);
     [self.navigationController pushViewController:[self.singly authorize:service] animated:YES];
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 @end
