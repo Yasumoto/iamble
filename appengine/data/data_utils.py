@@ -43,7 +43,7 @@ def GetGooglePlace(lat, lng, name):
   logging.info(result.status_code)
   return result.content
 
-def GetPlacesInArea(lat, lng, miles)
+def GetPlacesInArea(lat, lng, miles):
   coordinate = '%s,%s' % (lat, lng)
   meters = miles * 1609.344
   types = 'cafe|bakery|meal_delivery|meal_takeaway|food|restaurant'
