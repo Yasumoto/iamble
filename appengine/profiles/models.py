@@ -51,7 +51,7 @@ class Ambler(ndb.Model):
   preferences = ndb.StructuredProperty(Preference, repeated=True)
   default_location = ndb.StructuredProperty(Coordinate)
   persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace)
-  setup = ndb.BooleanProperty(default=False)
+  first_time = ndb.BooleanProperty(default=True)
 
   def GetActiveServices(self):
     if self.singly_access_token:

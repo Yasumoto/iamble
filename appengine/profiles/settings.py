@@ -48,11 +48,11 @@ class SettingsHandler(webapp.RequestHandler):
     if user:
       ambler = models.Ambler.get_or_insert(user.email())
 
-      originally_setup = ambler.setup
+      first_time = ambler.first_time
 
       ambler.name_first = form_data['name_first']
       ambler.name_last = form_data['name_last']
-      ambler.setup = True
+      ambler.first_time = False
 
       ambler = self._SavePreference(ambler, 'budget', form_data['budget'])
       ambler = self._SavePreference(ambler, 'walk', form_data['walk'])
@@ -61,7 +61,7 @@ class SettingsHandler(webapp.RequestHandler):
 
       ambler.put()
 
-    if not originally_setup:
+    if first_time:
       self.redirect('/')
     else:
       preferences_dict = dict((p.name, p.value) for p in ambler.preferences)

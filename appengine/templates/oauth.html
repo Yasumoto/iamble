@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleOAuth(iamble).render();
+  $(document).iambleOAuth(iamble, {
+    'continue': $('#continue')
+  }).render();
 {% endblock %}
 
 {% block body %}
@@ -20,4 +22,7 @@
     </div>
   {% endfor %}
   <hr>
+  {% if user.first_time == True  %}
+    <input type="button" value="Continue" id="continue">
+  {% endif %}
 {% endblock %}

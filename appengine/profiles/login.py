@@ -20,8 +20,11 @@ class LoginHandler(webapp.RequestHandler):
     if user:
       ambler = models.Ambler.get_by_id(user.email())
       if ambler:
-        # Redirect to core site
-        self.redirect('/')
+        if ambler.first_time:
+          self.redirect('/oauth')
+        else:
+          # Redirect to core site
+          self.redirect('/')
       else:
         # Account creation includes all Oauth generation
         self.redirect('/create_account?user=%s' % urllib.quote_plus(
