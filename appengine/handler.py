@@ -76,7 +76,6 @@ class BaseHandler(webapp.RequestHandler):
 class RedirectHandler(webapp.RequestHandler):
   """"""
 
-  @RequiresLogin
   def get(self):
     """"""
     template_params = template.get_params()
