@@ -7,9 +7,6 @@
 //
 
 #import "iambleServiceConnection.h"
-#import "GTMHTTPFetcher.h"
-#import "GTMOAuthViewControllerTouch.h"
-#import <SSKeychain.h>
 
 static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
 static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
@@ -32,8 +29,7 @@ static NSString *const kAmbleEndPoint = @"https://ambleapp.appspot.com/api/mobil
 - (id) init {
     self = [super init];
     if (self) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        self.authenticated = ([SSKeychain passwordForService:kAmble account:[defaults valueForKey:kAmble]] != nil);
+        //self.authenticated = ([SSKeychain passwordForService:kAmble account:[defaults valueForKey:kAmble]] != nil);
     }
     return self;
 }
@@ -56,17 +52,22 @@ static NSString *const kAmbleEndPoint = @"https://ambleapp.appspot.com/api/mobil
     {
         // Authentication succeeded
         self.authenticated = YES;
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue:auth.userEmail forKey:kAmble];
-        [SSKeychain setPassword:auth.accessToken forService:kAmble account:auth.userEmail];
-        [self.delegate connectedToService:self.service];
+        self.auth = auth;
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:kAmbleEndPoint]];
         [auth authorizeRequest:request];
-        NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-        if(!connection) {
-            NSLog(@"fail connection: %@", connection);
-        }
+        [NSURLConnection connectionWithRequest:request delegate:self];
+        [self.delegate connectedToService:self.service];
     }
+}
+
+- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
+}
+
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSLog(@"Response: %@", [httpResponse allHeaderFields]);
+    NSLog(@"Status Code: %d", [httpResponse statusCode]);
 }
 
 - (UIViewController *) authorizeAmble:(NSString *)service {
