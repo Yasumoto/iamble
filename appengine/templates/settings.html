@@ -2,6 +2,7 @@
 
 {% block head %}
   <link rel="stylesheet" type="text/css" href="/static/style/settings.css">
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="/static/scripts/settings.js"></script>
 {% endblock %}
 
@@ -11,6 +12,7 @@
     'lastname': $('#lastname'),
     'budget': $('#budget'),
     'distance': $('#distance'),
+    'address': $('#address'),
     'longitude': $('#longitude'),
     'latitude': $('#latitude'),
     'save': $('#save')
@@ -48,13 +50,19 @@
           </td>
         </tr>
         <tr>
+          <td>Address</td>
+          <td>
+            <textarea id="address" name="address">{{ user.default_address }}</textarea>
+          </td>
+        </tr>
+        <tr style="display: none;">
           <td>Latitude</td>
           <td>
             <input type="text" id="longitude" name="longitude"
                 value="{{ user.default_location.longitude }}">
           </td>
         </tr>
-        <tr>
+        <tr style="display: none;">
           <td>Longitude</td>
           <td>
             <input type="text" id="latitude" name="latitude"
