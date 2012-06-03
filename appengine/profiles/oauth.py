@@ -14,6 +14,7 @@ import config
 import handler
 import models
 from data import data_utils
+from utils import singly_utils
 from utils import template
 
 UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
@@ -86,12 +87,8 @@ class OAuth2Handler(webapp.RequestHandler):
     for service in services:
       if service.service_name not in existing_services:
         new_services.append(service)
-    #profile_data = []
-    #for service in existing_services:
-    #  profile_data.append(this_user.GetProfileServiceData(service))
     template_params['new_services'] = new_services
     template_params['existing_services'] = existing_services
-    #template_params['checkin_feed'] = data_utils.GetCheckinsForUser(this_user)
     template.render_template(self, HOME_TEMPLATE, template_params)
 
 class OAuth2CallbackHandler(webapp.RequestHandler):
@@ -100,6 +97,7 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
 
   @handler.RequiresLogin
   def get(self):
+    this_user = models.Ambler.get_by_id(users.get_current_user().email())
     code = self.request.get('code')
     post_params = {
         'client_id': config.CLIENT_ID,
@@ -107,12 +105,8 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
         'code': code,
     }
     post_data = urllib.urlencode(post_params)
-    result = urlfetch.fetch(url=config.SINGLY_API_ACCESS_TOKEN_URL,
-                            payload=post_data,
-                            method=urlfetch.POST,
-                            headers=config.DEFAULT_POST_HEADERS)
-    this_user = models.Ambler.get_by_id(users.get_current_user().email())
-    
-    this_user.singly_access_token = json.loads(result.content)['access_token']
+    status_code, response_object = singly_utils.SinglyPOST(
+        config.SINGLY_API_ACCESS_TOKEN_URL, post_params)
+    this_user.singly_access_token = response_object['access_token']
     this_user.put()
     self.redirect('/oauth')
