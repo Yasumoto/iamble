@@ -1,5 +1,6 @@
 import json
 import logging
+from data import signal
 from urlparse import urlparse
 from utils import template
 
@@ -66,9 +67,9 @@ class BaseHandler(webapp.RequestHandler):
   @RequiresLogin
   def post(self):
     """"""
-    ret = dict()
-    ret['message'] = 'hello world'
-    response = json.dumps(ret)
+    suggestion_generator = signal.SignalEngine()
+    top_suggestion = suggestion_generator.SignalMaster('get_top_default')
+    response = top_suggestion
     self.response.out.write(response)
 
 
