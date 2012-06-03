@@ -21,7 +21,9 @@
       return this;
     },
     'render': function() {
-
+      this.options.messages.live('.status_message').click(function() {
+        $(this).fadeOut();
+      });
       return this;
     },
     'message': function(msg, type) {

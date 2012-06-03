@@ -57,7 +57,6 @@ class BaseHandler(webapp.RequestHandler):
 
   def get_auth(self, template_params):
     """"""
-
     template.render_template(self, HOME_TEMPLATE, template_params)
 
   def get_noauth(self, template_params):
