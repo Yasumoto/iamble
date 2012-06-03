@@ -51,6 +51,51 @@
     'error': function(msg) {
       return this.message(msg, 'error');
     },
+    'getCookie': function(key) {
+      var pairs = document.cookie.split('; ');
+      for (var i = 0, pair; pair = pairs[i] && pairs[i].split('='); i++) {
+        if (decodeURIComponent(pair[0]) === key) {
+          return decodeURIComponent(pair[1] || '');
+        }
+      }
+      return null;
+    },
+    'setCookie': function(name, value, options) {
+      var params = [];
+
+      if (value === null || value === undefined) {
+        options.expires = -1;
+      }
+
+      if (typeof options.expires === 'number') {
+        var days = options.expires, t = options.expires = new Date();
+        t.setDate(t.getDate() + days);
+      }
+
+      params.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+
+      if (options.expires) {
+        params.push('expires=' + options.expires.toUTCString());
+      }
+
+      if (options.expires) {
+        params.push('expires=' + options.expires.toUTCString());
+      }
+
+      if (options.path) {
+        params.push('path=' + options.path);
+      }
+
+      if (options.domain) {
+        params.push('domain=' + options.domain);
+      }
+
+      if (options.secure) {
+        params.push('secure');
+      }
+
+      return (document.cookie = params.join('; '))
+    },
     'bind': function(funct) {
       var self = this;
       return function() {
