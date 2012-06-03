@@ -67,9 +67,9 @@ class BaseHandler(webapp.RequestHandler):
   @RequiresLogin
   def post(self):
     """"""
-    suggestion_generator = signal.SignalEngine()
+    suggestion_generator = signal.SignalEngine(users.get_current_user())
     top_suggestion = suggestion_generator.SignalMaster('get_top_default')
-    response = top_suggestion
+    response = json.dumps(top_suggestion)
     self.response.out.write(response)
 
 

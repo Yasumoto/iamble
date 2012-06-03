@@ -1,6 +1,7 @@
 # __author__ = russ@iamble
 
 import constants
+import caches
 import data_models
 import data_utils
 import logging
@@ -23,6 +24,8 @@ class SignalEngine(object):
       top_suggestion = caches.GetPersistentCache(self.ambler, 1)
       if not top_suggestion:
         return self.FullDataProcess()
+      else:
+        return top_suggestion
     elif call_type == 'get_top_dynamic':
       return self.FindDynamicSuggestions(location)
     elif call_type == 'first_login' or 'cron':
