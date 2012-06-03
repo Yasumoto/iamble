@@ -10,11 +10,12 @@
 #import "GTMHTTPFetcher.h"
 #import "GTMOAuthViewControllerTouch.h"
 #import <SSKeychain.h>
+//#import "GTMOAuth2ViewControllerTouch.h"
 
 static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
 static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
 static NSString *const kAmble = @"Amble";
-static NSString *const kOAuthScope = @"https://www.googleapis.com/auth/userinfo.email";
+static NSString *const kOAuthScope = @"https://ambleapp.appspot.com";
 static NSString *const kRequestTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetRequestToken";
 static NSString *const kAuthorizeTokenString = @"https://ambleapp.appspot.com/_ah/OAuthAuthorizeToken";
 static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetAccessToken";
@@ -58,6 +59,8 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:auth.userEmail forKey:kAmble];
         NSLog(@"Access Token: %@", auth.accessToken);
+        //GTMOAuth2Keychain *gtmKeychain = [GTMOAuth2Keychain defaultKeychain];
+        //[gtmKeychain setValuesForKeysWithDictionary:auth];
         [SSKeychain setPassword:auth.accessToken forService:kAmble account:auth.userEmail];
         [self.delegate connectedToService:self.service];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://ambleapp.appspot.com/api/mobile"]];
@@ -70,30 +73,46 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"%@", response.description);
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSLog(@"%@", httpResponse.description);
+    NSLog(@"Response headers :%@", [httpResponse allHeaderFields]);
+    //NSLog(@"Data?: %@", [httpResponse ]])
+    NSLog(@"Status Code: %d", httpResponse.statusCode);
+}
+
+-(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSString *jimmeh = [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy];
+    NSLog(@"%@", jimmeh);
 }
 
 - (UIViewController *) authorizeAmble:(NSString *)service {
     self.service = service;
     GTMOAuthViewControllerTouch *viewController;
+    GTMOAuthAuthentication *auth = [self myCustomAuth];
     viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:kOAuthScope
                                                                language:nil
                                                         requestTokenURL:[NSURL URLWithString:kRequestTokenString]
                                                       authorizeTokenURL:[NSURL URLWithString:kAuthorizeTokenString]
                                                          accessTokenURL:[NSURL URLWithString:kAccessTokenString]
-                                                         authentication:nil
+                                                         authentication:auth
                                                          appServiceName:kAmble
                                                                delegate:self
                                                        finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    /*viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:kOAuthScope
-                                                                clientID:kAmbleClientID
-                                                            clientSecret:kAmbleClientSecret
-                                                        keychainItemName:nil
-                                                                delegate:self
-                                                        finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];*/
+    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
     
     return viewController;
+}
+
+- (GTMOAuthAuthentication *)myCustomAuth {
+    NSString *myConsumerKey = kAmbleClientID;
+    NSString *myConsumerSecret = kAmbleClientSecret;
+    GTMOAuthAuthentication *auth = [[GTMOAuthAuthentication alloc]
+                                    initWithSignatureMethod:kGTMOAuthSignatureMethodHMAC_SHA1
+                                                consumerKey:myConsumerKey
+                                                 privateKey:myConsumerSecret];
+    auth.serviceProvider = @"Custom Auth Service";
+    [auth setCallback:@"http://ambleapp.appspot.com/_my_callback"];
+    return auth;
 }
 
 @end
