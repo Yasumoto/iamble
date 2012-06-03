@@ -12,7 +12,10 @@
     'buttons': $('#buttons'),
     'thumbsup': $('#thumbsup'),
     'thumbsdown': $('#thumbsdown'),
-    'result': $('#result')
+    'result': $('#result'),
+    'title': $('#title'),
+    'address': $('#address'),
+    'reasons': $('#reasons_list')
   }).render();
 {% endblock %}
 
@@ -23,7 +26,7 @@
     <div id="title">In-N-Out Burger</div>
     <div id="address">2289 Alcalde St, Santa Clara 95054, USA</div>
     <div id="reasons">
-      <ul>
+      <ul id='reasons_list'>
         <li><b>Russ White</b> said "This shit is awesome!"</li>
         <li><b>James Meador</b> checked in here 2 days ago</li>
       </ul>

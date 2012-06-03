@@ -80,11 +80,25 @@
         'dataType': 'json'
       })
 
-      request.done(this.bind(function(msg) {
+      request.done(this.bind(function(suggestion) {
         //this.base.success(JSON.stringify(msg));
+        console.dir(suggestion);
+
         this.responseId = 0;
         this.base.options.messages.empty();
-        this.renderMap(-34.397, 150.644);
+        this.renderMap(suggestion['lat'], suggestion['lng']);
+
+        this.options.title.html(suggestion['name']);
+
+        //this.options.address.html();
+
+        this.options.reasons.clear();
+        this.options.reasons
+          .append($(document.createElement('li'))
+              .append(suggestion['why_description1']))
+          .append($(document.createElement('li'))
+              .append(suggestion['why_description2']))
+
         this.options.result.fadeIn().css("display","inline-block");
       }));
 
