@@ -18,7 +18,6 @@
 @synthesize facebookSlider = _facebookSlider;
 @synthesize twitterSlider = _twitterSlider;
 @synthesize foursquareSlider = _foursquareSlider;
-@synthesize backgroundImage;
 @synthesize selectionScrollView;
 @synthesize singly = _singly;
 @synthesize iamble = _iamble;
@@ -82,7 +81,6 @@
 
 - (void)viewDidUnload
 {
-    [self setBackgroundImage:nil];
     [self setSelectionScrollView:nil];
     [self setTwitterSlider:nil];
     [self setFacebookSlider:nil];
@@ -122,7 +120,4 @@
     self.navigationItem.rightBarButtonItem = nil;
 }
 
-- (IBAction)getRecommendation:(id)sender {
-    
-}
 @end

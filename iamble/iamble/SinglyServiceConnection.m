@@ -124,7 +124,6 @@ static NSString *const kSingly = @"Singly";
                                    if ([decodedData isKindOfClass:[NSDictionary class]]) {
                                        NSDictionary *dict = (NSDictionary *)decodedData;
                                        for (NSString *key in dict) {
-                                           NSLog(@"The key is: %@", key);
                                            [defaults setValue:kSingly forKey:key];
                                        }
                                    }

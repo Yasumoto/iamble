@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
+		D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079AFE157AF86800117088 /* RecomendationViewController.m */; };
 		D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EE157AA865008B4C2D /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		478962866C9C4522951EEAF8 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		495DDB46F94C451585862A06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8079AFD157AF86800117088 /* RecomendationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecomendationViewController.h; sourceTree = "<group>"; };
+		D8079AFE157AF86800117088 /* RecomendationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecomendationViewController.m; sourceTree = "<group>"; };
 		D81FB5E9157AA865008B4C2D /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
 		D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
 		D81FB5EB157AA865008B4C2D /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				D8AE54581579FC32004E2E10 /* SliderView.h */,
 				D8AE54591579FC32004E2E10 /* SliderView.m */,
 				D81FB5E8157AA865008B4C2D /* gtm-oauth2 */,
+				D8079AFD157AF86800117088 /* RecomendationViewController.h */,
+				D8079AFE157AF86800117088 /* RecomendationViewController.m */,
 			);
 			path = iamble;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				D81FB5F4157AA865008B4C2D /* GTMOAuth2SignIn.m in Sources */,
 				D81FB5F5157AA865008B4C2D /* GTMOAuth2ViewControllerTouch.m in Sources */,
 				D81FB616157AD173008B4C2D /* SinglyServiceConnection.m in Sources */,
+				D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
