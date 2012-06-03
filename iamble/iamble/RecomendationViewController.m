@@ -39,10 +39,11 @@ static NSString *const kAmble = @"Amble";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *ambleToken = [SSKeychain passwordForService:kAmble account:[defaults valueForKey:kAmble]];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:ambleURL]];
-    [client getPath:jimmehPath parameters:[NSDictionary dictionaryWithObject:ambleToken forKey:<#(id)#>] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client getPath:jimmehPath parameters:[NSDictionary dictionaryWithObject:ambleToken forKey:@"access_token"] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Hold me taight!");
+        NSLog(@"%@", error);
     }];
 }
 

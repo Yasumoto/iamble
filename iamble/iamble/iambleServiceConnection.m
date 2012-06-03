@@ -14,6 +14,7 @@
 static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
 static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
 static NSString *const kAmble = @"Amble";
+static NSString *const kOAuthScope = @"https://www.googleapis.com/auth/userinfo.email";
 
 @interface iambleServiceConnection ()
 @property (nonatomic, strong) NSString *service;
@@ -52,7 +53,7 @@ static NSString *const kAmble = @"Amble";
         self.authenticated = YES;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:auth.userEmail forKey:kAmble];
-        
+        NSLog(@"Access Token: %@", auth.accessToken);
         [SSKeychain setPassword:auth.accessToken forService:kAmble account:auth.userEmail];
         [self.delegate connectedToService:self.service];
     }
@@ -61,7 +62,7 @@ static NSString *const kAmble = @"Amble";
 - (UIViewController *) authorizeAmble:(NSString *)service {
     self.service = service;
     GTMOAuth2ViewControllerTouch *viewController;
-    viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithScope:@"https://www.googleapis.com/auth/userinfo.email"
+    viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithScope:kOAuthScope
                                                                 clientID:kAmbleClientID
                                                             clientSecret:kAmbleClientSecret
                                                         keychainItemName:nil
