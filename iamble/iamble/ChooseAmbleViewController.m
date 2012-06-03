@@ -8,7 +8,6 @@
 
 #import "ChooseAmbleViewController.h"
 #import "SinglyServiceConnection.h"
-#import "iambleServiceConnection.h"
 
 @interface ChooseAmbleViewController ()
 @property (nonatomic, strong) SinglyServiceConnection *singly;
@@ -93,12 +92,18 @@
 
 - (void) sliderWasActivated:(SliderView *)slider {
     if (self.iamble.authenticated == NO) {
-        [self.navigationController pushViewController:[self.iamble authorizeAmble] animated:YES];
+        [self.navigationController pushViewController:[self.iamble authorizeAmble:slider.service] animated:YES];
     }
     else {
         [self.navigationController pushViewController:[self.singly authorize:slider.service] animated:YES];
     }
     
+}
+
+#pragma mark iambleServiceConnection
+- (void) connectedToService:(NSString *)service {
+    sleep(1);
+    [self.navigationController pushViewController:[self.singly authorize:service] animated:YES];
 }
 
 @end

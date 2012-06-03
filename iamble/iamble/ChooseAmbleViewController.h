@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SliderView.h"
+#import "iambleServiceConnection.h"
 
-@interface ChooseAmbleViewController : UIViewController <UIScrollViewDelegate, SliderActivatedDelegate>
+@interface ChooseAmbleViewController : UIViewController <UIScrollViewDelegate, SliderActivatedDelegate, iAmbleServiceDelegate>
 @property (weak, nonatomic) IBOutlet SliderView *facebookSlider;
 @property (weak, nonatomic) IBOutlet SliderView *twitterSlider;
 @property (weak, nonatomic) IBOutlet SliderView *foursquareSlider;

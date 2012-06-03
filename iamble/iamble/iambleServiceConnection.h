@@ -8,7 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class iambleServiceConnection;
+
+@protocol iAmbleServiceDelegate <NSObject>
+
+-(void)connectedToService:(NSString *)service;
+
+@end
+
 @interface iambleServiceConnection : NSObject
 @property BOOL authenticated;
-- (UIViewController *) authorizeAmble;
+- (UIViewController *) authorizeAmble:(NSString *)service;
+@property (nonatomic, strong) id <iAmbleServiceDelegate> delegate;
 @end

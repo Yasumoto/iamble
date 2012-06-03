@@ -111,17 +111,25 @@ static NSString *const kSingly = @"Singly";
 
 - (IBAction)loadProfiles
 {
-    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:[SSKeychain passwordForService:kSingly account:kSingly]]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:profilesURL];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               JSONDecoder *decoder = [JSONDecoder decoder];
-                               for (NSString *key in [decoder objectWithData:data]) {
-                                   [defaults setValue:kSingly forKey:key];
-                               }
-                           }];
+    NSString *singlyToken = [SSKeychain passwordForService:kSingly account:kSingly];
+    if (singlyToken) {
+        NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:singlyToken]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:profilesURL];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                                   JSONDecoder *decoder = [JSONDecoder decoder];
+                                   NSObject *decodedData = [decoder objectWithData:data];
+                                   if ([decodedData isKindOfClass:[NSDictionary class]]) {
+                                       NSDictionary *dict = (NSDictionary *)decodedData;
+                                       for (NSString *key in dict) {
+                                           NSLog(@"The key is: %@", key);
+                                           [defaults setValue:kSingly forKey:key];
+                                       }
+                                   }
+                               }];
+    }
 }
 
 @end
