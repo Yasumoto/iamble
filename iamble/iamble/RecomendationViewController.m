@@ -8,9 +8,8 @@
 
 #import "RecomendationViewController.h"
 #import <SSKeychain.h>
-#import <AFNetworking/AFNetworking.h>
 #import <CoreLocation/CoreLocation.h>
-#import "LocationManager.h"
+#import <JSONKit.h>
 
 static NSString *const ambleURL = @"https://ambleapp.appspot.com/";
 static NSString *const jimmehPath = @"api/mobile";
@@ -18,7 +17,6 @@ static NSString *const kAmble = @"Amble";
 static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/api/mobile/recommend";
 
 @interface RecomendationViewController ()
-@property (nonatomic, strong) LocationManager *locationManager;
 
 @end
 
@@ -31,7 +29,6 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.locationManager = [[LocationManager alloc] init];
     }
     return self;
 }
@@ -40,19 +37,11 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self sendUpdatedLocation];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *ambleToken = [SSKeychain passwordForService:kAmble account:[defaults valueForKey:kAmble]];
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:ambleURL]];
-    [client setAuthorizationHeaderWithToken:ambleToken];
-    [client getPath:jimmehPath  parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Hold me taight!");
-        NSLog(@"%@", error);
-    }];
+
 }
 
 - (void) sendUpdatedLocation {
@@ -67,6 +56,7 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
 
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
+    //JSONKit
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

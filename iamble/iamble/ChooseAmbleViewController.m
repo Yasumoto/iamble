@@ -9,12 +9,14 @@
 #import "ChooseAmbleViewController.h"
 #import "SinglyServiceConnection.h"
 #import "RecomendationViewController.h"
+#import "LocationManager.h"
 
 static NSString *const kRecommendSegue = @"recommendSegue";
 
 @interface ChooseAmbleViewController ()
 @property (nonatomic, strong) SinglyServiceConnection *singly;
 @property (nonatomic, strong) iambleServiceConnection *iamble;
+@property (nonatomic, strong) LocationManager *locationManager;
 @end
 
 @implementation ChooseAmbleViewController
@@ -25,6 +27,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 @synthesize settingsSlider = _settingsSlider;
 @synthesize singly = _singly;
 @synthesize iamble = _iamble;
+@synthesize locationManager = _locationManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +56,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.locationManager = [[LocationManager alloc] init];
 	// Do any additional setup after loading the view.
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
 	selectionScrollView.clipsToBounds = YES;
@@ -64,13 +68,16 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     self.facebookSlider.backgroundColor = [UIColor whiteColor];
     self.facebookSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
     self.facebookSlider.delegate = self;
+    if ([defaults valueForKey:@"facebook"]) {
+        [self.facebookSlider slideRight:YES];
+    }
     
     UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare-logo.png"];
     self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
     self.foursquareSlider.imageView.frame = CGRectMake(0, 0, 256, 70);
     self.foursquareSlider.delegate = self;
     if ([defaults valueForKey:@"foursquare"]) {
-        [self.foursquareSlider slideRight];
+        [self.foursquareSlider slideRight:YES];
     }
     
     
@@ -79,7 +86,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     self.twitterSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
     self.twitterSlider.delegate = self;
     if ([defaults valueForKey:@"twitter"]) {
-        [self.twitterSlider slideRight];
+        [self.twitterSlider slideRight:YES];
     }
     
     self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
@@ -110,6 +117,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     if ([segue.destinationViewController isKindOfClass:[RecomendationViewController class]]) {
         RecomendationViewController *controller = (RecomendationViewController *) segue.destinationViewController;
         controller.auth = self.iamble.auth;
+        controller.locationManager = self.locationManager;
     }
 }
 

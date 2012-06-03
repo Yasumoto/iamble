@@ -53,25 +53,32 @@
     self.layer.shadowOpacity = 0.5;
 }
 
-- (void) slideRight {
-    [UIView animateWithDuration:0.5 animations:^{
-        if (self.left) {
-            self.center = CGPointMake(self.center.x + 200,
-                                      self.center.y);
-            self.alpha = 1.0;
-            self.left = NO;
-        }
-        else {
-            self.center = CGPointMake(self.center.x + 50,
-                                      self.center.y);
-            self.center = CGPointMake(self.center.x - 50,
-                                      self.center.y);
-        }
-    } completion:^(BOOL finished){
-        if (finished) {
-            [self.delegate sliderWasActivated:self];
-        }
-    }];
+- (void) slideRight:(BOOL)atStartup {
+    if (!atStartup) {
+        [UIView animateWithDuration:0.5 animations:^{
+            if (self.left) {
+                self.center = CGPointMake(self.center.x + 200,
+                                          self.center.y);
+                self.alpha = 1.0;
+                self.left = NO;
+            }
+            else {
+                self.center = CGPointMake(self.center.x + 50,
+                                          self.center.y);
+                self.center = CGPointMake(self.center.x - 50,
+                                          self.center.y);
+            }
+        } completion:^(BOOL finished){
+            if (finished) {
+                [self.delegate sliderWasActivated:self];
+            }
+        }];
+    } else {
+        self.center = CGPointMake(self.center.x + 200,
+                                  self.center.y);
+        self.alpha = 1.0;
+        self.left = NO;
+    }
 }
 
 - (void) slideLeft {
@@ -96,7 +103,7 @@
     if ([gestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]]){
         UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)gestureRecognizer;
         if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
-            [self slideRight];
+            [self slideRight:NO];
         }
         if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
             [self slideLeft];
@@ -105,16 +112,16 @@
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    CGContextRef currentContext = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(currentContext);
-    CGContextSetShadow(currentContext, CGSizeMake(-15, 20), 5);
-    [super drawRect: rect];
-    CGContextRestoreGState(currentContext);
-}*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ CGContextRef currentContext = UIGraphicsGetCurrentContext();
+ CGContextSaveGState(currentContext);
+ CGContextSetShadow(currentContext, CGSizeMake(-15, 20), 5);
+ [super drawRect: rect];
+ CGContextRestoreGState(currentContext);
+ }*/
 
 
 @end

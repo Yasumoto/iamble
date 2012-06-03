@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "gtm-oauth/GTMOAuthAuthentication.h"
+#import "LocationManager.h"
 
 @interface RecomendationViewController : UIViewController
 @property (nonatomic, strong) GTMOAuthAuthentication *auth;
+@property (nonatomic, strong) LocationManager *locationManager;
 @end
