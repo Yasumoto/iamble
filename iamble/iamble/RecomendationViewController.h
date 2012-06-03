@@ -24,7 +24,10 @@
 
 #pragma mark Post-Flyout
 
-@property (weak, nonatomic) IBOutlet UILabel *placeNameLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *placeMapView;
+@property (weak, nonatomic) IBOutlet UIButton *mehButton;
+@property (weak, nonatomic) IBOutlet UIButton *looksGoodButton;
+- (IBAction)newPlaceRequest:(id)sender;
+
 
 @end

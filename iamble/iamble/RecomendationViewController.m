@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <JSONKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "mkPlaceAnotationTHing.h"
 
 
 static NSString *const ambleURL = @"https://ambleapp.appspot.com/";
@@ -24,11 +25,14 @@ static int sliderShiftLeft = 150;
 @interface RecomendationViewController ()
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *sliders;
+@property (strong, nonatomic) CLLocation *placeLocation;
+@property (strong, nonatomic) NSString *choice;
 @end
 
 @implementation RecomendationViewController
-@synthesize placeNameLabel = _placeNameLabel;
 @synthesize placeMapView = _placeMapView;
+@synthesize mehButton = _mehButton;
+@synthesize looksGoodButton = _looksGoodButton;
 @synthesize locationManager = _locationManager;
 @synthesize auth = _auth;
 @synthesize backButton = _backButton;
@@ -39,6 +43,8 @@ static int sliderShiftLeft = 150;
 @synthesize settingsSlider = _settingsSlider;
 @synthesize name = _name;
 @synthesize sliders = _sliders;
+@synthesize placeLocation = _placeLocation;
+@synthesize choice = _choice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,7 +62,6 @@ static int sliderShiftLeft = 150;
     UIImage *img = [UIImage imageNamed:@"logo_header.png"];
     [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
-    [self sendUpdatedLocation];
     self.coffeeSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coffee_bar.png"]];
     self.coffeeSlider.delegate = self;
     
@@ -77,7 +82,8 @@ static int sliderShiftLeft = 150;
     NSLog(@"%@", self.backButton);
     [self mapViewShadow];
     self.placeMapView.hidden = YES;
-    self.placeNameLabel.hidden = YES;
+    self.mehButton.hidden = YES;
+    self.looksGoodButton.hidden = YES;
 }
 
 - (void) mapViewShadow {
@@ -92,7 +98,7 @@ static int sliderShiftLeft = 150;
 
 }
 
-- (void) sendUpdatedLocation {
+/*- (void) sendUpdatedLocation {
     CLLocation *myLocation = self.locationManager.currentLocation;
     NSURL *url = [NSURL URLWithString:[kAmbleLocationEndPoint stringByAppendingFormat:@"?lat=%f&lng=%f", myLocation.coordinate.latitude, myLocation.coordinate.longitude]];
     NSLog(@"URL being sent: %@", url);
@@ -100,7 +106,7 @@ static int sliderShiftLeft = 150;
     NSLog(@"wtf what's the auth token look like?!: %@", self.auth);
     [self.auth authorizeRequest:request];
     [NSURLConnection connectionWithRequest:request delegate:self];
-}
+} we might send just the data over later, for now we're sending choice and location over together */
 
 - (void) sendJimmehChoice:(NSString *) choice{
     CLLocation *myLocation = self.locationManager.currentLocation;
@@ -117,6 +123,23 @@ static int sliderShiftLeft = 150;
     JSONDecoder *decoder = [JSONDecoder decoder];
     NSMutableDictionary *dic = [decoder mutableObjectWithData:data];
     NSLog(@"Dic: %@", dic);
+    CLLocationDegrees lat = [(NSString *)[dic objectForKey:@"lat"] floatValue];
+    CLLocationDegrees lng = [(NSString *)[dic objectForKey:@"lng"] floatValue];
+    self.placeLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+    MKCoordinateSpan span = {.latitudeDelta = .01, .longitudeDelta = .005};
+    MKCoordinateRegion region = {self.placeLocation.coordinate, span};
+    [self.placeMapView setRegion:region];
+    self.placeMapView.frame = CGRectMake(0, 87, 320, 150);
+    
+    mkPlaceAnotationTHing *annote = [[mkPlaceAnotationTHing alloc] init];
+    annote.coordinate = self.placeLocation.coordinate;
+    annote.title = [dic objectForKey:@"name"];
+    annote.subtitle = [dic objectForKey:@"type"];
+    
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    [self.placeMapView addAnnotation:annote];
+    [self.placeMapView selectAnnotation:annote animated:FALSE];
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -151,14 +174,18 @@ static int sliderShiftLeft = 150;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
-    self.placeNameLabel.hidden = FALSE;
     self.placeMapView.hidden = FALSE;
+    self.mehButton.hidden = FALSE;
+    self.looksGoodButton.hidden = FALSE;
     [UIView commitAnimations];
 }
 
 - (void) goBackBetch {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
+    self.placeMapView.hidden = YES;
+    self.mehButton.hidden = YES;
+    self.looksGoodButton.hidden = YES;
     self.chooseSawtoothBanner.center = CGPointMake(self.chooseSawtoothBanner.center.x,
                                                    self.chooseSawtoothBanner.center.y + shiftHeight);
     for (SliderView *slider in self.sliders) {
@@ -183,6 +210,7 @@ static int sliderShiftLeft = 150;
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    self.choice = slider.service;
     [self sendJimmehChoice:slider.service];
     [self pushChoice:slider.service];
 }
@@ -195,8 +223,9 @@ static int sliderShiftLeft = 150;
     [self setChooseSawtoothBanner:nil];
     [self setBackButton:nil];
     [self setSettingsSlider:nil];
-    [self setPlaceNameLabel:nil];
     [self setPlaceMapView:nil];
+    [self setMehButton:nil];
+    [self setLooksGoodButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -206,4 +235,7 @@ static int sliderShiftLeft = 150;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)newPlaceRequest:(id)sender {
+    [self sendJimmehChoice:self.choice];
+}
 @end
