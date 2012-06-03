@@ -11,14 +11,28 @@
     'map': $('#map'),
     'buttons': $('#buttons'),
     'thumbsup': $('#thumbsup'),
-    'thumbsdown': $('#thumbsdown')
+    'thumbsdown': $('#thumbsdown'),
+    'result': $('#result')
   }).render();
 {% endblock %}
 
 {% block body %}
   <div id="map"></div>
-  <div id="buttons"></div>
 
-  <div id="thumbsup"></div>
-  <div id="thumbsdown"></div>
+  <div id="result">
+    <div id="title">In-N-Out Burger</div>
+    <div id="address">2289 Alcalde St, Santa Clara 95054, USA</div>
+    <div id="reasons">
+      <ul>
+        <li><b>Russ White</b> said "This shit is awesome!"</li>
+        <li><b>James Meador</b> checked in here 2 days ago</li>
+      </ul>
+    </div>
+    <div id="vote">
+      <div id="thumbsup"></div>
+      <div id="thumbsdown"></div>
+    </div>
+  </div>
+
+  <div id="buttons"></div>
 {% endblock %}

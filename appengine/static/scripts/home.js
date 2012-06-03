@@ -47,25 +47,30 @@
         button.button().click(this.bind(this.onClick));
       }));
 
-      this.options.thumbsup.button({icons: {primary: 'thumbs-up'}});
-      this.options.thumbsdown.button({icons: {primary: 'thumbs-down'}});
+      this.options.thumbsup
+          .button({icons: {primary: 'thumbs-up'}})
+          .click(this.bind(this.onThumbsUp));
+
+      this.options.thumbsdown
+          .button({icons: {primary: 'thumbs-down'}})
+          .click(this.bind(this.onThumbsDown));
 
       return this;
     },
-    'renderMap' : function() {
+    'renderMap' : function(lat, lng) {
       var myOptions = {
-        zoom: 8,
-        center: new google.maps.LatLng(-34.397, 150.644),
+        zoom: 10,
+        center: new google.maps.LatLng(lat, lng),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
       map = new google.maps.Map(this.options.map.get(0), myOptions);
       this.options.map.fadeIn();
     },
-    'onClick' : function(event) {
-      var target = $(event.currentTarget);
-      var id = target.attr('id');
+    'request': function(id, type, vote) {
       var data = {
-        'type': id
+        'id': id,
+        'type': type,
+        'vote': vote
       };
 
       var request = $.ajax({
@@ -76,14 +81,30 @@
       })
 
       request.done(this.bind(function(msg) {
-        this.base.success(JSON.stringify(msg));
-        this.renderMap();
+        //this.base.success(JSON.stringify(msg));
+        this.responseId = 0;
+        this.base.options.messages.empty();
+        this.renderMap(-34.397, 150.644);
+        this.options.result.fadeIn().css("display","inline-block");
       }));
 
-      request.fail(this.bind(function(jqXHR, textStatus) {
-        this.base.error('Error ' + jqXHR.status);
-        console.error(jqXHR.responseText);
-      }));
+      request.fail(this.bind(this.onAjaxFail));
+    },
+    'onThumbsDown': function() {
+      this.request(this.currentType, this.responseId, -1);
+    },
+    'onThumbsUp': function() {
+      this.request(this.currentType, this.responseId, 1);
+    },
+    'onClick' : function(event) {
+      var target = $(event.currentTarget);
+      var type = target.attr('id');
+      this.currentType = type;
+      this.request(type, null, 0);
+    },
+    'onAjaxFail': function(jqXHR, textStatus) {
+      this.base.error('Error ' + jqXHR.status);
+      console.error(jqXHR.responseText);
     }
   });
 })(jQuery);
