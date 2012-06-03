@@ -28,7 +28,7 @@ def GetCheckinsForUser(ambler):
 def GetGooglePlace(lat, lng, name):
   coordinate = '%s,%s' % (lat, lng)
   name = name
-  types = 'food|restaurant'
+  types = 'cafe|bakery|meal_delivery|meal_takeaway|food|restaurant'
   query_params = {
       'key': config.GOOGLE_API_KEY,
       'location': coordinate,
