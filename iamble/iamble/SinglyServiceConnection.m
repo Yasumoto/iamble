@@ -18,10 +18,20 @@ static NSString *const kSingly = @"Singly";
 @interface SinglyServiceConnection ()
 - (GTMOAuth2Authentication *)singlyAuth;
 - (IBAction)loadProfiles;
+@property (strong, nonatomic) NSString *service;
 @end
 
 @implementation SinglyServiceConnection
 
+@synthesize service = _service;
+
+- (id) init {
+    self = [super init];
+    if (self) {
+        [self loadProfiles];
+    }
+    return self;
+}
 
 - (GTMOAuth2Authentication *)singlyAuth
 {
@@ -49,23 +59,29 @@ static NSString *const kSingly = @"Singly";
 
 - (UIViewController *)authorize:(NSString *)service
 {
-    GTMOAuth2Authentication *auth = [self singlyAuth];
-    
-    // Prepare the Authorization URL. We will pass in the name of the service
-    // that we wish to authorize with.
-    NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.singly.com/oauth/authorize?service=%@", service]];
-    
-    // Display the authentication view
-    GTMOAuth2ViewControllerTouch *viewController;
-    viewController = [ [GTMOAuth2ViewControllerTouch alloc] initWithAuthentication:auth
-                                                                  authorizationURL:authURL
-                                                                  keychainItemName:nil
-                                                                          delegate:self
-                                                                  finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://api.singly.com/"]];
-    
-    // Push the authentication view to our navigation controller instance
-    return viewController;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults valueForKey:service]) {
+        GTMOAuth2Authentication *auth = [self singlyAuth];
+        
+        // Prepare the Authorization URL. We will pass in the name of the service
+        // that we wish to authorize with.
+        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.singly.com/oauth/authorize?service=%@", service]];
+        
+        // Display the authentication view
+        GTMOAuth2ViewControllerTouch *viewController;
+        viewController = [ [GTMOAuth2ViewControllerTouch alloc] initWithAuthentication:auth
+                                                                      authorizationURL:authURL
+                                                                      keychainItemName:nil
+                                                                              delegate:self
+                                                                      finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+        [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://api.singly.com/"]];
+        
+        self.service = service;
+        
+        // Push the authentication view to our navigation controller instance
+        return viewController;
+    }
+    return nil;
 }
 
 
@@ -86,17 +102,15 @@ static NSString *const kSingly = @"Singly";
     else
     {
         // Authentication succeeded
+        [SSKeychain setPassword:auth.accessToken forService:kSingly account:kSingly];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue:auth.userEmail forKey:kSingly];
-        
-        [SSKeychain setPassword:auth.accessToken forService:kSingly account:auth.userEmail];
+        [defaults setValue:kSingly forKey:self.service];
     }
 }
 
 - (IBAction)loadProfiles
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:[SSKeychain passwordForService:kSingly account:[defaults valueForKey:kSingly]]]];
+    NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:[SSKeychain passwordForService:kSingly account:kSingly]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:profilesURL];
     
     [NSURLConnection sendAsynchronousRequest:request
@@ -105,13 +119,6 @@ static NSString *const kSingly = @"Singly";
                                
                                NSString *responseBody = [ [NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                                NSLog(@"Received Response: %@", responseBody);
-                               
-                               UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Profiles Response"
-                                                                                    message:responseBody
-                                                                                   delegate:self
-                                                                          cancelButtonTitle:@"Dismiss"
-                                                                          otherButtonTitles:nil];
-                               [alertView show];
                                
                            }];
 }
