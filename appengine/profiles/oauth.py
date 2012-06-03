@@ -75,8 +75,7 @@ class OAuth2Handler(webapp.RequestHandler):
 
   SERVICS = [FacebookService,
              TwitterService,
-             FoursquareService,
-             GoogleContactsService]
+             FoursquareService]
 
 
   @handler.RequiresLogin

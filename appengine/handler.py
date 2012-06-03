@@ -3,6 +3,7 @@ import logging
 from data import signal
 from urlparse import urlparse
 from utils import template
+from profiles import models
 
 from google.appengine.api import oauth
 from google.appengine.api import users
@@ -67,7 +68,23 @@ class BaseHandler(webapp.RequestHandler):
   @RequiresLogin
   def post(self):
     """"""
-    suggestion_generator = signal.SignalEngine(users.get_current_user())
+    user = users.get_current_user()
+
+    suggestion_type = self.request.get('type')
+    suggestion_id = self.request.get('id')
+    suggestion_vote = self.request.get('vote')
+
+    ambler = models.Ambler.get_by_id(user.email())
+
+    if suggestion_vote is not 0:
+      # save vote and id
+      if suggestion_vote > 0:
+        ambler.recent_likes.append(suggestion_id)
+      if suggestion_vote < 0:
+        ambler.recent_dislikes.append(suggestion_id)
+      ambler.put()
+
+    suggestion_generator = signal.SignalEngine(user)
     top_suggestion = suggestion_generator.SignalMaster('get_top_default')
     response = json.dumps(top_suggestion)
     self.response.out.write(response)
