@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
 		D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079AFE157AF86800117088 /* RecomendationViewController.m */; };
-		D80AC879157B1A6900A1832E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC871157B1A6900A1832E /* GTMHTTPFetcher.m */; };
-		D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */; };
-		D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC875157B1A6900A1832E /* GTMOAuthSignIn.m */; };
-		D80AC87C157B1A6900A1832E /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC877157B1A6900A1832E /* GTMOAuthViewControllerTouch.m */; };
+		D80AC879157B1A6900A1832E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC871157B1A6900A1832E /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC875157B1A6900A1832E /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D80AC87C157B1A6900A1832E /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC877157B1A6900A1832E /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87D157B1A6900A1832E /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = D80AC878157B1A6900A1832E /* GTMOAuthViewTouch.xib */; };
 		D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EA157AA865008B4C2D /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB5EC157AA865008B4C2D /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
