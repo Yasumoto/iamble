@@ -62,9 +62,11 @@ static int sliderShiftLeft = 150;
     self.sitdownSlider.delegate = self;
     
     self.sliders = [NSArray arrayWithObjects:self.coffeeSlider, self.quickbiteSlider, self.sitdownSlider, nil];
-    self.navigationItem.leftBarButtonItem = nil;
-    UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:@"app_icon.png"];
+    
+    UIImage *backButtonImage = [UIImage imageWithContentsOfFile:@"bg.png"];
+    NSLog(@"%@", backButtonImage);
     self.backButton = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(goBackBetch)];
+    NSLog(@"%@", self.backButton);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
