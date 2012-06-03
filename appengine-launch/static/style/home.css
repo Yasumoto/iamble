@@ -20,6 +20,11 @@
   text-align: center;
 }
 
+.blurbcontent {
+  width: 400px;
+  display: inline-block;
+}
+
 div#iphonemock1 {
   display: inline-block;
   padding-top: 15px;
