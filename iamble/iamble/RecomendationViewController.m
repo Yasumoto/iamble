@@ -32,6 +32,7 @@ static int sliderShiftLeft = 150;
 @synthesize coffeeSlider = _coffeeSlider;
 @synthesize quickbiteSlider = _quickbiteSlider;
 @synthesize sitdownSlider = _sitdownSlider;
+@synthesize settingsSlider = _settingsSlider;
 @synthesize name = _name;
 @synthesize sliders = _sliders;
 
@@ -61,7 +62,10 @@ static int sliderShiftLeft = 150;
     self.sitdownSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sitdown_bar.png"]];
     self.sitdownSlider.delegate = self;
     
-    self.sliders = [NSArray arrayWithObjects:self.coffeeSlider, self.quickbiteSlider, self.sitdownSlider, nil];
+    self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_bar.png"]];
+    self.settingsSlider.delegate = self;
+    
+    self.sliders = [NSArray arrayWithObjects:self.coffeeSlider, self.quickbiteSlider, self.sitdownSlider, self.settingsSlider, nil];
     
     UIImage *backButtonImage = [UIImage imageWithContentsOfFile:@"bg.png"];
     NSLog(@"%@", backButtonImage);
@@ -78,6 +82,7 @@ static int sliderShiftLeft = 150;
     NSURL *url = [NSURL URLWithString:[kAmbleLocationEndPoint stringByAppendingFormat:@"?lat=%f&lng=%f", myLocation.coordinate.latitude, myLocation.coordinate.longitude]];
     NSLog(@"URL being sent: %@", url);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSLog(@"wtf what's the auth token look like?!: %@", self.auth);
     [self.auth authorizeRequest:request];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -138,6 +143,10 @@ static int sliderShiftLeft = 150;
 }
 
 - (void) sliderWasActivated:(SliderView *)slider {
+    if ([slider.service isEqualToString:@"settings"]) {
+        [self dismissModalViewControllerAnimated:YES];
+        return;
+    }
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
@@ -152,6 +161,7 @@ static int sliderShiftLeft = 150;
     [self setSitdownSlider:nil];
     [self setChooseSawtoothBanner:nil];
     [self setBackButton:nil];
+    [self setSettingsSlider:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -89,7 +89,12 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     
     self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finish_bar.png"]];
     self.settingsSlider.delegate = self;
+    self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
 
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+        self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
 }
 
 - (void)viewDidUnload
@@ -142,6 +147,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 
 #pragma mark iambleServiceConnection
 - (void) connectedToAmble:(NSString *)service {
+    self.singly.ambleAuth = self.iamble.auth;
     [self.navigationController pushViewController:[self.singly authorize:service] animated:YES];
     self.navigationItem.rightBarButtonItem = nil;
 }

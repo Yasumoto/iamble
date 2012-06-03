@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
+		D8056D65157BF7B7006A9C6B /* welcome_screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D64157BF7B7006A9C6B /* welcome_screen@2x.png */; };
+		D8056D68157BF7D0006A9C6B /* welcome_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D67157BF7D0006A9C6B /* welcome_screen.png */; };
+		D8056D6A157BF7D9006A9C6B /* settings_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D69157BF7D9006A9C6B /* settings_bar@2x.png */; };
+		D8056D6C157BF7E6006A9C6B /* settings_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D6B157BF7E6006A9C6B /* settings_bar.png */; };
 		D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079AFE157AF86800117088 /* RecomendationViewController.m */; };
 		D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC875157B1A6900A1832E /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -78,6 +82,10 @@
 /* Begin PBXFileReference section */
 		478962866C9C4522951EEAF8 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		495DDB46F94C451585862A06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8056D64157BF7B7006A9C6B /* welcome_screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_screen@2x.png"; sourceTree = "<group>"; };
+		D8056D67157BF7D0006A9C6B /* welcome_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_screen.png; sourceTree = "<group>"; };
+		D8056D69157BF7D9006A9C6B /* settings_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bar@2x.png"; sourceTree = "<group>"; };
+		D8056D6B157BF7E6006A9C6B /* settings_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_bar.png; sourceTree = "<group>"; };
 		D8079AFD157AF86800117088 /* RecomendationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecomendationViewController.h; sourceTree = "<group>"; };
 		D8079AFE157AF86800117088 /* RecomendationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecomendationViewController.m; sourceTree = "<group>"; };
 		D80AC872157B1A6900A1832E /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
@@ -217,6 +225,10 @@
 				D846541D157BD37F003F85C6 /* coffee_bar@2x.png */,
 				D8465421157BD38B003F85C6 /* sitdown_bar@2x.png */,
 				D846541E157BD37F003F85C6 /* quickbite_bar@2x.png */,
+				D8056D69157BF7D9006A9C6B /* settings_bar@2x.png */,
+				D8056D6B157BF7E6006A9C6B /* settings_bar.png */,
+				D8056D64157BF7B7006A9C6B /* welcome_screen@2x.png */,
+				D8056D67157BF7D0006A9C6B /* welcome_screen.png */,
 				D846541B157BD363003F85C6 /* sharkteeth_choose@2x.png */,
 				D8465423157BD3DD003F85C6 /* coffee_bar.png */,
 				D8465424157BD3DD003F85C6 /* quickbite_bar.png */,
@@ -442,6 +454,10 @@
 				D8465428157BD3DE003F85C6 /* quickbite_bar.png in Resources */,
 				D8465429157BD3DE003F85C6 /* sharkteeth_choose.png in Resources */,
 				D846542A157BD3DE003F85C6 /* sitdown_bar.png in Resources */,
+				D8056D65157BF7B7006A9C6B /* welcome_screen@2x.png in Resources */,
+				D8056D68157BF7D0006A9C6B /* welcome_screen.png in Resources */,
+				D8056D6A157BF7D9006A9C6B /* settings_bar@2x.png in Resources */,
+				D8056D6C157BF7E6006A9C6B /* settings_bar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

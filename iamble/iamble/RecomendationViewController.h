@@ -13,10 +13,11 @@
 
 @interface RecomendationViewController : UIViewController <SliderActivatedDelegate>
 @property (nonatomic, strong) GTMOAuthAuthentication *auth;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIImageView *chooseSawtoothBanner;
 @property (weak, nonatomic) IBOutlet SliderView *coffeeSlider;
 @property (weak, nonatomic) IBOutlet SliderView *quickbiteSlider;
 @property (weak, nonatomic) IBOutlet SliderView *sitdownSlider;
+@property (weak, nonatomic) IBOutlet SliderView *settingsSlider;
 @property (nonatomic, strong) LocationManager *locationManager;
 @end

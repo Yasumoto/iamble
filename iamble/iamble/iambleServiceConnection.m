@@ -31,16 +31,19 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
         // Get the saved authentication, if any, from the keychain.
         GTMOAuthAuthentication *auth = [self myCustomAuth];
         if (auth) {
-            self.authenticated = [GTMOAuthViewControllerTouch authorizeFromKeychainForName:kAmble
-                                                                      authentication:auth];
+
             // if the auth object contains an access token, didAuth is now true
+            if ([auth canAuthorize]){
+                self.authenticated = [GTMOAuthViewControllerTouch authorizeFromKeychainForName:kAmble
+                                                                                authentication:auth];
+                self.auth = auth;
+            }
         }
         
         // retain the authentication object, which holds the auth tokens
         //
         // we can determine later if the auth object contains an access token
         // by calling its -canAuthorize method
-        self.auth = auth;
     }
     return self;
 }

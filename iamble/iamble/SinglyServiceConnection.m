@@ -16,8 +16,7 @@
 static NSString *const kSinglyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
 static NSString *const kSinglyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
 static NSString *const kSingly = @"Singly";
-static NSString *const kAmbleHost = @"https://ambleapp.appspot.com";
-static NSString *const kAmbleNewServiceEndPoint = @"/api/mobile/new_service";
+static NSString *const kAmbleNewServiceEndPoint = @"https://ambleapp.appspot.com/api/mobile/new_service";
 
 @interface SinglyServiceConnection ()
 - (GTMOAuth2Authentication *)singlyAuth;
@@ -28,6 +27,7 @@ static NSString *const kAmbleNewServiceEndPoint = @"/api/mobile/new_service";
 @implementation SinglyServiceConnection
 
 @synthesize service = _service;
+@synthesize ambleAuth = _ambleAuth;
 
 - (id) init {
     self = [super init];
@@ -114,7 +114,24 @@ static NSString *const kAmbleNewServiceEndPoint = @"/api/mobile/new_service";
 }
 
 - (void) sendJimmehTehToken:(NSString *)accessToken {
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kAmbleHost]];
+    NSURL *url = [NSURL URLWithString:[kAmbleNewServiceEndPoint stringByAppendingFormat:@"?singly_access_token=%@", accessToken]];
+    NSLog(@"URL being sent for Jimmeh singly token: %@", url);
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [self.ambleAuth authorizeRequest:request];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
+    JSONDecoder *decoder = [JSONDecoder decoder];
+    NSMutableDictionary *dic = [decoder mutableObjectWithData:data];
+    NSLog(@"Dic: %@", dic);
+}
+
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSLog(@"Response: %@", [httpResponse allHeaderFields]);
+    NSLog(@"Status Code: %d", [httpResponse statusCode]);
 }
 
 - (IBAction)loadProfiles

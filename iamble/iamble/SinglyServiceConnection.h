@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GTMOAuthViewControllerTouch.h"
 
-@interface SinglyServiceConnection : NSObject
+@interface SinglyServiceConnection : NSObject <NSURLConnectionDelegate>
 - (UIViewController *)authorize:(NSString *)service;
+@property (nonatomic, strong) GTMOAuthAuthentication *ambleAuth;
 @end
