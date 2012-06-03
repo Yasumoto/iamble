@@ -42,7 +42,7 @@ h2 {
 }
 
 #bodyheader {
-  height: 50px;
+  height: 90px;
   padding: 10px;
 }
 
@@ -75,6 +75,14 @@ h2 {
   font-size: 13px;
   top: 10px;
   right: 10px;
+}
+
+#bodyheader .right img {
+  vertical-align: bottom;
+}
+
+#bodyheader .right a {
+  text-decoration: none;
 }
 
 #bodycontent {
