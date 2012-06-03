@@ -24,7 +24,7 @@ class SignalEngine(object):
   def SignalMaster(self, call_type, location=None):
     """Master function to govern data collection, parsing, and return."""
     if call_type == 'get_top_default':
-      top_suggestion = caches.GetPersistentCache(self.ambler, 1)
+      top_suggestion = None #caches.GetPersistentCache(self.ambler, 1)
       if not top_suggestion:
         return self.FullDataProcess()
       else:
@@ -48,7 +48,7 @@ class SignalEngine(object):
       pass
     self.ProcessCheckins(json_checkins)
     caches.SetPersistentCache(self.ambler, 10)
-    top_suggestion = caches.GetPersistentCache(self.ambler, 1)
+    top_suggestion = None #caches.GetPersistentCache(self.ambler, 1)
     return top_suggestion
 
   def ProcessCheckins(self, json_checkins):
