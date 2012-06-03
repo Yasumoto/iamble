@@ -122,4 +122,7 @@
     self.navigationItem.rightBarButtonItem = nil;
 }
 
+- (IBAction)getRecommendation:(id)sender {
+    
+}
 @end
