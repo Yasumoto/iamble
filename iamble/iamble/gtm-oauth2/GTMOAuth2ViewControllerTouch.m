@@ -53,7 +53,7 @@ finishedWithAuth:(GTMOAuth2Authentication *)auth
 @synthesize request = request_,
             backButton = backButton_,
             forwardButton = forwardButton_,
-            navButtonsView = navButtonsView_,
+            //navButtonsView = navButtonsView_,
             rightBarButtonItem = rightBarButtonItem_,
             webView = webView_;
 
@@ -228,9 +228,9 @@ finishedWithAuth:(GTMOAuth2Authentication *)auth
 - (void)dealloc {
   [webView_ setDelegate:nil];
 
-  [backButton_ release];
-  [forwardButton_ release];
-  [navButtonsView_ release];
+  //[backButton_ release];
+  //[forwardButton_ release];
+  //[navButtonsView_ release];
   [rightBarButtonItem_ release];
   [webView_ release];
   [signIn_ release];
@@ -365,7 +365,7 @@ finishedWithAuth:(GTMOAuth2Authentication *)auth
     [[self webView] loadHTMLString:html baseURL:nil];
   }
 
-  rightBarButtonItem_.customView = navButtonsView_;
+  //rightBarButtonItem_.customView = navButtonsView_;
   self.navigationItem.rightBarButtonItem = rightBarButtonItem_;
 }
 
@@ -656,6 +656,7 @@ static Class gSignInClass = Nil;
 
 - (void)viewDidAppear:(BOOL)animated {
   didViewAppear_ = YES;
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor colorWithRed:191.0 green:219.0 blue:103.0 alpha:1.0]];
   [super viewDidAppear:animated];
 }
 
@@ -697,8 +698,8 @@ static Class gSignInClass = Nil;
 }
 
 - (void)updateUI {
-  [backButton_ setEnabled:[[self webView] canGoBack]];
-  [forwardButton_ setEnabled:[[self webView] canGoForward]];
+  //[backButton_ setEnabled:[[self webView] canGoBack]];
+  //[forwardButton_ setEnabled:[[self webView] canGoForward]];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {

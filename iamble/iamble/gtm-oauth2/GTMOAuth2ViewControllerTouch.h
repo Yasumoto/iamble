@@ -53,7 +53,7 @@ _EXTERN NSString* const kGTMOAuth2KeychainErrorDomain       _INITIALIZE_AS(@"com
  @private
   UIButton *backButton_;
   UIButton *forwardButton_;
-  UIView *navButtonsView_;
+  //UIView *navButtonsView_;
   UIBarButtonItem *rightBarButtonItem_;
   UIWebView *webView_;
 

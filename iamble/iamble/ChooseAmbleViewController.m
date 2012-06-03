@@ -60,7 +60,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     self.locationManager = [[LocationManager alloc] init];
-
+    
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
@@ -90,11 +90,11 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finish_bar.png"]];
     self.settingsSlider.delegate = self;
     self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-        self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
+    self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
 }
 
 - (void)viewDidUnload
@@ -133,7 +133,8 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     if (self.iamble.authenticated == NO) {
-        [self.navigationController pushViewController:[self.iamble authorizeAmble:slider.service] animated:YES];
+        UIViewController *ambleAuth = [self.iamble authorizeAmble:slider.service];
+        [self.navigationController pushViewController:ambleAuth animated:YES];
         self.navigationItem.rightBarButtonItem = nil;
     }
     else {

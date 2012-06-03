@@ -87,9 +87,9 @@ _EXTERN NSString* const kGTLOAuthKeychainErrorDomain       _INITIALIZE_AS(@"com.
 
 @interface GTMOAuthViewControllerTouch : UIViewController<UINavigationControllerDelegate, UIWebViewDelegate> {
  @private
-  UIButton *backButton_;
-  UIButton *forwardButton_;
-  UIView *navButtonsView_;
+  //UIButton *backButton_;
+  //UIButton *forwardButton_;
+  //UIView *navButtonsView_;
   UIBarButtonItem *rightBarButtonItem_;
   UIWebView *webView_;
   // The object responsible for the sign-in networking sequence; it holds

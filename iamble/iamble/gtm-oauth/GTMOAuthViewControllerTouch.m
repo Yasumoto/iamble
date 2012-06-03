@@ -86,9 +86,9 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
 @implementation GTMOAuthViewControllerTouch
 
 @synthesize request = request_;
-@synthesize backButton = backButton_;
-@synthesize forwardButton = forwardButton_;
-@synthesize navButtonsView = navButtonsView_;
+//@synthesize backButton = backButton_;
+//@synthesize forwardButton = forwardButton_;
+//@synthesize navButtonsView = navButtonsView_;
 @synthesize rightBarButtonItem = rightBarButtonItem_;
 @synthesize keychainApplicationServiceName = keychainApplicationServiceName_;
 @synthesize initialHTMLString = initialHTMLString_;
@@ -236,9 +236,9 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
 #endif
 
 - (void)dealloc {
-  [backButton_ release];
-  [forwardButton_ release];
-  [navButtonsView_ release];
+  //[backButton_ release];
+  //[forwardButton_ release];
+  //[navButtonsView_ release];
   [rightBarButtonItem_ release];
   [signIn_ setDelegate:nil];
   [signIn_ release];
@@ -338,11 +338,11 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
   [self setWebView:webView];
   [webView setDelegate:self];
 
-  UIColor *normalColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-  UIColor *dimColor = [UIColor colorWithRed:152./255. green:175./255. blue:243./255. alpha:0.6];
+  //UIColor *normalColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+  //UIColor *dimColor = [UIColor colorWithRed:152./255. green:175./255. blue:243./255. alpha:0.6];
 
-  UIFont *buttonFont = [UIFont boldSystemFontOfSize:kButtonFontHeight];
-  CGRect backButtonFrame = CGRectMake(0, 0, kButtonWidth, kButtonHeight);
+  //UIFont *buttonFont = [UIFont boldSystemFontOfSize:kButtonFontHeight];
+  /*CGRect backButtonFrame = CGRectMake(0, 0, kButtonWidth, kButtonHeight);
   UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [backButton setFrame:backButtonFrame];
   [backButton oauthCompatibilitySetFont:buttonFont];
@@ -371,14 +371,14 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
                     action:@selector(goForward)
           forControlEvents:UIControlEventTouchUpInside];
   [forwardButton setEnabled:NO];
-  [self setForwardButton:forwardButton];
+  [self setForwardButton:forwardButton];*/
 
   CGRect navFrame =
     CGRectMake(0, 0, kButtonXMargin + 2*kButtonWidth, kButtonHeight);
   UIView *navButtonsView = [[[UIView alloc] initWithFrame:navFrame] autorelease];
   [navButtonsView setBackgroundColor:[UIColor clearColor]];
-  [navButtonsView addSubview:backButton];
-  [navButtonsView addSubview:forwardButton];
+  //[navButtonsView addSubview:backButton];
+  //[navButtonsView addSubview:forwardButton];
   [self setNavButtonsView:navButtonsView];
 
   UIBarButtonItem *rightBarButtonItem =
@@ -414,7 +414,7 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
     [[self webView] loadHTMLString:html baseURL:nil];
   }
 
-  [rightBarButtonItem_ setCustomView:navButtonsView_];
+  //[rightBarButtonItem_ setCustomView:navButtonsView_];
   [[self navigationItem] setRightBarButtonItem:rightBarButtonItem_];
 }
 
@@ -640,6 +640,10 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
   [super viewWillAppear:animated];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
   if (!didDismissSelf_) {
     // We are not popping ourselves, so presumably we are being popped by the
@@ -672,8 +676,8 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
 }
 
 - (void)updateUI {
-  [backButton_ setEnabled:[[self webView] canGoBack]];
-  [forwardButton_ setEnabled:[[self webView] canGoForward]];
+  //[backButton_ setEnabled:[[self webView] canGoBack]];
+  //[forwardButton_ setEnabled:[[self webView] canGoForward]];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
