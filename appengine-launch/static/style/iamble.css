@@ -1,0 +1,114 @@
+body {
+  background: #000000 url('/static/images/vichy.png');
+}
+
+body, table, td {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  font-size: 50px;
+  text-shadow: 1px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'GoodDog';
+}
+
+.status_message {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding:15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.status_message.info {
+  color: #00529B;
+  background-color: #BDE5F8;
+  background-image: url('/static/images/info.png');
+}
+
+.status_message.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image:url('/static/images/success.png');
+}
+
+.status_message.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url('/static/images/warning.png');
+}
+
+.status_message.error {
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('/static/images/error.png');
+}
+
+#bodyheader {
+  height: 90px;
+  padding: 10px;
+}
+
+#bodyheader #logo {
+  font-size: 48px;
+  font-family: 'Lobster', cursive;
+  text-shadow: 2px -2px 3px #CCC;
+  width: 200px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+#bodyheader #logo span.prefix {
+  color: #888;
+}
+
+#bodyheader #logo a,
+#bodyheader #logo a:hover,
+#bodyheader #logo a:active,
+#bodyheader #logo a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+#bodyheader .right {
+  position: absolute;
+  font-size: 13px;
+  top: 10px;
+  right: 10px;
+}
+
+#bodyheader .right img {
+  vertical-align: bottom;
+}
+
+#bodyheader .right a {
+  text-decoration: none;
+}
+
+#bodycontent {
+  padding: 10px;
+  
+}
+
+#bodycontent #messages {
+  display: inline-block;
+}
+
+#bodycontent .form {
+  display: inline-block;
+  text-align: left;
+}
+
+#bodyfooter {
+  text-align: center;
+  padding: 10px;
+  color: #CCC;
+  font-size: 11px;
+}

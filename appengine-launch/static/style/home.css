@@ -1,0 +1,34 @@
+#buttons {
+  text-align: center;
+}
+
+#buttons div {
+  margin: 10px;
+}
+
+#signup {
+  margin: 0px auto;
+  padding: 10px;
+  width: 650px;
+  color: #ddd;
+  background-color:rgba(0,0,0,0.5);
+  border: 2px solid #C0C0C0;
+  border-radius: 15px;
+  -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+	box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+}
+
+div#thumbsup, div#thumbsdown {
+  height: 24px;
+  width: 32px;
+  display: none;
+}
+
+.ui-button .ui-icon.thumbs-up {
+  background-image: url('/static/images/up.png');
+}
+
+.ui-button .ui-icon.thumbs-down {
+  background-image: url('/static/images/down.png');
+}
