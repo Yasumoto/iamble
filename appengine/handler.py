@@ -3,6 +3,7 @@ import logging
 from urlparse import urlparse
 from utils import template
 
+from google.appengine.api import oauth
 from google.appengine.api import users
 from google.appengine.ext import webapp
 
@@ -24,6 +25,20 @@ def RequiresLogin(handler_method):
     self.redirect(config.LOGIN_URL)
 
   return CheckLogin
+
+
+def RequiresOAuth(handler_method):
+
+  def CheckOAuth(self, *args):
+    try:
+      user = oauth.get_current_user()
+      if user:
+        self.response.set_status(200, message='joe smith likes hair dryers')
+        return handler_method(self, *args)
+    except oauth.Error:
+      self.response.set_status(400, message='joe smith likes girly clothes')
+  
+  return CheckOAuth
 
 
 class BaseHandler(webapp.RequestHandler):

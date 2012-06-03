@@ -2,8 +2,11 @@
 
 import handler
 import wsgiref.handlers
-from profiles import login, create_account, oauth
+
 from google.appengine.ext import webapp
+
+from api import mobile_endpoint
+from profiles import login, create_account, oauth
 
 URL_MAPPINGS = [
     ('/', handler.BaseHandler),
@@ -12,6 +15,7 @@ URL_MAPPINGS = [
     (oauth.OAuth2CallbackHandler.URL_PATH, oauth.OAuth2CallbackHandler),
     (login.LoginHandler.URL_PATH, login.LoginHandler),
     (login.LogoutHandler.URL_PATH, login.LogoutHandler),
+    (mobile_endpoint.MobileHandler.URL_PATH, mobile_endpoint.MobileHandler),
     (create_account.CreateAccountHandler.URL_PATH, create_account.CreateAccountHandler)]
 
 def main():
