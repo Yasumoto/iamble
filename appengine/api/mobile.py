@@ -37,11 +37,25 @@ class RecommendationHandler(webapp.RequestHandler):
   def get(self, *args):
     user = oauth.get_current_user()
     ambler = models.Ambler.get_by_id(user.email())
-    place = {'lat': 37.7589071,
-             'lng': -122.4167398,
-             'name': 'Mr. Pickle\'s Coffee Shop',
-             'type': 'coffee',
-             'cost': 1,
-             'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
-    self.response.out.write(json.dumps(place))
+    places = []
+    place1 = {'lat': 37.7589071,
+              'lng': -122.4167398,
+              'name': 'Mr. Pickle\'s Coffee Shop',
+              'type': 'coffee',
+              'cost': 1,
+              'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
+    place2 = {'lat': 38.7589071,
+              'lng': -123.4167398,
+              'name': 'Fake Place 2',
+              'type': 'coffee',
+              'cost': 1,
+              'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
+    place3 = {'lat': 39.7589071,
+              'lng': -121.4167398,
+              'name': 'Fake Place 2',
+              'type': 'coffee',
+              'cost': 1,
+              'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
+    
+    self.response.out.write(json.dumps([place1,place2,place3]))
 

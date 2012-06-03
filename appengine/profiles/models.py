@@ -37,7 +37,7 @@ class CachedPlace(ndb.Model):
   cost = ndb.IntegerProperty(choices=[1,2,3,4,5])
   why_description1 = ndb.StringProperty()
   why_description2 = ndb.StringProperty()
-  cache_timestamp = ndb.DateTimeProperty()
+  cache_timestamp = ndb.DateTimeProperty(auto_now=True)
 
 
 class Ambler(ndb.Model):
