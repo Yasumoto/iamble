@@ -26,7 +26,7 @@ class LoginHandler(webapp.RequestHandler):
           self.redirect('/')
           return
       else:
-        ambler = models.Ambler(user.email())
+        ambler = models.Ambler.get_or_insert(user.email())
         ambler.put()
       self.redirect('/oauth')
     else:
