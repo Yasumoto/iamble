@@ -12,7 +12,7 @@
 #import "SliderView.h"
 #import <MapKit/MapKit.h>
 
-@interface RecomendationViewController : UIViewController <SliderActivatedDelegate>
+@interface RecomendationViewController : UIViewController <SliderActivatedDelegate, MKMapViewDelegate>
 @property (nonatomic, strong) GTMOAuthAuthentication *auth;
 @property (weak, nonatomic) UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIImageView *chooseSawtoothBanner;

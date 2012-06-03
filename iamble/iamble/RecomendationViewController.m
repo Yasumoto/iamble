@@ -80,6 +80,7 @@ static int sliderShiftLeft = 150;
     NSLog(@"%@", backButtonImage);
     self.backButton = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(goBackBetch)];
     NSLog(@"%@", self.backButton);
+    self.placeMapView.delegate = self;
     [self mapViewShadow];
     self.placeMapView.hidden = YES;
     self.mehButton.hidden = YES;
