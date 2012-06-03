@@ -54,6 +54,8 @@ class Ambler(ndb.Model):
   first_time = ndb.BooleanProperty(default=True)
   budget = ndb.FloatProperty(default=20.00)
   distance = ndb.StringProperty(default='walk')
+  recent_likes = ndb.StringProperty(repeated=True)
+  recent_dislikes = ndb.StringProperty(repeated=True)
 
   def GetActiveServices(self):
     if self.singly_access_token:

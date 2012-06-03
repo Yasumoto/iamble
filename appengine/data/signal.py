@@ -40,7 +40,12 @@ class SignalEngine(object):
 
   def FullDataProcess(self):
     """Fires a full data collection and parse process."""
-    json_checkins = data_utils.GetCheckinsForUser(self.ambler)
+    try:
+      json_checkins = data_utils.GetCheckinsForUser(self.ambler)
+    except SinglyAccessTokenNotFoundError:
+      # provide some default crap
+      json_checkins = None
+      pass
     self.ProcessCheckins(json_checkins)
     caches.SetPersistentCache(self.ambler, 10)
     top_suggestion = caches.GetPersistentCache(self.ambler, 1)
@@ -63,11 +68,18 @@ class SignalEngine(object):
         if not google_signal['status'] == 'ZERO_RESULTS':
           parsed_signal = self.ParseFacebookJSON(google_signal, checkin)
       elif source == 'foursquare':
+        parents = None
         try:
-          if constants.FOURSQUARE_FOOD_PARENT in [i.lower() for i in checkin['data']['categories']['parents']]:
-            parsed_signal = self.ParseFoursquareJSON(signal)
-        except Exception:
-          pass
+          parents = checkin['data']['categories']['parents']
+        except KeyError:
+          logging.info('found a 4s error parsing parents out')
+        if not parents:
+          try:
+            parents = checkin['venue']['categories'][0]['parents']
+          except KeyError:
+            break
+        if constants.FOURSQUARE_FOOD_PARENT in [i.lower() for i in parents]:
+          parsed_signal = self.ParseFoursquareJSON(signal)
       if parsed_signal:
         place = self.FindPlace(parsed_signal)
         signal_object = self.CheckForDuplicateCheckin(parsed_signal, place)
@@ -155,7 +167,10 @@ class SignalEngine(object):
     logging.info('datetime throwing error %s', signal['at'])
     parsed_signal['when'] = datetime.datetime.fromtimestamp((signal['at']/1000))
     parsed_signal['data'] = signal['data']['message']
-    parsed_signal['likes'] = signal['data']['likes']['count']
+    try:
+      parsed_signal['likes'] = signal['data']['likes']['count']
+    except KeyError:
+      parsed_signal['likes'] = 0
     return parsed_signal
 
   def _FoursquareDetermineType(self, signal):
