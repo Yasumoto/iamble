@@ -30,11 +30,15 @@
     {% autoescape on %}
       <div id="bodyheader">
         <div id="logo">
-          <span class='prefix'>i</span>Amble
+          <a href="/">
+            <span class='prefix'>i</span>Amble
+          </a>
         </div>
         <div class="right">
           {% if current_user %}
-            {{ current_user.email }} | <a href="/logout">Logout</a>
+            {{ current_user.email }} | <a href="/oauth">Services</a> | <a href='/settings'>Settings</a> | <a href="/logout">Logout</a>
+          {% else %}
+            <a href="/login">Login</a>
           {% endif %}
         </div>
       </div>

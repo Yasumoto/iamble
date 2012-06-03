@@ -29,6 +29,22 @@ def SinglyGET(url, query_params):
    return response.status_code, json.loads(response.content)
 
 
+def SinglyPOST(url, query_params):
+  """POSTs to a Singly URL.
+  
+  Args:
+    url: string of the base URL.
+    query_params: dictionary mapping of key: value for query arguments.
+  Returns:
+    A tuple of status code, json object
+  """
+  post_params = urllib.urlencode(query_params)
+  response = urlfetch.fetch(url=url,
+                            method=urlfetch.POST,
+                            payload=post_params,
+                            headers=config.DEFAULT_POST_HEADERS)
+  return response.status_code, json.loads(response.content)
+
 # Convenience methods
 
 def SinglyGetMyCheckins(ambler):

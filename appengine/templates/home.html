@@ -2,15 +2,23 @@
 
 {% block head %}
   <link rel="stylesheet" type="text/css" href="/static/style/home.css">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="/static/scripts/home.js"></script>
 {% endblock %}
 
 {% block javascript %}
   $(document).iambleHome(iamble, {
-    'content': $('#buttons')
+    'map': $('#map'),
+    'buttons': $('#buttons'),
+    'thumbsup': $('#thumbsup'),
+    'thumbsdown': $('#thumbsdown')
   }).render();
 {% endblock %}
 
 {% block body %}
+  <div id="map"></div>
   <div id="buttons"></div>
+
+  <div id="thumbsup"></div>
+  <div id="thumbsdown"></div>
 {% endblock %}

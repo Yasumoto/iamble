@@ -6,19 +6,23 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleOAuth(iamble).render();
+  $(document).iambleOAuth(iamble, {
+    'continue': $('#continue')
+  }).render();
 {% endblock %}
 
 {% block body %}
-  <h2>Existing Services</h2>
-  {% for service in existing_services %}
-  <div>{{ service }}</div>
+  <h2>Authorize Services</h2>
+  <hr>
+  {% for service in services %}
+    <div class="service{% if service.enabled %} existing{% endif %}">
+      <a href="{{ service.oauth_url }}">
+        <img alt="{{ service.name }}" class="icon" src="{{ service.icon }}">
+      </a>
+    </div>
   {% endfor %}
   <hr>
-  <h2>Authorize New Services</h2>
-  {% for service in new_services %}
-    <div>Give us access to:&nbsp;<a href="{{ service.oauth_url }}">{{ service.name }}</a></div>
-  {% endfor %}
-  <h2>Checkin Feed</h2>
-  <div>{{ checkin_feed }}</div>
+  {% if user.first_time == True  %}
+    <input type="button" value="Continue" id="continue">
+  {% endif %}
 {% endblock %}

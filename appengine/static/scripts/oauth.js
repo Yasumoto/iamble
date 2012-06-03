@@ -5,6 +5,7 @@
 
   $.iambleOAuth = function(element, base, options) {
     this.base = base;
+    this.bind = this.base.bind;
     this.options = options || {};
     this.target = $(element);
     return this.init();
@@ -18,17 +19,17 @@
 
   $.iambleOAuth.fn.extend({
     'init': function() {
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('OAUTH INIT')
-      );
       return this;
     },
     'render': function() {
       this.base.render();
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('OAUTH RENDER')
-      );
+      if (typeof(this.options.continue) != 'undefined') {
+        this.options.continue.button().click(this.bind(this.onContinue));
+      }
       return this;
+    },
+    'onContinue' : function() {
+      window.location = '/settings';
     }
   });
 })(jQuery);

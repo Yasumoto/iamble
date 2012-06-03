@@ -14,16 +14,20 @@ import config
 import handler
 import models
 from data import data_utils
+from utils import singly_utils
+from utils import template
 
 UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
 
 HOME_TEMPLATE = 'templates/oauth.html'
 
+
 class Service(object):
 
-  def __init__(self, ambler=None):
+  def __init__(self, ambler=None, enabled=False):
     user = users.get_current_user()
     self.ambler = None
+    self.enabled = enabled
     if user:
       self.ambler = ambler or models.Ambler.get_by_id(user.email())
 
@@ -40,50 +44,57 @@ class Service(object):
   def profile_url(self):
     return config.SINGLY_API_PROFILES + '/' + self.service_name
 
+
 class FacebookService(Service):
   name = "Facebook"
   service_name = 'facebook'
+  icon = '/static/images/facebook.png'
+
 
 class TwitterService(Service):
   name = "Twitter"
   service_name = 'twitter'
+  icon = '/static/images/twitter.png'
+
 
 class FoursquareService(Service):
   name = "Foursquare"
   service_name = 'foursquare'
+  icon = '/static/images/foursquare.png'
+
 
 class GoogleContactsService(Service):
   name = "Google Contacts"
   service_name = 'gcontacts'
+  icon = '/static/images/google.png'
 
 
 class OAuth2Handler(webapp.RequestHandler):
   """"""
   URL_PATH = '/oauth'
 
+  SERVICS = [FacebookService,
+             TwitterService,
+             FoursquareService,
+             GoogleContactsService]
+
+
   @handler.RequiresLogin
   def get(self):
     """"""
-    template_params = dict()
+    template_params = template.get_params()
     this_user = models.Ambler.get_by_id(users.get_current_user().email())
-    logging.info('THIS USER: %s', this_user)
+
     existing_services = this_user.GetActiveServices()
-    services = [FacebookService(this_user),
-                TwitterService(this_user),
-                FoursquareService(this_user),
-                GoogleContactsService(this_user)]
-    new_services = []
-    for service in services:
-      if service.service_name not in existing_services:
-        new_services.append(service)
-    #profile_data = []
-    #for service in existing_services:
-    #  profile_data.append(this_user.GetProfileServiceData(service))
-    template_params['new_services'] = new_services
-    template_params['existing_services'] = existing_services
-    template_params['checkin_feed'] = data_utils.GetCheckinsForUser(this_user)
-    rendered_page = template.render(HOME_TEMPLATE, template_params)
-    self.response.out.write(str(rendered_page))
+
+    service_list = list()
+    for service in self.SERVICS:
+      enabled = service.service_name in existing_services
+      initialized_service = service(this_user, enabled)
+      service_list.append(initialized_service)
+
+    template_params['services'] = service_list
+    template.render_template(self, HOME_TEMPLATE, template_params)
 
 class OAuth2CallbackHandler(webapp.RequestHandler):
 
@@ -91,6 +102,7 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
 
   @handler.RequiresLogin
   def get(self):
+    this_user = models.Ambler.get_by_id(users.get_current_user().email())
     code = self.request.get('code')
     post_params = {
         'client_id': config.CLIENT_ID,
@@ -98,12 +110,8 @@ class OAuth2CallbackHandler(webapp.RequestHandler):
         'code': code,
     }
     post_data = urllib.urlencode(post_params)
-    result = urlfetch.fetch(url=config.SINGLY_API_ACCESS_TOKEN_URL,
-                            payload=post_data,
-                            method=urlfetch.POST,
-                            headers=config.DEFAULT_POST_HEADERS)
-    this_user = models.Ambler.get_by_id(users.get_current_user().email())
-    
-    this_user.singly_access_token = json.loads(result.content)['access_token']
+    status_code, response_object = singly_utils.SinglyPOST(
+        config.SINGLY_API_ACCESS_TOKEN_URL, post_params)
+    this_user.singly_access_token = response_object['access_token']
     this_user.put()
     self.redirect('/oauth')

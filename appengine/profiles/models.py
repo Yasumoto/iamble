@@ -25,7 +25,7 @@ class Source(ndb.Model):
 class Coordinate(ndb.Model):
   """Lat and Long object."""
   lat = ndb.FloatProperty()
-  long = ndb.FloatProperty()
+  lng = ndb.FloatProperty()
 
 
 class CachedPlace(ndb.Model):
@@ -34,7 +34,7 @@ class CachedPlace(ndb.Model):
   name = ndb.StringProperty()
   type = ndb.StringProperty(choices=['coffee', 'quick', 'sit-down'])
   cost = ndb.IntegerProperty(choices=[1,2,3,4,5])
-  why = ndb.StringProperty()  # Description of why you'll like this spot.
+  why = ndb.StringProperty(repeated=True)  # Description of why you'll like this spot.
   cache_date = ndb.DateTimeProperty()
 
 
@@ -51,6 +51,7 @@ class Ambler(ndb.Model):
   preferences = ndb.StructuredProperty(Preference, repeated=True)
   default_location = ndb.StructuredProperty(Coordinate)
   persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace)
+  first_time = ndb.BooleanProperty(default=True)
 
   def GetActiveServices(self):
     if self.singly_access_token:

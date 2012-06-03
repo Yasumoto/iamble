@@ -1,5 +1,6 @@
 import json
 import logging
+from data import signal
 from urlparse import urlparse
 from utils import template
 
@@ -33,10 +34,11 @@ def RequiresOAuth(handler_method):
     try:
       user = oauth.get_current_user()
       if user:
-        self.response.set_status(200, message='joe smith likes hair dryers')
+        self.response.set_status(200)
         return handler_method(self, *args)
-    except oauth.Error:
-      self.response.set_status(400, message='joe smith likes girly clothes')
+    except oauth.Error as error:
+      logging.error('oautherror... HEADERS: %s', self.request.headers)
+      self.response.set_status(400)
   
   return CheckOAuth
 
@@ -56,7 +58,6 @@ class BaseHandler(webapp.RequestHandler):
 
   def get_auth(self, template_params):
     """"""
-
     template.render_template(self, HOME_TEMPLATE, template_params)
 
   def get_noauth(self, template_params):
@@ -66,9 +67,9 @@ class BaseHandler(webapp.RequestHandler):
   @RequiresLogin
   def post(self):
     """"""
-    ret = dict()
-    ret['message'] = 'hello world'
-    response = json.dumps(ret)
+    suggestion_generator = signal.SignalEngine()
+    top_suggestion = suggestion_generator.SignalMaster('get_top_default')
+    response = top_suggestion
     self.response.out.write(response)
 
 

@@ -5,6 +5,7 @@
 
   $.iambleSettings = function(element, base, options) {
     this.base = base;
+    this.bind = this.base.bind;
     this.options = options || {};
     this.target = $(element);
     return this.init();
@@ -18,17 +19,20 @@
 
   $.iambleSettings.fn.extend({
     'init': function() {
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('SETTINGS INIT')
-      );
       return this;
     },
     'render': function() {
       this.base.render();
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('SETTINGS RENDER')
-      );
+      this.options.distance.buttonset();
+      this.options.save.button();
+
+      navigator.geolocation.getCurrentPosition(this.bind(this.onPosition));
+
       return this;
+    },
+    'onPosition': function(position) {
+      this.options.longitude.val(position.coords.longitude);
+      this.options.latitude.val(position.coords.latitude);
     }
   });
 })(jQuery);

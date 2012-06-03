@@ -6,12 +6,77 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleSettings(iamble).render();
+  $(document).iambleSettings(iamble, {
+    'firstname': $('#firstname'),
+    'lastname': $('#lastname'),
+    'budget': $('#budget'),
+    'distance': $('#distance'),
+    'longitude': $('#longitude'),
+    'latitude': $('#latitude'),
+    'save': $('#save')
+  }).render();
 {% endblock %}
 
 {% block body %}
-  <h2>Settings</h2>
-  {% for message in messages %}
-    <div>{{message}}</div>
-  {% endfor %}
+  <div class="form">
+    <form action="?user={{ user.key.id }}" method="post">
+      <table>
+        <tr>
+          <td colspan="2" class="title">
+            <h2>Settings</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>First name</td>
+          <td>
+            <input type="text" id="firstname" name="name_first" value="{{ user.name_first }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Last name</td>
+          <td>
+            <input type="text" id="lastname" name="name_last" value="{{ user.name_last }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Budget</td>
+          <td>
+            <input type="text" id="budget" name="budget" value="{{ preferences.budget }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Latitude</td>
+          <td>
+            <input type="text" id="longitude" name="longitude" value="{{ user.default_location.longitude }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Longitude</td>
+          <td>
+            <input type="text" id="latitude" name="latitude" value="{{ user.default_location.latitude }}">
+          </td>
+        </tr>
+        <tr>
+          <td>Distance</td>
+          <td>
+            <div id="distance">
+              <input type="checkbox" id="walk" name="walk" {% if preferences.walk == 'on' %}checked{% endif %}/>
+              <label for="walk">Walk</label>
+
+              <input type="checkbox" id="bike" name="bike" {% if preferences.bike == 'on' %}checked{% endif %}/>
+              <label for="bike">Bike</label>
+
+              <input type="checkbox" id="drive" name="drive" {% if preferences.drive == 'on' %}checked{% endif %}/>
+              <label for="drive">Drive</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="buttons">
+            <input type="submit" value="Save" id="save">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
 {% endblock %}
