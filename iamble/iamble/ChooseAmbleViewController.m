@@ -56,6 +56,9 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *img = [UIImage imageNamed:@"logo_header2.png"];
+    [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 640, 67)];
     self.locationManager = [[LocationManager alloc] init];
 	// Do any additional setup after loading the view.
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
@@ -64,34 +67,27 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    self.facebookSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-    self.facebookSlider.backgroundColor = [UIColor whiteColor];
-    self.facebookSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
+    self.facebookSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"facebook_bar.png"]];
     self.facebookSlider.delegate = self;
     if ([defaults valueForKey:@"facebook"]) {
         [self.facebookSlider slideRight:YES];
     }
     
-    UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare-logo.png"];
+    UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare_bar.png"];
     self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
-    self.foursquareSlider.imageView.frame = CGRectMake(0, 0, 256, 70);
     self.foursquareSlider.delegate = self;
     if ([defaults valueForKey:@"foursquare"]) {
         [self.foursquareSlider slideRight:YES];
     }
     
     
-    self.twitterSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_twitter_withbird_1000_white_blue.png"]];
-    self.twitterSlider.backgroundColor = [UIColor grayColor];
-    self.twitterSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
+    self.twitterSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"twitter_bar.png"]];
     self.twitterSlider.delegate = self;
     if ([defaults valueForKey:@"twitter"]) {
         [self.twitterSlider slideRight:YES];
     }
     
-    self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-    self.settingsSlider.backgroundColor = [UIColor whiteColor];
-    self.settingsSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
+    self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finish_bar.png"]];
     self.settingsSlider.delegate = self;
 
 }
