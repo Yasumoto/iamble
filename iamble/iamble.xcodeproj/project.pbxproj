@@ -18,6 +18,7 @@
 		D8056D75157C1308006A9C6B /* meh_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D74157C1308006A9C6B /* meh_button@2x.png */; };
 		D8056D78157C1313006A9C6B /* looks_good_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D76157C1312006A9C6B /* looks_good_button.png */; };
 		D8056D79157C1313006A9C6B /* meh_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D77157C1313006A9C6B /* meh_button.png */; };
+		D8056D7B157C1C51006A9C6B /* singly-text-light.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D7A157C1C51006A9C6B /* singly-text-light.png */; };
 		D8079AFF157AF86800117088 /* RecomendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079AFE157AF86800117088 /* RecomendationViewController.m */; };
 		D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC873157B1A6900A1832E /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = D80AC875157B1A6900A1832E /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -97,6 +98,7 @@
 		D8056D74157C1308006A9C6B /* meh_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meh_button@2x.png"; sourceTree = "<group>"; };
 		D8056D76157C1312006A9C6B /* looks_good_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = looks_good_button.png; sourceTree = "<group>"; };
 		D8056D77157C1313006A9C6B /* meh_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meh_button.png; sourceTree = "<group>"; };
+		D8056D7A157C1C51006A9C6B /* singly-text-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "singly-text-light.png"; sourceTree = "<group>"; };
 		D8079AFD157AF86800117088 /* RecomendationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecomendationViewController.h; sourceTree = "<group>"; };
 		D8079AFE157AF86800117088 /* RecomendationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecomendationViewController.m; sourceTree = "<group>"; };
 		D80AC872157B1A6900A1832E /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				D8056D72157C12F9006A9C6B /* looks_good_button@2x.png */,
+				D8056D7A157C1C51006A9C6B /* singly-text-light.png */,
 				D8056D74157C1308006A9C6B /* meh_button@2x.png */,
 				D8056D76157C1312006A9C6B /* looks_good_button.png */,
 				D8056D77157C1313006A9C6B /* meh_button.png */,
@@ -475,6 +478,7 @@
 				D8056D75157C1308006A9C6B /* meh_button@2x.png in Resources */,
 				D8056D78157C1313006A9C6B /* looks_good_button.png in Resources */,
 				D8056D79157C1313006A9C6B /* meh_button.png in Resources */,
+				D8056D7B157C1C51006A9C6B /* singly-text-light.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

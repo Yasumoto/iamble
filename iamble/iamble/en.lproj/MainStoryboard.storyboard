@@ -87,6 +87,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="singly-text-light.png" id="rrz-gT-YaR">
+                                        <rect key="frame" x="94" y="382" width="132" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -155,7 +159,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cxv-5j-i8y">
-                                <rect key="frame" x="162" y="366" width="138" height="30"/>
+                                <rect key="frame" x="162" y="356" width="138" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="looks_good_button.png">
@@ -170,7 +174,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jxg-cB-Ab2">
-                                <rect key="frame" x="20" y="366" width="138" height="30"/>
+                                <rect key="frame" x="20" y="356" width="138" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="meh_button.png">
@@ -184,6 +188,10 @@
                                     <action selector="newPlaceRequest:" destination="DcQ-1V-4Yw" eventType="touchUpInside" id="UC7-sL-eN7"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="singly-text-light.png" id="Djp-OJ-Xxq">
+                                <rect key="frame" x="94" y="389" width="132" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -294,6 +302,7 @@
         <image name="meh_button.png" width="276" height="59"/>
         <image name="sharkteeth.png" width="640" height="181"/>
         <image name="sharkteeth_choose.png" width="640" height="181"/>
+        <image name="singly-text-light.png" width="132" height="27"/>
         <image name="welcome_screen.png" width="640" height="960"/>
     </resources>
     <classes>
@@ -319,7 +328,6 @@
                 <relationship kind="outlet" name="quickbiteSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="settingsSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="sitdownSlider" candidateClass="SliderView"/>
-                <relationship kind="outlet" name="wrapperFukkinView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
         <class className="SliderView" superclassName="UIView">
