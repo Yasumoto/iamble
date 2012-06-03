@@ -5,3 +5,25 @@
 #buttons div {
   margin: 10px;
 }
+
+#map {
+  margin: 0;
+  padding: 0;
+  height: 400px;
+  display: none;
+  border: 1px solid #CCC;
+}
+
+div#thumbsup, div#thumbsdown {
+  height: 24px;
+  width: 32px;
+  display: none;
+}
+
+.ui-button .ui-icon.thumbs-up {
+  background-image: url('/static/images/up.png');
+}
+
+.ui-button .ui-icon.thumbs-down {
+  background-image: url('/static/images/down.png');
+}

@@ -43,10 +43,23 @@
       ];
 
       $(buttons).each(this.bind(function(index, button) {
-        this.options.content.append(button);
+        this.options.buttons.append(button);
         button.button().click(this.bind(this.onClick));
       }));
+
+      this.options.thumbsup.button({icons: {primary: 'thumbs-up'}});
+      this.options.thumbsdown.button({icons: {primary: 'thumbs-down'}});
+
       return this;
+    },
+    'renderMap' : function() {
+      var myOptions = {
+        zoom: 8,
+        center: new google.maps.LatLng(-34.397, 150.644),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(this.options.map.get(0), myOptions);
+      this.options.map.fadeIn();
     },
     'onClick' : function(event) {
       var target = $(event.currentTarget);
@@ -64,6 +77,7 @@
 
       request.done(this.bind(function(msg) {
         this.base.success(JSON.stringify(msg));
+        this.renderMap();
       }));
 
       request.fail(this.bind(function(jqXHR, textStatus) {
