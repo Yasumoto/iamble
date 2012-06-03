@@ -6,13 +6,30 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleLanding(iamble).render();
+  $(document).iambleLanding(iamble, {
+    'email': $('#email'),
+    'submit': $('#submit'),
+    'signup': $('#signup')
+  }).render();
 {% endblock %}
 
 {% block body %}
   <div class="padded">This site recommends places to eat at based off your interestes and your friend's opinions.</div>
 
-  <div class="padded">Screenshot/Video:</div>
-  <div class="padded">Appstore/QR Code:</div>
-  <div class="padded">iambleapp@twitter</div>
+  <div class="padded" id="signup">
+    <div class="title">Signup to get an email notification when we launch!</div>
+    <div class="form">
+      <input type="text" id="email">&nbsp;
+      <input type="submit" value="Signup" id="submit">
+    </div>
+  </div>
+
+  <div class="padded">
+    <div>Follow <b>@iAmbleApp</b> on Twitter and Facebook.</div>
+  </div>
+  <div class="padded">
+    <a href="/">
+      <img src="/static/images/appstore.png">
+    </a>
+  </div>
 {% endblock %}

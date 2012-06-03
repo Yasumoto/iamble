@@ -6,7 +6,7 @@ import wsgiref.handlers
 from google.appengine.ext import webapp
 
 from api import mobile
-from profiles import login, oauth, settings
+from profiles import login, oauth, settings, signup
 
 URL_MAPPINGS = [
     ('/', handler.BaseHandler),
@@ -17,7 +17,8 @@ URL_MAPPINGS = [
     (mobile.RecommendationHandler.URL_PATH, mobile.RecommendationHandler),
     (oauth.OAuth2Handler.URL_PATH, oauth.OAuth2Handler),
     (oauth.OAuth2CallbackHandler.URL_PATH, oauth.OAuth2CallbackHandler),
-    (settings.SettingsHandler.URL_PATH, settings.SettingsHandler)]
+    (settings.SettingsHandler.URL_PATH, settings.SettingsHandler),
+    (signup.SignupHandler.URL_PATH, signup.SignupHandler)]
 
 def main():
   application = webapp.WSGIApplication(URL_MAPPINGS, debug=True)
