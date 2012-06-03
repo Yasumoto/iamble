@@ -16,6 +16,8 @@ SIT_DOWN_COST = 25
 PREFERENCE_MATCH_WEIGHT = 1.3
 CHECKIN_MATCH_WEIGHT = 1.2  # signal_value multiplied with or divided by this to determine ranking.
 DISTANCE_MATCH_WEIGHT = 1.1
+MENTION_WEIGNT = .05
+LIKE_WEIGHT = .3
 
-DISTANCE_MAPPING = {'walk': 1, 'bike': 2, 'drive': 3}
+DISTANCE_MAPPING = {'walk': 1, 'bike': 5, 'drive': 10}
 DISTANCE_RATIO = 1.5  # Multiplied with preferred distance to find radius.

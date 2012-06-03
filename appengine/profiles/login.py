@@ -24,6 +24,7 @@ class LoginHandler(webapp.RequestHandler):
         if not ambler.first_time:
           # Redirect to core site
           self.redirect('/')
+          return
       else:
         ambler = models.Ambler(user.email())
         ambler.put()

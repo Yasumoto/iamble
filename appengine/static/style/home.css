@@ -17,7 +17,6 @@
 div#thumbsup, div#thumbsdown {
   height: 24px;
   width: 32px;
-  display: none;
 }
 
 .ui-button .ui-icon.thumbs-up {
@@ -26,4 +25,24 @@ div#thumbsup, div#thumbsdown {
 
 .ui-button .ui-icon.thumbs-down {
   background-image: url('/static/images/down.png');
+}
+
+#result {
+  margin-top: 10px;
+  display: none;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+#result #title {
+  font-size: 20px;
+}
+
+#result #reasons {
+  margin-top: 10px;
+}
+
+#result #vote {
+  margin-top: 10px;
 }
