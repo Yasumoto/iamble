@@ -123,7 +123,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="service" value="twitter"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="service" value="quickbite"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" id="hr1-1g-mPZ" customClass="SliderView">
@@ -131,7 +131,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="service" value="foursquare"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="service" value="finedining"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" id="1Ad-iz-Bvc" customClass="SliderView">
@@ -139,14 +139,31 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="service" value="facebook"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="service" value="coffee"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="H6P-YL-4YR"/>
+                    <navigationItem key="navigationItem" id="H6P-YL-4YR">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="bgp-vF-8YW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PaW-r5-2Iu">
+                                <rect key="frame" x="5" y="4" width="71" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="bgp-vF-8YW" id="w44-Hg-6oq"/>
+                        <outlet property="chooseSawtoothBanner" destination="n7v-5D-aDY" id="at7-sn-fKu"/>
                         <outlet property="coffeeSlider" destination="1Ad-iz-Bvc" id="mzw-lZ-mdR"/>
                         <outlet property="quickbiteSlider" destination="8F2-Hz-VCB" id="U4k-MV-gMb"/>
                         <outlet property="sitdownSlider" destination="hr1-1g-mPZ" id="j8v-SV-BEb"/>
@@ -228,8 +245,11 @@
         <class className="RecomendationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RecomendationViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="chooseSawtoothBanner" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="coffeeSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="quickbiteSlider" candidateClass="SliderView"/>
+                <relationship kind="outlet" name="sitdownSlider" candidateClass="SliderView"/>
             </relationships>
         </class>
         <class className="SliderView" superclassName="UIView">
