@@ -30,14 +30,14 @@ def RequiresLogin(handler_method):
 def RequiresOAuth(handler_method):
 
   def CheckOAuth(self, *args):
-    #try:
-    user = oauth.get_current_user()
-    if user:
-      self.response.set_status(200, message='joe smith likes hair dryers')
-      return handler_method(self, *args)
-    #except oauth.Error as error:
-    #  logging.error(error)
-    #  self.response.set_status(400, message='joe smith likes girly clothes')
+    try:
+      user = oauth.get_current_user()
+      if user:
+        self.response.set_status(200)
+        return handler_method(self, *args)
+    except oauth.Error as error:
+      logging.error('oautherror... HEADERS: %s', self.request.headers)
+      self.response.set_status(400)
   
   return CheckOAuth
 

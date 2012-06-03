@@ -5,7 +5,7 @@ import wsgiref.handlers
 
 from google.appengine.ext import webapp
 
-from api import mobile_endpoint
+from api import mobile
 from profiles import login, oauth, settings
 
 URL_MAPPINGS = [
@@ -13,7 +13,8 @@ URL_MAPPINGS = [
     ('/redirect', handler.RedirectHandler),
     (login.LoginHandler.URL_PATH, login.LoginHandler),
     (login.LogoutHandler.URL_PATH, login.LogoutHandler),
-    (mobile_endpoint.MobileHandler.URL_PATH, mobile_endpoint.MobileHandler),
+    (mobile.NewServiceHandler.URL_PATH, mobile.NewServiceHandler),
+    (mobile.RecommendationHandler.URL_PATH, mobile.RecommendationHandler),
     (oauth.OAuth2Handler.URL_PATH, oauth.OAuth2Handler),
     (oauth.OAuth2CallbackHandler.URL_PATH, oauth.OAuth2CallbackHandler),
     (settings.SettingsHandler.URL_PATH, settings.SettingsHandler)]
