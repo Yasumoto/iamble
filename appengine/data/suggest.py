@@ -1,29 +1,54 @@
 # __author__ = russ@iamble
 
-def GenerateSuggestions(ambler, suggestions=10, location)
+import constants
+import models
+from data import data_utils
+from data import data_models
+
+def GenerateSuggestions(ambler, suggestions=10, location):
   """Generates a list of top suggestions for the given ambler."""
-  # get all places within the ambler default radius for the given location
-  # create a temporary place object for each that will be used to store suggestion ratings
-  # check places against ambler's checkins
-  # check places against user preferences
-  # grab the top x suggestions, cache them
-  rated_places = {}
+  rated_places = {}  # {rating_int: cached_place_object,}
   local_places = data_utils.GetPlacesInArea(
       location.lat, location.lng, constants.DISTANCE_MAPPING[ambler.distance])
-  for place in local_places:
-    # parse out relevant place data
-    # query datastore on place data, find that place and all related ambler checkin children
+  for place in local_places['results']:
+    temp_place = {}
+    temp_place['lat'] = place['geometry']['location']['lat']
+    temp_place['lng'] = place['geometry']['location']['lng']
+    temp_place['name'] = place['name']
+    temp_place['food_type'] = _GetGooglePlaceFoodType(place)
+    temp_place['cost'] = constants.COST_MAPPING['
+    temp_place['why_description1'] = 'This place is close!'
+    temp_place['why_description2'] = 'This place has a good rating of %s!' % place['rating']
+    temp_place['cache_timestamp'] = temp_place['food_type']
+    temp_place['rating'] = place['rating']
+    stored_checkins = data_models.Checkin.query()
+    stored_checkins = stored_checkins.filter(data_models.Checkin.who == ambler.key)
+    stored_checkins = stored_checkins.filter(data_models.Checkin.coordinate.lat == temp_place['lat'])
+    stored_checkins = stored_checkins.filter(data_models.Checkin.coordinate.lng == temp_place['lng'])
+    stored_checkins = stored_checkins.fetch() 
     if stored_checkins:
       for checkin in stored_checkins:
-        # check stored checkin info to see if we can generate a good rating
-        # check place mentions if available
-        # check signal likes if they're available
-        # increment the place weight
+        if checkin.mentions:
+          temp_place['rating'] += (checkin.mentions * constants.MENTION_WEIGNT)
+        if checkin.likes:
+          temp_place['rating'] += (checkin.likes * constants.LIKE_WEIGHT)
     # check ambler recent likes and dislikes
     # weight based on distance
-    # weight based on price
-    # weight based on type
-    # weight based on google rating
-    # append to rated_places with calculated weight 
-    
-    
+    if ambler.budget:
+      if temp_place['cost'] == ambler.budget:
+        temp_place['rating'] += constants.PREFERENCE_MATCH_WEIGHT
+    rated_places[temp_place['rating']] = temp_place
+
+
+def _GetGooglePlaceFoodType(place)
+  """Parses a google place to find the food type."""
+  for quick_string in constants.QUICK_STRINGS:
+    if quick_string in [i.lower() for i in place['name'].split()]:
+      return 'quick'
+  for sit_down_string in constants.SIT_DOWN_STRINGS:
+    if sit_down_string in [i.lower() for i in place['name'].split()]:
+      return 'sit-down'
+  for coffee_string in constants.COFFEE_STRINGS:
+    if coffee_string in [i.lower() for i in place['name'].split()]:
+      return 'coffee'
+  return 'default'

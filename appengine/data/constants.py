@@ -12,6 +12,7 @@ EXCLUDE_STRINGS = ['pub', 'bar', 'tavern', 'cocktail', 'beer']
 COFFEE_COST = 10
 QUICK_COST = 15
 SIT_DOWN_COST = 25
+COST_MAPPING = {'coffee': COFFEE_COST, 'quick': QUICK_COST, 'default': QUICK_COST, 'sit-down': SIT_DOWN_COST}
 
 PREFERENCE_MATCH_WEIGHT = 1.3
 CHECKIN_MATCH_WEIGHT = 1.2  # signal_value multiplied with or divided by this to determine ranking.
