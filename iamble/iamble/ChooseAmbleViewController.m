@@ -74,11 +74,6 @@
     }
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-
-
-}
-
 - (void)viewDidUnload
 {
     [self setSelectionScrollView:nil];
@@ -94,9 +89,6 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-# pragma mark ServiceConnection setup
-
 
 # pragma mark SliderActivatedDelegate
 
@@ -115,7 +107,7 @@
 }
 
 #pragma mark iambleServiceConnection
-- (void) connectedToService:(NSString *)service {
+- (void) connectedToAmble:(NSString *)service {
     [self.navigationController pushViewController:[self.singly authorize:service] animated:YES];
     self.navigationItem.rightBarButtonItem = nil;
 }

@@ -13,14 +13,12 @@
 @class iambleServiceConnection;
 
 @protocol iAmbleServiceDelegate <NSObject>
-
--(void)connectedToService:(NSString *)service;
-
+-(void)connectedToAmble:(NSString *)service;
 @end
 
 @interface iambleServiceConnection : NSObject
-@property BOOL authenticated;
 - (UIViewController *) authorizeAmble:(NSString *)service;
+@property BOOL authenticated;
 @property (nonatomic, strong) id <iAmbleServiceDelegate> delegate;
 @property (nonatomic, strong) GTMOAuthAuthentication *auth;
 @end

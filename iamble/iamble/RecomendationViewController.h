@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "gtm-oauth/GTMOAuthAuthentication.h"
 
 @interface RecomendationViewController : UIViewController
-
+@property (nonatomic, strong) GTMOAuthAuthentication *auth;
 @end

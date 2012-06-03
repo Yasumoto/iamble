@@ -9,22 +9,29 @@
 #import "RecomendationViewController.h"
 #import <SSKeychain.h>
 #import <AFNetworking/AFNetworking.h>
+#import <CoreLocation/CoreLocation.h>
+#import "LocationManager.h"
 
 static NSString *const ambleURL = @"https://ambleapp.appspot.com/";
 static NSString *const jimmehPath = @"api/mobile";
 static NSString *const kAmble = @"Amble";
+static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/api/mobile/recommend";
 
 @interface RecomendationViewController ()
+@property (nonatomic, strong) LocationManager *locationManager;
 
 @end
 
 @implementation RecomendationViewController
+@synthesize locationManager = _locationManager;
+@synthesize auth = _auth;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.locationManager = [[LocationManager alloc] init];
     }
     return self;
 }
@@ -46,6 +53,26 @@ static NSString *const kAmble = @"Amble";
         NSLog(@"Hold me taight!");
         NSLog(@"%@", error);
     }];
+}
+
+- (void) sendUpdatedLocation {
+    CLLocation *myLocation = self.locationManager.currentLocation;
+    NSURL *url = [NSURL URLWithString:[kAmbleLocationEndPoint stringByAppendingFormat:@"?lat=%f&lng=%f", myLocation.coordinate.latitude, myLocation.coordinate.longitude]];
+    NSLog(@"URL being sent: %@", url);
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [self.auth authorizeRequest:request];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+
+- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
+}
+
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSLog(@"Response: %@", [httpResponse allHeaderFields]);
+    NSLog(@"Status Code: %d", [httpResponse statusCode]);
 }
 
 - (void)viewDidUnload

@@ -7,8 +7,6 @@
 //
 
 #import "iambleServiceConnection.h"
-#import <CoreLocation/CoreLocation.h>
-#import "LocationManager.h"
 
 static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
 static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
@@ -18,18 +16,14 @@ static NSString *const kRequestTokenString = @"https://ambleapp.appspot.com/_ah/
 static NSString *const kAuthorizeTokenString = @"https://ambleapp.appspot.com/_ah/OAuthAuthorizeToken";
 static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetAccessToken";
 static NSString *const kAmbleServiceEndPoint = @"https://ambleapp.appspot.com/api/mobile/new_service";
-static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/api/mobile/recommend";
 
 @interface iambleServiceConnection () <NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSString *service;
-- (void) sendUpdatedLocation;
-@property (nonatomic, strong) LocationManager *locationManager;
 @end
 
 @implementation iambleServiceConnection
 @synthesize delegate = _delegate;
 @synthesize service = _service;
-@synthesize locationManager = _locationManager;
 
 - (id) init {
     self = [super init];
@@ -48,7 +42,6 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
         // we can determine later if the auth object contains an access token
         // by calling its -canAuthorize method
         self.auth = auth;
-        self.locationManager = [[LocationManager alloc] init];
     }
     return self;
 }
@@ -72,28 +65,8 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
         // Authentication succeeded
         self.authenticated = YES;
         self.auth = auth;
-        [self sendUpdatedLocation];
+        [self.delegate connectedToAmble:self.service];
     }
-}
-
-- (void) sendUpdatedLocation {
-    CLLocation *myLocation = self.locationManager.currentLocation;
-    NSURL *url = [NSURL URLWithString:[kAmbleLocationEndPoint stringByAppendingFormat:@"?lat=%f&lng=%f", myLocation.coordinate.latitude, myLocation.coordinate.longitude]];
-    NSLog(@"URL being sent: %@", url);
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [self.auth authorizeRequest:request];
-    [NSURLConnection connectionWithRequest:request delegate:self];
-    [self.delegate connectedToService:self.service];
-}
-
-- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
-}
-
-- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    NSLog(@"Response: %@", [httpResponse allHeaderFields]);
-    NSLog(@"Status Code: %d", [httpResponse statusCode]);
 }
 
 - (UIViewController *) authorizeAmble:(NSString *)service {
