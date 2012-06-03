@@ -7,6 +7,7 @@
 //
 
 #import "SliderView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SliderView ()
 @property BOOL left;
@@ -45,6 +46,11 @@
     leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self addGestureRecognizer:swipeGestureRecognizer];
     [self addGestureRecognizer:leftSwipeGestureRecognizer];
+    self.layer.masksToBounds = NO;
+    self.layer.cornerRadius = 8; // if you like rounded corners
+    self.layer.shadowOffset = CGSizeMake(-2, 5);
+    self.layer.shadowRadius = 1;
+    self.layer.shadowOpacity = 0.5;
 }
 
 - (void) slideRight {
@@ -103,8 +109,12 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    // Drawing code
-}
-*/
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(currentContext);
+    CGContextSetShadow(currentContext, CGSizeMake(-15, 20), 5);
+    [super drawRect: rect];
+    CGContextRestoreGState(currentContext);
+}*/
+
 
 @end

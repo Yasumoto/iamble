@@ -24,6 +24,8 @@
 		D81FB616157AD173008B4C2D /* SinglyServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FB615157AD173008B4C2D /* SinglyServiceConnection.m */; };
 		D89AE121157A7F6600B74554 /* foursquare-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D89AE120157A7F6600B74554 /* foursquare-logo.png */; };
 		D89AE124157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */; };
+		D89ECBD4157B4D200005372F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D89ECBD3157B4D200005372F /* CoreLocation.framework */; };
+		D89ECBD8157B50F40005372F /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D89ECBD7157B50F40005372F /* LocationManager.m */; };
 		D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */; };
 		D8AE544C1579F077004E2E10 /* iambleServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */; };
 		D8AE545A1579FC32004E2E10 /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54591579FC32004E2E10 /* SliderView.m */; };
@@ -81,6 +83,9 @@
 		D81FB615157AD173008B4C2D /* SinglyServiceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglyServiceConnection.m; sourceTree = "<group>"; };
 		D89AE120157A7F6600B74554 /* foursquare-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foursquare-logo.png"; sourceTree = "<group>"; };
 		D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_twitter_withbird_1000_white_blue.png; sourceTree = "<group>"; };
+		D89ECBD3157B4D200005372F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D89ECBD6157B50F40005372F /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		D89ECBD7157B50F40005372F /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAmbleViewController.h; sourceTree = "<group>"; };
 		D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAmbleViewController.m; sourceTree = "<group>"; };
 		D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iambleServiceConnection.h; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D89ECBD4157B4D200005372F /* CoreLocation.framework in Frameworks */,
 				D81FB5FB157AAB94008B4C2D /* Security.framework in Frameworks */,
 				D81FB5F9157AAB8D008B4C2D /* SystemConfiguration.framework in Frameworks */,
 				D8B87D991579E76600310696 /* UIKit.framework in Frameworks */,
@@ -165,6 +171,19 @@
 			path = "gtm-oauth2";
 			sourceTree = "<group>";
 		};
+		D89ECBD9157B5B630005372F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D89ECBD6157B50F40005372F /* LocationManager.h */,
+				D89ECBD7157B50F40005372F /* LocationManager.m */,
+				D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */,
+				D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */,
+				D81FB614157AD173008B4C2D /* SinglyServiceConnection.h */,
+				D81FB615157AD173008B4C2D /* SinglyServiceConnection.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		D8B87D891579E76600310696 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +207,7 @@
 		D8B87D971579E76600310696 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D89ECBD3157B4D200005372F /* CoreLocation.framework */,
 				D81FB5FA157AAB94008B4C2D /* Security.framework */,
 				D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */,
 				D8B87D981579E76600310696 /* UIKit.framework */,
@@ -202,22 +222,17 @@
 		D8B87D9E1579E76600310696 /* iamble */ = {
 			isa = PBXGroup;
 			children = (
-				D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */,
-				D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */,
 				D8B87DA71579E76600310696 /* AppDelegate.h */,
 				D8B87DA81579E76600310696 /* AppDelegate.m */,
-				D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */,
-				D8B87D9F1579E76600310696 /* Supporting Files */,
-				D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */,
-				D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */,
-				D81FB614157AD173008B4C2D /* SinglyServiceConnection.h */,
-				D81FB615157AD173008B4C2D /* SinglyServiceConnection.m */,
+				D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */,
+				D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */,
 				D8AE54581579FC32004E2E10 /* SliderView.h */,
 				D8AE54591579FC32004E2E10 /* SliderView.m */,
-				D80AC86F157B1A6800A1832E /* gtm-oauth */,
-				D81FB5E8157AA865008B4C2D /* gtm-oauth2 */,
 				D8079AFD157AF86800117088 /* RecomendationViewController.h */,
 				D8079AFE157AF86800117088 /* RecomendationViewController.m */,
+				D89ECBD9157B5B630005372F /* Services */,
+				D8B87DAC1579E76600310696 /* MainStoryboard.storyboard */,
+				D8B87D9F1579E76600310696 /* Supporting Files */,
 			);
 			path = iamble;
 			sourceTree = "<group>";
@@ -225,6 +240,8 @@
 		D8B87D9F1579E76600310696 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D80AC86F157B1A6800A1832E /* gtm-oauth */,
+				D81FB5E8157AA865008B4C2D /* gtm-oauth2 */,
 				D80AC87F157B1FAC00A1832E /* App_Icon.jpg */,
 				D89AE120157A7F6600B74554 /* foursquare-logo.png */,
 				D89AE123157A7F7C00B74554 /* logo_twitter_withbird_1000_white_blue.png */,
@@ -399,6 +416,7 @@
 				D80AC87A157B1A6900A1832E /* GTMOAuthAuthentication.m in Sources */,
 				D80AC87B157B1A6900A1832E /* GTMOAuthSignIn.m in Sources */,
 				D80AC87C157B1A6900A1832E /* GTMOAuthViewControllerTouch.m in Sources */,
+				D89ECBD8157B50F40005372F /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
