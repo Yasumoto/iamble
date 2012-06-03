@@ -10,6 +10,7 @@
 #import "GTMHTTPFetcher.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import <SSKeychain.h>
+#import <JSONKit/JSONKit.h>
 
 static NSString *const kSinglyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
 static NSString *const kSinglyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
@@ -112,14 +113,14 @@ static NSString *const kSingly = @"Singly";
 {
     NSURL *profilesURL = [NSURL URLWithString:[@"https://api.singly.com/profiles?access_token=" stringByAppendingString:[SSKeychain passwordForService:kSingly account:kSingly]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:profilesURL];
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               
-                               NSString *responseBody = [ [NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                               NSLog(@"Received Response: %@", responseBody);
-                               
+                               JSONDecoder *decoder = [JSONDecoder decoder];
+                               for (NSString *key in [decoder objectWithData:data]) {
+                                   [defaults setValue:kSingly forKey:key];
+                               }
                            }];
 }
 
