@@ -27,6 +27,9 @@ static int sliderShiftLeft = 150;
 @property (strong, nonatomic) NSArray *sliders;
 @property (strong, nonatomic) CLLocation *placeLocation;
 @property (strong, nonatomic) NSString *choice;
+@property (strong, nonatomic) NSMutableArray *placesArr;
+@property (nonatomic) int placesIndex;
+- (void) doTheDic:(NSMutableDictionary *)dic;
 @end
 
 @implementation RecomendationViewController
@@ -45,6 +48,9 @@ static int sliderShiftLeft = 150;
 @synthesize sliders = _sliders;
 @synthesize placeLocation = _placeLocation;
 @synthesize choice = _choice;
+@synthesize placesArr = _placesArr;
+@synthesize placesIndex = _placesIndex;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -122,8 +128,14 @@ static int sliderShiftLeft = 150;
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
     JSONDecoder *decoder = [JSONDecoder decoder];
-    NSMutableDictionary *dic = [decoder mutableObjectWithData:data];
-    NSLog(@"Dic: %@", dic);
+    NSMutableArray *arr = [decoder mutableObjectWithData:data];
+    self.placesArr = arr;
+    self.placesIndex = 0;
+    [self doTheDic:[self.placesArr objectAtIndex:self.placesIndex]];
+    self.placesIndex = self.placesIndex + 1;
+}
+
+- (void) doTheDic:(NSMutableDictionary *)dic {
     CLLocationDegrees lat = [(NSString *)[dic objectForKey:@"lat"] floatValue];
     CLLocationDegrees lng = [(NSString *)[dic objectForKey:@"lng"] floatValue];
     self.placeLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
@@ -237,6 +249,16 @@ static int sliderShiftLeft = 150;
 }
 
 - (IBAction)newPlaceRequest:(id)sender {
+    if (self.placesArr) {
+        if (self.placesIndex != [self.placesArr count]) {
+            [self doTheDic:[self.placesArr objectAtIndex:self.placesIndex]];
+            self.placesIndex = self.placesIndex + 1;
+        }
+        else {
+            [self sendJimmehChoice:self.choice];
+        }
+        return;
+    }
     [self sendJimmehChoice:self.choice];
 }
 @end
