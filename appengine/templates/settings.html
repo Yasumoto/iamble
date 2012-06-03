@@ -29,44 +29,52 @@
         <tr>
           <td>First name</td>
           <td>
-            <input type="text" id="firstname" name="name_first" value="{{ user.name_first }}">
+            <input type="text" id="firstname" name="name_first"
+                value="{% if user.name_first %}{{ user.name_first }}{% endif %}">
           </td>
         </tr>
         <tr>
           <td>Last name</td>
           <td>
-            <input type="text" id="lastname" name="name_last" value="{{ user.name_last }}">
+            <input type="text" id="lastname" name="name_last"
+                value="{% if user.name_last %}{{ user.name_last }}{% endif %}">
           </td>
         </tr>
         <tr>
           <td>Budget</td>
           <td>
-            <input type="text" id="budget" name="budget" value="{{ preferences.budget }}">
+            <input type="text" id="budget" name="budget"
+                value="{{ user.budget }}">
           </td>
         </tr>
         <tr>
           <td>Latitude</td>
           <td>
-            <input type="text" id="longitude" name="longitude" value="{{ user.default_location.longitude }}">
+            <input type="text" id="longitude" name="longitude"
+                value="{{ user.default_location.longitude }}">
           </td>
         </tr>
         <tr>
           <td>Longitude</td>
           <td>
-            <input type="text" id="latitude" name="latitude" value="{{ user.default_location.latitude }}">
+            <input type="text" id="latitude" name="latitude"
+                value="{{ user.default_location.latitude }}">
           </td>
         </tr>
         <tr>
           <td>Distance</td>
           <td>
             <div id="distance">
-              <input type="checkbox" id="walk" name="walk" {% if preferences.walk == 'on' %}checked{% endif %}/>
+              <input type="radio" id="walk" name="distance" value="walk"
+                  {% if user.distance == 'walk' %} checked='checked'{% endif %}/>
               <label for="walk">Walk</label>
 
-              <input type="checkbox" id="bike" name="bike" {% if preferences.bike == 'on' %}checked{% endif %}/>
+              <input type="radio" id="bike" name="distance" value="bike"
+                  {% if user.distance == 'bike' %} checked='checked'{% endif %}/>
               <label for="bike">Bike</label>
 
-              <input type="checkbox" id="drive" name="drive" {% if preferences.drive == 'on' %}checked{% endif %}/>
+              <input type="radio" id="drive" name="distance" value="drive"
+                  {% if user.distance == 'drive' %} checked='checked'{% endif %}/>
               <label for="drive">Drive</label>
             </div>
           </td>

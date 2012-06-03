@@ -94,6 +94,8 @@ class OAuth2Handler(webapp.RequestHandler):
       service_list.append(initialized_service)
 
     template_params['services'] = service_list
+    template_params['user'] = this_user
+
     template.render_template(self, HOME_TEMPLATE, template_params)
 
 class OAuth2CallbackHandler(webapp.RequestHandler):

@@ -5,5 +5,7 @@
 {% endblock %}
 
 {% block body %}
-  <div>Redirecting to <b>{{ host }}</b>...</div>
+  {% if host %}
+    <div>Redirecting to <b>{{ host }}</b>...</div>
+  {% endif %}
 {% endblock %}

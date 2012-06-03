@@ -1,5 +1,6 @@
 # __author__ = russ@iamble
 
+import logging
 import models
 import urllib
 
@@ -20,17 +21,19 @@ class LoginHandler(webapp.RequestHandler):
     if user:
       ambler = models.Ambler.get_by_id(user.email())
       if ambler:
-        if ambler.first_time:
-          self.redirect('/oauth')
-        else:
+        if not ambler.first_time:
           # Redirect to core site
           self.redirect('/')
       else:
-        # Account creation includes all Oauth generation
-        self.redirect('/settings?user=%s' % urllib.quote_plus(
-            user.email()))
+        ambler = models.Ambler(user.email())
+        ambler.put()
+      self.redirect('/oauth')
     else:
-      redirect_url = users.create_login_url(dest_url='/login')
+      login_url = users.create_login_url(dest_url='/login')
+      message = 'Redirecting you to Google for authentication.'
+      redirect_url = '/redirect?url=%s&message=%s' % (
+          urllib.quote_plus(login_url), message)
+      logging.info(redirect_url)
       self.redirect(redirect_url)
 
   def post(self):

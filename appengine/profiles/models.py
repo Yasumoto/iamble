@@ -11,12 +11,6 @@ from google.appengine.ext import ndb
 import config
 from utils import singly_utils
 
-class Preference(ndb.Model):
-  """An iAmble preference."""
-  name = ndb.StringProperty()
-  value = ndb.StringProperty()
-
-
 class Source(ndb.Model):
   """Source of signal information."""
   service = ndb.StringProperty()
@@ -48,10 +42,11 @@ class Ambler(ndb.Model):
   name_last = ndb.StringProperty()
   singly_id = ndb.StringProperty()
   singly_access_token = ndb.StringProperty()
-  preferences = ndb.StructuredProperty(Preference, repeated=True)
   default_location = ndb.StructuredProperty(Coordinate)
   persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace)
   first_time = ndb.BooleanProperty(default=True)
+  budget = ndb.FloatProperty(default=20.00)
+  distance = ndb.StringProperty(default='walk')
 
   def GetActiveServices(self):
     if self.singly_access_token:
@@ -66,10 +61,22 @@ class Ambler(ndb.Model):
         return result_object.keys()
     return []
 
-  def GetProfileServiceData(self, service):
+  def GetProfileServiceData(self, service=None, data=False, fields=None):
     if self.singly_access_token:
-      url = config.SINGLY_API_PROFILES + '/%s' % service
+      url = config.SINGLY_API_PROFILES
       params = {'access_token': self.singly_access_token}
+
+      if service:
+        url + '/%s' % service
+
+      if data:
+        params['data'] = 'true'
+
+      if fields:
+        params['fields'] = ','.join(fields)
+
+      logging.info(params)
+
       status_code, result_object = singly_utils.SinglyGET(url, params)
       if status_code == 200:
         return result_object
