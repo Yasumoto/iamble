@@ -11,6 +11,12 @@ from google.appengine.ext import ndb
 import config
 from utils import singly_utils
 
+
+class InterestedUsers(ndb.Model):
+  """Users signed up to get notified on launch date."""
+  email = ndb.StringProperty()
+
+
 class Source(ndb.Model):
   """Source of signal information."""
   service = ndb.StringProperty()
@@ -43,6 +49,7 @@ class Ambler(ndb.Model):
   singly_id = ndb.StringProperty()
   singly_access_token = ndb.StringProperty()
   default_location = ndb.StructuredProperty(Coordinate)
+  default_address = ndb.StringProperty()
   persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace)
   first_time = ndb.BooleanProperty(default=True)
   budget = ndb.FloatProperty(default=20.00)

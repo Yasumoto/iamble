@@ -53,6 +53,7 @@ class SettingsHandler(webapp.RequestHandler):
       ambler.first_time = False
       ambler.budget = form_data['budget']
       ambler.distance = form_data['distance']
+      ambler.default_address = form_data['address']
 
       ambler.put()
 
@@ -70,6 +71,7 @@ class SettingsHandler(webapp.RequestHandler):
       'name_last': self.request.get('name_last'),
       'latitude': float(self.request.get('latitude')),
       'longitude': float(self.request.get('longitude')),
+      'address': self.request.get('address'),
       'budget': float(self.request.get('budget')),
       'distance': self.request.get('distance')
       }

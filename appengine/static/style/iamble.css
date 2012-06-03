@@ -1,3 +1,8 @@
+@font-face {
+  font-family: GoodDog;
+  src: url('/static/fonts/GoodDog.ttf');
+}
+
 body, table, td {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -9,7 +14,7 @@ h2 {
 
 .status_message {
   border: 1px solid;
-  margin: 10px 0px;
+  margin: 0px 10px 10px 10px;
   padding:15px 10px 15px 50px;
   background-repeat: no-repeat;
   background-position: 10px center;
@@ -42,20 +47,15 @@ h2 {
 }
 
 #bodyheader {
-  height: 90px;
-  padding: 10px;
+  height: 100px;
+  padding: 10px 10px 0px 10px;
 }
 
 #bodyheader #logo {
-  font-size: 48px;
-  font-family: 'Lobster', cursive;
-  text-shadow: 2px -2px 3px #CCC;
-  width: 200px;
   text-align: center;
   margin-right: auto;
   margin-left: auto;
   vertical-align: top;
-  margin-top: 10px;
 }
 
 #bodyheader #logo span.prefix {
@@ -68,6 +68,13 @@ h2 {
 #bodyheader #logo a:visited {
   text-decoration: none;
   color: black;
+  padding: 0px;
+  margin: 0px;
+}
+
+#bodyheader #logo img {
+  height: 100%;
+  width: auto;
 }
 
 #bodyheader .right {
@@ -83,6 +90,11 @@ h2 {
 
 #bodyheader .right a {
   text-decoration: none;
+}
+
+#bodyheader .right #spinner {
+  display: none;
+  vertical-align: middle;
 }
 
 #bodycontent {

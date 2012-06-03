@@ -63,8 +63,11 @@ class SignalEngine(object):
         if not google_signal['status'] == 'ZERO_RESULTS':
           parsed_signal = self.ParseFacebookJSON(google_signal, checkin)
       elif source == 'foursquare':
-        if constants.FOURSQUARE_FOOD_PARENT in [i.lower() for i in checkin['data']['categories']['parents']]:
-          parsed_signal = self.ParseFoursquareJSON(signal)
+        try:
+          if constants.FOURSQUARE_FOOD_PARENT in [i.lower() for i in checkin['data']['categories']['parents']]:
+            parsed_signal = self.ParseFoursquareJSON(signal)
+        except Exception:
+          pass
       if parsed_signal:
         place = self.FindPlace(parsed_signal)
         signal_object = self.CheckForDuplicateCheckin(parsed_signal, place)

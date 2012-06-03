@@ -16,6 +16,23 @@ h2 {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, .4);
 }
 
+h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+p {
+  text-align: left;
+  text-indent: 15px;
+}
+
+li {
+  text-align: left;
+  
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
 .status_message {
   border: 1px solid;
   margin: 10px 0px;
