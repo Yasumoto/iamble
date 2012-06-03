@@ -17,12 +17,14 @@ static NSString *const kAmble = @"Amble";
 static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/api/mobile/recommend";
 
 @interface RecomendationViewController ()
+@property (strong, nonatomic) NSString *name;
 
 @end
 
 @implementation RecomendationViewController
 @synthesize locationManager = _locationManager;
 @synthesize auth = _auth;
+@synthesize name = _name;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,7 +58,9 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
 
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
-    //JSONKit
+    JSONDecoder *decoder = [JSONDecoder decoder];
+    NSMutableDictionary *dic = [decoder mutableObjectWithData:data];
+    NSLog(@"Dic: %@", dic);
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
