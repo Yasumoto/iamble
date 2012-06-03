@@ -6,6 +6,7 @@ CALLBACK_URI = 'https://ambleapp.appspot.com/oauth_callback'
 LOGIN_URL = '/login'
 
 DEV_CALLBACK_URI = 'http://localhost:8080/oauth_callback'
+#CALLBACK_URI = 'http://localhost:8080/oauth_callback'
 
 SINGLY_OAUTH_BASE_URL = 'https://api.singly.com/oauth/authorize'
 
