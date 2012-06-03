@@ -1,0 +1,24 @@
+{% extends "iamble.html" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/style/home.css">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="/static/scripts/home.js"></script>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block body %}
+  <div id="signup">
+    <h2>Welcome to iAmble!</h2>
+      <p>We're currently hacking away at iAmble, but here's what you can expect when we have a version to launch:<br><br>
+        <ul>
+          <li>&bull;&nbsp;Sign-in with your Google Account</li>
+          <li>&bull;&nbsp;Add your Facebook, Twitter and Foursquare accounts</li>
+          <li>&bull;&nbsp;Recommendations for coffee shops, restaurants, and other eateries based on your friends' status updates and check-ins!
+        </ul>
+      </p>
+  </div>
+
+{% endblock %}

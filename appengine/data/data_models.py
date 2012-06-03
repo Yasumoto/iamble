@@ -22,3 +22,4 @@ class Checkin(ndb.Model):
   coordinate = ndb.StructuredProperty(profile_models.Coordinate)  # keep duplicated for speedy index
   when = ndb.DateTimeProperty()
   data = ndb.StringProperty()
+  likes = ndb.IntegerProperty()

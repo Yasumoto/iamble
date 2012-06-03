@@ -1,0 +1,18 @@
+{% extends "iamble.html" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/style/landing.css">
+  <script type="text/javascript" src="/static/scripts/landing.js"></script>
+{% endblock %}
+
+{% block javascript %}
+  $(document).iambleLanding(iamble).render();
+{% endblock %}
+
+{% block body %}
+  <div class="padded">This site recommends places to eat at based off your interestes and your friend's opinions.</div>
+
+  <div class="padded">Screenshot/Video:</div>
+  <div class="padded">Appstore/QR Code:</div>
+  <div class="padded">iambleapp@twitter</div>
+{% endblock %}
