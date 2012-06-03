@@ -8,8 +8,8 @@
 
 #signup {
   margin: 0px auto;
-  padding: 10px;
-  width: 650px;
+  padding: 10px 10px 0px 10px;
+  width: 750px;
   color: #ddd;
   background-color:rgba(0,0,0,0.5);
   border: 2px solid #C0C0C0;
@@ -17,6 +17,12 @@
   -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
 	-webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
 	box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+div#iphonemock1 {
+  display: inline-block;
+  padding-top: 15px;
 }
 
 div#thumbsup, div#thumbsdown {

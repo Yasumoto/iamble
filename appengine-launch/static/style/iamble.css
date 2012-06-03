@@ -1,5 +1,6 @@
 body {
-  background: #000000 url('/static/images/vichy.png');
+  background: #000000 url('/static/images/subtle_stripes.png');
+  background-opacity: 0.1;
 }
 
 body, table, td {
@@ -12,6 +13,7 @@ h2 {
   margin-bottom: 10px;
   text-align: center;
   font-family: 'GoodDog';
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, .4);
 }
 
 .status_message {
@@ -77,11 +79,12 @@ h2 {
   color: black;
 }
 
-#bodyheader .right {
-  position: absolute;
-  font-size: 13px;
-  top: 10px;
-  right: 10px;
+.right {
+  float: right;
+}
+
+.clears {
+  clear: both;
 }
 
 #bodyheader .right img {

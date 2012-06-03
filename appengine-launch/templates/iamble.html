@@ -36,13 +36,7 @@
             <img src="/static/images/logo.png">
           </a>
         </div>
-        <div class="right">
-          {% if current_user %}
-            {{ current_user.email }} | <a href="/oauth">Services</a> | <a href='/settings'>Settings</a> | <a href="/logout">Logout</a>
-          {% else %}
-            <a href="/login"><img src="/static/images/login.png">&nbsp;Login via Google</a>
-          {% endif %}
-        </div>
+        
       </div>
       <div id="bodycontent">
         <div id="messages">

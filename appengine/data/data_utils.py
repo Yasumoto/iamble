@@ -42,3 +42,20 @@ def GetGooglePlace(lat, lng, name):
   logging.info(params)
   logging.info(result.status_code)
   return result.content
+
+def GetPlacesInArea(lat, lng, miles)
+  coordinate = '%s,%s' % (lat, lng)
+  meters = miles * 1609.344
+  types = 'cafe|bakery|meal_delivery|meal_takeaway|food|restaurant'
+  query_params = {
+      'key': config.GOOGLE_API_KEY,
+      'location': coordinate,
+      'radius': meters,
+      'types': types,
+      'sensor': 'true'}
+  params = urllib.urlencode(query_params)
+  get_url = '%s?%s' % (config.GOOGLE_PLACES_API, params)
+  result = urlfetch.fetch(get_url)
+  logging.info(params)
+  logging.info(result.status_code)
+  return result.content
