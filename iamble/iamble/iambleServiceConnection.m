@@ -55,12 +55,12 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
     if (error != nil)
     {
         // Authentication failed
-        UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Authorization Failed"
+        /*UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Authorization Failed"
                                                              message:[error localizedDescription]
                                                             delegate:self
                                                    cancelButtonTitle:@"Dismiss"
-                                                   otherButtonTitles:nil];
-        [alertView show];
+                                                   otherButtonTitles:nil];*/
+        //[alertView show];
     }
     else
     {

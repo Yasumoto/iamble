@@ -134,6 +134,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     if (self.iamble.authenticated == NO) {
         [self.navigationController pushViewController:[self.iamble authorizeAmble:slider.service] animated:YES];
+        self.navigationItem.rightBarButtonItem = nil;
     }
     else {
         UIViewController *controller = [self.singly authorize:slider.service];
