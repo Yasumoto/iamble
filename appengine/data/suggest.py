@@ -23,6 +23,7 @@ def GenerateSuggestions(ambler, suggestions=10, location)
     # weight based on distance
     # weight based on price
     # weight based on type
+    # weight based on google rating
     # append to rated_places with calculated weight 
     
     

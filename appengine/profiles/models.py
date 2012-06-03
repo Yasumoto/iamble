@@ -30,11 +30,13 @@ class Coordinate(ndb.Model):
 
 class CachedPlace(ndb.Model):
   """A cached place an ambler might like."""
-  coordinate = ndb.StructuredProperty(Coordinate)
+  lat = ndb.FloatProperty()
+  lng = ndb.FloatProperty()
   name = ndb.StringProperty()
   type = ndb.StringProperty(choices=['coffee', 'quick', 'sit-down'])
   cost = ndb.IntegerProperty(choices=[1,2,3,4,5])
-  why = ndb.StringProperty(repeated=True)  # Description of why you'll like this spot.
+  why_description1 = ndb.StringProperty()
+  why_description2 = ndb.StringProperty()
   cache_date = ndb.DateTimeProperty()
 
 
@@ -50,7 +52,7 @@ class Ambler(ndb.Model):
   singly_access_token = ndb.StringProperty()
   default_location = ndb.StructuredProperty(Coordinate)
   default_address = ndb.StringProperty()
-  persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace)
+  persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace, repeated=True)
   first_time = ndb.BooleanProperty(default=True)
   budget = ndb.FloatProperty(default=20.00)
   distance = ndb.StringProperty(default='walk')
