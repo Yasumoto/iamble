@@ -14,11 +14,17 @@
   {% for service in existing_services %}
   <div>{{ service }}</div>
   {% endfor %}
+
   <hr>
+
   <h2>Authorize New Services</h2>
   {% for service in new_services %}
-    <div>Give us access to:&nbsp;<a href="{{ service.oauth_url }}">{{ service.name }}</a></div>
+    <div class="service">
+      <a href="{{ service.oauth_url }}">
+        <img alt="{{ service.name }}" class="icon" src="{{ service.icon }}">
+      </a>
+    </div>
   {% endfor %}
-  <h2>Checkin Feed</h2>
-  <div>{{ checkin_feed }}</div>
+
+  <hr>
 {% endblock %}

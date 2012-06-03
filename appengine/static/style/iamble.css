@@ -61,6 +61,14 @@ h2 {
   color: #888;
 }
 
+#bodyheader #logo a,
+#bodyheader #logo a:hover,
+#bodyheader #logo a:active,
+#bodyheader #logo a:visited {
+  text-decoration: none;
+  color: black;
+}
+
 #bodyheader .right {
   position: absolute;
   font-size: 13px;

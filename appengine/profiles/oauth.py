@@ -14,10 +14,12 @@ import config
 import handler
 import models
 from data import data_utils
+from utils import template
 
 UNDER_CONSTRUCTION = """This is OAuth2. Start handshaking!"""
 
 HOME_TEMPLATE = 'templates/oauth.html'
+
 
 class Service(object):
 
@@ -40,21 +42,29 @@ class Service(object):
   def profile_url(self):
     return config.SINGLY_API_PROFILES + '/' + self.service_name
 
+
 class FacebookService(Service):
   name = "Facebook"
   service_name = 'facebook'
+  icon = '/static/images/facebook.png'
+
 
 class TwitterService(Service):
   name = "Twitter"
   service_name = 'twitter'
+  icon = '/static/images/twitter.png'
+
 
 class FoursquareService(Service):
   name = "Foursquare"
   service_name = 'foursquare'
+  icon = '/static/images/foursquare.png'
+
 
 class GoogleContactsService(Service):
   name = "Google Contacts"
   service_name = 'gcontacts'
+  icon = '/static/images/google.png'
 
 
 class OAuth2Handler(webapp.RequestHandler):
@@ -64,7 +74,7 @@ class OAuth2Handler(webapp.RequestHandler):
   @handler.RequiresLogin
   def get(self):
     """"""
-    template_params = dict()
+    template_params = template.get_params()
     this_user = models.Ambler.get_by_id(users.get_current_user().email())
     logging.info('THIS USER: %s', this_user)
     existing_services = this_user.GetActiveServices()
@@ -81,9 +91,8 @@ class OAuth2Handler(webapp.RequestHandler):
     #  profile_data.append(this_user.GetProfileServiceData(service))
     template_params['new_services'] = new_services
     template_params['existing_services'] = existing_services
-    template_params['checkin_feed'] = data_utils.GetCheckinsForUser(this_user)
-    rendered_page = template.render(HOME_TEMPLATE, template_params)
-    self.response.out.write(str(rendered_page))
+    #template_params['checkin_feed'] = data_utils.GetCheckinsForUser(this_user)
+    template.render_template(self, HOME_TEMPLATE, template_params)
 
 class OAuth2CallbackHandler(webapp.RequestHandler):
 

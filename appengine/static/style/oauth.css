@@ -1,0 +1,10 @@
+div.service {
+  display: inline-block;
+  margin: 10px;
+}
+
+div.service img.icon {
+  width: 110px;
+  height: auto;
+  border-radius: 8px;
+}

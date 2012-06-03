@@ -9,7 +9,7 @@
   $(document).iambleCreateAccount(iamble, {
     'firstname': $('#firstname'),
     'lastname': $('#lastname'),
-    'amount': $('#amount'),
+    'budget': $('#budget'),
     'distance': $('#distance'),
     'save': $('#save')
   }).render();
@@ -17,7 +17,7 @@
 
 {% block body %}
   <div class="form">
-    <form action="?" method="post">
+    <form action="?user={{ user.key.id }}" method="post">
       <table>
         <tr>
           <td colspan="2" class="title">
@@ -27,33 +27,33 @@
         <tr>
           <td>First name</td>
           <td>
-            <input type="text" id="firstname" value="{{ user.first_name }}">
+            <input type="text" id="firstname" name="name_first" value="{{ user.name_first }}">
           </td>
         </tr>
         <tr>
           <td>Last name</td>
           <td>
-            <input type="text" id="lastname" value="{{ user.last_name }}">
+            <input type="text" id="lastname" name="name_last" value="{{ user.name_last }}">
           </td>
         </tr>
         <tr>
           <td>Budget</td>
           <td>
-            <input type="text" id="amount" value="{{ preferences.budget }}">
+            <input type="text" id="budget" name="budget" value="{{ preferences.budget }}">
           </td>
         </tr>
         <tr>
           <td>Distance</td>
           <td>
             <div id="distance">
-              <input type="checkbox" id="walk" {% if preferences.walk %}checked{% endif %}/>
+              <input type="checkbox" id="walk" name="walk" {% if preferences.walk == 'on' %}checked{% endif %}/>
               <label for="walk">Walk</label>
 
-              <input type="checkbox" id="bike" {% if preferences.bike %}checked{% endif %}/>
+              <input type="checkbox" id="bike" name="bike" {% if preferences.bike == 'on' %}checked{% endif %}/>
               <label for="bike">Bike</label>
 
-              <input type="checkbox" id="car" {% if preferences.car %}checked{% endif %}/>
-              <label for="car">Car</label>
+              <input type="checkbox" id="drive" name="drive" {% if preferences.drive == 'on' %}checked{% endif %}/>
+              <label for="drive">Drive</label>
             </div>
           </td>
         </tr>
