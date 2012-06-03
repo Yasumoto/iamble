@@ -16,7 +16,7 @@ class SignalEngine(object):
   def __init__(self, ambler):
     """Initializes a signal generation object"""
     # Gather ambler stats before any data is aggregated
-    self.ambler = ambler
+    self.ambler = profile_models.Ambler.get_by_id(ambler.email())
 
   def SignalMaster(self, call_type, location=None):
     """Master function to govern data collection, parsing, and return."""
@@ -39,15 +39,19 @@ class SignalEngine(object):
     """Fires a full data collection and parse process."""
     self.CollectRawJSON()
     caches.SetPersistentCache(self.ambler, 10)
-    top_suggestion = caches.GetPersistentCache(1)
+    top_suggestion = caches.GetPersistentCache(self.ambler, 1)
     return top_suggestion
 
   def CollectRawJSON(self):
     """Does a massive data gather on all activated services."""
     json_checkins = data_utils.GetCheckinsForUser(self.ambler)
     for checkin in json_checkins:
-      if constants.FOURSQUARE_FOOD_PARENT in [i.lower() for i in checkin['data']['categories']['parents']]:
-        self.ProcessCheckin(checkin)
+      logging.info(checkin)
+      try:
+        if constants.FOURSQUARE_FOOD_PARENT in [i.lower() for i in checkin['data']['categories']['parents']]:
+          self.ProcessCheckin(checkin)
+      except KeyError:
+        pass
 
   def ProcessCheckin(self, signal):
     """Takes signal as an argument representing an item that is to be analyzed."""
