@@ -54,18 +54,29 @@
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
-}
-
-- (void) viewDidAppear:(BOOL)animated {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare-logo.png"];
     self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
     self.foursquareSlider.imageView.frame = CGRectMake(0, 0, 256, 70);
     self.foursquareSlider.delegate = self;
+    if ([defaults valueForKey:@"foursquare"]) {
+        [self.foursquareSlider slideRight];
+    }
+    
     
     self.twitterSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_twitter_withbird_1000_white_blue.png"]];
     self.twitterSlider.backgroundColor = [UIColor grayColor];
     self.twitterSlider.imageView.frame = CGRectMake(10, 5, 296, 55);
     self.twitterSlider.delegate = self;
+    if ([defaults valueForKey:@"twitter"]) {
+        [self.twitterSlider slideRight];
+    }
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+
 
 }
 
