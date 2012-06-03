@@ -38,7 +38,7 @@
             .text('Quick bite')
             .attr('id', this.buttonKeys.QUICK),
         $(document.createElement('DIV'))
-            .text('Fine dinning')
+            .text('Fine dining')
             .attr('id', this.buttonKeys.FINE)
       ];
 

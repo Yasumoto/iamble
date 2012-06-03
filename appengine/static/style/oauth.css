@@ -3,6 +3,12 @@ div.service {
   margin: 10px;
 }
 
+div.service.existing {
+  opacity: 0.2;
+  pointer-events: none;
+  cursor: default;
+}
+
 div.service img.icon {
   width: 110px;
   height: auto;

@@ -1,0 +1,22 @@
+div.form {
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+table tr td {
+  padding: 20px;
+}
+
+table tr td.buttons {
+  text-align: center;
+  padding-top: 30px;
+}
+
+table tr td.title {
+  text-align: center;
+}
+
+table tr td input[type='text'] {
+  width: 100%;
+  height: 100%;
+}

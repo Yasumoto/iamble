@@ -24,9 +24,10 @@ HOME_TEMPLATE = 'templates/oauth.html'
 
 class Service(object):
 
-  def __init__(self, ambler=None):
+  def __init__(self, ambler=None, enabled=False):
     user = users.get_current_user()
     self.ambler = None
+    self.enabled = enabled
     if user:
       self.ambler = ambler or models.Ambler.get_by_id(user.email())
 
@@ -72,23 +73,27 @@ class OAuth2Handler(webapp.RequestHandler):
   """"""
   URL_PATH = '/oauth'
 
+  SERVICS = [FacebookService,
+             TwitterService,
+             FoursquareService,
+             GoogleContactsService]
+
+
   @handler.RequiresLogin
   def get(self):
     """"""
     template_params = template.get_params()
     this_user = models.Ambler.get_by_id(users.get_current_user().email())
-    logging.info('THIS USER: %s', this_user)
+
     existing_services = this_user.GetActiveServices()
-    services = [FacebookService(this_user),
-                TwitterService(this_user),
-                FoursquareService(this_user),
-                GoogleContactsService(this_user)]
-    new_services = []
-    for service in services:
-      if service.service_name not in existing_services:
-        new_services.append(service)
-    template_params['new_services'] = new_services
-    template_params['existing_services'] = existing_services
+
+    service_list = list()
+    for service in self.SERVICS:
+      enabled = service.service_name in existing_services
+      initialized_service = service(this_user, enabled)
+      service_list.append(initialized_service)
+
+    template_params['services'] = service_list
     template.render_template(self, HOME_TEMPLATE, template_params)
 
 class OAuth2CallbackHandler(webapp.RequestHandler):

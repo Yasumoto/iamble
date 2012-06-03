@@ -18,16 +18,10 @@
 
   $.iambleOAuth.fn.extend({
     'init': function() {
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('OAUTH INIT')
-      );
       return this;
     },
     'render': function() {
       this.base.render();
-      this.base.options.content.append(
-        $(document.createElement('DIV')).html('OAUTH RENDER')
-      );
       return this;
     }
   });
