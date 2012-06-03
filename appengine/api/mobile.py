@@ -20,7 +20,7 @@ class NewServiceHandler(webapp.RequestHandler):
   def get(self, *args):
     singly_access_token = self.request.get('singly_access_token')
     user = oauth.get_current_user()
-    ambler = models.Ambler.get_or_insert(id=user.email())
+    ambler = models.Ambler.get_or_insert(user.email())
     ambler.singly_access_token = singly_access_token
     ambler.put()
     if ambler.key:
