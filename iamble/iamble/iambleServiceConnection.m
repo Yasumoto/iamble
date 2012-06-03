@@ -15,7 +15,6 @@ static NSString *const kOAuthScope = @"https://ambleapp.appspot.com";
 static NSString *const kRequestTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetRequestToken";
 static NSString *const kAuthorizeTokenString = @"https://ambleapp.appspot.com/_ah/OAuthAuthorizeToken";
 static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetAccessToken";
-static NSString *const kAmbleServiceEndPoint = @"https://ambleapp.appspot.com/api/mobile/new_service";
 
 @interface iambleServiceConnection () <NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSString *service;

@@ -24,6 +24,9 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
 @implementation RecomendationViewController
 @synthesize locationManager = _locationManager;
 @synthesize auth = _auth;
+@synthesize coffeeSlider = _coffeeSlider;
+@synthesize quickbiteSlider = _quickbiteSlider;
+@synthesize sitdownSlider = _sitdownSlider;
 @synthesize name = _name;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,6 +45,14 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
     UIImage *img = [UIImage imageNamed:@"logo_header.png"];
     [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
     [self sendUpdatedLocation];
+    self.coffeeSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coffee_bar.png"]];
+    self.coffeeSlider.delegate = self;
+    
+    self.quickbiteSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"quickbite_bar.png"]];
+    self.quickbiteSlider.delegate = self;
+    
+    self.sitdownSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sitdown_bar.png"]];
+    self.sitdownSlider.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -71,8 +82,15 @@ static NSString *const kAmbleLocationEndPoint = @"https://ambleapp.appspot.com/a
     NSLog(@"Status Code: %d", [httpResponse statusCode]);
 }
 
+- (void) sliderWasActivated:(SliderView *)slider {
+    
+}
+
 - (void)viewDidUnload
 {
+    [self setCoffeeSlider:nil];
+    [self setQuickbiteSlider:nil];
+    [self setSitdownSlider:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

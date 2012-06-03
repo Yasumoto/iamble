@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "gtm-oauth/GTMOAuthAuthentication.h"
 #import "LocationManager.h"
+#import "SliderView.h"
 
-@interface RecomendationViewController : UIViewController
+@interface RecomendationViewController : UIViewController <SliderActivatedDelegate>
 @property (nonatomic, strong) GTMOAuthAuthentication *auth;
+@property (weak, nonatomic) IBOutlet SliderView *coffeeSlider;
+@property (weak, nonatomic) IBOutlet SliderView *quickbiteSlider;
+@property (weak, nonatomic) IBOutlet SliderView *sitdownSlider;
 @property (nonatomic, strong) LocationManager *locationManager;
 @end

@@ -11,10 +11,13 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 #import <SSKeychain.h>
 #import <JSONKit/JSONKit.h>
+#import <AFNetworking/AFNetworking.h>
 
 static NSString *const kSinglyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
 static NSString *const kSinglyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
 static NSString *const kSingly = @"Singly";
+static NSString *const kAmbleHost = @"https://ambleapp.appspot.com";
+static NSString *const kAmbleNewServiceEndPoint = @"/api/mobile/new_service";
 
 @interface SinglyServiceConnection ()
 - (GTMOAuth2Authentication *)singlyAuth;
@@ -104,9 +107,14 @@ static NSString *const kSingly = @"Singly";
     {
         // Authentication succeeded
         [SSKeychain setPassword:auth.accessToken forService:kSingly account:kSingly];
+        [self sendJimmehTehToken:auth.accessToken];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:kSingly forKey:self.service];
     }
+}
+
+- (void) sendJimmehTehToken:(NSString *)accessToken {
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kAmbleHost]];
 }
 
 - (IBAction)loadProfiles
