@@ -9,6 +9,8 @@
 #import "SliderView.h"
 #import <QuartzCore/QuartzCore.h>
 
+static int shiftLength = 250;
+
 @interface SliderView ()
 @property BOOL left;
 @end
@@ -57,7 +59,7 @@
     if (!atStartup) {
         [UIView animateWithDuration:0.5 animations:^{
             if (self.left) {
-                self.center = CGPointMake(self.center.x + 200,
+                self.center = CGPointMake(self.center.x + shiftLength,
                                           self.center.y);
                 self.alpha = 1.0;
                 self.left = NO;
@@ -74,7 +76,7 @@
             }
         }];
     } else {
-        self.center = CGPointMake(self.center.x + 200,
+        self.center = CGPointMake(self.center.x + shiftLength,
                                   self.center.y);
         self.alpha = 1.0;
         self.left = NO;
@@ -85,7 +87,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
     if (!self.left) {
-        self.center = CGPointMake(self.center.x - 200,
+        self.center = CGPointMake(self.center.x - shiftLength,
                                   self.center.y);
         self.alpha = 0.7;
         self.left = YES;

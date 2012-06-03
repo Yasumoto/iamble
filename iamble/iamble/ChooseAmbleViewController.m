@@ -56,9 +56,9 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImage *img = [UIImage imageNamed:@"logo_header2.png"];
+    UIImage *img = [UIImage imageNamed:@"logo_header.png"];
     [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 640, 67)];
+    //[self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 640, 67)];
     self.locationManager = [[LocationManager alloc] init];
 	// Do any additional setup after loading the view.
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
