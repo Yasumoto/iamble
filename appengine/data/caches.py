@@ -17,10 +17,10 @@ def GetPersistentCache(ambler, max_suggestions, location=None):
      valid_suggestions.extend(SetPersistentCache(ambler,
                                                  suggestions_needed,
                                                  location))
-  #ambler.
-  return None
+  SetPersistentCache(ambler, location=location)
+  return valid_suggestions
 
-def SetPersistentCache(ambler, num_suggestions, location=None):
+def SetPersistentCache(ambler, num_suggestions=10, location=None):
   """Set the given number of persistent cache values for the given ambler."""
   location = location or ambler.default_location
   pass
