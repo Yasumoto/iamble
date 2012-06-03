@@ -1,6 +1,7 @@
 # __author__ = russ@iamble
 
 import constants
+import caches
 import data_models
 import data_utils
 import logging
@@ -16,18 +17,20 @@ class SignalEngine(object):
     """Initializes a signal generation object"""
     # Gather ambler stats before any data is aggregated
     self.ambler = ambler
-  
+
   def SignalMaster(self, call_type, location=None):
     """Master function to govern data collection, parsing, and return."""
     if call_type == 'get_top_default':
       top_suggestion = caches.GetPersistentCache(self.ambler, 1)
       if not top_suggestion:
         return self.FullDataProcess()
+      else:
+        return top_suggestion
     elif call_type == 'get_top_dynamic':
       return self.FindDynamicSuggestions(location)
     elif call_type == 'first_login' or 'cron':
       return self.FullDataProcess()
-  
+
   def FindDynamicSuggestions(self, location):
     """Find suggestions based on your current location."""
     return 'Dynamic location place response!'
@@ -38,14 +41,14 @@ class SignalEngine(object):
     caches.SetPersistentCache(self.ambler, 10)
     top_suggestion = caches.GetPersistentCache(1)
     return top_suggestion
-  
+
   def CollectRawJSON(self):
     """Does a massive data gather on all activated services."""
     json_checkins = data_utils.GetCheckinsForUser(self.ambler)
     for checkin in json_checkins:
       if constants.FOURSQUARE_FOOD_PARENT in [i.lower() for i in checkin['data']['categories']['parents']]:
         self.ProcessCheckin(checkin)
-    
+
   def ProcessCheckin(self, signal):
     """Takes signal as an argument representing an item that is to be analyzed."""
     parsed_signal = self.ParseJSON(signal)
@@ -53,7 +56,7 @@ class SignalEngine(object):
     signal_object = self.CheckForDuplicateCheckin(parsed_signal, place)
     if not signal_object:
       self.AddCheckinToPlace(parsed_signal, place)
-  
+
   def FindPlace(self, parsed_signal):
     """Associates a possible place with a passed in signal."""
     place = data_models.Place.query()
@@ -64,7 +67,7 @@ class SignalEngine(object):
     if not place:
       place = self.InsertNewPlace(parsed_signal).get()
     return place
-  
+
   def CheckForDuplicateCheckin(self, parsed_signal, place):
     """Check for duplicate checkins."""
     duplicate = data_models.Checkin.query(ancestor=place.key)
@@ -73,7 +76,7 @@ class SignalEngine(object):
     duplicate = duplicate.filter(data_models.Checkin.coordinate.lat == parsed_signal['lat'])
     duplicate = duplicate.filter(data_models.Checkin.coordinate.lng == parsed_signal['lng'])
     return duplicate.get()
-  
+
   def InsertNewPlace(self, parsed_signal):
     """Adds a place we haven't seen before to datastore."""
     new_place_coordinate = profile_models.Coordinate
@@ -89,7 +92,7 @@ class SignalEngine(object):
     new_place.friend = parsed_signal['friend']
     new_place.mentions = parsed_signal['mentions']
     return new_place.put()
-  
+
   def AddCheckinToPlace(self, parsed_signal, place):
     """Adds a child checkin object to a place entity."""
     new_checkin_coordinate = profile_models.Coordinate
@@ -102,8 +105,7 @@ class SignalEngine(object):
     new_checkin.when = parsed_signal['when']
     new_checkin.data = parsed_signal['data']
     new_checkin.put()
-    
-  
+
   def ParseJSON(self, signal):
     """Parses an input JSON signal."""
     parsed_signal = dict()
@@ -119,7 +121,7 @@ class SignalEngine(object):
     parsed_signal['when'] = signal['data']['createdAt']
     parsed_signal['data'] = signal['data']['user']['trips']
     return parsed_signal
-  
+
   def _DetermineType(self, signal):
     """Determines the signal type using our nifty constants."""
     for quick_string in constants.QUICK_STRINGS:
@@ -132,5 +134,3 @@ class SignalEngine(object):
       if coffee_string in [i.lower() for i in [signal['data']['categories']['name'].split()]]:
         return 'coffee'
     return 'default'
-      
-    
