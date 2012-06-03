@@ -38,6 +38,8 @@ def GenerateSuggestions(ambler, suggestions=10, location):
       if temp_place['cost'] == ambler.budget:
         temp_place['rating'] += constants.PREFERENCE_MATCH_WEIGHT
     rated_places[temp_place['rating']] = temp_place
+    return_list = [rated_places[key] for key in sorted(rated_places.iterkeys())]
+    return return_list[:suggestions]
 
 
 def _GetGooglePlaceFoodType(place)
