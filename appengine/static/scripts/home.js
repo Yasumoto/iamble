@@ -90,17 +90,12 @@
       })
 
       request.done(this.bind(function(suggestion) {
-        //this.base.success(JSON.stringify(msg));
-        console.dir(suggestion);
-
-        this.responseId = 0;
+        this.responseId = suggestion['address'];
         this.base.options.messages.empty();
         this.renderMap(suggestion['lat'], suggestion['lng']);
 
         this.options.title.html(suggestion['name']);
-
         this.options.address.html(suggestion['address']);
-
         this.options.reasons.empty();
         this.options.reasons
           .append($(document.createElement('li'))
