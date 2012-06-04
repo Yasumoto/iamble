@@ -5,7 +5,7 @@ EXPIRE_CACHE_DAYS = 7
 
 def GetPersistentCache(ambler, max_suggestions, location=None):
   """Collect and remove from cache the provided number of suggestions for the given ambler."""
-  location = location or ambler.default_location
+  #location = location or ambler.default_location
   today = datetime.datetime.today()
   suggestions = ambler.persistent_suggestion_cache or []
   valid_suggestions = []

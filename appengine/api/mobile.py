@@ -11,6 +11,7 @@ from google.appengine.ext import webapp
 
 import handler
 from profiles import models
+from data import signal
 
 class NewServiceHandler(webapp.RequestHandler):
   
@@ -36,9 +37,9 @@ class RecommendationHandler(webapp.RequestHandler):
   @handler.RequiresOAuth
   def get(self, *args):
     user = oauth.get_current_user()
-    ambler = models.Ambler.get_by_id(user.email())
+    #ambler = models.Ambler.get_by_id(user.email())
     places = []
-    place1 = {'lat': 37.7589071,
+    """place1 = {'lat': 37.7589071,
               'lng': -122.4167398,
               'name': 'Mr. Pickle\'s Coffee Shop',
               'type': 'coffee',
@@ -57,5 +58,18 @@ class RecommendationHandler(webapp.RequestHandler):
               'cost': 1,
               'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
     
-    self.response.out.write(json.dumps([place1,place2,place3]))
+    self.response.out.write(json.dumps([place1,place2,place3]))"""
+    suggestion_generator = signal.SignalEngine(user)
+    top_suggestions = suggestion_generator.SignalMaster('get_top_default')
+    response = []
+    for top_suggestion in top_suggestions:
+      response.append(
+                 {'lat': top_suggestion.lat,
+                  'lng': top_suggestion.lng,
+                  'name': top_suggestion.name,
+                  'type': top_suggestion.food_type,
+                  'why': [top_suggestion.why_description1, top_suggestion.why_description2]
+                 })
+    self.response.out.write(json.dumps(response))
+    
 
