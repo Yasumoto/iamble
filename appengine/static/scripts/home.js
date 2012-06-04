@@ -58,12 +58,21 @@
       return this;
     },
     'renderMap' : function(lat, lng) {
+      var pos = new google.maps.LatLng(lat, lng);
+
       var myOptions = {
         zoom: 10,
-        center: new google.maps.LatLng(lat, lng),
+        center: pos
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
       map = new google.maps.Map(this.options.map.get(0), myOptions);
+
+      var marker = new google.maps.Marker({
+        position: pos,
+        title:"Hello World!"
+      });
+      marker.setMap(map);
+
       this.options.map.fadeIn();
     },
     'request': function(id, type, vote) {
@@ -90,14 +99,14 @@
 
         this.options.title.html(suggestion['name']);
 
-        //this.options.address.html();
+        this.options.address.html(suggestion['address']);
 
         this.options.reasons.empty();
         this.options.reasons
           .append($(document.createElement('li'))
               .append(suggestion['why_description1']))
           .append($(document.createElement('li'))
-              .append(suggestion['why_description2']))
+              .append(suggestion['why_description2']));
 
         this.options.result.fadeIn().css("display","inline-block");
       }));
