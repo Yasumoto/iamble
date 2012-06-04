@@ -53,14 +53,23 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     return _iamble;
 }
 
+- (void)changeToolbarButtonColorToColor:(UIColor *)newColor {
+    for (UIView *view in self.navigationController.toolbar.subviews) {                 
+        if ([[[view class] description] isEqualToString:@"UIToolbarButton"]) {                        
+            //[(UINavigationButton *)view setTintColor:newColor];
+        }   
+    }    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //[self changeToolbarButtonColorToColor: [UIColor colorWithRed:191.0/255 green:219.0/255 blue:103.0/255 alpha:1.0]];
     UIImage *img = [UIImage imageNamed:@"logo_header.png"];
     [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     self.locationManager = [[LocationManager alloc] init];
-
+    
     selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
@@ -90,11 +99,11 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finish_bar.png"]];
     self.settingsSlider.delegate = self;
     self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-        self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
+    self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
 }
 
 - (void)viewDidUnload
@@ -133,7 +142,8 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     if (self.iamble.authenticated == NO) {
-        [self.navigationController pushViewController:[self.iamble authorizeAmble:slider.service] animated:YES];
+        UIViewController *ambleAuth = [self.iamble authorizeAmble:slider.service];
+        [self.navigationController pushViewController:ambleAuth animated:YES];
         self.navigationItem.rightBarButtonItem = nil;
     }
     else {
