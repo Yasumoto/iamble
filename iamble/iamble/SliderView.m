@@ -16,7 +16,7 @@ static int shiftLength = 400;
 @end
 
 @implementation SliderView
-
+@synthesize left = _left;
 @synthesize imageView = _imageView;
 @synthesize delegate = _delegate;
 @synthesize service = _service;

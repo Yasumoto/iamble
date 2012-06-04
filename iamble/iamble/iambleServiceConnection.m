@@ -21,6 +21,8 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
 @end
 
 @implementation iambleServiceConnection
+@synthesize authenticated = _authenticated;
+@synthesize auth = _auth;
 @synthesize delegate = _delegate;
 @synthesize service = _service;
 

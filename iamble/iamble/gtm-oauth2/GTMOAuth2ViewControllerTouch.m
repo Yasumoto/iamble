@@ -53,7 +53,7 @@ finishedWithAuth:(GTMOAuth2Authentication *)auth
 @synthesize request = request_,
             backButton = backButton_,
             forwardButton = forwardButton_,
-            //navButtonsView = navButtonsView_,
+            navButtonsView = navButtonsView_,
             rightBarButtonItem = rightBarButtonItem_,
             webView = webView_;
 

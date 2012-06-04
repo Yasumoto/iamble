@@ -313,10 +313,10 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
 - (void)constructView {
 // If the Interface Builder .xib is compiled in to the app, it overrides this code.
 #if GTL_CONSTRUCT_OAUTH_VIEWS_IN_SOURCE_CODE
-  static const int kButtonFontHeight = 26;
-  static const int kButtonHeight = 30;
-  static const int kButtonXMargin = 6;
-  static const int kButtonWidth = 30;
+  //static const int kButtonFontHeight = 26;
+  //static const int kButtonHeight = 30;
+  //static const int kButtonXMargin = 6;
+  //static const int kButtonWidth = 30;
   CGRect webFrame = [[UIScreen mainScreen] applicationFrame];
   UIView *view = [[[UIView  alloc] initWithFrame:webFrame] autorelease];
   [view setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |
@@ -373,18 +373,18 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
   [forwardButton setEnabled:NO];
   [self setForwardButton:forwardButton];*/
 
-  CGRect navFrame =
-    CGRectMake(0, 0, kButtonXMargin + 2*kButtonWidth, kButtonHeight);
-  UIView *navButtonsView = [[[UIView alloc] initWithFrame:navFrame] autorelease];
-  [navButtonsView setBackgroundColor:[UIColor clearColor]];
+  //CGRect navFrame =
+  //  CGRectMake(0, 0, kButtonXMargin + 2*kButtonWidth, kButtonHeight);
+  //UIView *navButtonsView = [[[UIView alloc] initWithFrame:navFrame] autorelease];
+  //[navButtonsView setBackgroundColor:[UIColor clearColor]];
   //[navButtonsView addSubview:backButton];
   //[navButtonsView addSubview:forwardButton];
-  [self setNavButtonsView:navButtonsView];
+  //[self setNavButtonsView:navButtonsView];
 
-  UIBarButtonItem *rightBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithCustomView:navButtonsView] autorelease];
-  [self setRightBarButtonItem:rightBarButtonItem];
-  [[self navigationItem] setRightBarButtonItem:rightBarButtonItem];
+  //UIBarButtonItem *rightBarButtonItem =
+   // [[[UIBarButtonItem alloc] initWithCustomView:navButtonsView] autorelease];
+  //[self setRightBarButtonItem:rightBarButtonItem];
+  //[[self navigationItem] setRightBarButtonItem:rightBarButtonItem];
 #endif
 }
 

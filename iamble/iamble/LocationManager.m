@@ -10,6 +10,7 @@
 
 @implementation LocationManager
 @synthesize locationManager = _locationManager;
+@synthesize currentLocation = _currentLocation;
 
 - (id) init {
     self = [super init];
