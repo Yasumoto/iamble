@@ -416,6 +416,11 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
 
   //[rightBarButtonItem_ setCustomView:navButtonsView_];
   [[self navigationItem] setRightBarButtonItem:rightBarButtonItem_];
+    NSLog(@"%@", self.navigationItem.leftBarButtonItems);
+    //TODO(wtf did you do to this file, joe)
+    //UIBarButtonItem *backButton = [self.navigationItem.leftBarButtonItem copy];
+    //[backButton setTintColor:[UIColor colorWithRed:191.0/255 green:219.0/255 blue:103.0/255 alpha:1.0]];
+    //self.navigationItem.leftBarButtonItem = backButton;
 }
 
 - (void)popView {
