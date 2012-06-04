@@ -284,7 +284,6 @@
 		D8B87D891579E76600310696 = {
 			isa = PBXGroup;
 			children = (
-				D8056D6D157BFF43006A9C6B /* MapKit.framework */,
 				D8B87D9E1579E76600310696 /* iamble */,
 				D8B87DBE1579E76600310696 /* iambleTests */,
 				D8B87D971579E76600310696 /* Frameworks */,
@@ -305,6 +304,7 @@
 		D8B87D971579E76600310696 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8056D6D157BFF43006A9C6B /* MapKit.framework */,
 				D89ECBD3157B4D200005372F /* CoreLocation.framework */,
 				D81FB5FA157AAB94008B4C2D /* Security.framework */,
 				D81FB5F8157AAB8D008B4C2D /* SystemConfiguration.framework */,
@@ -617,6 +617,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -629,7 +630,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -639,6 +640,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
