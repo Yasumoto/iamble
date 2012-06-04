@@ -62,7 +62,7 @@
 
       var myOptions = {
         zoom: 10,
-        center: pos
+        center: pos,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
       map = new google.maps.Map(this.options.map.get(0), myOptions);
