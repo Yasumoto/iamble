@@ -28,5 +28,6 @@ def SetPersistentCache(ambler, suggestions):
     suggestion_object.why_description1 = suggestion['why_description1']
     suggestion_object.why_description2 = suggestion['why_description2']
     suggestion_object.cache_timestamp = suggestion['cache_timestamp']
+    suggestion_object.address = suggestion['address']
     ambler.persistent_suggestion_cache.append(suggestion_object)
   ambler.put()

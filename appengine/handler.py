@@ -90,6 +90,7 @@ class BaseHandler(webapp.RequestHandler):
                 'name': top_suggestion.name,
                 'why_description1': top_suggestion.why_description1,
                 'why_description2': top_suggestion.why_description2,
+                'address': top_suggestion.address
                }
     self.response.out.write(json.dumps(response))
 

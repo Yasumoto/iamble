@@ -35,6 +35,7 @@ class CachedPlace(ndb.Model):
   name = ndb.StringProperty()
   food_type = ndb.StringProperty(choices=['coffee', 'quick', 'sit-down', 'default'])
   cost = ndb.IntegerProperty()
+  address = ndb.StringProperty()
   why_description1 = ndb.StringProperty()
   why_description2 = ndb.StringProperty()
   cache_timestamp = ndb.DateTimeProperty(auto_now=True)
