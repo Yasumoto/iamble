@@ -14,6 +14,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+#define TESTING 1
+#ifdef TESTING
+  [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
     [TestFlight takeOff:@"a76c4d6edcc03d43ca34e5b3cb9f22c4_OTYwNzAyMDEyLTA2LTAyIDAxOjU4OjM2LjQ2NDY1Mg"];
     return YES;
 }
