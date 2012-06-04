@@ -75,7 +75,7 @@
 
       this.options.map.fadeIn();
     },
-    'request': function(id, type, vote) {
+    'request': function(type, id, vote) {
       var data = {
         'id': id,
         'type': type,
