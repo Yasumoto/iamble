@@ -92,7 +92,7 @@
 
         //this.options.address.html();
 
-        this.options.reasons.clear();
+        this.options.reasons.empty();
         this.options.reasons
           .append($(document.createElement('li'))
               .append(suggestion['why_description1']))
