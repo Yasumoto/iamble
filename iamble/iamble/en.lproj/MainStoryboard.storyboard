@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2488" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SqK-GT-icA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SqK-GT-icA">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1468"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Login View Controller - iamble-->
@@ -103,7 +103,7 @@
                         <outlet property="selectionScrollView" destination="H00-T8-oyO" id="ZV8-yG-1YO"/>
                         <outlet property="settingsSlider" destination="jyj-y0-7aG" id="5z5-k5-UF3"/>
                         <outlet property="twitterSlider" destination="YCH-2C-1G0" id="gqK-og-I29"/>
-                        <segue destination="OQJ-QR-iu3" identifier="recommendSegue" kind="modal" id="lW1-dZ-cuM"/>
+                        <segue destination="OQJ-QR-iu3" kind="modal" identifier="recommendSegue" id="lW1-dZ-cuM"/>
                     </connections>
                 </viewController>
             </objects>
@@ -195,10 +195,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="H6P-YL-4YR"/>
+                    <navigationItem key="navigationItem" id="H6P-YL-4YR">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="customLeft.png" id="w1m-8o-WVv">
+                            <connections>
+                                <action selector="slideBackChoose:" destination="DcQ-1V-4Yw" id="7r6-IJ-sR2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="chooseSawtoothBanner" destination="n7v-5D-aDY" id="at7-sn-fKu"/>
                         <outlet property="coffeeSlider" destination="1Ad-iz-Bvc" id="mzw-lZ-mdR"/>
+                        <outlet property="goBackToChooseButton" destination="w1m-8o-WVv" id="0K6-IS-hfV"/>
                         <outlet property="looksGoodButton" destination="cxv-5j-i8y" id="WhZ-hf-aBV"/>
                         <outlet property="mehButton" destination="jxg-cB-Ab2" id="v7X-Lz-V0h"/>
                         <outlet property="placeMapView" destination="rwG-Oq-bJs" id="3hZ-OD-0Dd"/>
@@ -249,7 +256,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="EjT-K8-sfe" identifier="rage" kind="modal" modalTransitionStyle="crossDissolve" id="KeY-57-SJ8"/>
+                                    <segue destination="EjT-K8-sfe" kind="modal" identifier="rage" modalTransitionStyle="crossDissolve" id="KeY-57-SJ8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -298,6 +305,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="customLeft.png" width="63" height="30"/>
         <image name="looks_good_button.png" width="276" height="59"/>
         <image name="meh_button.png" width="276" height="59"/>
         <image name="sharkteeth.png" width="640" height="181"/>
@@ -320,8 +328,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RecomendationViewController.h"/>
             <relationships>
                 <relationship kind="action" name="newPlaceRequest:"/>
+                <relationship kind="action" name="slideBackChoose:"/>
                 <relationship kind="outlet" name="chooseSawtoothBanner" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="coffeeSlider" candidateClass="SliderView"/>
+                <relationship kind="outlet" name="goBackToChooseButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="looksGoodButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mehButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="placeMapView" candidateClass="MKMapView"/>

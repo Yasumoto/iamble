@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C06CB7DF08704CC4987DDB59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
+		D8032B4C1589A639009F4487 /* customLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8032B4B1589A639009F4487 /* customLeft@2x.png */; };
+		D8032B4E1589A65A009F4487 /* customLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = D8032B4D1589A65A009F4487 /* customLeft.png */; };
 		D8056D65157BF7B7006A9C6B /* welcome_screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D64157BF7B7006A9C6B /* welcome_screen@2x.png */; };
 		D8056D68157BF7D0006A9C6B /* welcome_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D67157BF7D0006A9C6B /* welcome_screen.png */; };
 		D8056D6A157BF7D9006A9C6B /* settings_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8056D69157BF7D9006A9C6B /* settings_bar@2x.png */; };
@@ -72,6 +74,7 @@
 		D8B87DBB1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
 		D8B87DC31579E76600310696 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DC11579E76600310696 /* InfoPlist.strings */; };
 		D8B87DC61579E76600310696 /* iambleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DC51579E76600310696 /* iambleTests.m */; };
+		D8F50C1D15806F5C00C7DABA /* iambleServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F50C1C15806F5C00C7DABA /* iambleServiceConnection.m */; };
 		E4FD3D12CAC3449FAEF7C04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +91,8 @@
 /* Begin PBXFileReference section */
 		478962866C9C4522951EEAF8 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		495DDB46F94C451585862A06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8032B4B1589A639009F4487 /* customLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customLeft@2x.png"; sourceTree = "<group>"; };
+		D8032B4D1589A65A009F4487 /* customLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customLeft.png; sourceTree = "<group>"; };
 		D8056D64157BF7B7006A9C6B /* welcome_screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_screen@2x.png"; sourceTree = "<group>"; };
 		D8056D67157BF7D0006A9C6B /* welcome_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_screen.png; sourceTree = "<group>"; };
 		D8056D69157BF7D9006A9C6B /* settings_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bar@2x.png"; sourceTree = "<group>"; };
@@ -171,6 +176,8 @@
 		D8B87DC21579E76600310696 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D8B87DC41579E76600310696 /* iambleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iambleTests.h; sourceTree = "<group>"; };
 		D8B87DC51579E76600310696 /* iambleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iambleTests.m; sourceTree = "<group>"; };
+		D8F50C1B15806F5C00C7DABA /* iambleServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iambleServiceConnection.h; sourceTree = "<group>"; };
+		D8F50C1C15806F5C00C7DABA /* iambleServiceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iambleServiceConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +242,8 @@
 		D8465416157B81FF003F85C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D8032B4B1589A639009F4487 /* customLeft@2x.png */,
+				D8032B4D1589A65A009F4487 /* customLeft.png */,
 				D8056D72157C12F9006A9C6B /* looks_good_button@2x.png */,
 				D8056D7A157C1C51006A9C6B /* singly-text-light.png */,
 				D8056D74157C1308006A9C6B /* meh_button@2x.png */,
@@ -361,6 +370,8 @@
 				D8B87DC41579E76600310696 /* iambleTests.h */,
 				D8B87DC51579E76600310696 /* iambleTests.m */,
 				D8B87DBF1579E76600310696 /* Supporting Files */,
+				D8F50C1B15806F5C00C7DABA /* iambleServiceConnection.h */,
+				D8F50C1C15806F5C00C7DABA /* iambleServiceConnection.m */,
 			);
 			path = iambleTests;
 			sourceTree = "<group>";
@@ -483,6 +494,8 @@
 				D8056D79157C1313006A9C6B /* meh_button.png in Resources */,
 				D8056D7B157C1C51006A9C6B /* singly-text-light.png in Resources */,
 				D8761A3F157C8DE900489176 /* GTMOAuth2ViewTouch.xib in Resources */,
+				D8032B4C1589A639009F4487 /* customLeft@2x.png in Resources */,
+				D8032B4E1589A65A009F4487 /* customLeft.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8B87DC61579E76600310696 /* iambleTests.m in Sources */,
+				D8F50C1D15806F5C00C7DABA /* iambleServiceConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

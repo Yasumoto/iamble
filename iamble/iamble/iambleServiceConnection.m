@@ -27,78 +27,77 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
 @synthesize service = _service;
 
 - (id) init {
-    self = [super init];
-    if (self) {
-        //self.authenticated = ([SSKeychain passwordForService:kAmble account:[defaults valueForKey:kAmble]] != nil);
-        // Get the saved authentication, if any, from the keychain.
-        GTMOAuthAuthentication *auth = [self myCustomAuth];
-        if (auth) {
-
-            // if the auth object contains an access token, didAuth is now true
-            if ([auth canAuthorize]){
-                self.authenticated = [GTMOAuthViewControllerTouch authorizeFromKeychainForName:kAmble
-                                                                                authentication:auth];
-                self.auth = auth;
-            }
-        }
-        
-        // retain the authentication object, which holds the auth tokens
-        //
-        // we can determine later if the auth object contains an access token
-        // by calling its -canAuthorize method
+  self = [super init];
+  if (self) {
+    [self setupAuth];
     }
-    return self;
+  return self;
+}
+
+- (void) setupAuth {
+  // Get the saved authentication, if any, from the keychain.
+  GTMOAuthAuthentication *auth = [self myCustomAuth];
+  if (auth) {
+    // if the auth object contains an access token, didAuth is now true
+    [GTMOAuthViewControllerTouch authorizeFromKeychainForName:kAmble
+                                               authentication:auth];
+    if ([self.auth canAuthorize]){
+      self.authenticated = YES;
+      NSLog(@"iAmble has been rampaged.");
+    }
+  }
 }
 
 - (void)viewController:(GTMOAuthViewControllerTouch *)viewController
       finishedWithAuth:(GTMOAuthAuthentication *)auth
                  error:(NSError *)error
 {
-    if (error != nil)
-    {
-        // Authentication failed
-        /*UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Authorization Failed"
-                                                             message:[error localizedDescription]
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Dismiss"
-                                                   otherButtonTitles:nil];*/
-        //[alertView show];
-    }
-    else
-    {
-        // Authentication succeeded
-        self.authenticated = YES;
-        self.auth = auth;
-        [self.delegate connectedToAmble:self.service];
-    }
+  if (error != nil)
+  {
+    // Authentication failed
+    /*UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Authorization Failed"
+     message:[error localizedDescription]
+     delegate:self
+     cancelButtonTitle:@"Dismiss"
+     otherButtonTitles:nil];*/
+    //[alertView show];
+  }
+  else
+  {
+    // Authentication succeeded
+    self.authenticated = YES;
+    self.auth = auth;
+    [GTMOAuthViewControllerTouch saveParamsToKeychainForName:kAmble authentication:auth];
+    [self.delegate connectedToAmble:self.service];
+  }
 }
 
 - (UIViewController *) authorizeAmble:(NSString *)service {
-    self.service = service;
-    GTMOAuthViewControllerTouch *viewController;
-    GTMOAuthAuthentication *auth = [self myCustomAuth];
-    viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:kOAuthScope
-                                                               language:nil
-                                                        requestTokenURL:[NSURL URLWithString:kRequestTokenString]
-                                                      authorizeTokenURL:[NSURL URLWithString:kAuthorizeTokenString]
-                                                         accessTokenURL:[NSURL URLWithString:kAccessTokenString]
-                                                         authentication:auth
-                                                         appServiceName:kAmble
-                                                               delegate:self
-                                                       finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
-    
-    return viewController;
+  self.service = service;
+  GTMOAuthViewControllerTouch *viewController;
+  GTMOAuthAuthentication *auth = [self myCustomAuth];
+  viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:kOAuthScope
+                                                             language:nil
+                                                      requestTokenURL:[NSURL URLWithString:kRequestTokenString]
+                                                    authorizeTokenURL:[NSURL URLWithString:kAuthorizeTokenString]
+                                                       accessTokenURL:[NSURL URLWithString:kAccessTokenString]
+                                                       authentication:auth
+                                                       appServiceName:kAmble
+                                                             delegate:self
+                                                     finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+  [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
+  
+  return viewController;
 }
 
 - (GTMOAuthAuthentication *)myCustomAuth {
-    GTMOAuthAuthentication *auth = [[GTMOAuthAuthentication alloc]
-                                    initWithSignatureMethod:kGTMOAuthSignatureMethodHMAC_SHA1
-                                                consumerKey:kAmbleClientID
-                                                 privateKey:kAmbleClientSecret];
-    auth.serviceProvider = @"Custom Auth Service";
-    [auth setCallback:@"http://ambleapp.appspot.com/_my_callback"];
-    return auth;
+  GTMOAuthAuthentication *auth = [[GTMOAuthAuthentication alloc]
+                                  initWithSignatureMethod:kGTMOAuthSignatureMethodHMAC_SHA1
+                                  consumerKey:kAmbleClientID
+                                  privateKey:kAmbleClientSecret];
+  auth.serviceProvider = @"Custom Auth Service";
+  [auth setCallback:@"http://ambleapp.appspot.com/_my_callback"];
+  return auth;
 }
 
 @end
