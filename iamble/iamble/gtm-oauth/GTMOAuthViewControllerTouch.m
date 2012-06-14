@@ -86,9 +86,9 @@ finishedWithAuth:(GTMOAuthAuthentication *)auth
 @implementation GTMOAuthViewControllerTouch
 
 @synthesize request = request_;
-//@synthesize backButton = backButton_;
-//@synthesize forwardButton = forwardButton_;
-//@synthesize navButtonsView = navButtonsView_;
+@synthesize backButton = backButton_;
+@synthesize forwardButton = forwardButton_;
+@synthesize navButtonsView = navButtonsView_;
 @synthesize rightBarButtonItem = rightBarButtonItem_;
 @synthesize keychainApplicationServiceName = keychainApplicationServiceName_;
 @synthesize initialHTMLString = initialHTMLString_;

@@ -41,7 +41,8 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
     // if the auth object contains an access token, didAuth is now true
     [GTMOAuthViewControllerTouch authorizeFromKeychainForName:kAmble
                                                authentication:auth];
-    if ([self.auth canAuthorize]){
+    if ([auth canAuthorize]){
+      self.auth = auth;
       self.authenticated = YES;
       NSLog(@"iAmble has been rampaged.");
     }
