@@ -1,6 +1,6 @@
 PODS:
   - AFNetworking (1.0RC1)
-  - JSONKit (1.4)
+  - JSONKit (1.5pre)
   - SSKeychain (0.1.4)
   - TestFlightSDK (1.0)
 

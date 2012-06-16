@@ -1,5 +1,5 @@
+PODS_ROOT = $(SRCROOT)/Pods
 HEADER_SEARCH_PATHS = "$(PODS_ROOT)/Headers" "$(PODS_ROOT)/Headers/AFNetworking" "$(PODS_ROOT)/Headers/JSONKit" "$(PODS_ROOT)/Headers/SSKeychain" "$(PODS_ROOT)/Headers/TestFlightSDK"
+ALWAYS_SEARCH_USER_PATHS = YES
 OTHER_LDFLAGS = -ObjC -all_load -framework SystemConfiguration -framework Security -lTestFlight -lz
 LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Pods/TestFlightSDK"
-ALWAYS_SEARCH_USER_PATHS = YES
-PODS_ROOT = $(SRCROOT)/Pods
