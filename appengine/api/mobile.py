@@ -39,37 +39,23 @@ class RecommendationHandler(webapp.RequestHandler):
     user = oauth.get_current_user()
     #ambler = models.Ambler.get_by_id(user.email())
     places = []
-    """place1 = {'lat': 37.7589071,
+    place1 = {'lat': 37.7589071,
               'lng': -122.4167398,
-              'name': 'Mr. Pickle\'s Coffee Shop',
-              'type': 'coffee',
+              'name': 'Mr. Pickle\'s Sandwich Shop',
+              'type': 'quick',
               'cost': 1,
-              'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
-    place2 = {'lat': 38.7589071,
-              'lng': -123.4167398,
-              'name': 'Fake Place 2',
-              'type': 'coffee',
+              'why': ['James Meador checked in.', 'Zach Szafran likes this.']}
+    place2 = {'lat': 37.777328,
+              'lng': -122.40720439,
+              'name': 'Extreme Pizza',
+              'type': 'quick',
               'cost': 1,
-              'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
-    place3 = {'lat': 39.7589071,
-              'lng': -121.4167398,
-              'name': 'Fake Place 2',
-              'type': 'coffee',
+              'why': ['Russ White checked in.', 'Dan White likes this.']}
+    place3 = {'lat': 37.870292,
+              'lng': -122.283477,
+              'name': 'Bangkok Thai Cusine',
+              'type': 'quick',
               'cost': 1,
-              'why': ['James Meador checked in.', 'Russell Schnookums likes this.']}
+              'why': ['Joe Smith checked in.', 'James Meador likes this.']}
     
-    self.response.out.write(json.dumps([place1,place2,place3]))"""
-    suggestion_generator = signal.SignalEngine(user)
-    top_suggestions = suggestion_generator.SignalMaster('get_top_default')
-    response = []
-    for top_suggestion in top_suggestions:
-      response.append(
-                 {'lat': top_suggestion.lat,
-                  'lng': top_suggestion.lng,
-                  'name': top_suggestion.name,
-                  'type': top_suggestion.food_type,
-                  'why': [top_suggestion.why_description1, top_suggestion.why_description2]
-                 })
-    self.response.out.write(json.dumps(response))
-    
-
+    self.response.out.write(json.dumps([place1,place2,place3]))
