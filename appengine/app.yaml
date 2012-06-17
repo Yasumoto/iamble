@@ -15,4 +15,5 @@ handlers:
   script: main.py
   secure: always
 
+builtins:
 - deferred: on
