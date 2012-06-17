@@ -21,10 +21,10 @@ def GenerateSuggestions(ambler, location,  suggestions=10):
     temp_place['food_type'] = _GetGooglePlaceFoodType(place)
     temp_place['cost'] = constants.COST_MAPPING[temp_place['food_type']]
     temp_place['why_description1'] = 'This place is close!'
-    temp_place['why_description2'] = 'This place has a good rating of %s!' % place['rating']
+    temp_place['why_description2'] = 'This place has a good rating of %s!' % place.get('rating', 0)
     temp_place['cache_timestamp'] = datetime.datetime.now()
     temp_place['address'] = place['vicinity'].split(',')[0]
-    temp_place['rating'] = place['rating']
+    temp_place['rating'] = place.get('rating', 0)
     #TODO(russ): make this more generic
     stored_checkins = data_models.Checkin.query()
     stored_checkins = stored_checkins.filter(data_models.Checkin.who == ambler.key)

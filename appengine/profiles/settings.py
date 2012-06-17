@@ -67,6 +67,7 @@ class SettingsHandler(webapp.RequestHandler):
   
   def _ParseFormInput(self):
     """Parses the form input, catches any funky data."""
+    #TODO(zms): add error checking for when the web ui passes back blank lat/long
     form_data = {
       'name_first': self.request.get('name_first'),
       'name_last': self.request.get('name_last'),
