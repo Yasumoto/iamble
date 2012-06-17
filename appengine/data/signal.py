@@ -171,7 +171,7 @@ class SignalEngine(object):
     logging.info('datetime throwing error %s', signal['at'])
     parsed_signal['when'] = datetime.datetime.fromtimestamp((signal['at']/1000))
     parsed_signal['data'] = signal['data'].get('message', '')
-    parsed_signal['likes'] = signal['data']['likes'].get('count', 0)
+    parsed_signal['likes'] = signal['data'].get('likes', {}).get('count', 0)
 
   def _FoursquareDetermineType(self, signal):
     """Determines the signal type using our nifty constants for Foursquare."""
