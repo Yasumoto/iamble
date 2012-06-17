@@ -60,7 +60,7 @@ class Ambler(ndb.Model):
   singly_access_token = ndb.StringProperty()
   default_location = ndb.StructuredProperty(Coordinate)
   default_address = ndb.StringProperty()
-  static_address = ndb.StringProperty()
+  static_address = ndb.BooleanProperty()
   persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace, repeated=True)
   first_time = ndb.BooleanProperty(default=True)
   budget = ndb.FloatProperty(default=20.00)
