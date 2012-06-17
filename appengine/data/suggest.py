@@ -1,5 +1,6 @@
 # __author__ = russ@cypht
 
+import logging
 import constants
 import json
 from profiles import models
@@ -24,6 +25,7 @@ def GenerateSuggestions(ambler, location,  suggestions=10):
     temp_place['cache_timestamp'] = datetime.datetime.now()
     temp_place['address'] = place['vicinity'].split(',')[0]
     temp_place['rating'] = place['rating']
+    #TODO(russ): make this more generic
     stored_checkins = data_models.Checkin.query()
     stored_checkins = stored_checkins.filter(data_models.Checkin.who == ambler.key)
     stored_checkins = stored_checkins.filter(data_models.Checkin.coordinate.lat == temp_place['lat'])
@@ -43,8 +45,8 @@ def GenerateSuggestions(ambler, location,  suggestions=10):
       if temp_place['cost'] == ambler.budget:
         temp_place['rating'] += constants.PREFERENCE_MATCH_WEIGHT
     rated_places[temp_place['rating']] = temp_place
-    return_list = [rated_places[key] for key in sorted(rated_places.iterkeys())]
-    return return_list[:suggestions]
+  return_list = [rated_places[key] for key in sorted(rated_places.iterkeys())]
+  return return_list[:suggestions]
 
 
 def _GetGooglePlaceFoodType(place):

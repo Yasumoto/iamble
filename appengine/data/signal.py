@@ -32,8 +32,8 @@ class SignalEngine(object):
       # provide some default crap
       json_checkins = []
     self.ProcessCheckins(json_checkins)
-    suggestions = suggest.GenerateSuggestions(self.ambler, self.location or self.ambler.default_location)
-    logging.info(suggestions)
+    suggestions = suggest.GenerateSuggestions(self.ambler, self.location)
+    logging.info('suggestions from generation: %s', suggestions)
     if set_cache:
       caches.SetPersistentCache(self.ambler, suggestions)
     else:
