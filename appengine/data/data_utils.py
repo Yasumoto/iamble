@@ -29,11 +29,13 @@ def GetGooglePlace(lat, lng, name):
   coordinate = '%s,%s' % (lat, lng)
   name = name
   types = 'cafe|bakery|meal_delivery|meal_takeaway|food|restaurant'
+  
+  logging.warning('AAAH:%s|%s|%s|%s', config.GOOGLE_API_KEY, coordinate, name, types)
   query_params = {
       'key': config.GOOGLE_API_KEY,
       'location': coordinate,
       'radius': 25,
-      'name': name,
+      'name': name.decode('utf-8'),
       'types': types,
       'sensor': 'true'}
   params = urllib.urlencode(query_params)
