@@ -14,12 +14,12 @@ h2 {
 
 .status_message {
   border: 1px solid;
-  margin: 0px 10px 10px 10px;
   padding:15px 10px 15px 50px;
   background-repeat: no-repeat;
   background-position: 10px center;
   border-radius: 2px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .status_message.info {
@@ -52,11 +52,11 @@ h2 {
 }
 
 #bodyheader #logo {
-  text-align: center;
+  text-align: left;
   margin-right: auto;
   margin-left: auto;
   vertical-align: top;
-  margin-top: 10px;
+  margin-top: -10px;
 }
 
 #bodyheader #logo span.prefix {
@@ -99,8 +99,14 @@ h2 {
 }
 
 #bodycontent {
-  padding: 10px;
   text-align: center;
+  position: absolute;
+  top: 110px;
+  bottom: 70px;
+  width: 100%;
+  background-color: #E1F4F5;
+  border-top: 1px solid #A1C8CC;
+  border-bottom: 1px solid #A1C8CC;
 }
 
 #bodycontent #messages {
@@ -117,6 +123,9 @@ h2 {
   padding: 10px;
   color: #CCC;
   font-size: 11px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 #bodyfooter #singly {

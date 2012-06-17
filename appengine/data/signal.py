@@ -12,48 +12,32 @@ import suggest
 from data import data_utils
 from profiles import models as profile_models
 from google.appengine.api import users
+from google.appengine.ext import deferred
 from utils import decorators
 
 
 class SignalEngine(object):
   """Generates signals based on input I'll fill in later."""
 
-  def __init__(self, ambler):
-    """Initializes a signal generation object"""
-    # Gather ambler stats before any data is aggregated
-    self.ambler = profile_models.Ambler.get_by_id(ambler.email())
+  def __init__(self, user, location=None):
+    """Initializes a signal generation object and sifter data"""
+    self.ambler = profile_models.Ambler.get_by_id(user.email())
+    self.location = location or self.ambler.default_location
 
-  def SignalMaster(self, call_type, location=None):
-    """Master function to govern data collection, parsing, and return."""
-    if call_type == 'get_top_default':
-      top_suggestion = caches.GetPersistentCache(self.ambler, 1)
-      if not top_suggestion:
-        return self.FullDataProcess()
-      else:
-        return top_suggestion
-    elif call_type == 'get_top_dynamic':
-      return self.FindDynamicSuggestions(location)
-    elif call_type == 'first_login' or 'cron':
-      return self.FullDataProcess()
-
-  def FindDynamicSuggestions(self, location):
-    """Find suggestions based on your current location."""
-    return 'Dynamic location place response!'
-
-  def FullDataProcess(self):
+  def FullDataProcess(self, set_cache):
     """Fires a full data collection and parse process."""
     try:
       json_checkins = data_utils.GetCheckinsForUser(self.ambler)
     except decorators.SinglyAccessTokenNotFoundError:
       # provide some default crap
-      json_checkins = None
-      pass
+      json_checkins = []
     self.ProcessCheckins(json_checkins)
-    suggestions = suggest.GenerateSuggestions(self.ambler, self.ambler.default_location)
+    suggestions = suggest.GenerateSuggestions(self.ambler, self.location or self.ambler.default_location)
     logging.info(suggestions)
-    caches.SetPersistentCache(self.ambler, suggestions)
-    top_suggestion = caches.GetPersistentCache(self.ambler, 1)
-    return top_suggestion
+    if set_cache:
+      caches.SetPersistentCache(self.ambler, suggestions)
+    else:
+      return suggestions
 
   def ProcessCheckins(self, json_checkins):
     """Does a massive data gather on all activated services."""
@@ -157,7 +141,8 @@ class SignalEngine(object):
   
   def ParseFacebookJSON(self, google_signal, signal):
     """Parses an input JSON signal from Facebook."""
-    logging.info(google_signal)
+    logging.info('Google signal: %s', google_signal)
+    logging.info('Facebook signal: %s', signal)
     parsed_signal = dict() # these are all wrong
     parsed_signal['name'] = signal['oembed']['title']
     parsed_signal['lat'] = signal['oembed']['lat']
@@ -170,12 +155,8 @@ class SignalEngine(object):
     parsed_signal['mentions'] = 0
     logging.info('datetime throwing error %s', signal['at'])
     parsed_signal['when'] = datetime.datetime.fromtimestamp((signal['at']/1000))
-    parsed_signal['data'] = signal['data']['message']
-    try:
-      parsed_signal['likes'] = signal['data']['likes']['count']
-    except KeyError:
-      parsed_signal['likes'] = 0
-    return parsed_signal
+    parsed_signal['data'] = signal['data'].get('message', '')
+    parsed_signal['likes'] = signal['data'].get('likes', {}).get('count', 0)
 
   def _FoursquareDetermineType(self, signal):
     """Determines the signal type using our nifty constants for Foursquare."""

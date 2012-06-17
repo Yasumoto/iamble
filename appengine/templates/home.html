@@ -1,4 +1,4 @@
-{% extends "iamble.html" %}
+{% extends "cypht.html" %}
 
 {% block head %}
   <link rel="stylesheet" type="text/css" href="/static/style/home.css">
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleHome(iamble, {
+  $(document).cyphtHome(cypht, {
     'map': $('#map'),
     'buttons': $('#buttons'),
     'thumbsup': $('#thumbsup'),
@@ -21,7 +21,6 @@
 
 {% block body %}
   <div id="map"></div>
-
   <div id="result">
     <div id="title">In-N-Out Burger</div>
     <div id="address">2289 Alcalde St, Santa Clara 95054, USA</div>
@@ -32,10 +31,9 @@
       </ul>
     </div>
     <div id="vote">
-      <div id="thumbsup"></div>
-      <div id="thumbsdown"></div>
+      <div id="thumbsup">Meh.</div>
+      <div id="thumbsdown">Looks good!</div>
     </div>
   </div>
-
   <div id="buttons"></div>
 {% endblock %}

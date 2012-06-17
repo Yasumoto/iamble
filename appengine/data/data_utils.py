@@ -33,14 +33,12 @@ def GetGooglePlace(lat, lng, name):
       'key': config.GOOGLE_API_KEY,
       'location': coordinate,
       'radius': 25,
-      'name': name,
+      'name': name.encode('ascii', 'ignore'),
       'types': types,
       'sensor': 'true'}
   params = urllib.urlencode(query_params)
   get_url = '%s?%s' % (config.GOOGLE_PLACES_API, params)
   result = urlfetch.fetch(get_url)
-  logging.info(params)
-  logging.info(result.status_code)
   return result.content
 
 def GetPlacesInArea(lat, lng, miles):
@@ -56,6 +54,4 @@ def GetPlacesInArea(lat, lng, miles):
   params = urllib.urlencode(query_params)
   get_url = '%s?%s' % (config.GOOGLE_PLACES_API, params)
   result = urlfetch.fetch(get_url)
-  logging.info(params)
-  logging.info(result.status_code)
   return result.content

@@ -1,21 +1,21 @@
 (function($){
-  $.fn.iamble = function(options) {
-    return new $.iamble(this, options);
+  $.fn.cypht = function(options) {
+    return new $.cypht(this, options);
   };
 
-  $.iamble = function(element, options) {
+  $.cypht = function(element, options) {
     this.options = options || {};
     this.target = $(element);
     return this.init();
   };
 
-  $.iamble.fn = $.iamble.prototype = {
-    iamble: '0.1'
+  $.cypht.fn = $.cypht.prototype = {
+    cypht: '0.1'
   };
 
-  $.iamble.fn.extend = $.iamble.extend = $.extend;
+  $.cypht.fn.extend = $.cypht.extend = $.extend;
 
-  $.iamble.fn.extend({
+  $.cypht.fn.extend({
     'init': function() {
 
       return this;

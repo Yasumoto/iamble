@@ -31,138 +31,129 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
-  }
-  return self;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
 - (SinglyServiceConnection *)singly {
-  if (!_singly) {
-    _singly = [[SinglyServiceConnection alloc] init];
-  }
-  return _singly;
+    if (!_singly) {
+        _singly = [[SinglyServiceConnection alloc] init];
+    }
+    return _singly;
 }
 
 - (iambleServiceConnection *)iamble {
-  if (!_iamble) {
-    _iamble = [[iambleServiceConnection alloc] init];
-    _iamble.delegate = self;
-  }
-  return _iamble;
-}
-
-- (void)changeToolbarButtonColorToColor:(UIColor *)newColor {
-  for (UIView *view in self.navigationController.toolbar.subviews) {                 
-    if ([[[view class] description] isEqualToString:@"UIToolbarButton"]) {                        
-      //[(UINavigationButton *)view setTintColor:newColor];
-    }   
-  }    
+    if (!_iamble) {
+        _iamble = [[iambleServiceConnection alloc] init];
+        _iamble.delegate = self;
+    }
+    return _iamble;
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  //[self changeToolbarButtonColorToColor: [UIColor colorWithRed:191.0/255 green:219.0/255 blue:103.0/255 alpha:1.0]];
-  UIImage *img = [UIImage imageNamed:@"logo_header.png"];
-  [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
-  self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
-  self.locationManager = [[LocationManager alloc] init];
-  
-  selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
+    [super viewDidLoad];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor colorWithRed:191.0/255 green:219.0/255 blue:103.0/255 alpha:1.0]];
+    UIImage *img = [UIImage imageNamed:@"logo_header.png"];
+    [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    self.locationManager = [[LocationManager alloc] init];
+    
+    selectionScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 400);
 	selectionScrollView.clipsToBounds = YES;
 	selectionScrollView.delegate = self;
-  
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  
-  self.facebookSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"facebook_bar.png"]];
-  self.facebookSlider.delegate = self;
-  if ([defaults valueForKey:@"facebook"]) {
-    [self.facebookSlider slideRight:YES];
-  }
-  
-  UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare_bar.png"];
-  self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
-  self.foursquareSlider.delegate = self;
-  if ([defaults valueForKey:@"foursquare"]) {
-    [self.foursquareSlider slideRight:YES];
-  }
-  
-  
-  self.twitterSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"twitter_bar.png"]];
-  self.twitterSlider.delegate = self;
-  if ([defaults valueForKey:@"twitter"]) {
-    [self.twitterSlider slideRight:YES];
-  }
-  
-  self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finish_bar.png"]];
-  self.settingsSlider.delegate = self;
-  self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
-  
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.facebookSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"facebook_bar.png"]];
+    self.facebookSlider.delegate = self;
+    if ([defaults valueForKey:@"facebook"]) {
+        [self.facebookSlider slideRight:YES];
+    }
+    
+    UIImage *foursquareLogo = [UIImage imageNamed:@"foursquare_bar.png"];
+    self.foursquareSlider.imageView = [[UIImageView alloc] initWithImage:foursquareLogo];
+    self.foursquareSlider.delegate = self;
+    if ([defaults valueForKey:@"foursquare"]) {
+        [self.foursquareSlider slideRight:YES];
+    }
+    
+    
+    self.twitterSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"twitter_bar.png"]];
+    self.twitterSlider.delegate = self;
+    if ([defaults valueForKey:@"twitter"]) {
+        [self.twitterSlider slideRight:YES];
+    }
+    
+    self.settingsSlider.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finish_bar.png"]];
+    self.settingsSlider.delegate = self;
+    self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-  self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
+    self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
 }
 
 - (void)viewDidUnload
 {
-  [self setSelectionScrollView:nil];
-  [self setTwitterSlider:nil];
-  [self setFacebookSlider:nil];
-  [self setTwitterSlider:nil];
-  [self setFoursquareSlider:nil];
-  [self setSettingsSlider:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
+    [self setSelectionScrollView:nil];
+    [self setTwitterSlider:nil];
+    [self setFacebookSlider:nil];
+    [self setTwitterSlider:nil];
+    [self setFoursquareSlider:nil];
+    [self setSettingsSlider:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-  return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  UINavigationController *controller = (UINavigationController *) segue.destinationViewController;
-  NSLog(@"iamble auth is: %@", self.iamble.auth);
-  RecomendationViewController *myController = [controller.viewControllers objectAtIndex:0];
-  myController.auth = self.iamble.auth;
-  myController.locationManager = self.locationManager;
+    UINavigationController *controller = (UINavigationController *) segue.destinationViewController;
+    RecomendationViewController *myController = [controller.viewControllers objectAtIndex:0];
+    myController.auth = self.iamble.auth;
+    myController.locationManager = self.locationManager;
 }
 
 # pragma mark SliderActivatedDelegate
 
 - (void) sliderWasActivated:(SliderView *)slider {
-  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-  [spinner startAnimating];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-  if (self.iamble.authenticated == NO) {
-    UIViewController *ambleAuth = [self.iamble authorizeAmble:slider.service];
-    [self.navigationController pushViewController:ambleAuth animated:YES];
-    self.navigationItem.rightBarButtonItem = nil;
-  }
-  if ([slider.service isEqualToString:@"finished"] && self.iamble.authenticated == YES) {
-    [self performSegueWithIdentifier:kRecommendSegue sender:self];
-    return;
-  }
-  else {
-    UIViewController *controller = [self.singly authorize:slider.service];
-    if (controller) {
-      [self.navigationController pushViewController:controller animated:YES];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    if (self.iamble.authenticated == NO) {
+        UIViewController *ambleAuth = [self.iamble authorizeAmble:slider.service];
+        self.navigationItem.rightBarButtonItem = nil;
+        if (self.iamble.authenticated == NO) {
+            [self.navigationController pushViewController:ambleAuth animated:YES];
+        }
     }
-    self.navigationItem.rightBarButtonItem = nil;
-  }
-
+    else if ([slider.service isEqualToString:@"finished"] && self.iamble.authenticated == YES) {
+        [self performSegueWithIdentifier:kRecommendSegue sender:self];
+        return;
+    }
+    else {
+        UIViewController *controller = [self.singly authorize:slider.service];
+        if (controller) {
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+    }    
 }
 
 #pragma mark iambleServiceConnection
 - (void) connectedToAmble:(NSString *)service {
-  if (![service isEqualToString:@"finished"]) {
-    self.singly.ambleAuth = self.iamble.auth;
-    [self.navigationController pushViewController:[self.singly authorize:service] animated:YES];
-    self.navigationItem.rightBarButtonItem = nil;
-  }
+    if (![service isEqualToString:@"finished"]) {
+        self.singly.ambleAuth = self.iamble.auth;
+        [self.navigationController pushViewController:[self.singly authorize:service] animated:YES];
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 @end

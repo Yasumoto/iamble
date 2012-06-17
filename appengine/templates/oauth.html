@@ -1,4 +1,4 @@
-{% extends "iamble.html" %}
+{% extends "cypht.html" %}
 
 {% block head %}
   <link rel="stylesheet" type="text/css" href="/static/style/oauth.css">
@@ -6,14 +6,14 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleOAuth(iamble, {
+  $(document).cyphtOAuth(cypht, {
     'continue': $('#continue')
   }).render();
 {% endblock %}
 
 {% block body %}
   <h2>Authorize Services</h2>
-  <hr>
+  <div id="services">
   {% for service in services %}
     <div class="service{% if service.enabled %} existing{% endif %}">
       <a href="{{ service.oauth_url }}">
@@ -21,7 +21,7 @@
       </a>
     </div>
   {% endfor %}
-  <hr>
+  </div>
   {% if user.first_time  %}
     <input type="button" value="Continue" id="continue">
   {% endif %}

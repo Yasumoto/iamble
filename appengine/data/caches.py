@@ -1,20 +1,23 @@
 import datetime
+import constants
 from profiles import models
 
 EXPIRE_CACHE_DAYS = 7
 
-def GetPersistentCache(ambler, max_suggestions, location=None):
-  """Collect and remove from cache the provided number of suggestions for the given ambler."""
-  #location = location or ambler.default_location
+
+def PopTopCache(ambler):
+  """Pop the first persistent cache value and do a in place health check."""
   today = datetime.datetime.today()
-  suggestions = ambler.persistent_suggestion_cache or []
-  valid_suggestions = []
-  for suggestion in suggestions[:max_suggestions]:
-    if (today - suggestion.cache_timestamp) < datetime.timedelta(7):
-      valid_suggestions.append(suggestion)
+  suggestions = ambler.persistent_suggestion_cache
+  for suggestion in suggestions:
+    if (today - suggestion.cache_timestamp) < datetime.timedelta(constants.STALE_CACHE_DAYS):
+      ambler.persistent_suggestion_cache.remove(suggestion)
+      ambler.recent_places.append(models.RecentPlace(address=suggestion.address))
+      ambler.put()
+      return suggestion
     ambler.persistent_suggestion_cache.remove(suggestion)
   ambler.put()
-  return valid_suggestions
+
 
 def SetPersistentCache(ambler, suggestions):
   """Set the given number of persistent cache values for the given ambler."""

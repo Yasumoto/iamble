@@ -1,4 +1,4 @@
-# __author__ = russ@iamble
+# __author__ = russ@cypht
 
 import logging
 import urllib
@@ -41,8 +41,15 @@ class CachedPlace(ndb.Model):
   cache_timestamp = ndb.DateTimeProperty(auto_now=True)
 
 
+class RecentPlace(ndb.Model):
+  """A recently liked/disliked place that the sifter was presented."""
+  address = ndb.StringProperty()
+  like_dislike = ndb.BooleanProperty()
+  event_time = ndb.DateTimeProperty(auto_now=True)
+
+
 class Ambler(ndb.Model):
-  """An iAmble user.
+  """An cypht user.
     id: user.User.email()
   """
   user = ndb.UserProperty()
@@ -53,12 +60,21 @@ class Ambler(ndb.Model):
   singly_access_token = ndb.StringProperty()
   default_location = ndb.StructuredProperty(Coordinate)
   default_address = ndb.StringProperty()
+  static_address = ndb.StringProperty()
   persistent_suggestion_cache = ndb.StructuredProperty(CachedPlace, repeated=True)
   first_time = ndb.BooleanProperty(default=True)
   budget = ndb.FloatProperty(default=20.00)
   distance = ndb.StringProperty(default='walk')
-  recent_likes = ndb.StringProperty(repeated=True)
-  recent_dislikes = ndb.StringProperty(repeated=True)
+  recent_places = ndb.StructuredProperty(RecentPlace, repeated=True)
+  
+  def RecentDislikes(self):
+    """Checks for recently disliked places."""
+    #TODO(russ): put some shit here
+    dislikes = []
+    for place in self.recent_places:
+      if place.like_dislike is False:
+        dislikes.append(place)
+    return dislikes
 
   def GetActiveServices(self):
     if self.singly_access_token:

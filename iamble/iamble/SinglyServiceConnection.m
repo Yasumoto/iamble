@@ -16,7 +16,7 @@
 static NSString *const kSinglyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
 static NSString *const kSinglyClientSecret = @"d13bc8daa661cd7ea6bb3917ba687d29";
 static NSString *const kSingly = @"Singly";
-static NSString *const kAmbleNewServiceEndPoint = @"https://ambleapp.appspot.com/api/mobile/new_service";
+static NSString *const kAmbleNewServiceEndPoint = @"https://cypht-app.appspot.com/api/mobile/new_service";
 
 @interface SinglyServiceConnection ()
 - (GTMOAuth2Authentication *)singlyAuth;

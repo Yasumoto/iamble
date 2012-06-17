@@ -1,9 +1,9 @@
 (function($){
-  $.fn.iambleOAuth = function(base, options) {
-    return new $.iambleOAuth(this, base, options);
+  $.fn.cyphtOAuth = function(base, options) {
+    return new $.cyphtOAuth(this, base, options);
   };
 
-  $.iambleOAuth = function(element, base, options) {
+  $.cyphtOAuth = function(element, base, options) {
     this.base = base;
     this.bind = this.base.bind;
     this.options = options || {};
@@ -11,13 +11,13 @@
     return this.init();
   };
 
-  $.iambleOAuth.fn = $.iambleOAuth.prototype = {
-    iambleOAuth: '0.1'
+  $.cyphtOAuth.fn = $.cyphtOAuth.prototype = {
+    cyphtOAuth: '0.1'
   };
 
-  $.iambleOAuth.fn.extend = $.iambleOAuth.extend = $.extend;
+  $.cyphtOAuth.fn.extend = $.cyphtOAuth.extend = $.extend;
 
-  $.iambleOAuth.fn.extend({
+  $.cyphtOAuth.fn.extend({
     'init': function() {
       return this;
     },

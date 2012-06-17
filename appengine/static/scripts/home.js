@@ -1,9 +1,9 @@
 (function($){
-  $.fn.iambleHome = function(base, options) {
-    return new $.iambleHome(this, base, options);
+  $.fn.cyphtHome = function(base, options) {
+    return new $.cyphtHome(this, base, options);
   };
 
-  $.iambleHome = function(element, base, options) {
+  $.cyphtHome = function(element, base, options) {
     this.base = base;
     this.bind = this.base.bind;
 
@@ -12,13 +12,13 @@
     return this.init();
   };
 
-  $.iambleHome.fn = $.iambleHome.prototype = {
-    iambleHome: '0.1'
+  $.cyphtHome.fn = $.cyphtHome.prototype = {
+    cyphtHome: '0.1'
   };
 
-  $.iambleHome.fn.extend = $.iambleHome.extend = $.extend;
+  $.cyphtHome.fn.extend = $.cyphtHome.extend = $.extend;
 
-  $.iambleHome.fn.extend({
+  $.cyphtHome.fn.extend({
     'init': function() {
       this.buttonKeys = {
         COFFEE: 'coffee',
@@ -48,38 +48,45 @@
       }));
 
       this.options.thumbsup
-          .button({icons: {primary: 'thumbs-up'}})
+          .button()
           .click(this.bind(this.onThumbsUp));
 
       this.options.thumbsdown
-          .button({icons: {primary: 'thumbs-down'}})
+          .button()
           .click(this.bind(this.onThumbsDown));
 
       return this;
     },
-    'renderMap' : function(lat, lng) {
+    'renderMap' : function(title, content, lat, lng) {
       var pos = new google.maps.LatLng(lat, lng);
 
       var myOptions = {
-        zoom: 10,
+        zoom: 17,
         center: pos,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      map = new google.maps.Map(this.options.map.get(0), myOptions);
+
+      var map = new google.maps.Map(this.options.map.get(0), myOptions);
 
       var marker = new google.maps.Marker({
         position: pos,
-        title:"Hello World!"
+        title: title,
+        map: map
       });
-      marker.setMap(map);
+
+      var infoWindow = new google.maps.InfoWindow({
+        content: content,
+        maxWidth: 275
+      });
+
+      infoWindow.open(map, marker);
 
       this.options.map.fadeIn();
     },
     'request': function(type, id, vote) {
       var data = {
-        'id': id,
-        'type': type,
-        'vote': vote
+        'suggestion_id': id,
+        'suggestion_vote': vote
       };
 
       var request = $.ajax({
@@ -92,7 +99,6 @@
       request.done(this.bind(function(suggestion) {
         this.responseId = suggestion['address'];
         this.base.options.messages.empty();
-        this.renderMap(suggestion['lat'], suggestion['lng']);
 
         this.options.title.html(suggestion['name']);
         this.options.address.html(suggestion['address']);
@@ -103,7 +109,14 @@
           .append($(document.createElement('li'))
               .append(suggestion['why_description2']));
 
-        this.options.result.fadeIn().css("display","inline-block");
+        this.renderMap(
+          suggestion['name'],
+          this.options.result.get(0),
+          suggestion['lat'],
+          suggestion['lng']
+        );
+
+        this.options.result.fadeIn();
       }));
 
       request.fail(this.bind(this.onAjaxFail));

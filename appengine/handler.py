@@ -1,6 +1,6 @@
 import json
 import logging
-from data import signal
+from data import signal,signal_handler,constants
 from urlparse import urlparse
 from utils import template
 from profiles import models
@@ -70,21 +70,23 @@ class BaseHandler(webapp.RequestHandler):
     """"""
     user = users.get_current_user()
 
-    suggestion_type = self.request.get('type')
-    suggestion_id = self.request.get('id')
-    suggestion_vote = self.request.get('vote')
+    suggestion_address = self.request.get('suggestion_address')
+    suggestion_vote = self.request.get('suggestion_vote')
 
     ambler = models.Ambler.get_by_id(user.email())
 
     if suggestion_vote is not 0:
       # save vote and id
       if suggestion_vote > 0:
-        ambler.recent_likes.append(suggestion_id)
+        ambler.recent_places.append(models.RecentPlace(
+            address=suggestion_address,
+            like_dislike=True))
       if suggestion_vote < 0:
-        ambler.recent_dislikes.append(suggestion_id)
+        ambler.recent_places.append(models.RecentPlace(
+            address=suggestion_address,
+            like_dislike=False))
       ambler.put()
-    suggestion_generator = signal.SignalEngine(user)
-    top_suggestion = suggestion_generator.SignalMaster('get_top_default')[0]
+    top_suggestion = signal_handler.GetSuggestion(constants.GET_DEFAULT, user)
     response = {'lat': top_suggestion.lat,
                 'lng': top_suggestion.lng,
                 'name': top_suggestion.name,

@@ -1,4 +1,4 @@
-{% extends "iamble.html" %}
+{% extends "cypht.html" %}
 
 {% block head %}
   <link rel="stylesheet" type="text/css" href="/static/style/settings.css">
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block javascript %}
-  $(document).iambleSettings(iamble, {
+  $(document).cyphtSettings(cypht, {
     'firstname': $('#firstname'),
     'lastname': $('#lastname'),
     'budget': $('#budget'),
@@ -15,6 +15,7 @@
     'address': $('#address'),
     'longitude': $('#longitude'),
     'latitude': $('#latitude'),
+    'static_address': $('#static_address'),
     'save': $('#save')
   }).render();
 {% endblock %}
@@ -50,9 +51,14 @@
           </td>
         </tr>
         <tr>
-          <td>Address</td>
+          <td>Default Address</td>
           <td>
             <textarea id="address" name="address">{{ user.default_address }}</textarea>
+            <br><br>
+            <input type="checkbox" id="static_address" name="static_address"
+                {% if user.static_address %} checked="checked"{% endif %}
+                value="true"/>
+            <label for="static_address">Only use this location</label>
           </td>
         </tr>
         <tr style="display: none;">

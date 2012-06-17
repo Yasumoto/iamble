@@ -23,6 +23,7 @@
 
 #pragma mark Post-Flyout
 
+@property (weak, nonatomic) IBOutlet UIView *superMapView;
 @property (weak, nonatomic) IBOutlet MKMapView *placeMapView;
 @property (weak, nonatomic) IBOutlet UIButton *mehButton;
 @property (weak, nonatomic) IBOutlet UIButton *looksGoodButton;
