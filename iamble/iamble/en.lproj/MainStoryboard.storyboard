@@ -116,11 +116,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="FFr-DE-tLn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="312"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="224"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="rwG-Oq-bJs">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
+                                        <rect key="frame" x="0.0" y="14" width="320" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </mapView>
                                 </subviews>
@@ -216,6 +216,7 @@
                         <outlet property="quickbiteSlider" destination="8F2-Hz-VCB" id="U4k-MV-gMb"/>
                         <outlet property="settingsSlider" destination="D8P-ua-6FS" id="nLB-BU-YN7"/>
                         <outlet property="sitdownSlider" destination="hr1-1g-mPZ" id="j8v-SV-BEb"/>
+                        <outlet property="superMapView" destination="FFr-DE-tLn" id="Tln-ie-SYn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbT-wt-Wau" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -343,6 +344,7 @@
                 <relationship kind="outlet" name="quickbiteSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="settingsSlider" candidateClass="SliderView"/>
                 <relationship kind="outlet" name="sitdownSlider" candidateClass="SliderView"/>
+                <relationship kind="outlet" name="superMapView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="SliderView" superclassName="UIView">

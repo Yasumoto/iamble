@@ -10,11 +10,11 @@
 
 static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
 static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
-static NSString *const kAmble = @"Amble";
-static NSString *const kOAuthScope = @"https://ambleapp.appspot.com";
-static NSString *const kRequestTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetRequestToken";
-static NSString *const kAuthorizeTokenString = @"https://ambleapp.appspot.com/_ah/OAuthAuthorizeToken";
-static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/OAuthGetAccessToken";
+static NSString *const kAmble = @"Cypht-app";
+static NSString *const kOAuthScope = @"https://cypht-app.appspot.com";
+static NSString *const kRequestTokenString = @"https://cypht-app.appspot.com/_ah/OAuthGetRequestToken";
+static NSString *const kAuthorizeTokenString = @"https://cypht-app.appspot.com/_ah/OAuthAuthorizeToken";
+static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/OAuthGetAccessToken";
 
 @interface iambleServiceConnection () <NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSString *service;
@@ -44,7 +44,7 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
     if ([auth canAuthorize]){
       self.auth = auth;
       self.authenticated = YES;
-      NSLog(@"iAmble has been rampaged.");
+      NSLog(@"Cypht has been rampaged.");
     }
   }
 }
@@ -68,6 +68,7 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
     // Authentication succeeded
     self.authenticated = YES;
     self.auth = auth;
+      NSLog(@"Authenticated and finishedWithAuth");
     [GTMOAuthViewControllerTouch saveParamsToKeychainForName:kAmble authentication:auth];
     [self.delegate connectedToAmble:self.service];
   }
@@ -86,7 +87,7 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
                                                        appServiceName:kAmble
                                                              delegate:self
                                                      finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-  [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://ambleapp.appspot.com"]];
+  [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://cypht-app.appspot.com"]];
   
   return viewController;
 }
@@ -97,7 +98,7 @@ static NSString *const kAccessTokenString = @"https://ambleapp.appspot.com/_ah/O
                                   consumerKey:kAmbleClientID
                                   privateKey:kAmbleClientSecret];
   auth.serviceProvider = @"Custom Auth Service";
-  [auth setCallback:@"http://ambleapp.appspot.com/_my_callback"];
+  [auth setCallback:@"http://cypht-app.appspot.com/_my_callback"];
   return auth;
 }
 
