@@ -18,13 +18,14 @@ from utils import decorators
 class SignalEngine(object):
   """Generates signals based on input I'll fill in later."""
 
-  def __init__(self, ambler):
+  def __init__(self, user):
     """Initializes a signal generation object"""
     # Gather ambler stats before any data is aggregated
-    self.ambler = profile_models.Ambler.get_by_id(ambler.email())
+    self.ambler = profile_models.Ambler.get_by_id(user.email())
 
   def SignalMaster(self, call_type, location=None):
     """Master function to govern data collection, parsing, and return."""
+    self.location = location
     if call_type == 'get_top_default':
       top_suggestion = caches.GetPersistentCache(self.ambler, 1)
       if not top_suggestion:
@@ -48,7 +49,7 @@ class SignalEngine(object):
       # provide some default crap
       json_checkins = []
     self.ProcessCheckins(json_checkins)
-    suggestions = suggest.GenerateSuggestions(self.ambler, self.ambler.default_location)
+    suggestions = suggest.GenerateSuggestions(self.ambler, self.location or self.ambler.default_location)
     logging.info(suggestions)
     caches.SetPersistentCache(self.ambler, suggestions)
     top_suggestion = caches.GetPersistentCache(self.ambler, 1)

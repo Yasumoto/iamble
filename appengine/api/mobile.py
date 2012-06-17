@@ -60,7 +60,10 @@ class RecommendationHandler(webapp.RequestHandler):
     
     self.response.out.write(json.dumps([place1,place2,place3]))"""
     suggestion_generator = signal.SignalEngine(user)
-    top_suggestions = suggestion_generator.SignalMaster('get_top_default')
+    lat = self.request.get('lat')
+    lng = self.request.get('lng')
+    coordinate = models.Coordinate(lat=float(lat), lng=float(lng))
+    top_suggestions = suggestion_generator.SignalMaster('get_top_default', location=coordinate)
     response = []
     for top_suggestion in top_suggestions:
       response.append(
