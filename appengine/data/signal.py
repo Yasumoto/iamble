@@ -19,28 +19,12 @@ from utils import decorators
 class SignalEngine(object):
   """Generates signals based on input I'll fill in later."""
 
-  def __init__(self, user):
-    """Initializes a signal generation object"""
-    # Gather ambler stats before any data is aggregated
+  def __init__(self, user, location=None):
+    """Initializes a signal generation object and sifter data"""
     self.ambler = profile_models.Ambler.get_by_id(user.email())
+    self.location = location or self.ambler.default_location
 
-  def SignalMaster(self, call_type, location=None):
-    """Master function to govern data collection, parsing, and return."""
-    self.location = location
-    if call_type == 'get_top_default':
-      top_suggestion = caches.GetPersistentCache(self.ambler, 1)
-      if not top_suggestion:
-        return self.FullDataProcess()
-      else:
-        return top_suggestion
-    elif call_type == 'get_top_dynamic':
-      return self.FindDynamicSuggestions(location)
-
-  def FindDynamicSuggestions(self, location):
-    """Find suggestions based on your current location."""
-    return 'Dynamic location place response!'
-
-  def FullDataProcess(self):
+  def FullDataProcess(self, set_cache):
     """Fires a full data collection and parse process."""
     try:
       json_checkins = data_utils.GetCheckinsForUser(self.ambler)
@@ -50,9 +34,10 @@ class SignalEngine(object):
     self.ProcessCheckins(json_checkins)
     suggestions = suggest.GenerateSuggestions(self.ambler, self.location or self.ambler.default_location)
     logging.info(suggestions)
-    caches.SetPersistentCache(self.ambler, suggestions)
-    top_suggestion = caches.GetPersistentCache(self.ambler, 1)
-    return top_suggestion
+    if set_cache:
+      caches.SetPersistentCache(self.ambler, suggestions)
+    else:
+      return suggestions
 
   def ProcessCheckins(self, json_checkins):
     """Does a massive data gather on all activated services."""

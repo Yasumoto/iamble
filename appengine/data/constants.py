@@ -1,6 +1,15 @@
 # All constants should be represented in lower case.
 # All constants should be represented in single form (not plural).
 
+"""Signal Handler Constants"""
+GET_DEFAULT = 'get_default'
+FIRE_CACHE_BUILDER = 'fire_cache_builder'
+SET_CACHE = True
+DO_NOT_SET_CACHE = False
+"""/Signal Handler Constants"""
+
+STALE_CACHE_DAYS = 14
+
 FOURSQUARE_FOOD_PARENT = 'food'
 
 COFFEE_STRINGS = ['coffee', 'cafe', 'bistro', 'espresso', 'latte', 'tea'] 

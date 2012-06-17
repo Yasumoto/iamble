@@ -37,7 +37,7 @@ def GenerateSuggestions(ambler, location,  suggestions=10):
           temp_place['rating'] += (checkin.likes * constants.LIKE_WEIGHT)
     # check ambler recent likes and dislikes
     # weight based on distance
-    if temp_place['address'] in ambler.recent_dislikes:
+    if temp_place['address'] in ambler.RecentDislikes():
       continue
     if ambler.budget:
       if temp_place['cost'] == ambler.budget:
