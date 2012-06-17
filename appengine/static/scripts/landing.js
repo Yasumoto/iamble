@@ -1,9 +1,9 @@
 (function($){
-  $.fn.iambleLanding = function(base, options) {
-    return new $.iambleLanding(this, base, options);
+  $.fn.cyphtLanding = function(base, options) {
+    return new $.cyphtLanding(this, base, options);
   };
 
-  $.iambleLanding = function(element, base, options) {
+  $.cyphtLanding = function(element, base, options) {
     this.base = base;
     this.bind = this.base.bind;
     this.options = options || {};
@@ -11,13 +11,13 @@
     return this.init();
   };
 
-  $.iambleLanding.fn = $.iambleLanding.prototype = {
-    iambleLanding: '0.1'
+  $.cyphtLanding.fn = $.cyphtLanding.prototype = {
+    cyphtLanding: '0.1'
   };
 
-  $.iambleLanding.fn.extend = $.iambleLanding.extend = $.extend;
+  $.cyphtLanding.fn.extend = $.cyphtLanding.extend = $.extend;
 
-  $.iambleLanding.fn.extend({
+  $.cyphtLanding.fn.extend({
     'init': function() {
       return this;
     },

@@ -1,28 +1,28 @@
 <!doctype html>
 <html>
   <head>
-    <title>iamble</title>
+    <title>Cypht</title>
     <link rel="stylesheet" type="text/css" href="/static/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Marck+Script|Lobster|Amaranth|Berkshire+Swash">
     <link rel="stylesheet" type="text/css" href="/static/style/jquery/Aristo/Aristo.css">
-    <link rel="stylesheet" type="text/css" href="/static/style/iamble.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/cypht.css">
     <script type="text/javascript" src="/static/scripts/jquery/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/static/scripts/jquery/jquery-ui-1.8.20.min.js"></script>
-    <script type="text/javascript" src="/static/scripts/iamble.js"></script>
+    <script type="text/javascript" src="/static/scripts/cypht.js"></script>
     {% block head %}
 
     {% endblock %}
     <script type="text/javascript">
       $(document).ready(function() {
-        var iamble = $(document).iamble({
+        var cypht = $(document).cypht({
           'version': '{{ app_version }}',
           'content': $('#bodycontent'),
-          'messages': $('#messages'),
-          'spinner': $('#spinner')
+          'messages': $('#messages')
         });
 
         {% block javascript %}
-          iamble.render();
+          cypht.render();
         {% endblock %}
       });
     </script>
@@ -31,15 +31,9 @@
     {% autoescape on %}
       <div id="bodyheader">
         <div id="logo">
-          <a href="/"><img src="/static/images/logo.png"></a>
-        </div>
-        <div class="right">
-          <img src="/static/images/ajax.gif" id="spinner">&nbsp;
-          {% if current_user %}
-            {{ current_user.email }} | <a href="/oauth">Services</a> | <a href='/settings'>Settings</a> | <a href="/logout">Logout</a>
-          {% else %}
-            <a href="/login"><img src="/static/images/login.png">&nbsp;Login via Google</a>
-          {% endif %}
+          <a href="/">
+            <img src="/static/images/logo.png" width="120px">
+          </a>
         </div>
       </div>
       <div id="bodycontent">
@@ -65,12 +59,7 @@
       </div>
       <div id="bodyfooter">
         <p>
-          Build info: {{ app_version }}
-          <div id="singly">
-            <a href="http://dev.singly.com">
-              <img src="/static/images/singly-button.png">
-            </a>
-          </div>
+          Build info: {{ app_version }}<br>
         </p>
       </div>
     {% endautoescape %}

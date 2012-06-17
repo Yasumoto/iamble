@@ -1,9 +1,9 @@
 (function($){
-  $.fn.iambleSettings = function(base, options) {
-    return new $.iambleSettings(this, base, options);
+  $.fn.cyphtSettings = function(base, options) {
+    return new $.cyphtSettings(this, base, options);
   };
 
-  $.iambleSettings = function(element, base, options) {
+  $.cyphtSettings = function(element, base, options) {
     this.base = base;
     this.bind = this.base.bind;
     this.options = options || {};
@@ -11,13 +11,13 @@
     return this.init();
   };
 
-  $.iambleSettings.fn = $.iambleSettings.prototype = {
-    iambleSettings: '0.1'
+  $.cyphtSettings.fn = $.cyphtSettings.prototype = {
+    cyphtSettings: '0.1'
   };
 
-  $.iambleSettings.fn.extend = $.iambleSettings.extend = $.extend;
+  $.cyphtSettings.fn.extend = $.cyphtSettings.extend = $.extend;
 
-  $.iambleSettings.fn.extend({
+  $.cyphtSettings.fn.extend({
     'init': function() {
       return this;
     },
@@ -34,7 +34,6 @@
       console.dir(position);
       this.options.longitude.val(position.coords.longitude);
       this.options.latitude.val(position.coords.latitude);
-      
       var geocoder = new google.maps.Geocoder();
       var latlng = new google.maps.LatLng(
         position.coords.latitude,
