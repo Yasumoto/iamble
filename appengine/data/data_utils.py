@@ -35,7 +35,7 @@ def GetGooglePlace(lat, lng, name):
       'key': config.GOOGLE_API_KEY,
       'location': coordinate,
       'radius': 25,
-      'name': name.decode('utf-8'),
+      'name': name.encode('ascii', 'ignore'),
       'types': types,
       'sensor': 'true'}
   params = urllib.urlencode(query_params)
