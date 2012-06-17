@@ -1,7 +1,7 @@
 CLIENT_ID = '4eed71589ff0a822458e50db4b9ebb42'
 CLIENT_SECRET = 'd13bc8daa661cd7ea6bb3917ba687d29'
 
-CALLBACK_URI = 'https://ambleapp.appspot.com/oauth_callback'
+CALLBACK_URI = 'https://cypht-app.appspot.com/oauth_callback'
 
 LOGIN_URL = '/login'
 

@@ -1,9 +1,9 @@
 (function($){
-  $.fn.iambleHome = function(base, options) {
-    return new $.iambleHome(this, base, options);
+  $.fn.cyphtHome = function(base, options) {
+    return new $.cyphtHome(this, base, options);
   };
 
-  $.iambleHome = function(element, base, options) {
+  $.cyphtHome = function(element, base, options) {
     this.base = base;
     this.bind = this.base.bind;
 
@@ -12,13 +12,13 @@
     return this.init();
   };
 
-  $.iambleHome.fn = $.iambleHome.prototype = {
-    iambleHome: '0.1'
+  $.cyphtHome.fn = $.cyphtHome.prototype = {
+    cyphtHome: '0.1'
   };
 
-  $.iambleHome.fn.extend = $.iambleHome.extend = $.extend;
+  $.cyphtHome.fn.extend = $.cyphtHome.extend = $.extend;
 
-  $.iambleHome.fn.extend({
+  $.cyphtHome.fn.extend({
     'init': function() {
       this.buttonKeys = {
         COFFEE: 'coffee',
