@@ -1,4 +1,4 @@
-# __author__ = russ@iamble
+# __author__ = russ@cypht
 
 import logging
 import urllib
@@ -42,7 +42,7 @@ class CachedPlace(ndb.Model):
 
 
 class Ambler(ndb.Model):
-  """An iAmble user.
+  """An cypht user.
     id: user.User.email()
   """
   user = ndb.UserProperty()

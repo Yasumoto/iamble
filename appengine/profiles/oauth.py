@@ -9,7 +9,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
-# iamble imports
+# cypht imports
 import config
 import handler
 import models
