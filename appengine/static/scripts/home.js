@@ -48,11 +48,11 @@
       }));
 
       this.options.thumbsup
-          .button({icons: {primary: 'thumbs-up'}})
+          .button()
           .click(this.bind(this.onThumbsUp));
 
       this.options.thumbsdown
-          .button({icons: {primary: 'thumbs-down'}})
+          .button()
           .click(this.bind(this.onThumbsDown));
 
       return this;
@@ -85,9 +85,8 @@
     },
     'request': function(type, id, vote) {
       var data = {
-        'id': id,
-        'type': type,
-        'vote': vote
+        'suggestion_id': id,
+        'suggestion_vote': vote
       };
 
       var request = $.ajax({

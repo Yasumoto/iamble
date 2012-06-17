@@ -25,9 +25,12 @@
       this.base.render();
       this.options.distance.buttonset();
       this.options.save.button();
+      this.options.static_address.button();
 
-      navigator.geolocation.getCurrentPosition(this.bind(this.onPosition));
-      this.base.options.spinner.fadeIn('fast');
+      if (!this.options.static_address.is(':checked')) {
+        navigator.geolocation.getCurrentPosition(this.bind(this.onPosition));
+        this.base.options.spinner.fadeIn('fast');
+      }
       return this;
     },
     'onPosition': function(position) {

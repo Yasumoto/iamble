@@ -54,6 +54,7 @@ class SettingsHandler(webapp.RequestHandler):
       ambler.budget = form_data['budget']
       ambler.distance = form_data['distance']
       ambler.default_address = form_data['address']
+      ambler.static_address = form_data['static_address']
 
       ambler.put()
 
@@ -73,6 +74,7 @@ class SettingsHandler(webapp.RequestHandler):
       'longitude': float(self.request.get('longitude')),
       'address': self.request.get('address'),
       'budget': float(self.request.get('budget')),
-      'distance': self.request.get('distance')
+      'distance': self.request.get('distance'),
+      'static_address': (self.request.get('static_address') == 'true')
       }
     return form_data
