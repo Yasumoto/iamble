@@ -58,6 +58,8 @@
 		D89ECBD8157B50F40005372F /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D89ECBD7157B50F40005372F /* LocationManager.m */; };
 		D89ECBDB157B6C380005372F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D89ECBDA157B6C380005372F /* Icon.png */; };
 		D89ECBDD157B6C560005372F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89ECBDC157B6C560005372F /* Icon@2x.png */; };
+		D8AA8AEF158C4B000076F305 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8AA8AEE158C4B000076F305 /* Default@2x.png */; };
+		D8AA8AF2158C4BD50076F305 /* StartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AA8AF1158C4BD50076F305 /* StartupViewController.m */; };
 		D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */; };
 		D8AE544C1579F077004E2E10 /* iambleServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */; };
 		D8AE545A1579FC32004E2E10 /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54591579FC32004E2E10 /* SliderView.m */; };
@@ -152,6 +154,9 @@
 		D89ECBD7157B50F40005372F /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		D89ECBDA157B6C380005372F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		D89ECBDC157B6C560005372F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D8AA8AEE158C4B000076F305 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D8AA8AF0158C4BD50076F305 /* StartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupViewController.h; sourceTree = "<group>"; };
+		D8AA8AF1158C4BD50076F305 /* StartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupViewController.m; sourceTree = "<group>"; };
 		D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAmbleViewController.h; sourceTree = "<group>"; };
 		D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAmbleViewController.m; sourceTree = "<group>"; };
 		D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iambleServiceConnection.h; sourceTree = "<group>"; };
@@ -243,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				D8032B4D1589A65A009F4487 /* customLeft.png */,
+				D8AA8AEE158C4B000076F305 /* Default@2x.png */,
 				D8032B591589DAB2009F4487 /* customLeft@2x.png */,
 				D8056D72157C12F9006A9C6B /* looks_good_button@2x.png */,
 				D8056D7A157C1C51006A9C6B /* singly-text-light.png */,
@@ -334,6 +340,8 @@
 			children = (
 				D8B87DA71579E76600310696 /* AppDelegate.h */,
 				D8B87DA81579E76600310696 /* AppDelegate.m */,
+				D8AA8AF0158C4BD50076F305 /* StartupViewController.h */,
+				D8AA8AF1158C4BD50076F305 /* StartupViewController.m */,
 				D8AE54581579FC32004E2E10 /* SliderView.h */,
 				D8AE54591579FC32004E2E10 /* SliderView.m */,
 				D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */,
@@ -496,6 +504,7 @@
 				D8761A3F157C8DE900489176 /* GTMOAuth2ViewTouch.xib in Resources */,
 				D8032B4E1589A65A009F4487 /* customLeft.png in Resources */,
 				D8032B5A1589DAB2009F4487 /* customLeft@2x.png in Resources */,
+				D8AA8AEF158C4B000076F305 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +569,7 @@
 				D80AC87C157B1A6900A1832E /* GTMOAuthViewControllerTouch.m in Sources */,
 				D89ECBD8157B50F40005372F /* LocationManager.m in Sources */,
 				D8056D71157C0AFE006A9C6B /* mkPlaceAnotationTHing.m in Sources */,
+				D8AA8AF2158C4BD50076F305 /* StartupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

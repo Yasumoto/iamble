@@ -217,6 +217,7 @@ static int sliderShiftLeft = 150;
   UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   [spinner startAnimating];
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+  self.navigationItem.leftBarButtonItem = self.goBackToChooseButton;
   self.choice = slider.service;
   [self sendJimmehChoice:slider.service];
   [self pushChoice:slider.service];
