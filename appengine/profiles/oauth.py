@@ -84,7 +84,7 @@ class OAuth2Handler(webapp.RequestHandler):
     template_params = template.get_params()
     this_user = models.Ambler.get_by_id(users.get_current_user().email())
 
-    existing_services = this_user.GetActiveServices()
+    existing_services = this_user.GetActiveServices() if this_user else []
 
     service_list = list()
     for service in self.SERVICS:
