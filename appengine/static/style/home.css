@@ -9,7 +9,7 @@
 #map {
   margin: 0;
   padding: 0;
-  height: 400px;
+  height: 500px;
   display: none;
   border: 1px solid #CCC;
 }
@@ -28,11 +28,7 @@ div#thumbsup, div#thumbsdown {
 }
 
 #result {
-  margin-top: 10px;
   display: none;
-  border: 1px solid #CCC;
-  border-radius: 4px;
-  padding: 10px;
 }
 
 #result #title {

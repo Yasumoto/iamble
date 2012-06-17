@@ -29,20 +29,16 @@ def GetGooglePlace(lat, lng, name):
   coordinate = '%s,%s' % (lat, lng)
   name = name
   types = 'cafe|bakery|meal_delivery|meal_takeaway|food|restaurant'
-  
-  logging.warning('AAAH:%s|%s|%s|%s', config.GOOGLE_API_KEY, coordinate, name, types)
   query_params = {
       'key': config.GOOGLE_API_KEY,
       'location': coordinate,
       'radius': 25,
-      'name': name.decode('utf-8'),
+      'name': name.encode('ascii', 'ignore'),
       'types': types,
       'sensor': 'true'}
   params = urllib.urlencode(query_params)
   get_url = '%s?%s' % (config.GOOGLE_PLACES_API, params)
   result = urlfetch.fetch(get_url)
-  logging.info(params)
-  logging.info(result.status_code)
   return result.content
 
 def GetPlacesInArea(lat, lng, miles):
@@ -58,6 +54,4 @@ def GetPlacesInArea(lat, lng, miles):
   params = urllib.urlencode(query_params)
   get_url = '%s?%s' % (config.GOOGLE_PLACES_API, params)
   result = urlfetch.fetch(get_url)
-  logging.info(params)
-  logging.info(result.status_code)
   return result.content

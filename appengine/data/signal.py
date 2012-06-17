@@ -156,7 +156,8 @@ class SignalEngine(object):
   
   def ParseFacebookJSON(self, google_signal, signal):
     """Parses an input JSON signal from Facebook."""
-    logging.info(google_signal)
+    logging.info('Google signal: %s', google_signal)
+    logging.info('Facebook signal: %s', signal)
     parsed_signal = dict() # these are all wrong
     parsed_signal['name'] = signal['oembed']['title']
     parsed_signal['lat'] = signal['oembed']['lat']
@@ -169,7 +170,7 @@ class SignalEngine(object):
     parsed_signal['mentions'] = 0
     logging.info('datetime throwing error %s', signal['at'])
     parsed_signal['when'] = datetime.datetime.fromtimestamp((signal['at']/1000))
-    parsed_signal['data'] = signal['data']['message']
+    parsed_signal['data'] = signal['data'].get('message', '')
     try:
       parsed_signal['likes'] = signal['data']['likes']['count']
     except KeyError:

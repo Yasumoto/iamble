@@ -57,21 +57,29 @@
 
       return this;
     },
-    'renderMap' : function(lat, lng) {
+    'renderMap' : function(title, content, lat, lng) {
       var pos = new google.maps.LatLng(lat, lng);
 
       var myOptions = {
-        zoom: 10,
+        zoom: 17,
         center: pos,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      map = new google.maps.Map(this.options.map.get(0), myOptions);
+
+      var map = new google.maps.Map(this.options.map.get(0), myOptions);
 
       var marker = new google.maps.Marker({
         position: pos,
-        title:"Hello World!"
+        title: title,
+        map: map
       });
-      marker.setMap(map);
+
+      var infoWindow = new google.maps.InfoWindow({
+        content: content,
+        maxWidth: 275
+      });
+
+      infoWindow.open(map, marker);
 
       this.options.map.fadeIn();
     },
@@ -92,7 +100,6 @@
       request.done(this.bind(function(suggestion) {
         this.responseId = suggestion['address'];
         this.base.options.messages.empty();
-        this.renderMap(suggestion['lat'], suggestion['lng']);
 
         this.options.title.html(suggestion['name']);
         this.options.address.html(suggestion['address']);
@@ -103,7 +110,14 @@
           .append($(document.createElement('li'))
               .append(suggestion['why_description2']));
 
-        this.options.result.fadeIn().css("display","inline-block");
+        this.renderMap(
+          suggestion['name'],
+          this.options.result.get(0),
+          suggestion['lat'],
+          suggestion['lng']
+        );
+
+        this.options.result.fadeIn();
       }));
 
       request.fail(this.bind(this.onAjaxFail));
