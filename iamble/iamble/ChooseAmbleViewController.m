@@ -125,7 +125,6 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   UINavigationController *controller = (UINavigationController *) segue.destinationViewController;
-  NSLog(@"iamble auth is: %@", self.iamble.auth);
   RecomendationViewController *myController = [controller.viewControllers objectAtIndex:0];
   myController.auth = self.iamble.auth;
   myController.locationManager = self.locationManager;
@@ -142,7 +141,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     [self.navigationController pushViewController:ambleAuth animated:YES];
     self.navigationItem.rightBarButtonItem = nil;
   }
-  if ([slider.service isEqualToString:@"finished"] && self.iamble.authenticated == YES) {
+  else if ([slider.service isEqualToString:@"finished"] && self.iamble.authenticated == YES) {
     [self performSegueWithIdentifier:kRecommendSegue sender:self];
     return;
   }
