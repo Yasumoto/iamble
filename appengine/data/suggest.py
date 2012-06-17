@@ -1,4 +1,4 @@
-# __author__ = russ@iamble
+# __author__ = russ@cypht
 
 import constants
 import json

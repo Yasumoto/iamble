@@ -46,8 +46,7 @@ class SignalEngine(object):
       json_checkins = data_utils.GetCheckinsForUser(self.ambler)
     except decorators.SinglyAccessTokenNotFoundError:
       # provide some default crap
-      json_checkins = None
-      pass
+      json_checkins = []
     self.ProcessCheckins(json_checkins)
     suggestions = suggest.GenerateSuggestions(self.ambler, self.ambler.default_location)
     logging.info(suggestions)

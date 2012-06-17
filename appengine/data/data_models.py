@@ -1,4 +1,4 @@
-# __author__ = russ@iamble
+# __author__ = russ@cypht
 
 from profiles import models as profile_models
 from google.appengine.ext import ndb
