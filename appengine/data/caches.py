@@ -7,7 +7,7 @@ def GetPersistentCache(ambler, max_suggestions, location=None):
   """Collect and remove from cache the provided number of suggestions for the given ambler."""
   #location = location or ambler.default_location
   today = datetime.datetime.today()
-  suggestions = ambler.persistent_suggestion_cache or []
+  suggestions = ambler.persistent_suggestion_cache
   valid_suggestions = []
   for suggestion in suggestions[:max_suggestions]:
     if (today - suggestion.cache_timestamp) < datetime.timedelta(7):

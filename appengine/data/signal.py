@@ -12,6 +12,7 @@ import suggest
 from data import data_utils
 from profiles import models as profile_models
 from google.appengine.api import users
+from google.appengine.ext import deferred
 from utils import decorators
 
 
@@ -34,8 +35,6 @@ class SignalEngine(object):
         return top_suggestion
     elif call_type == 'get_top_dynamic':
       return self.FindDynamicSuggestions(location)
-    elif call_type == 'first_login' or 'cron':
-      return self.FullDataProcess()
 
   def FindDynamicSuggestions(self, location):
     """Find suggestions based on your current location."""
@@ -172,11 +171,7 @@ class SignalEngine(object):
     logging.info('datetime throwing error %s', signal['at'])
     parsed_signal['when'] = datetime.datetime.fromtimestamp((signal['at']/1000))
     parsed_signal['data'] = signal['data'].get('message', '')
-    try:
-      parsed_signal['likes'] = signal['data']['likes']['count']
-    except KeyError:
-      parsed_signal['likes'] = 0
-    return parsed_signal
+    parsed_signal['likes'] = signal['data']['likes'].get('count', 0)
 
   def _FoursquareDetermineType(self, signal):
     """Determines the signal type using our nifty constants for Foursquare."""
