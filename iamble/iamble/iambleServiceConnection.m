@@ -40,9 +40,6 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
     if ([auth canAuthorize]){
       self.auth = auth;
     }
-    else {
-        [self authorizeAmble];
-    }
   }
 }
 
