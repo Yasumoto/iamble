@@ -10,15 +10,7 @@
 #import "GTMHTTPFetcher.h"
 #import "GTMOAuthViewControllerTouch.h"
 
-@class iambleServiceConnection;
-
-@protocol iAmbleServiceDelegate <NSObject>
--(void)connectedToAmble:(NSString *)service;
-@end
-
 @interface iambleServiceConnection : NSObject
-- (UIViewController *) authorizeAmble:(NSString *)service;
-@property BOOL authenticated;
-@property (nonatomic, strong) id <iAmbleServiceDelegate> delegate;
+- (UIViewController *) authorizeAmble;
 @property (nonatomic, strong) GTMOAuthAuthentication *auth;
 @end

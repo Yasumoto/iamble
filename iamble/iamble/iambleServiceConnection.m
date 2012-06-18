@@ -8,23 +8,19 @@
 
 #import "iambleServiceConnection.h"
 
-static NSString *const kAmbleClientID = @"307500153747.apps.googleusercontent.com";
-static NSString *const kAmbleClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
-static NSString *const kAmble = @"Cypht-app";
+static NSString *const kCyphtClientID = @"307500153747.apps.googleusercontent.com";
+static NSString *const kCyphtClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
+static NSString *const kCypht = @"Cypht-app";
 static NSString *const kOAuthScope = @"https://cypht-app.appspot.com";
 static NSString *const kRequestTokenString = @"https://cypht-app.appspot.com/_ah/OAuthGetRequestToken";
 static NSString *const kAuthorizeTokenString = @"https://cypht-app.appspot.com/_ah/OAuthAuthorizeToken";
 static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/OAuthGetAccessToken";
 
 @interface iambleServiceConnection () <NSURLConnectionDataDelegate>
-@property (nonatomic, strong) NSString *service;
 @end
 
 @implementation iambleServiceConnection
-@synthesize authenticated = _authenticated;
 @synthesize auth = _auth;
-@synthesize delegate = _delegate;
-@synthesize service = _service;
 
 - (id) init {
   self = [super init];
@@ -39,12 +35,13 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
   GTMOAuthAuthentication *auth = [self myCustomAuth];
   if (auth) {
     // if the auth object contains an access token, didAuth is now true
-    [GTMOAuthViewControllerTouch authorizeFromKeychainForName:kAmble
+    [GTMOAuthViewControllerTouch authorizeFromKeychainForName:kCypht
                                                authentication:auth];
     if ([auth canAuthorize]){
       self.auth = auth;
-      self.authenticated = YES;
-      NSLog(@"Cypht has been rampaged.");
+    }
+    else {
+        [self authorizeAmble];
     }
   }
 }
@@ -66,16 +63,12 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
   else
   {
     // Authentication succeeded
-    self.authenticated = YES;
     self.auth = auth;
-      NSLog(@"Authenticated and finishedWithAuth");
-    [GTMOAuthViewControllerTouch saveParamsToKeychainForName:kAmble authentication:auth];
-    [self.delegate connectedToAmble:self.service];
+    [GTMOAuthViewControllerTouch saveParamsToKeychainForName:kCypht authentication:auth];
   }
 }
 
-- (UIViewController *) authorizeAmble:(NSString *)service {
-  self.service = service;
+- (UIViewController *) authorizeAmble {
   GTMOAuthViewControllerTouch *viewController;
   GTMOAuthAuthentication *auth = [self myCustomAuth];
   viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:kOAuthScope
@@ -84,7 +77,7 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
                                                     authorizeTokenURL:[NSURL URLWithString:kAuthorizeTokenString]
                                                        accessTokenURL:[NSURL URLWithString:kAccessTokenString]
                                                        authentication:auth
-                                                       appServiceName:kAmble
+                                                       appServiceName:kCypht
                                                              delegate:self
                                                      finishedSelector:@selector(viewController:finishedWithAuth:error:)];
   [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://cypht-app.appspot.com"]];
@@ -95,8 +88,8 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
 - (GTMOAuthAuthentication *)myCustomAuth {
   GTMOAuthAuthentication *auth = [[GTMOAuthAuthentication alloc]
                                   initWithSignatureMethod:kGTMOAuthSignatureMethodHMAC_SHA1
-                                  consumerKey:kAmbleClientID
-                                  privateKey:kAmbleClientSecret];
+                                  consumerKey:kCyphtClientID
+                                  privateKey:kCyphtClientSecret];
   auth.serviceProvider = @"Custom Auth Service";
   [auth setCallback:@"http://cypht-app.appspot.com/_my_callback"];
   return auth;

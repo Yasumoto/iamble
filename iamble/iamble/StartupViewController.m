@@ -39,7 +39,7 @@ static NSString *const kNormalSegue = @"normalSegue";
   }
   [defaults setValue:@"FTW" forKey:kHasStartedBefore];
   iambleServiceConnection *iamble = [[iambleServiceConnection alloc] init];
-  if (iamble.authenticated) {
+  if ([iamble.auth canAuthorize]) {
     [self performSegueWithIdentifier:kNormalSegue sender:self];
   }
   [self performSegueWithIdentifier:kSettingsSegue sender:self];

@@ -48,7 +48,6 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 - (iambleServiceConnection *)iamble {
     if (!_iamble) {
         _iamble = [[iambleServiceConnection alloc] init];
-        _iamble.delegate = self;
     }
     return _iamble;
 }
@@ -128,32 +127,21 @@ static NSString *const kRecommendSegue = @"recommendSegue";
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    if (self.iamble.authenticated == NO) {
+    /*if (self.iamble.authenticated == NO) {
+        NSLog(@"Not authenticated.");
         UIViewController *ambleAuth = [self.iamble authorizeAmble:slider.service];
-        self.navigationItem.rightBarButtonItem = nil;
-        if (self.iamble.authenticated == NO) {
-            [self.navigationController pushViewController:ambleAuth animated:YES];
-        }
-    }
-    else if ([slider.service isEqualToString:@"finished"] && self.iamble.authenticated == YES) {
+        [self.navigationController pushViewController:ambleAuth animated:YES];
+    }*/
+    if ([slider.service isEqualToString:@"finished"]) {
         [self performSegueWithIdentifier:kRecommendSegue sender:self];
-        return;
     }
     else {
+        self.singly.ambleAuth = self.iamble.auth;            
         UIViewController *controller = [self.singly authorize:slider.service];
         if (controller) {
             [self.navigationController pushViewController:controller animated:YES];
         }
     }    
-}
-
-#pragma mark iambleServiceConnection
-- (void) connectedToAmble:(NSString *)service {
-    if (![service isEqualToString:@"finished"]) {
-        self.singly.ambleAuth = self.iamble.auth;
-        [self.navigationController pushViewController:[self.singly authorize:service] animated:YES];
-        self.navigationItem.rightBarButtonItem = nil;
-    }
 }
 
 @end

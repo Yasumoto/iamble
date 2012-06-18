@@ -125,6 +125,7 @@ static int sliderShiftLeft = 150;
 
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     //NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
+    self.navigationItem.rightBarButtonItem = nil;
     JSONDecoder *decoder = [JSONDecoder decoder];
     NSMutableArray *arr = [decoder mutableObjectWithData:data];
     self.placesArr = arr;
@@ -145,9 +146,7 @@ static int sliderShiftLeft = 150;
     annote.coordinate = self.placeLocation.coordinate;
     annote.title = [dic objectForKey:@"name"];
     annote.subtitle = [dic objectForKey:@"type"];
-    
-    self.navigationItem.rightBarButtonItem = nil;
-    
+        
     [self.placeMapView addAnnotation:annote];
     [self.placeMapView selectAnnotation:annote animated:FALSE];
 }

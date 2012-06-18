@@ -9,8 +9,8 @@
 #import "SinglyServiceConnection.h"
 #import "gtm-oauth2/GTMHTTPFetcher.h"
 #import "GTMOAuth2ViewControllerTouch.h"
-#import <SSKeychain.h>
 #import <JSONKit/JSONKit.h>
+#import <SSKeychain.h>
 #import <AFNetworking/AFNetworking.h>
 
 static NSString *const kSinglyClientID = @"4eed71589ff0a822458e50db4b9ebb42";
@@ -115,14 +115,12 @@ static NSString *const kAmbleNewServiceEndPoint = @"https://cypht-app.appspot.co
 
 - (void) sendJimmehTehToken:(NSString *)accessToken {
     NSURL *url = [NSURL URLWithString:[kAmbleNewServiceEndPoint stringByAppendingFormat:@"?singly_access_token=%@", accessToken]];
-    NSLog(@"URL being sent for Jimmeh singly token: %@", url);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [self.ambleAuth authorizeRequest:request];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSStringEncodingConversionAllowLossy]);
     JSONDecoder *decoder = [JSONDecoder decoder];
     NSMutableDictionary *dic = [decoder mutableObjectWithData:data];
     NSLog(@"Dic: %@", dic);
@@ -130,8 +128,8 @@ static NSString *const kAmbleNewServiceEndPoint = @"https://cypht-app.appspot.co
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    NSLog(@"Response: %@", [httpResponse allHeaderFields]);
-    NSLog(@"Status Code: %d", [httpResponse statusCode]);
+    NSLog(@"Sending Singly - Response: %@", [httpResponse allHeaderFields]);
+    NSLog(@"Sending Singly - Status Code: %d", [httpResponse statusCode]);
 }
 
 - (IBAction)loadProfiles
