@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SliderView.h"
-#import "iambleServiceConnection.h"
+#import "CyphtServiceConnection.h"
 
 @interface ChooseAmbleViewController : UIViewController <UIScrollViewDelegate, SliderActivatedDelegate>
 @property (weak, nonatomic) IBOutlet SliderView *facebookSlider;

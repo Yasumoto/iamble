@@ -15,7 +15,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 
 @interface ChooseAmbleViewController ()
 @property (nonatomic, strong) SinglyServiceConnection *singly;
-@property (nonatomic, strong) iambleServiceConnection *iamble;
+@property (nonatomic, strong) CyphtServiceConnection *cypht;
 @property (nonatomic, strong) LocationManager *locationManager;
 @end
 
@@ -26,7 +26,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 @synthesize selectionScrollView;
 @synthesize settingsSlider = _settingsSlider;
 @synthesize singly = _singly;
-@synthesize iamble = _iamble;
+@synthesize cypht = _cypht;
 @synthesize locationManager = _locationManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,11 +45,11 @@ static NSString *const kRecommendSegue = @"recommendSegue";
   return _singly;
 }
 
-- (iambleServiceConnection *)iamble {
-  if (!_iamble) {
-    _iamble = [[iambleServiceConnection alloc] init];
+- (CyphtServiceConnection *)cypht {
+  if (!_cypht) {
+    _cypht = [[CyphtServiceConnection alloc] init];
   }
-  return _iamble;
+  return _cypht;
 }
 
 - (void)viewDidLoad
@@ -117,7 +117,7 @@ static NSString *const kRecommendSegue = @"recommendSegue";
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   UINavigationController *controller = (UINavigationController *) segue.destinationViewController;
   RecomendationViewController *myController = [controller.viewControllers objectAtIndex:0];
-  myController.auth = self.iamble.auth;
+  myController.auth = self.cypht.auth;
   myController.locationManager = self.locationManager;
 }
 
@@ -127,20 +127,17 @@ static NSString *const kRecommendSegue = @"recommendSegue";
   UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   [spinner startAnimating];
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-  /*if (self.iamble.authenticated == NO) {
-   NSLog(@"Not authenticated.");
-   UIViewController *ambleAuth = [self.iamble authorizeAmble:slider.service];
-   [self.navigationController pushViewController:ambleAuth animated:YES];
-   }*/
+  if (![self.cypht.auth canAuthorize]) {
+   UIViewController *cyphtAuth = [self.cypht authorizeAmble];
+   [self.navigationController pushViewController:cyphtAuth animated:YES];
+   }
   if ([slider.service isEqualToString:@"finished"]) {
     [self performSegueWithIdentifier:kRecommendSegue sender:self];
   }
   else {
-    self.singly.ambleAuth = self.iamble.auth;            
-    UIViewController *controller = [self.singly authorize:slider.service];
-    if (controller) {
-      [self.navigationController pushViewController:controller animated:YES];
-    }
+    self.singly.ambleAuth = self.cypht.auth;            
+    //UIViewController *controller = [self.singly authorize:slider.service];
+    //[self.navigationController pushViewController:controller animated:YES];
   }    
 }
 

@@ -61,7 +61,7 @@
 		D8AA8AEF158C4B000076F305 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8AA8AEE158C4B000076F305 /* Default@2x.png */; };
 		D8AA8AF2158C4BD50076F305 /* StartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AA8AF1158C4BD50076F305 /* StartupViewController.m */; };
 		D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */; };
-		D8AE544C1579F077004E2E10 /* iambleServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */; };
+		D8AE544C1579F077004E2E10 /* CyphtServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE544B1579F077004E2E10 /* CyphtServiceConnection.m */; };
 		D8AE545A1579FC32004E2E10 /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE54591579FC32004E2E10 /* SliderView.m */; };
 		D8B87D991579E76600310696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D981579E76600310696 /* UIKit.framework */; };
 		D8B87D9B1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
@@ -76,7 +76,6 @@
 		D8B87DBB1579E76600310696 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B87D9A1579E76600310696 /* Foundation.framework */; };
 		D8B87DC31579E76600310696 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8B87DC11579E76600310696 /* InfoPlist.strings */; };
 		D8B87DC61579E76600310696 /* iambleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B87DC51579E76600310696 /* iambleTests.m */; };
-		D8F50C1D15806F5C00C7DABA /* iambleServiceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F50C1C15806F5C00C7DABA /* iambleServiceConnection.m */; };
 		E4FD3D12CAC3449FAEF7C04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DDB46F94C451585862A06 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -159,8 +158,8 @@
 		D8AA8AF1158C4BD50076F305 /* StartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupViewController.m; sourceTree = "<group>"; };
 		D8AE54471579F014004E2E10 /* ChooseAmbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAmbleViewController.h; sourceTree = "<group>"; };
 		D8AE54481579F014004E2E10 /* ChooseAmbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAmbleViewController.m; sourceTree = "<group>"; };
-		D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iambleServiceConnection.h; sourceTree = "<group>"; };
-		D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iambleServiceConnection.m; sourceTree = "<group>"; };
+		D8AE544A1579F077004E2E10 /* CyphtServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyphtServiceConnection.h; sourceTree = "<group>"; };
+		D8AE544B1579F077004E2E10 /* CyphtServiceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CyphtServiceConnection.m; sourceTree = "<group>"; };
 		D8AE54581579FC32004E2E10 /* SliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderView.h; sourceTree = "<group>"; };
 		D8AE54591579FC32004E2E10 /* SliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderView.m; sourceTree = "<group>"; };
 		D8B87D941579E76600310696 /* iamble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iamble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,8 +180,6 @@
 		D8B87DC21579E76600310696 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D8B87DC41579E76600310696 /* iambleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iambleTests.h; sourceTree = "<group>"; };
 		D8B87DC51579E76600310696 /* iambleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iambleTests.m; sourceTree = "<group>"; };
-		D8F50C1B15806F5C00C7DABA /* iambleServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iambleServiceConnection.h; sourceTree = "<group>"; };
-		D8F50C1C15806F5C00C7DABA /* iambleServiceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iambleServiceConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,8 +288,8 @@
 			children = (
 				D89ECBD6157B50F40005372F /* LocationManager.h */,
 				D89ECBD7157B50F40005372F /* LocationManager.m */,
-				D8AE544A1579F077004E2E10 /* iambleServiceConnection.h */,
-				D8AE544B1579F077004E2E10 /* iambleServiceConnection.m */,
+				D8AE544A1579F077004E2E10 /* CyphtServiceConnection.h */,
+				D8AE544B1579F077004E2E10 /* CyphtServiceConnection.m */,
 				D81FB614157AD173008B4C2D /* SinglyServiceConnection.h */,
 				D81FB615157AD173008B4C2D /* SinglyServiceConnection.m */,
 			);
@@ -378,8 +375,6 @@
 				D8B87DC41579E76600310696 /* iambleTests.h */,
 				D8B87DC51579E76600310696 /* iambleTests.m */,
 				D8B87DBF1579E76600310696 /* Supporting Files */,
-				D8F50C1B15806F5C00C7DABA /* iambleServiceConnection.h */,
-				D8F50C1C15806F5C00C7DABA /* iambleServiceConnection.m */,
 			);
 			path = iambleTests;
 			sourceTree = "<group>";
@@ -556,7 +551,7 @@
 				D8B87DA51579E76600310696 /* main.m in Sources */,
 				D8B87DA91579E76600310696 /* AppDelegate.m in Sources */,
 				D8AE54491579F014004E2E10 /* ChooseAmbleViewController.m in Sources */,
-				D8AE544C1579F077004E2E10 /* iambleServiceConnection.m in Sources */,
+				D8AE544C1579F077004E2E10 /* CyphtServiceConnection.m in Sources */,
 				D8AE545A1579FC32004E2E10 /* SliderView.m in Sources */,
 				D81FB5F2157AA865008B4C2D /* GTMHTTPFetcher.m in Sources */,
 				D81FB5F3157AA865008B4C2D /* GTMOAuth2Authentication.m in Sources */,
@@ -578,7 +573,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8B87DC61579E76600310696 /* iambleTests.m in Sources */,
-				D8F50C1D15806F5C00C7DABA /* iambleServiceConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

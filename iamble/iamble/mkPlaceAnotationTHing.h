@@ -11,7 +11,7 @@
 
 @interface mkPlaceAnotationTHing : NSObject <MKAnnotation>
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (strong, nonatomic) NSString * title;
-@property (strong, nonatomic) NSString * subtitle;
+@property (copy, nonatomic) NSString * title;
+@property (copy, nonatomic) NSString * subtitle;
 @end
 

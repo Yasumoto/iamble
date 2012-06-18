@@ -19,6 +19,7 @@
 @property (nonatomic, weak) id <SliderActivatedDelegate> delegate;
 @property (nonatomic, strong) NSString *service;
 - (void) slideRight:(BOOL)atStartup;
+- (void) slideLeft;
 @end
 
 

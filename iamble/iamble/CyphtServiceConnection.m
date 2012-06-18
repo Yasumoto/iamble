@@ -1,12 +1,12 @@
 //
-//  iambleServiceConnection.m
-//  iamble
+//  CyphtServiceConnection.m
+//  Cypht
 //
 //  Created by Joe Smith on 6/1/12.
-//  Copyright (c) 2012 iamble. All rights reserved.
+//  Copyright (c) 2012 Cypht. All rights reserved.
 //
 
-#import "iambleServiceConnection.h"
+#import "CyphtServiceConnection.h"
 
 static NSString *const kCyphtClientID = @"307500153747.apps.googleusercontent.com";
 static NSString *const kCyphtClientSecret = @"hLPKxTsZv4CepvzERMEL6le7";
@@ -16,10 +16,7 @@ static NSString *const kRequestTokenString = @"https://cypht-app.appspot.com/_ah
 static NSString *const kAuthorizeTokenString = @"https://cypht-app.appspot.com/_ah/OAuthAuthorizeToken";
 static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/OAuthGetAccessToken";
 
-@interface iambleServiceConnection () <NSURLConnectionDataDelegate>
-@end
-
-@implementation iambleServiceConnection
+@implementation CyphtServiceConnection
 @synthesize auth = _auth;
 
 - (id) init {

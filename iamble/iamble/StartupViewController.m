@@ -7,7 +7,7 @@
 //
 
 #import "StartupViewController.h"
-#import "iambleServiceConnection.h"
+#import "CyphtServiceConnection.h"
 
 static NSString *const kHasStartedBefore = @"hasLaunched";
 static NSString *const kFirstLaunchSegue = @"firstLaunchSegue";
@@ -38,8 +38,8 @@ static NSString *const kNormalSegue = @"normalSegue";
     [self performSegueWithIdentifier:kFirstLaunchSegue sender:self];
   }
   [defaults setValue:@"FTW" forKey:kHasStartedBefore];
-  iambleServiceConnection *iamble = [[iambleServiceConnection alloc] init];
-  if ([iamble.auth canAuthorize]) {
+  CyphtServiceConnection *cypht = [[CyphtServiceConnection alloc] init];
+  if ([cypht.auth canAuthorize]) {
     [self performSegueWithIdentifier:kNormalSegue sender:self];
   }
   [self performSegueWithIdentifier:kSettingsSegue sender:self];
