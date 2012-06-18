@@ -47,7 +47,7 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
   if (error != nil)
   {
     // Authentication failed
-    /*UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle:@"Authorization Failed"
+    /*UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Authorization Failed"
      message:[error localizedDescription]
      delegate:self
      cancelButtonTitle:@"Dismiss"
@@ -58,7 +58,8 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
   {
     // Authentication succeeded
     self.auth = auth;
-    [GTMOAuthViewControllerTouch saveParamsToKeychainForName:kCypht authentication:auth];
+    [GTMOAuthViewControllerTouch saveParamsToKeychainForName:kCypht
+                                              authentication:auth];
   }
 }
 
@@ -74,7 +75,7 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
                                                        appServiceName:kCypht
                                                              delegate:self
                                                      finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-  [viewController setBrowserCookiesURL:[NSURL URLWithString:@"https://cypht-app.appspot.com"]];
+  [viewController setBrowserCookiesURL:[NSURL URLWithString:kOAuthScope]];
   
   return viewController;
 }

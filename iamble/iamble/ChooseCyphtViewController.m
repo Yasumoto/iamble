@@ -13,13 +13,13 @@
 
 static NSString *const kRecommendSegue = @"recommendSegue";
 
-@interface ChooseAmbleViewController ()
+@interface ChooseCyphtViewController ()
 @property (nonatomic, strong) SinglyServiceConnection *singly;
 @property (nonatomic, strong) CyphtServiceConnection *cypht;
 @property (nonatomic, strong) LocationManager *locationManager;
 @end
 
-@implementation ChooseAmbleViewController
+@implementation ChooseCyphtViewController
 @synthesize facebookSlider = _facebookSlider;
 @synthesize twitterSlider = _twitterSlider;
 @synthesize foursquareSlider = _foursquareSlider;
