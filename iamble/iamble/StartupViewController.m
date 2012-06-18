@@ -45,6 +45,12 @@ static NSString *const kNormalSegue = @"normalSegue";
   [self performSegueWithIdentifier:kSettingsSegue sender:self];
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kNormalSegue]) {
+        [[[segue.destinationViewController viewControllers] objectAtIndex:0] setAuth:[[[CyphtServiceConnection alloc] init] auth]];
+    }
+}
+
 - (void)viewDidUnload
 {
   [super viewDidUnload];
