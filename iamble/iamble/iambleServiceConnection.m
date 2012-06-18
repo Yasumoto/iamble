@@ -26,7 +26,7 @@ static NSString *const kAccessTokenString = @"https://cypht-app.appspot.com/_ah/
   self = [super init];
   if (self) {
     [self setupAuth];
-    }
+  }
   return self;
 }
 
