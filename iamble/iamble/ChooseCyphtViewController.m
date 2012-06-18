@@ -1,12 +1,12 @@
 //
-//  ChooseAmbleViewController.m
-//  iamble
+//  ChooseCyphtViewController.m
+//  Cypht
 //
 //  Created by Joe Smith on 6/1/12.
-//  Copyright (c) 2012 iamble. All rights reserved.
+//  Copyright (c) 2012 Cypht. All rights reserved.
 //
 
-#import "ChooseAmbleViewController.h"
+#import "ChooseCyphtViewController.h"
 #import "SinglyServiceConnection.h"
 #import "RecomendationViewController.h"
 #import "LocationManager.h"

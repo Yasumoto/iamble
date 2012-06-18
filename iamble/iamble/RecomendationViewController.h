@@ -1,9 +1,9 @@
 //
 //  RecomendationViewController.h
-//  iamble
+//  Cypht
 //
 //  Created by Joe Smith on 6/2/12.
-//  Copyright (c) 2012 iamble. All rights reserved.
+//  Copyright (c) 2012 Cypht. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

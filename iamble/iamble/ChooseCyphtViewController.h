@@ -1,16 +1,16 @@
 //
-//  ChooseAmbleViewController.h
-//  iamble
+//  ChooseCyphtViewController.h
+//  Cypht
 //
 //  Created by Joe Smith on 6/1/12.
-//  Copyright (c) 2012 iamble. All rights reserved.
+//  Copyright (c) 2012 Cypht. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "SliderView.h"
 #import "CyphtServiceConnection.h"
 
-@interface ChooseAmbleViewController : UIViewController <UIScrollViewDelegate, SliderActivatedDelegate>
+@interface ChooseCyphtViewController : UIViewController <UIScrollViewDelegate, SliderActivatedDelegate>
 @property (weak, nonatomic) IBOutlet SliderView *facebookSlider;
 @property (weak, nonatomic) IBOutlet SliderView *twitterSlider;
 @property (weak, nonatomic) IBOutlet SliderView *foursquareSlider;
