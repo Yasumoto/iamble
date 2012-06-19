@@ -26,7 +26,7 @@ def GetSuggestion(request_type, user=None, location=None):
   elif request_type == constants.FIRE_CACHE_BUILDER:
     pass
     #defer a cache health check
-  elif (request_type == constants.GET_DYNAMIC) and (location is not None):
+  elif (request_type == '') and (location is not None):
     signal_engine = signal.SignalEngine(current_user, current_location)
     # TODO(russ): Check the return of suggest.GenerateSuggestion to be sure it returns in the correct format
     return signal_engine.FullDataProcess(constants.DO_NOT_SET_CACHE)

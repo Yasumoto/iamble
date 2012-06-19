@@ -11,7 +11,7 @@ from google.appengine.ext import webapp
 
 import handler
 from profiles import models
-from data import signal_handler, constants
+from data import signal, signal_handler, constants
 
 class NewServiceHandler(webapp.RequestHandler):
   
@@ -42,10 +42,14 @@ class RecommendationHandler(webapp.RequestHandler):
     lat = self.request.get('lat')
     lng = self.request.get('lng')
     coordinate = models.Coordinate(lat=float(lat), lng=float(lng))
-    suggestions = signal_handler.RouteRequest(
-        constants.GET_DEFAULT,
+    suggestions = signal_handler.GetSuggestion(
+        '',
         user=user,
         location=coordinate)
+    #suggestions = signal_handler.RouteRequest(
+    #    constants.GET_DEFAULT,
+    #    user=user,
+    #    location=coordinate)
     #TODO(russw): update the recent_suggestions ambler property (parse output below)
     #ambler.recent_suggestions.extend(suggestions)
     #ambler.put()
