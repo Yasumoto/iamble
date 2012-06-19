@@ -178,7 +178,6 @@
                     <connections>
                         <outlet property="chooseSawtoothBanner" destination="n7v-5D-aDY" id="at7-sn-fKu"/>
                         <outlet property="coffeeSlider" destination="1Ad-iz-Bvc" id="mzw-lZ-mdR"/>
-                        <outlet property="goBackToChooseButton" destination="w1m-8o-WVv" id="0K6-IS-hfV"/>
                         <outlet property="looksGoodButton" destination="cxv-5j-i8y" id="WhZ-hf-aBV"/>
                         <outlet property="mehButton" destination="jxg-cB-Ab2" id="v7X-Lz-V0h"/>
                         <outlet property="placeMapView" destination="rwG-Oq-bJs" id="3hZ-OD-0Dd"/>

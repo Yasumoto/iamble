@@ -29,6 +29,7 @@ static int sliderShiftLeft = 150;
 @property (strong, nonatomic) NSString *choice;
 @property (strong, nonatomic) NSMutableArray *placesArr;
 @property (nonatomic) int placesIndex;
+@property (strong, nonatomic) UIBarButtonItem *goBackToChooseButton;
 - (void) doTheDic:(NSMutableDictionary *)dic;
 @end
 

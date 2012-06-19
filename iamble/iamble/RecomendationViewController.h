@@ -27,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *placeMapView;
 @property (weak, nonatomic) IBOutlet UIButton *mehButton;
 @property (weak, nonatomic) IBOutlet UIButton *looksGoodButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *goBackToChooseButton;
 - (IBAction)newPlaceRequest:(id)sender;
 - (IBAction)slideBackChoose:(id)sender;
 
