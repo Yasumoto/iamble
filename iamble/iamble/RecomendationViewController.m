@@ -58,7 +58,7 @@ static int sliderShiftLeft = 150;
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     // Custom initialization
-
+    
   }
   return self;
 }
@@ -67,9 +67,9 @@ static int sliderShiftLeft = 150;
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    if (!self.locationManager) {
-        self.locationManager = [[LocationManager alloc] init];
-    }
+  if (!self.locationManager) {
+    self.locationManager = [[LocationManager alloc] init];
+  }
   UIImage *img = [UIImage imageNamed:@"logo_header.png"];
   [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
   self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
@@ -93,7 +93,7 @@ static int sliderShiftLeft = 150;
   self.mehButton.hidden = YES;
   self.looksGoodButton.hidden = YES;
   self.superMapView.hidden = YES;
-    self.goBackToChooseButton = self.navigationItem.leftBarButtonItem;
+  self.goBackToChooseButton = self.navigationItem.leftBarButtonItem;
   self.navigationItem.leftBarButtonItem = nil;
 }
 
