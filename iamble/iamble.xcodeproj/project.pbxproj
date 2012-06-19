@@ -156,7 +156,7 @@
 		D8AA8AEE158C4B000076F305 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D8AA8AF0158C4BD50076F305 /* StartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupViewController.h; sourceTree = "<group>"; };
 		D8AA8AF1158C4BD50076F305 /* StartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupViewController.m; sourceTree = "<group>"; };
-		D8AE54471579F014004E2E10 /* ChooseCyphtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ChooseCyphtViewController.h; sourceTree = "<group>"; };
+		D8AE54471579F014004E2E10 /* ChooseCyphtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCyphtViewController.h; sourceTree = "<group>"; };
 		D8AE54481579F014004E2E10 /* ChooseCyphtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCyphtViewController.m; sourceTree = "<group>"; };
 		D8AE544A1579F077004E2E10 /* CyphtServiceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyphtServiceConnection.h; sourceTree = "<group>"; };
 		D8AE544B1579F077004E2E10 /* CyphtServiceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CyphtServiceConnection.m; sourceTree = "<group>"; };

@@ -97,6 +97,13 @@ static NSString *const kRecommendSegue = @"recommendSegue";
   self.settingsSlider.frame = CGRectMake(-172, 321, self.settingsSlider.frame.size.width, self.settingsSlider.frame.size.height);
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    if (![self.cypht.auth canAuthorize]) {
+        UIViewController *cyphtAuth = [self.cypht authorizeAmble];
+        [self.navigationController pushViewController:cyphtAuth animated:YES];
+    }
+}
+
 - (void)viewDidUnload
 {
   [self setSelectionScrollView:nil];
@@ -127,17 +134,14 @@ static NSString *const kRecommendSegue = @"recommendSegue";
   UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   [spinner startAnimating];
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-  if (![self.cypht.auth canAuthorize]) {
-   UIViewController *cyphtAuth = [self.cypht authorizeAmble];
-   [self.navigationController pushViewController:cyphtAuth animated:YES];
-   }
+
   if ([slider.service isEqualToString:@"finished"]) {
     [self performSegueWithIdentifier:kRecommendSegue sender:self];
   }
   else {
     self.singly.ambleAuth = self.cypht.auth;            
-    //UIViewController *controller = [self.singly authorize:slider.service];
-    //[self.navigationController pushViewController:controller animated:YES];
+    UIViewController *controller = [self.singly authorize:slider.service];
+    [self.navigationController pushViewController:controller animated:YES];
   }    
 }
 

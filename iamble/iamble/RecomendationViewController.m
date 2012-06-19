@@ -58,6 +58,7 @@ static int sliderShiftLeft = 150;
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     // Custom initialization
+
   }
   return self;
 }
@@ -66,6 +67,9 @@ static int sliderShiftLeft = 150;
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (!self.locationManager) {
+        self.locationManager = [[LocationManager alloc] init];
+    }
   UIImage *img = [UIImage imageNamed:@"logo_header.png"];
   [self.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
   self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
@@ -89,7 +93,8 @@ static int sliderShiftLeft = 150;
   self.mehButton.hidden = YES;
   self.looksGoodButton.hidden = YES;
   self.superMapView.hidden = YES;
-  //self.navigationItem.leftBarButtonItem = nil;
+    self.goBackToChooseButton = self.navigationItem.leftBarButtonItem;
+  self.navigationItem.leftBarButtonItem = nil;
 }
 
 - (void) mapViewShadow {
@@ -145,7 +150,7 @@ static int sliderShiftLeft = 150;
   mkPlaceAnotationTHing *annote = [[mkPlaceAnotationTHing alloc] init];
   annote.coordinate = self.placeLocation.coordinate;
   annote.title = [dic objectForKey:@"name"];
-  annote.subtitle = [dic objectForKey:@"type"];
+  annote.subtitle = [dic objectForKey:@"food_type"];
   
   [self.placeMapView addAnnotation:annote];
   [self.placeMapView selectAnnotation:annote animated:FALSE];
