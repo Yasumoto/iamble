@@ -163,8 +163,7 @@ static int sliderShiftLeft = 150;
 }
 
 - (void) pushChoice:(NSString *)choice {
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:0.5];
+  [UIView animateWithDuration:0.5 animations:^{
   self.chooseSawtoothBanner.center = CGPointMake(self.chooseSawtoothBanner.center.x,
                                                  self.chooseSawtoothBanner.center.y - shiftHeight);
   for (SliderView *slider in self.sliders) {
@@ -176,20 +175,19 @@ static int sliderShiftLeft = 150;
       slider.center = CGPointMake(slider.center.x-sliderShiftLeft, slider.center.y);
     }
   }
-  [UIView commitAnimations];
+  }];
   [self performSelector:@selector(showNewStuff) withObject:self afterDelay:0.5];
   
 }
 
 - (void) showNewStuff {
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:0.5];
+  [UIView animateWithDuration:0.5 animations:^{
   self.superMapView.hidden = FALSE;
   self.placeMapView.hidden = FALSE;
   self.mehButton.hidden = FALSE;
   self.looksGoodButton.hidden = FALSE;
+  }];
   self.navigationItem.leftBarButtonItem = self.goBackToChooseButton;
-  [UIView commitAnimations];
 }
 
 - (void) goBackBetch {
