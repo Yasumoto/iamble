@@ -164,17 +164,16 @@ static int sliderShiftLeft = 150;
 
 - (void) pushChoice:(NSString *)choice {
   [UIView animateWithDuration:0.5 animations:^{
-  self.chooseSawtoothBanner.center = CGPointMake(self.chooseSawtoothBanner.center.x,
-                                                 self.chooseSawtoothBanner.center.y - shiftHeight);
-  for (SliderView *slider in self.sliders) {
-    if (slider.service == choice) {
-      
-      slider.center = CGPointMake(slider.center.x+sliderShiftRight, slider.center.y);
+    self.chooseSawtoothBanner.center = CGPointMake(self.chooseSawtoothBanner.center.x,
+                                                   self.chooseSawtoothBanner.center.y - shiftHeight);
+    for (SliderView *slider in self.sliders) {
+      if (slider.service == choice) {
+        slider.center = CGPointMake(slider.center.x+sliderShiftRight, slider.center.y);
+      }
+      else {
+        slider.center = CGPointMake(slider.center.x-sliderShiftLeft, slider.center.y);
+      }
     }
-    else {
-      slider.center = CGPointMake(slider.center.x-sliderShiftLeft, slider.center.y);
-    }
-  }
   }];
   [self performSelector:@selector(showNewStuff) withObject:self afterDelay:0.5];
   
@@ -182,10 +181,10 @@ static int sliderShiftLeft = 150;
 
 - (void) showNewStuff {
   [UIView animateWithDuration:0.5 animations:^{
-  self.superMapView.hidden = FALSE;
-  self.placeMapView.hidden = FALSE;
-  self.mehButton.hidden = FALSE;
-  self.looksGoodButton.hidden = FALSE;
+    self.superMapView.hidden = FALSE;
+    self.placeMapView.hidden = FALSE;
+    self.mehButton.hidden = FALSE;
+    self.looksGoodButton.hidden = FALSE;
   }];
   self.navigationItem.leftBarButtonItem = self.goBackToChooseButton;
 }
